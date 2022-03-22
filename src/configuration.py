@@ -12,6 +12,7 @@ import yaml
 import subprocess
 import os
 
+#TODO how do I make sure all the logs go to the same place? Just reuse the name?
 logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 class Configuration:
@@ -31,18 +32,19 @@ class Configuration:
                 yaml.dump(self.contents, yamlfile)
                 logging.info("Dumped new yaml file at %s", self.location)
 
+        check_perf()
+        check_nvidia()
         self.check_contents()
 
-    def check_contents(self):
-        """Helper function to check the yaml file contents"""
-        pass
+
+def check_contents(contents):
+    """Helper function to check configuration contents"""
+    pass
         
 
 def generate_yaml():
-    # Check for needed tools
-    check_perf()
-    check_nvidia()
-
+    """Helper function to generate a new default yaml configuration file
+    """
     # Get possible perf counters and search for default counters
     perf_counters = get_available_perf()
     selected_counters = closest_match(perf_counters)
@@ -63,8 +65,6 @@ def generate_yaml():
     }
 
     return default_yaml
-
-    
 
 
 def closest_match(all_counters):
@@ -87,7 +87,6 @@ def closest_match(all_counters):
 
     matched_counters = []
     for match_string_category, match_string_list in match_strings.items():
-
         # Want to ensure we only add a matched string once per category and once per
         # matching against that category, hence the use of the below temp variable
         # This is relatively inefficient, but for a small number of default values,
@@ -107,13 +106,13 @@ def closest_match(all_counters):
 def check_perf():
     perf_overall = subprocess.run("perf", capture_output=True)
     if not perf_overall:
-        #TODO should I make my own errors?
         logging.info("Uh-oh, it looks like there's an issue using perf!")
     else:
         logging.info("Perf outputs")
 
 def get_available_perf():
-    # Getting possible perf counters using parsing on 'perf list'
+    """Helper function to query perf and return all available counters
+    """
     perf_list_raw = subprocess.run(["perf", "list", "--no-desc"], capture_output=True)
     raw_perf = str(perf_list_raw.stdout)
     raw_perf = raw_perf.split("\\n")
@@ -131,6 +130,8 @@ def get_available_perf():
     return perf_options
 
 def check_nvidia():
+    """Helper function to ensure nvidia systems function on this architecture, TODO
+    """
     pass
 
 
