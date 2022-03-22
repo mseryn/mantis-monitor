@@ -10,6 +10,7 @@ import pprint
 import logging
 import yaml
 import subprocess
+import os
 
 logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
@@ -17,16 +18,25 @@ class Configuration:
     """
     Outer-most object to control Configuration elements
     """
-    def __init__(self, location="../config.yaml"):
+    def __init__(self, location="../config.yaml", generate_new_yaml=False):
         """The config file used during this invocation of mantis-monitor"""
         self.location = location
         """Config file location, a string"""
-        self.contents = yaml.load(open(self.location))
+        if os.path.exists(self.location) and not generate_new_yaml:
+            self.contents = yaml.load(open(self.location))
+            logging.info("read yaml file at %s", self.location)
+        else:
+            self.contents = generate_yaml()
+            with open(self.location, 'w') as yamlfile:
+                yaml.dump(self.contents, yamlfile)
+                logging.info("Dumped new yaml file at %s", self.location)
+
         self.check_contents()
 
     def check_contents(self):
         """Helper function to check the yaml file contents"""
         pass
+        
 
 def generate_yaml():
     # Check for needed tools
@@ -38,6 +48,22 @@ def generate_yaml():
     selected_counters = closest_match(perf_counters)
 
     # Build default yaml
+    default_yaml = {
+        'test_name': 'DEFAULT', 
+        'debug': True, 
+        'log': True, 
+        'iterations': 2, 
+        'perf_counters': selected_counters,
+        'nvidia_modes': ['api_trace', 'gpu_trace', 'power_over_time'], 
+        'memory_modes': ['high_watermark', 'memory_over_time'], 
+        'benchmarks': ['XSBench', 'RSBench'], 
+        'benchmark_configurations': [{'XSBench': {'kwarg1': 'thingy', 'kwarg2': 'otherThingy'}}, {'RSBench': {'kwarg1': 'things'}}], 
+        'pmu_count': 4, 'time_count': 100, 
+        'formatter_modes': ['CSV']
+    }
+
+    return default_yaml
+
     
 
 
@@ -109,6 +135,5 @@ def check_nvidia():
 
 
 if __name__ == "__main__":
-    c = Configuration()
+    c = Configuration(generate_new_yaml=True)
     print(c.contents)
-    generate_yaml()
