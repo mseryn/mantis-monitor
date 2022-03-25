@@ -20,7 +20,7 @@ class Benchmark():
     def setup(self):
         pass
 
-    def run(self):
+    def get_run_command(self):
         pass
 
     def teardown(self):
