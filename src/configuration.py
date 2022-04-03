@@ -34,7 +34,6 @@ class Configuration:
 
         check_perf()
         check_nvidia()
-        self.check_contents()
 
 
 def check_contents(contents):
@@ -136,5 +135,6 @@ def check_nvidia():
 
 
 if __name__ == "__main__":
-    c = Configuration(generate_new_yaml=True)
+    #c = Configuration(generate_new_yaml=True)
+    c = Configuration()
     print(c.contents)
