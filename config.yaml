@@ -4,13 +4,13 @@
 #  - XSBench_OpenMP_Offload
 benchmarks:
 - XSBench_OpenMP_threading:
-  - "./home/mseryn/XSBench/openmp-threading/XSBench -m event"
+  - "/home/mseryn/XSBench/openmp-threading/XSBench -m event"
 - RSBench_OpenMP_threading:
-  - "./home/mseryn/RSBench/openmp-threading/rsbench -m event"
+  - "/home/mseryn/RSBench/openmp-threading/rsbench -m event"
 debug: true
 formatter_modes:
 - CSV
-iterations: 2
+iterations: 1
 log: true
 memory_modes:
 - high_watermark
@@ -27,4 +27,4 @@ perf_counters:
 - major-faults
 pmu_count: 4
 test_name: DEFAULTNAME
-time_count: 100
+time_count: 1000
