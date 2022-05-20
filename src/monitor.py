@@ -5,6 +5,7 @@ import formatter
 
 import logging
 import argparse
+import pprint
 #import testrun
 
 
@@ -21,8 +22,11 @@ def run():
     # Run
 
     config = configuration.Configuration()
-    config.print_all()
+    #logging.log("config elements are:")
+    #logging.log(config.print_all())
 
+
+    all_data = []
     run_benchmarks = []
     for manual_benchmark in config.contents["benchmarks"]:
         for name, runscript in manual_benchmark.items():
@@ -34,11 +38,12 @@ def run():
             run_collectors.append(collector.PerfCollector(config, iteration, each_benchmark))
 
     for each_collector in run_collectors:
-        for each_testrun in each_collector.testruns:
-            print(each_testrun.return_run_command())
-        
+        each_collector.run_all()
+        all_data.append(each_collector.data)
     
 
+    for thing in all_data:
+        pprint.pprint(thing)
 
 if __name__ == "__main__":
     run()
