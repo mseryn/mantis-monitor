@@ -37,12 +37,13 @@ class Configuration:
         check_nvidia()
 
     def set_all_contents(self):
-        self.benchmark_configurations = self.contents["benchmark_configurations"]
         self.benchmarks = self.contents["benchmarks"]
         self.formatter_modes = self.contents["formatter_modes"]
         self.memory_modes = self.contents["memory_modes"]
         self.nvidia_modes = self.contents["nvidia_modes"]
         self.perf_counters = self.contents["perf_counters"]
+
+        # This is needed for advanced benchmarks self.benchmark_configurations = self.contents["benchmark_configurations"]
 
         self.debug_mode = self.contents["debug"]
         self.log = self.contents["log"]
@@ -51,6 +52,9 @@ class Configuration:
         self.iterations = self.contents["iterations"]
         self.timescale = self.contents["time_count"]
         self.pmu_count = self.contents["pmu_count"]
+
+    def print_all(self):
+        pprint.pprint(self.contents)
 
 
 def generate_yaml():

@@ -40,7 +40,7 @@ class TestRun():
         return ""
 
 
---- Perf collector components ---
+#--- Perf collector components ---
 
 class PerfCollector(Collector):
     """
