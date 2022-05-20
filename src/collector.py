@@ -7,6 +7,7 @@ See LICENSE for details
 """
 
 import logging
+import math
 
 logging.basicConfig(filename='testing.log', encoding='utf-8', \
     format='%(levelname)s:%(message)s', level=logging.DEBUG)
@@ -54,8 +55,7 @@ class PerfCollector(Collector):
         self.pmu_count = configuration.pmu_count
         self.timescale = configuration.timescale # note this needs to be ms, same as configuration file
         self.testruns = []
-        self.filename = "{testname}-iteration{iter_count}-benchmark{benchstring}\
-        -perfrun{{perfrun_count}}".format(testname = configuration.test_name, \
+        self.filename = "{testname}-iteration_{iter_count}-benchmark_{benchstring}-perfrun_{{perfrun_count}}".format(testname = configuration.test_name, \
             iter_count = iteration, benchstring = benchmark.name)
 
         self.setup()
@@ -90,7 +90,7 @@ class PerfTestRun(TestRun):
     def return_run_command(self):
 #    def return_run_command(self, filename):
         counters_string = ",".join(self.counters)
-        return runstring.format(counters_string, self.timescale, self.filename, \
+        return self.runstring.format(counters_string, self.timescale, self.filename, \
             self.benchmark.get_run_command())
 
 
