@@ -32,14 +32,26 @@ class Configuration:
                 yaml.dump(self.contents, yamlfile)
                 logging.info("Dumped new yaml file at %s", self.location)
 
+        self.set_all_contents()
         check_perf()
         check_nvidia()
 
+    def set_all_contents(self):
+        self.benchmark_configurations = self.contents["benchmark_configurations"]
+        self.benchmarks = self.contents["benchmarks"]
+        self.formatter_modes = self.contents["formatter_modes"]
+        self.memory_modes = self.contents["memory_modes"]
+        self.nvidia_modes = self.contents["nvidia_modes"]
+        self.perf_counters = self.contents["perf_counters"]
 
-def check_contents(contents):
-    """Helper function to check configuration contents"""
-    pass
-        
+        self.debug_mode = self.contents["debug"]
+        self.log = self.contents["log"]
+
+        self.test_name = self.contents["test_name"]
+        self.iterations = self.contents["iterations"]
+        self.timescale = self.contents["time_count"]
+        self.pmu_count = self.contents["pmu_count"]
+
 
 def generate_yaml():
     """Helper function to generate a new default yaml configuration file
@@ -57,8 +69,7 @@ def generate_yaml():
         'perf_counters': selected_counters,
         'nvidia_modes': ['api_trace', 'gpu_trace', 'power_over_time'], 
         'memory_modes': ['high_watermark', 'memory_over_time'], 
-        'benchmarks': ['XSBench', 'RSBench'], 
-        'benchmark_configurations': [{'XSBench': {'kwarg1': 'thingy', 'kwarg2': 'otherThingy'}}, {'RSBench': {'kwarg1': 'things'}}], 
+        'benchmarks': [{'XSBench': "./run script and args goes here"}, {'RSBench': "run script and args go here"}], 
         'pmu_count': 4, 'time_count': 100, 
         'formatter_modes': ['CSV']
     }

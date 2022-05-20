@@ -8,7 +8,8 @@ See LICENSE for details
 
 import logging
 
-logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
+logging.basicConfig(filename='testing.log', encoding='utf-8', \
+    format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 class Collector():
     """
@@ -53,7 +54,9 @@ class PerfCollector(Collector):
         self.pmu_count = configuration.pmu_count
         self.timescale = configuration.timescale # note this needs to be ms, same as configuration file
         self.testruns = []
-        self.filename = "{testname}-iteration{iter_count}-benchmark{benchstring}-perfrun{{perfrun_count}}".format(testname = configuration.test_name, iter_count = iteration, benchstring = benchmark.name)
+        self.filename = "{testname}-iteration{iter_count}-benchmark{benchstring}\
+        -perfrun{{perfrun_count}}".format(testname = configuration.test_name, \
+            iter_count = iteration, benchstring = benchmark.name)
 
         self.setup()
 
@@ -67,7 +70,8 @@ class PerfCollector(Collector):
             stop = min(num_perf_counters, ((i+1) * self.pmu_count))
             counters_list = self.counters[start:stop]
             current_filename = self.filename.format(perfrun_count = i)
-            current_testrun = PerfTestRun(str(i), counters_list, self.timescale, self.benchmark, current_filename)
+            current_testrun = PerfTestRun(str(i), counters_list, self.timescale,\
+                self.benchmark, current_filename)
             self.testruns.append(current_testrun)
             
 
@@ -86,8 +90,8 @@ class PerfTestRun(TestRun):
     def return_run_command(self):
 #    def return_run_command(self, filename):
         counters_string = ",".join(self.counters)
-        return runstring.format(counters_string, self.timescale, self.filename, self.benchmark.get_run_command())
-
+        return runstring.format(counters_string, self.timescale, self.filename, \
+            self.benchmark.get_run_command())
 
 
 #class NvidiaPowerCollector(Collector):
