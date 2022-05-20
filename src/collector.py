@@ -113,7 +113,7 @@ class PerfTestRun(TestRun):
                         "collector_name":   self.name, \
                         "iteration":        self.iteration, \
                         "timescale":        self.timescale, \
-                        "units":            "count per timescale microseconds", \
+                        "units":            "count per timescale milliseconds", \
                         "measurement_names": self.counters, \
                         }
 
