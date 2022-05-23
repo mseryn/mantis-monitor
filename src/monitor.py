@@ -27,10 +27,10 @@ def run():
     #logging.log(config.print_all())
 
 
-    all_data = []
     all_dataframes = []
     dataframe_columns = ["benchmark_name", "collector_name", "iteration", "timescale", "units", "measurements"]
     data = pandas.DataFrame(columns = dataframe_columns)
+
     run_benchmarks = []
     for manual_benchmark in config.contents["benchmarks"]:
         for name, runscript in manual_benchmark.items():
@@ -43,13 +43,13 @@ def run():
 
     for each_collector in run_collectors:
         each_collector.run_all()
-        all_data.append(each_collector.data)
         all_dataframes.append(pandas.DataFrame(each_collector.data))
 
     for dataframe in all_dataframes:
         data = pandas.concat([data, dataframe])
 
     #print(data)
+
     
 
 if __name__ == "__main__":
