@@ -37,9 +37,11 @@ def run():
             run_benchmarks.append(benchmark.Benchmark(name = name, runscript = runscript[0]))
 
     run_collectors = []
-    for each_benchmark in run_benchmarks:
-        for iteration in range(0, config.iterations):
-            run_collectors.append(collector.PerfCollector(config, iteration, each_benchmark))
+    # TODO move to the formatter style instantiaziation
+    if config.perf_counters:
+        for each_benchmark in run_benchmarks:
+            for iteration in range(0, config.iterations):
+                run_collectors.append(collector.PerfCollector(config, iteration, each_benchmark))
 
     for each_collector in run_collectors:
         each_collector.run_all()
@@ -49,6 +51,15 @@ def run():
         data = pandas.concat([data, dataframe])
 
     #print(data)
+    # TODO - may want to make filename better
+    filename = config.test_name
+    if config.formatter_modes:
+        for mode in config.formatter_modes:
+            class_ = getattr(formatter, mode)
+            this_formatter = class_()
+            converted_data = this_formatter.convert(data)
+            this_formatter.save(filename, converted_data)
+
 
     
 
