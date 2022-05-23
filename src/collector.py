@@ -68,10 +68,10 @@ class PerfCollector(Collector):
         self.testruns = []
         self.filename = "{testname}-iteration_{iter_count}-benchmark_{benchstring}-perfrun_{{perfrun_count}}".format(testname = configuration.test_name, \
             iter_count = iteration, benchstring = benchmark.name)
+        self.data = []
+        self.global_ID = 0
 
         self.setup()
-
-        self.data = []
 
     def setup(self):
         num_perf_counters = len(self.counters)
@@ -83,10 +83,12 @@ class PerfCollector(Collector):
             stop = min(num_perf_counters, ((i+1) * self.pmu_count))
             counters_list = self.counters[start:stop]
             current_filename = self.filename.format(perfrun_count = i)
-            name = "_".join([self.name, str(i)]) 
+            name = "_".join([self.name, str(self.global_ID)]) 
             current_testrun = PerfTestRun(name, counters_list, self.timescale,\
                 self.benchmark, current_filename, self.iteration)
             self.testruns.append(current_testrun)
+
+            self.global_ID = self.global_ID + 1
 
     def run_all(self):
         for this_testrun in self.testruns:
@@ -114,8 +116,10 @@ class PerfTestRun(TestRun):
                         "iteration":        self.iteration, \
                         "timescale":        self.timescale, \
                         "units":            "count per timescale milliseconds", \
-                        "measurement_names": self.counters, \
+                        "measurements": self.counters, \
                         }
+        for counter in self.counters:
+            self.data[counter] = []
 
     def run(self):
         # Run it
@@ -125,18 +129,13 @@ class PerfTestRun(TestRun):
 
         # Collect data
         with open(self.filename, 'r') as csvfile:
-            measurements = {}
-            for counter in self.counters:
-                measurements[counter] = []
             for line in csvfile:
                 line = line.strip().split(",")
                 if len(line) > 1 and "#" not in line[0]:
                     time = float(line[0])
                     measurement_name = line[3]
                     measurement_value = float(line[1])
-                    measurements[measurement_name].append((time, measurement_value))
-
-        self.data.update(measurements)
+                    self.data[measurement_name].append((time, measurement_value))
 
         # Clean up files
         os.remove(self.filename)
