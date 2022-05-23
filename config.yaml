@@ -5,10 +5,11 @@
 benchmarks:
 - XSBench_OpenMP_threading:
   - "/home/mseryn/XSBench/openmp-threading/XSBench -m event"
-- RSBench_OpenMP_threading:
-  - "/home/mseryn/RSBench/openmp-threading/rsbench -m event"
+#- RSBench_OpenMP_threading:
+#  - "/home/mseryn/RSBench/openmp-threading/rsbench -m event"
 debug: true
 formatter_modes:
+- PandasPickle
 - CSV
 iterations: 1
 log: true
