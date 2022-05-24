@@ -45,7 +45,7 @@ def run():
         for iteration in range(0, config.iterations):
 #            run_collectors.append(collector.PerfCollector(config, iteration, each_benchmark))
             for mode in config.collector_modes:
-                run_collectors.append(Collector.get_collector(mode, config, iteration, each_benchmark))
+                run_collectors.append(collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark))
 
     for each_collector in run_collectors:
         each_collector.run_all()
@@ -54,13 +54,11 @@ def run():
     for dataframe in all_dataframes:
         data = pandas.concat([data, dataframe])
 
-    #print(data)
     # TODO - may want to make filename better
     filename = config.test_name
     if config.formatter_modes:
         for mode in config.formatter_modes:
-            class_ = getattr(formatter, mode)
-            this_formatter = class_()
+            this_formatter = formatter.formatter.Formatter.get_formatter(mode)
             converted_data = this_formatter.convert(data)
             this_formatter.save(filename, converted_data)
 
