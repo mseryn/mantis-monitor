@@ -37,6 +37,7 @@ class Configuration:
         check_nvidia()
 
     def set_all_contents(self):
+        self.collector_modes = self.contents["collection_modes"]
         self.benchmarks = self.contents["benchmarks"]
         self.formatter_modes = self.contents["formatter_modes"]
         self.memory_modes = self.contents["memory_modes"]

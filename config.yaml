@@ -29,3 +29,5 @@ perf_counters:
 pmu_count: 4
 test_name: DEFAULTNAME
 time_count: 1000
+collection_modes:
+- perf
