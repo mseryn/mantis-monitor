@@ -36,12 +36,16 @@ def run():
         for name, runscript in manual_benchmark.items():
             run_benchmarks.append(benchmark.Benchmark(name = name, runscript = runscript[0]))
 
+    # TODO should move iterations into collector? What about statistics? Hold off for now.
+
+    # Make me more generic
+    # How import?
     run_collectors = []
-    # TODO move to the formatter style instantiaziation
-    if config.perf_counters:
-        for each_benchmark in run_benchmarks:
-            for iteration in range(0, config.iterations):
-                run_collectors.append(collector.PerfCollector(config, iteration, each_benchmark))
+    for each_benchmark in run_benchmarks:
+        for iteration in range(0, config.iterations):
+#            run_collectors.append(collector.PerfCollector(config, iteration, each_benchmark))
+            for mode in config.collector_modes:
+                run_collectors.append(Collector.get_collector(mode, config, iteration, each_benchmark))
 
     for each_collector in run_collectors:
         each_collector.run_all()

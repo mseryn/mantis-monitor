@@ -36,14 +36,15 @@ class Collector():
         implementations[name] = collector_class
 
     @staticmethod
-    def get_collector(name):
-        return implementations[name]
+    def get_collector(name, configuration, iteration, benchmark):
+        return implementations[name](configuration, iteration, benchmark)
 
 
-    def __init__(self,configuration):
+    def __init__(self, configuration, iteration, benchmark):
         self.name = ""
         self.description = ""
-        self.benchmarks = []
+        self.benchmark = benchmark
+        self.iteration = iteration
         self.configuration = configuration
         self.testruns = []
 
