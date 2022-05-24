@@ -29,7 +29,6 @@ class Collector():
         def run(self):
             pass
     """
-    @static
     implementations = []
 
     @staticmethod
