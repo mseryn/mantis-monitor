@@ -29,15 +29,15 @@ class Collector():
         def run(self):
             pass
     """
-    implementations = []
+    implementations = {}
 
     @staticmethod
     def register_collector(name, collector_class):
-        implementations[name] = collector_class
+        Collector.implementations[name] = collector_class
 
     @staticmethod
     def get_collector(name, configuration, iteration, benchmark):
-        return implementations[name](configuration, iteration, benchmark)
+        return Collector.implementations[name](configuration, iteration, benchmark)
 
 
     def __init__(self, configuration, iteration, benchmark):

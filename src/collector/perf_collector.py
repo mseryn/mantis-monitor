@@ -22,6 +22,7 @@ class PerfCollector(Collector):
     """
     This is the implementation of the perf data collector
     """
+    
     def __init__(self, configuration, iteration, benchmark):
         self.name = "PerfCollector"
         self.description = "Collector for configuring perf metric collection"
@@ -38,54 +39,6 @@ class PerfCollector(Collector):
 
         self.setup()
 
-    # --- Begin test run for perf
-    class PerfTestRun(TestRun):
-        """
-        This is the implementation of the perf data testrun
-        """
-        def __init__(self, name, counters, timescale, benchmark, filename, iteration):
-            self.name = name
-            self.counters = counters
-            self.timescale = timescale
-            self.benchmark = benchmark
-            self.filename = filename
-            self.iteration = iteration
-            self.runstring = "perf stat -x , -a -e {} -I {} -o {} {}"
-            self.counters_string = ",".join(self.counters)
-            self.runcommand = self.runstring.format(self.counters_string, self.timescale, self.filename, \
-                self.benchmark.get_run_command())
-            self.runcommand_parts = self.runcommand.split(" ")
-            self.data = {   "benchmark_name":   self.benchmark.name, \
-                            "collector_name":   self.name, \
-                            "iteration":        self.iteration, \
-                            "timescale":        self.timescale, \
-                            "units":            "count per timescale milliseconds", \
-                            "measurements": self.counters, \
-                            }
-            for counter in self.counters:
-                self.data[counter] = []
-
-        def run(self):
-            # Run it
-            logging.info("running following command:")
-            logging.info(self.runcommand)
-            discarded_output = subprocess.run(self.runcommand_parts, capture_output=True)
-
-            # Collect data
-            with open(self.filename, 'r') as csvfile:
-                for line in csvfile:
-                    line = line.strip().split(",")
-                    if len(line) > 1 and "#" not in line[0]:
-                        time = float(line[0])
-                        measurement_name = line[3]
-                        measurement_value = float(line[1])
-                        self.data[measurement_name].append((time, measurement_value))
-
-            # Clean up files
-            os.remove(self.filename)
-
-            return self.data
-    # --- End test run for perf
 
     def setup(self):
         num_perf_counters = len(self.counters)
@@ -108,6 +61,55 @@ class PerfCollector(Collector):
         for this_testrun in self.testruns:
             data = this_testrun.run()
             self.data.append(data)
+
+# --- Begin test run for perf
+class PerfTestRun():
+    """
+    This is the implementation of the perf data testrun
+    """
+    def __init__(self, name, counters, timescale, benchmark, filename, iteration):
+        self.name = name
+        self.counters = counters
+        self.timescale = timescale
+        self.benchmark = benchmark
+        self.filename = filename
+        self.iteration = iteration
+        self.runstring = "perf stat -x , -a -e {} -I {} -o {} {}"
+        self.counters_string = ",".join(self.counters)
+        self.runcommand = self.runstring.format(self.counters_string, self.timescale, self.filename, \
+            self.benchmark.get_run_command())
+        self.runcommand_parts = self.runcommand.split(" ")
+        self.data = {   "benchmark_name":   self.benchmark.name, \
+                        "collector_name":   self.name, \
+                        "iteration":        self.iteration, \
+                        "timescale":        self.timescale, \
+                        "units":            "count per timescale milliseconds", \
+                        "measurements": self.counters, \
+                        }
+        for counter in self.counters:
+            self.data[counter] = []
+
+    def run(self):
+        # Run it
+        logging.info("running following command:")
+        logging.info(self.runcommand)
+        discarded_output = subprocess.run(self.runcommand_parts, capture_output=True)
+
+        # Collect data
+        with open(self.filename, 'r') as csvfile:
+            for line in csvfile:
+                line = line.strip().split(",")
+                if len(line) > 1 and "#" not in line[0]:
+                    time = float(line[0])
+                    measurement_name = line[3]
+                    measurement_value = float(line[1])
+                    self.data[measurement_name].append((time, measurement_value))
+
+        # Clean up files
+        os.remove(self.filename)
+
+        return self.data
+# --- End test run for perf
 
 
 Collector.register_collector("perf", PerfCollector)

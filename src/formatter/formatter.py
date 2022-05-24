@@ -15,15 +15,15 @@ class Formatter():
     This is currently Python Pandas DataFrames
     """
 
-    implementations = []
+    implementations = {}
 
     @staticmethod
     def register_formatter(name, formatter_class):
-        implementations[name] = formatter_class
+        Formatter.implementations[name] = formatter_class
 
     @staticmethod
     def get_formatter(name):
-        return implementations[name]()
+        return Formatter.implementations[name]()
 
     def __init__(self):
         self.name = ""
