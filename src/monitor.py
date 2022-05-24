@@ -54,13 +54,11 @@ def run():
     for dataframe in all_dataframes:
         data = pandas.concat([data, dataframe])
 
-    #print(data)
     # TODO - may want to make filename better
     filename = config.test_name
     if config.formatter_modes:
         for mode in config.formatter_modes:
-            class_ = getattr(formatter, mode)
-            this_formatter = class_()
+            this_formatter = Formatter.get_formatter(mode)
             converted_data = this_formatter.convert(data)
             this_formatter.save(filename, converted_data)
 
