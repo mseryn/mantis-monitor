@@ -1,4 +1,4 @@
-# Ignoring log files
 *.log
 *.swp
 *.yaml
+*.pyc

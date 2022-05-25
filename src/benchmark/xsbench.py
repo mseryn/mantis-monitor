@@ -7,7 +7,7 @@ See LICENSE for details
 """
 
 import logging
-import benchmark # how do this
+from benchmark.benchmark import Benchmark
 
 logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
@@ -18,18 +18,22 @@ class XSBench(Benchmark):
         return_string.extend(self.arguments)
         return " ".join(return_string)
         
-class XSBench_Cuda(XSBench):
-    def __init__(self):
-        self.location = "~/XSBench/cuda/"
+class XSBenchCuda(XSBench):
+    def __init__(self, arguments):
         self.arguments = ["-m event"]
         self.name = "XSBench_CUDA"
         self.description = "CUDA implementation of microbenchmark XSBench"
 
-class XSBench_Openmp_Offload(XSBench):
-    def __init__(self):
-        self.location = "~/XSBench/openmp-offload/"
+        self.location = arguments["loc"]
+
+class XSBenchOpenmpOffload(XSBench):
+    def __init__(self, arguments):
         self.arguments = ["-m event"]
         self.name = "XSBench_OpenMP_Offload"
         self.description = \
             "OpenMP offloading (GPU-offload) implementation of microbenchmark XSBench"
 
+        self.location = arguments["loc"]
+
+Benchmark.register_benchmark("XSBenchOpenmpOffload", XSBenchOpenmpOffload)
+Benchmark.register_benchmark("XSBenchCuda", XSBenchCuda)

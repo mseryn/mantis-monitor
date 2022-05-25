@@ -23,29 +23,28 @@ def run():
     # Run
 
     config = configuration.Configuration()
+#    config.print_all()
     #logging.log("config elements are:")
     #logging.log(config.print_all())
-
 
     all_dataframes = []
     dataframe_columns = ["benchmark_name", "collector_name", "iteration", "timescale", "units", "measurements"]
     data = pandas.DataFrame(columns = dataframe_columns)
 
     run_benchmarks = []
-    for manual_benchmark in config.contents["benchmarks"]:
-        for name, runscript in manual_benchmark.items():
-            run_benchmarks.append(benchmark.Benchmark(name = name, runscript = runscript[0]))
+    for name, arguments in config.contents["benchmarks"].items():
+        run_benchmarks.append(benchmark.benchmark.Benchmark.get_benchmark(arguments["runner"], arguments))
 
     # TODO should move iterations into collector? What about statistics? Hold off for now.
 
-    # Make me more generic
-    # How import?
     run_collectors = []
     for each_benchmark in run_benchmarks:
         for iteration in range(0, config.iterations):
 #            run_collectors.append(collector.PerfCollector(config, iteration, each_benchmark))
+            # TODO remove this once more modes supported
             for mode in config.collector_modes:
-                run_collectors.append(collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark))
+                if "perf" in mode:
+                    run_collectors.append(collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark))
 
     for each_collector in run_collectors:
         each_collector.run_all()
@@ -54,7 +53,6 @@ def run():
     for dataframe in all_dataframes:
         data = pandas.concat([data, dataframe])
 
-    # TODO - may want to make filename better
     filename = config.test_name
     if config.formatter_modes:
         for mode in config.formatter_modes:
