@@ -11,19 +11,26 @@ import logging
 logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 class Benchmark():
-    def __init__(self, location = "", runscript = "", arguments = "", name = ""):
-        self.location = location
-        self.arguments = arguments
-        self.name = name
-        self.run = runscript
 
-        self.description = ""
+    implementations = {}
+
+    @staticmethod
+    def register_benchmark(name, benchmark_class):
+        Benchmark.implementations[name] = benchmark_class
+
+    @staticmethod
+    def get_benchmark(name, arguments):
+        return Benchmark.implementations[name](arguments)
+
+    def __init__(self, arguments): #location = "", runscript = "", arguments = "", name = ""):
+        self.name = ""
+        self.arguments = None
 
     def setup(self):
         pass
 
     def get_run_command(self):
-        return self.run
+        pass
 
     def teardown(self):
         pass

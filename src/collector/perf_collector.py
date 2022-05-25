@@ -29,7 +29,7 @@ class PerfCollector(Collector):
         self.benchmark = benchmark
         self.iteration = iteration
         self.counters = configuration.perf_counters
-        self.pmu_count = configuration.pmu_count
+        self.pmu_count = configuration.collector_modes["perf"]["pmu_count"]
         self.timescale = configuration.timescale # note this needs to be ms, same as configuration file
         self.testruns = []
         self.filename = "{testname}-iteration_{iter_count}-benchmark_{benchstring}-perfrun_{{perfrun_count}}".format(testname = configuration.test_name, \
