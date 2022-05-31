@@ -122,21 +122,8 @@ def check_perf():
 def get_available_perf():
     """Helper function to query perf and return all available counters
     """
-    perf_list_raw = subprocess.run(["perf", "list", "--no-desc"], capture_output=True)
-    raw_perf = str(perf_list_raw.stdout)
-    raw_perf = raw_perf.split("\\n")
-    perf_options = set()
-    for raw_substring in raw_perf:
-        raw_substring = raw_substring.split("[")[0].strip()
-        if '"' in raw_substring:
-            raw_substring = raw_substring.split('"')[1].strip()
-        if "OR" in raw_substring:
-            raw_substring = raw_substring.split('OR')[0].strip()
-        if raw_substring and ":" not in raw_substring:
-            perf_options.add(raw_substring)
-
-    perf_options = list(perf_options)
-    return perf_options
+    perf_list_raw = subprocess.run(["perf", "list", "--raw-dump"], capture_output=True, text=True)
+    return list(set(perf_list_raw.stdout.split()))
 
 def check_nvidia():
     """Helper function to ensure nvidia systems function on this architecture, TODO
