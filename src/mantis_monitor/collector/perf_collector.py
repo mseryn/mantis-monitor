@@ -14,7 +14,7 @@ import datetime
 
 import pprint
 
-from collector.collector import Collector
+from mantis_monitor.collector.collector import Collector
 
 #logging.basicConfig(filename='testing.log', encoding='utf-8', \
 #    format='%(levelname)s:%(message)s', level=logging.DEBUG)
