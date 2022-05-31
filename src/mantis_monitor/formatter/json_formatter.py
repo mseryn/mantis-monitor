@@ -6,25 +6,25 @@ This code is licensed under LGPL v 2.1
 See LICENSE for details
 """
 
-import pickle
 import pandas
 
-from formatter.formatter import Formatter
+from mantis_monitor.formatter.formatter import Formatter
 
-class PandasPickleFormatter(Formatter):
+class JSONFormatter(Formatter):
     def __init__(self):
-        self.name = "PandasPickle"
+        self.name = "CSV"
     
     def convert(self, data):
         # Not needed for this
         return data
 
     def save(self, filename, data):
-        filename = filename + ".pkl"
-        data.to_pickle(filename)
+        filename = filename + ".json"
+        data.to_json(filename)
 
     def open(self, filename):
-        data = pandas.read_pickle(filename)
+        data = pandas.read_json(filename)
         return data
 
-Formatter.register_formatter("PandasPickle", PandasPickleFormatter)
+
+Formatter.register_formatter("JSON", JSONFormatter)

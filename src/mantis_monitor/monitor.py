@@ -1,7 +1,7 @@
-import benchmark
-import configuration
-import collector
-import formatter
+from mantis_monitor import benchmark
+from mantis_monitor import configuration
+from mantis_monitor import collector
+from mantis_monitor import formatter
 
 import pandas
 import logging
