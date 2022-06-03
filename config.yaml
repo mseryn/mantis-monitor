@@ -1,28 +1,32 @@
-#benchmark_classes:
-#- XSBench:
-#  - XSBench_CUDA
-#  - XSBench_OpenMP_Offload
 benchmarks:
-  xsbench_openmp_threading:
-    runner: "generic_benchmark"
-    name: "XSBench_OpenMP_threading"
-    cmd: "/home/mseryn/XSBench/openmp-threading/XSBench -m event"
-  xsbench_openmp_offload:
-    runner: "XSBenchOpenmpOffload"
-    loc: "/home/mseryn/XSBench/openmp-offload/"
+  mini_app:
+    runner: "MiniApp"
+    gpu_counts:
+      - 1
+      - 2
+      - 4
+      - 8
+    sizes:
+      - "A"
+      - "B"
+      - "C"
+      - "D"
+      - "E"
+      - "F"
 
 collection_modes:
   perf:
     pmu_count: 4
   memory:
-    modes:
-      - high_watermark
-      - memory_over_time
+#    modes:
+#      - high_watermark
+#      - memory_over_time
   nvidia:
     modes:
-      - api_trace
+#      - api_trace
       - gpu_trace
       - power_over_time
+      - power_summary
     gen: sm_80
 
 formatter_modes:

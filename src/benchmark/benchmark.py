@@ -14,13 +14,18 @@ class Benchmark():
 
     implementations = {}
 
+    # Make sure this is unique TODO
     @staticmethod
     def register_benchmark(name, benchmark_class):
         Benchmark.implementations[name] = benchmark_class
 
+    # TODO this is where to change from single to list generation
     @staticmethod
     def get_benchmark(name, arguments):
         return Benchmark.implementations[name](arguments)
+
+    def get_benchmarks(name, arguments):
+        # TODO have this thing return a list (or something) of benchmarks with cross-product
 
     def __init__(self, arguments): #location = "", runscript = "", arguments = "", name = ""):
         self.name = ""

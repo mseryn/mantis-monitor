@@ -33,7 +33,9 @@ def run():
 
     run_benchmarks = []
     for name, arguments in config.contents["benchmarks"].items():
-        run_benchmarks.append(benchmark.benchmark.Benchmark.get_benchmark(arguments["runner"], arguments))
+        # Turn this into a generator TODO
+        # Make sure future benchmarks return list-style (generation)
+        run_benchmarks.append(benchmark.benchmark.Benchmark.get_benchmarks(arguments["runner"], arguments))
 
     # TODO should move iterations into collector? What about statistics? Hold off for now.
 
