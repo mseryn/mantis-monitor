@@ -78,7 +78,6 @@ class PerfTestRun():
         self.counters_string = ",".join(self.counters)
         self.runcommand = self.runstring.format(self.counters_string, self.timescale, self.filename, \
             self.benchmark.get_run_command())
-        self.runcommand_parts = self.runcommand.split(" ")
         self.data = {   "benchmark_name":   self.benchmark.name, \
                         "collector_name":   self.name, \
                         "iteration":        self.iteration, \
@@ -93,7 +92,16 @@ class PerfTestRun():
         # Run it
         logging.info("running following command:")
         logging.info(self.runcommand)
-        discarded_output = subprocess.run(self.runcommand_parts, capture_output=True)
+
+        # TODO inefficient, do only once per benchmark type?
+        # Running benchmark setup
+        setup_commands = self.benchmark.setup()
+        for command in setup_commands:
+            setupcommand_parts = self.setup_commands.split(" ")
+            discarded_output = subprocess.run(setupcommand_parts, capture_output=True)
+
+        runcommand_parts = self.runcommand.split(" ")
+        discarded_output = subprocess.run(runcommand_parts, capture_output=True)
 
         # Collect data
         with open(self.filename, 'r') as csvfile:

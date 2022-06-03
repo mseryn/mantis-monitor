@@ -31,11 +31,13 @@ def run():
     dataframe_columns = ["benchmark_name", "collector_name", "iteration", "timescale", "units", "measurements"]
     data = pandas.DataFrame(columns = dataframe_columns)
 
+    # TODO need to make sure setup is also run
     run_benchmarks = []
     for name, arguments in config.contents["benchmarks"].items():
         # Turn this into a generator TODO
         # Make sure future benchmarks return list-style (generation)
-        run_benchmarks.append(benchmark.benchmark.Benchmark.get_benchmarks(arguments["runner"], arguments))
+        new_benchmarks = benchmark.benchmark.Benchmark.get_benchmark_class(arguments["runner"]).generate_benchmarks(arguments)
+        run_benchmarks.extend(new_benchmarks)
 
     # TODO should move iterations into collector? What about statistics? Hold off for now.
 

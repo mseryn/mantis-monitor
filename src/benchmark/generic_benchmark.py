@@ -21,4 +21,8 @@ class GenericBenchmark(Benchmark):
     def get_run_command(self):
         return self.run
 
+    @staticmethod
+    def generate_benchmarks(arguments):
+        return [GenericBenchmark(arguments)]
+
 Benchmark.register_benchmark("generic_benchmark", GenericBenchmark)
