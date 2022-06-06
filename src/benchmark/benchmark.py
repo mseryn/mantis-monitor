@@ -7,6 +7,7 @@ See LICENSE for details
 """
 
 import logging
+import subprocess
 
 logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
@@ -31,11 +32,13 @@ class Benchmark():
         self.name = ""
         self.arguments = None
 
-    def setup(self):
+    def before_all(self):
         pass
-
+    def before_each(self):
+        pass
     def get_run_command(self):
         pass
-
-    def teardown(self):
+    def after_all(self):
+        pass
+    def after_each(self):
         pass

@@ -1,18 +1,10 @@
 benchmarks:
-  mini_app:
-    runner: "MiniApp"
-    gpu_counts:
+  TestBench:
+    runner: "TestBench"
+    waittimes:
       - 1
-      - 2
       - 4
       - 8
-    sizes:
-      - "A"
-      - "B"
-      - "C"
-      - "D"
-      - "E"
-      - "F"
 
 collection_modes:
   perf:
@@ -21,13 +13,13 @@ collection_modes:
 #    modes:
 #      - high_watermark
 #      - memory_over_time
-  nvidia:
-    modes:
+#  nvidia:
+#    modes:
 #      - api_trace
-      - gpu_trace
-      - power_over_time
-      - power_summary
-    gen: sm_80
+#      - gpu_trace
+#      - power_over_time
+#      - power_summary
+#    gen: sm_80
 
 formatter_modes:
 - PandasPickle
@@ -43,4 +35,4 @@ perf_counters:
 iterations: 1
 time_count: 1000
 log: true
-test_name: DEFAULTNAME
+test_name: TESTNAME

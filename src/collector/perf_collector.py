@@ -59,8 +59,14 @@ class PerfCollector(Collector):
 
     def run_all(self):
         for this_testrun in self.testruns:
+            this_testrun.benchmark.before_each()
             data = this_testrun.run()
+            this_testrun.benchmark.after_each()
             self.data.append(data)
+
+
+        print("in perf run all")
+        print(self.data)
 
 # --- Begin test run for perf
 class PerfTestRun():
@@ -93,13 +99,6 @@ class PerfTestRun():
         logging.info("running following command:")
         logging.info(self.runcommand)
 
-        # TODO inefficient, do only once per benchmark type?
-        # Running benchmark setup
-        setup_commands = self.benchmark.setup()
-        for command in setup_commands:
-            setupcommand_parts = self.setup_commands.split(" ")
-            discarded_output = subprocess.run(setupcommand_parts, capture_output=True)
-
         runcommand_parts = self.runcommand.split(" ")
         discarded_output = subprocess.run(runcommand_parts, capture_output=True)
 
@@ -116,6 +115,8 @@ class PerfTestRun():
         # Clean up files
         os.remove(self.filename)
 
+        print("in perf testrun")
+        print(self.data)
         return self.data
 # --- End test run for perf
 
