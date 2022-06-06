@@ -1,29 +1,25 @@
-#benchmark_classes:
-#- XSBench:
-#  - XSBench_CUDA
-#  - XSBench_OpenMP_Offload
 benchmarks:
-  xsbench_openmp_threading:
-    runner: "generic_benchmark"
-    name: "XSBench_OpenMP_threading"
-    cmd: "/home/mseryn/XSBench/openmp-threading/XSBench -m event"
-  xsbench_openmp_offload:
-    runner: "XSBenchOpenmpOffload"
-    loc: "/home/mseryn/XSBench/openmp-offload/"
+  TestBench:
+    runner: "TestBench"
+    waittimes:
+      - 1
+      - 4
+      - 8
 
 collection_modes:
   perf:
     pmu_count: 4
   memory:
-    modes:
-      - high_watermark
-      - memory_over_time
-  nvidia:
-    modes:
-      - api_trace
-      - gpu_trace
-      - power_over_time
-    gen: sm_80
+#    modes:
+#      - high_watermark
+#      - memory_over_time
+#  nvidia:
+#    modes:
+#      - api_trace
+#      - gpu_trace
+#      - power_over_time
+#      - power_summary
+#    gen: sm_80
 
 formatter_modes:
 - PandasPickle
@@ -39,4 +35,4 @@ perf_counters:
 iterations: 1
 time_count: 1000
 log: true
-test_name: DEFAULTNAME
+test_name: TESTNAME

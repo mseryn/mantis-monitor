@@ -59,8 +59,14 @@ class PerfCollector(Collector):
 
     def run_all(self):
         for this_testrun in self.testruns:
+            this_testrun.benchmark.before_each()
             data = this_testrun.run()
+            this_testrun.benchmark.after_each()
             self.data.append(data)
+
+
+        print("in perf run all")
+        print(self.data)
 
 # --- Begin test run for perf
 class PerfTestRun():
@@ -78,7 +84,6 @@ class PerfTestRun():
         self.counters_string = ",".join(self.counters)
         self.runcommand = self.runstring.format(self.counters_string, self.timescale, self.filename, \
             self.benchmark.get_run_command())
-        self.runcommand_parts = self.runcommand.split(" ")
         self.data = {   "benchmark_name":   self.benchmark.name, \
                         "collector_name":   self.name, \
                         "iteration":        self.iteration, \
@@ -93,7 +98,9 @@ class PerfTestRun():
         # Run it
         logging.info("running following command:")
         logging.info(self.runcommand)
-        discarded_output = subprocess.run(self.runcommand_parts, capture_output=True)
+
+        runcommand_parts = self.runcommand.split(" ")
+        discarded_output = subprocess.run(runcommand_parts, capture_output=True)
 
         # Collect data
         with open(self.filename, 'r') as csvfile:
@@ -108,6 +115,8 @@ class PerfTestRun():
         # Clean up files
         os.remove(self.filename)
 
+        print("in perf testrun")
+        print(self.data)
         return self.data
 # --- End test run for perf
 

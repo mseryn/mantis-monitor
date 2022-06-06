@@ -16,16 +16,7 @@ def run():
     """
     Main run script for Mantis Monitor
     """
-    # Intake configuration
-    # Build or configure benchmarks
-    # Have collectors make testruns
-    # Configure formatter
-    # Run
-
     config = configuration.Configuration()
-#    config.print_all()
-    #logging.log("config elements are:")
-    #logging.log(config.print_all())
 
     all_dataframes = []
     dataframe_columns = ["benchmark_name", "collector_name", "iteration", "timescale", "units", "measurements"]
@@ -33,25 +24,25 @@ def run():
 
     run_benchmarks = []
     for name, arguments in config.contents["benchmarks"].items():
-        run_benchmarks.append(benchmark.benchmark.Benchmark.get_benchmark(arguments["runner"], arguments))
+        new_benchmarks = benchmark.benchmark.Benchmark.get_benchmark_class(arguments["runner"]).generate_benchmarks(arguments)
+        run_benchmarks.extend(new_benchmarks)
 
     # TODO should move iterations into collector? What about statistics? Hold off for now.
 
     run_collectors = []
     for each_benchmark in run_benchmarks:
+
+        each_benchmark.before_all()
+
         for iteration in range(0, config.iterations):
-#            run_collectors.append(collector.PerfCollector(config, iteration, each_benchmark))
             # TODO remove this once more modes supported
             for mode in config.collector_modes:
                 if "perf" in mode:
-                    run_collectors.append(collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark))
+                    this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
+                    this_collector.run_all()
+                    data = pandas.concat([data, pandas.DataFrame(this_collector.data)])
 
-    for each_collector in run_collectors:
-        each_collector.run_all()
-        all_dataframes.append(pandas.DataFrame(each_collector.data))
-
-    for dataframe in all_dataframes:
-        data = pandas.concat([data, dataframe])
+        each_benchmark.after_all()
 
     filename = config.test_name
     if config.formatter_modes:
@@ -59,9 +50,6 @@ def run():
             this_formatter = formatter.formatter.Formatter.get_formatter(mode)
             converted_data = this_formatter.convert(data)
             this_formatter.save(filename, converted_data)
-
-
-    
 
 if __name__ == "__main__":
     run()
