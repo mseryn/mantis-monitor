@@ -25,7 +25,7 @@ class Configuration:
         """Config file location, a string"""
         if os.path.exists(self.location) and not generate_new_yaml:
             self.contents = yaml.load(open(self.location))
-            logging.info("read yaml file at %s", self.location)
+            logging.info("Read yaml file at %s", self.location)
         else:
             self.contents = generate_yaml()
             with open(self.location, 'w') as yamlfile:
@@ -80,7 +80,7 @@ def closest_match(all_counters):
     """Function to do string closest-matching on perf counter names
     Early implementation should ignore case
     Add more match strings here for better fuzzy matching on new architectures
-    If this becomes unweildy or enormous, move to fuzzy string matching, but it would be overkill
+    If this becomes unwieldy or enormous, move to fuzzy string matching, but it would be overkill
     in the current implementation
     """
     match_strings = {

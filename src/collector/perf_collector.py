@@ -84,19 +84,20 @@ class PerfTestRun():
         self.counters_string = ",".join(self.counters)
         self.runcommand = self.runstring.format(self.counters_string, self.timescale, self.filename, \
             self.benchmark.get_run_command())
-        self.data = {   "benchmark_name":   self.benchmark.name, \
-                        "collector_name":   self.name, \
-                        "iteration":        self.iteration, \
-                        "timescale":        self.timescale, \
-                        "units":            "count per timescale milliseconds", \
-                        "measurements": self.counters, \
-                        }
+        self.data = {
+            "benchmark_name": self.benchmark.name,
+            "collector_name": self.name,
+            "iteration":      self.iteration,
+            "timescale":      self.timescale,
+            "units":          "count per timescale milliseconds",
+            "measurements":   self.counters,
+        }
         for counter in self.counters:
             self.data[counter] = []
 
     def run(self):
         # Run it
-        logging.info("running following command:")
+        logging.info("Running following command:")
         logging.info(self.runcommand)
 
         runcommand_parts = self.runcommand.split(" ")
