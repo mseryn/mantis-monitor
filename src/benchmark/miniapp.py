@@ -16,7 +16,7 @@ class MiniApp(Benchmark):
         run_these_benchmarks = []
         for size in arguments["sizes"]:
             for gpu_count in arguments["gpu_counts"]:
-                run_these_benchmarks.append(MiniApp(self, {"size":size, "gpu_count":gpu_count))
+                run_these_benchmarks.append(MiniApp(self, {"size":size, "gpu_count":gpu_count}))
         return run_these_benchmarks
 
     def before_all(self):
