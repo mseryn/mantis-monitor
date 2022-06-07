@@ -109,22 +109,16 @@ def get_default_counters(all_counters):
         #"cpu utilization": ["CPU_Utilization"],
     }
 
-    matched_counters = []
+    all_counters_folded = {counter.casefold() : counter for counter in all_counters}
+    matches = []
     for match_string_category, match_string_list in match_strings.items():
-        # Want to ensure we only add a matched string once per category and once per
-        # matching against that category, hence the use of the below temp variable
-        # This is relatively inefficient, but for a small number of default values,
-        # it should not be too expensive, only about 1,000 string match operations
-        matched_counter_string = None
         for match_string in match_string_list:
-            for counter_string in all_counters:
-                if match_string.lower() == counter_string.lower():
-                    matched_counter_string = counter_string
+            counter = all_counters_folded.get(match_string.casefold())
+            if counter:
+                matches.append(counter)
+                break
 
-        if matched_counter_string:
-            matched_counters.append(matched_counter_string)
-
-    return matched_counters
+    return matches
 
 def dump_default_yaml(location):
     config = generate_yaml()
