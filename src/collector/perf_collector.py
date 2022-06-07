@@ -101,7 +101,14 @@ class PerfTestRun():
         logging.info(self.runcommand)
 
         runcommand_parts = self.runcommand.split(" ")
-        discarded_output = subprocess.run(runcommand_parts, capture_output=True)
+        output = subprocess.run(runcommand_parts, capture_output=True, text=True)
+        if output.returncode != 0:
+            logging.error("Perf command failed with error:")
+            # TODO: multiline log messages are theoretically bad practice
+            logging.error(output.stderr)
+            logging.error("Check that all configured counters are valid")
+            # should we be louder about this?
+            return self.data
 
         # Collect data
         with open(self.filename, 'r') as csvfile:
