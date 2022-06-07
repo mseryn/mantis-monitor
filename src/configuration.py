@@ -61,16 +61,33 @@ def generate_yaml():
 
     # Build default yaml
     default_yaml = {
-        'test_name': 'DEFAULT', 
-        'debug': True, 
-        'log': True, 
-        'iterations': 2, 
+        'benchmarks': {
+            'TestBench': {
+                'runner': "TestBench",
+                'waittimes': [1, 4, 8],
+            },
+        },
+        'collection_modes': {
+            'perf': {
+                'pmu_count': 4,
+            },
+            'memory': None,
+            #'memory': {
+            #    'modes': ['high_watermark', 'memory_over_time'],
+            #},
+            #'nvidia': {
+            #    'modes': ['api_trace', 'gpu_trace', 'power_over_time', 'power_summary'],
+            #    'gen': 'sm_80',
+            #},
+        },
+        'formatter_modes': ['PandasPickle', 'CSV'],
         'perf_counters': selected_counters,
-        'nvidia_modes': ['api_trace', 'gpu_trace', 'power_over_time'], 
-        'memory_modes': ['high_watermark', 'memory_over_time'], 
-        'benchmarks': [{'XSBench': "./run script and args goes here"}, {'RSBench': "run script and args go here"}], 
-        'pmu_count': 4, 'time_count': 100, 
-        'formatter_modes': ['CSV']
+
+        'iterations': 1,
+        'time_count': 1000,
+        'log': True,
+        #'debug': True,
+        'test_name': 'DEFAULT',
     }
 
     return default_yaml
@@ -89,9 +106,9 @@ def closest_match(all_counters):
         "LLC stores": ["LLC-stores"],
         "page faults": ["page-faults"],
         "major faults": ["major-faults"],
-        "memory BW": ["DRAM_BW_Use"],
-        "cpu power": ["Average_Frequency"],
-        "cpu utilization": ["CPU_Utilization"],
+        #"memory BW": ["DRAM_BW_Use"],
+        #"cpu power": ["Average_Frequency"],
+        #"cpu utilization": ["CPU_Utilization"],
     }
 
     matched_counters = []
