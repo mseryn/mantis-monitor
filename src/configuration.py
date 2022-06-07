@@ -137,8 +137,11 @@ def check_perf():
 def get_available_perf():
     """Helper function to query perf and return all available counters
     """
-    perf_list_raw = subprocess.run(["perf", "list", "--raw-dump"], capture_output=True, text=True)
-    return list(set(perf_list_raw.stdout.split()))
+    perf_list_raw = subprocess.run(
+        # get events only, exclude metrics (for now)
+        ["perf", "list", "--raw-dump", "hw", "sw", "cache", "tracepoint", "pmu", "sdt"],
+        capture_output=True, text=True)
+    return set(perf_list_raw.stdout.split())
 
 def check_nvidia():
     """Helper function to ensure nvidia systems function on this architecture, TODO
