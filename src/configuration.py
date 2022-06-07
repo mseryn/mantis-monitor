@@ -19,18 +19,18 @@ class Configuration:
     """
     Outer-most object to control Configuration elements
     """
-    def __init__(self, location="../config.yaml", generate_new_yaml=False):
+    def __init__(self, location=None):
         """The config file used during this invocation of mantis-monitor"""
         self.location = location
         """Config file location, a string"""
-        if os.path.exists(self.location) and not generate_new_yaml:
-            self.contents = yaml.load(open(self.location))
-            logging.info("Read yaml file at %s", self.location)
+        if location and os.path.exists(location):
+            self.contents = yaml.safe_load(open(location))
+            logging.info("Read config yaml at %s", location)
+        elif location:
+            logging.error("A config file was provided but could not be found")
+            raise ValueError("Config file not found")
         else:
-            self.contents = generate_yaml()
-            with open(self.location, 'w') as yamlfile:
-                yaml.dump(self.contents, yamlfile)
-                logging.info("Dumped new yaml file at %s", self.location)
+            self.contents = generate_default_config()
 
         self.set_all_contents()
         check_perf()
@@ -52,12 +52,11 @@ class Configuration:
         pprint.pprint(self.contents)
 
 
-def generate_yaml():
-    """Helper function to generate a new default yaml configuration file
+def generate_default_config():
+    """Helper function to generate a new default configuration
     """
     # Get possible perf counters and search for default counters
-    perf_counters = get_available_perf()
-    selected_counters = closest_match(perf_counters)
+    selected_counters = get_default_counters(get_available_perf())
 
     # Build default yaml
     default_yaml = {
@@ -92,8 +91,7 @@ def generate_yaml():
 
     return default_yaml
 
-
-def closest_match(all_counters):
+def get_default_counters(all_counters):
     """Function to do string closest-matching on perf counter names
     Early implementation should ignore case
     Add more match strings here for better fuzzy matching on new architectures
@@ -128,6 +126,12 @@ def closest_match(all_counters):
 
     return matched_counters
 
+def dump_default_yaml(location):
+    config = generate_yaml()
+    with open(location, 'w') as yamlfile:
+        yaml.dump(contents, yamlfile)
+        logging.info("Dumped new yaml file at %s", location)
+
 
 def check_perf():
     perf_overall = subprocess.run("perf", capture_output=True)
@@ -147,8 +151,7 @@ def check_nvidia():
     """
     pass
 
-
 if __name__ == "__main__":
-    #c = Configuration(generate_new_yaml=True)
+    #dump_default_yaml("../config.yaml")
     c = Configuration()
     print(c.contents)
