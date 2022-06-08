@@ -4,13 +4,13 @@ import collector
 import formatter
 
 import pandas
-import logging
+#import logging
 import argparse
 import pprint
 #import testrun
 
 
-logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
+#logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 def run():
     """

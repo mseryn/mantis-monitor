@@ -6,7 +6,7 @@ This code is licensed under LGPL v 2.1
 See LICENSE for details
 """
 
-import logging
+#import logging
 from benchmark.benchmark import Benchmark
 
 class GenericBenchmark(Benchmark):

@@ -6,7 +6,7 @@ This code is licensed under LGPL v 2.1
 See LICENSE for details
 """
 
-import logging
+#import logging
 import math
 import subprocess
 import os
@@ -15,8 +15,8 @@ import pprint
 
 from collector.collector import Collector
 
-logging.basicConfig(filename='testing.log', encoding='utf-8', \
-    format='%(levelname)s:%(message)s', level=logging.DEBUG)
+#logging.basicConfig(filename='testing.log', encoding='utf-8', \
+#    format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 class PerfCollector(Collector):
     """
@@ -96,8 +96,8 @@ class PerfTestRun():
 
     def run(self):
         # Run it
-        logging.info("running following command:")
-        logging.info(self.runcommand)
+        #logging.info("running following command:")
+        #logging.info(self.runcommand)
 
         runcommand_parts = self.runcommand.split(" ")
         discarded_output = subprocess.run(runcommand_parts, capture_output=True)

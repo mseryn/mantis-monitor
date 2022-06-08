@@ -7,13 +7,13 @@ See LICENSE for details
 """
 
 import pprint
-import logging
+#import logging
 import yaml
 import subprocess
 import os
 
 #TODO how do I make sure all the logs go to the same place? Just reuse the name?
-logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
+#logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 class Configuration:
     """
@@ -25,12 +25,12 @@ class Configuration:
         """Config file location, a string"""
         if os.path.exists(self.location) and not generate_new_yaml:
             self.contents = yaml.load(open(self.location))
-            logging.info("read yaml file at %s", self.location)
+            #logging.info("read yaml file at %s", self.location)
         else:
             self.contents = generate_yaml()
             with open(self.location, 'w') as yamlfile:
                 yaml.dump(self.contents, yamlfile)
-                logging.info("Dumped new yaml file at %s", self.location)
+                #logging.info("Dumped new yaml file at %s", self.location)
 
         self.set_all_contents()
         check_perf()
@@ -42,7 +42,7 @@ class Configuration:
         self.formatter_modes = self.contents["formatter_modes"]
         self.perf_counters = self.contents["perf_counters"]
 
-        self.log = self.contents["log"]
+        #self.log = self.contents["log"]
 
         self.test_name = self.contents["test_name"]
         self.iterations = self.contents["iterations"]
@@ -63,7 +63,7 @@ def generate_yaml():
     default_yaml = {
         'test_name': 'DEFAULT', 
         'debug': True, 
-        'log': True, 
+        #'log': True, 
         'iterations': 2, 
         'perf_counters': selected_counters,
         'nvidia_modes': ['api_trace', 'gpu_trace', 'power_over_time'], 
@@ -115,9 +115,9 @@ def closest_match(all_counters):
 def check_perf():
     perf_overall = subprocess.run("perf", capture_output=True)
     if not perf_overall:
-        logging.info("Uh-oh, it looks like there's an issue using perf!")
+        #logging.info("Uh-oh, it looks like there's an issue using perf!")
     else:
-        logging.info("Perf outputs")
+        #logging.info("Perf outputs")
 
 def get_available_perf():
     """Helper function to query perf and return all available counters
