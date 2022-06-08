@@ -26,7 +26,8 @@ class MiniApp(Benchmark):
         setup_commands.append("conda activate")
         setup_commands.append("source Documents/my_env/bin/activate")
         # TODO hunter ensure this correctly sets your subdirectory per size of benchmark
-        setup_commands.append("/lus/grand/projects/SEEr-planning/{subdirectory}/05_Simulation_ML/ML_PythonC++_Embedding/ThetaGPU/".format(subdirectory=self.size_dir)
+        #setup_commands.append("/lus/grand/projects/SEEr-planning/{subdirectory}/05_Simulation_ML/ML_PythonC++_Embedding/ThetaGPU/".format(subdirectory=self.size_dir)
+        setup_commands.append("cd /home/hnegron/Miniapps/{subdirectory}/".format(subdirectory=self.size_dir)
         setup_commands.append("source setup.sh")
         return setup_commands
 
@@ -43,12 +44,12 @@ class MiniApp(Benchmark):
         self.gpu_count = arguments["gpu_count"]
         
         #TODO hunter, replace these with the relevant subdirectory locations, see line 24 in setup above for use
-        sizes_to_directories = {"A": "subdirectory_1", \
-                                "B": "blah", \
-                                "C": "blah", \
-                                "D": "blah", \
-                                "E": "blah", \
-                                "F": "blah", \
+        sizes_to_directories = {"A": "miniappA", \
+                                "B": "miniappB", \
+                                "C": "miniappC", \
+                                "D": "miniappD", \
+                                "E": "miniappE", \
+                                "F": "miniappF", \
                                 }
 
         self.size_dir = sizes_to_directories[size]
