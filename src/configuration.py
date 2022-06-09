@@ -19,18 +19,18 @@ class Configuration:
     """
     Outer-most object to control Configuration elements
     """
-    def __init__(self, location="../config.yaml", generate_new_yaml=False):
+    def __init__(self, location=None):
         """The config file used during this invocation of mantis-monitor"""
         self.location = location
         """Config file location, a string"""
-        if os.path.exists(self.location) and not generate_new_yaml:
-            self.contents = yaml.load(open(self.location))
-            logging.info("read yaml file at %s", self.location)
+        if location and os.path.exists(location):
+            self.contents = yaml.safe_load(open(location))
+            logging.info("Read config yaml at %s", location)
+        elif location:
+            logging.error("A config file was provided but could not be found")
+            raise ValueError("Config file not found")
         else:
-            self.contents = generate_yaml()
-            with open(self.location, 'w') as yamlfile:
-                yaml.dump(self.contents, yamlfile)
-                logging.info("Dumped new yaml file at %s", self.location)
+            self.contents = generate_default_config()
 
         self.set_all_contents()
         check_perf()
@@ -52,35 +52,50 @@ class Configuration:
         pprint.pprint(self.contents)
 
 
-def generate_yaml():
-    """Helper function to generate a new default yaml configuration file
+def generate_default_config():
+    """Helper function to generate a new default configuration
     """
     # Get possible perf counters and search for default counters
-    perf_counters = get_available_perf()
-    selected_counters = closest_match(perf_counters)
+    selected_counters = get_default_counters(get_available_perf())
 
     # Build default yaml
     default_yaml = {
-        'test_name': 'DEFAULT', 
-        'debug': True, 
-        'log': True, 
-        'iterations': 2, 
+        'benchmarks': {
+            'TestBench': {
+                'runner': "TestBench",
+                'waittimes': [1, 4, 8],
+            },
+        },
+        'collection_modes': {
+            'perf': {
+                'pmu_count': 4,
+            },
+            'memory': None,
+            #'memory': {
+            #    'modes': ['high_watermark', 'memory_over_time'],
+            #},
+            #'nvidia': {
+            #    'modes': ['api_trace', 'gpu_trace', 'power_over_time', 'power_summary'],
+            #    'gen': 'sm_80',
+            #},
+        },
+        'formatter_modes': ['PandasPickle', 'CSV'],
         'perf_counters': selected_counters,
-        'nvidia_modes': ['api_trace', 'gpu_trace', 'power_over_time'], 
-        'memory_modes': ['high_watermark', 'memory_over_time'], 
-        'benchmarks': [{'XSBench': "./run script and args goes here"}, {'RSBench': "run script and args go here"}], 
-        'pmu_count': 4, 'time_count': 100, 
-        'formatter_modes': ['CSV']
+
+        'iterations': 1,
+        'time_count': 1000,
+        'log': True,
+        #'debug': True,
+        'test_name': 'DEFAULT',
     }
 
     return default_yaml
 
-
-def closest_match(all_counters):
+def get_default_counters(all_counters):
     """Function to do string closest-matching on perf counter names
     Early implementation should ignore case
     Add more match strings here for better fuzzy matching on new architectures
-    If this becomes unweildy or enormous, move to fuzzy string matching, but it would be overkill
+    If this becomes unwieldy or enormous, move to fuzzy string matching, but it would be overkill
     in the current implementation
     """
     match_strings = {
@@ -89,27 +104,27 @@ def closest_match(all_counters):
         "LLC stores": ["LLC-stores"],
         "page faults": ["page-faults"],
         "major faults": ["major-faults"],
-        "memory BW": ["DRAM_BW_Use"],
-        "cpu power": ["Average_Frequency"],
-        "cpu utilization": ["CPU_Utilization"],
+        #"memory BW": ["DRAM_BW_Use"],
+        #"cpu power": ["Average_Frequency"],
+        #"cpu utilization": ["CPU_Utilization"],
     }
 
-    matched_counters = []
+    all_counters_folded = {counter.casefold() : counter for counter in all_counters}
+    matches = []
     for match_string_category, match_string_list in match_strings.items():
-        # Want to ensure we only add a matched string once per category and once per
-        # matching against that category, hence the use of the below temp variable
-        # This is relatively inefficient, but for a small number of default values,
-        # it should not be too expensive, only about 1,000 string match operations
-        matched_counter_string = None
         for match_string in match_string_list:
-            for counter_string in all_counters:
-                if match_string.lower() == counter_string.lower():
-                    matched_counter_string = counter_string
+            counter = all_counters_folded.get(match_string.casefold())
+            if counter:
+                matches.append(counter)
+                break
 
-        if matched_counter_string:
-            matched_counters.append(matched_counter_string)
+    return matches
 
-    return matched_counters
+def dump_default_yaml(location):
+    config = generate_yaml()
+    with open(location, 'w') as yamlfile:
+        yaml.dump(contents, yamlfile)
+        logging.info("Dumped new yaml file at %s", location)
 
 
 def check_perf():
@@ -122,16 +137,18 @@ def check_perf():
 def get_available_perf():
     """Helper function to query perf and return all available counters
     """
-    perf_list_raw = subprocess.run(["perf", "list", "--raw-dump"], capture_output=True, text=True)
-    return list(set(perf_list_raw.stdout.split()))
+    perf_list_raw = subprocess.run(
+        # get events only, exclude metrics (for now)
+        ["perf", "list", "--raw-dump", "hw", "sw", "cache", "tracepoint", "pmu", "sdt"],
+        capture_output=True, text=True)
+    return set(perf_list_raw.stdout.split())
 
 def check_nvidia():
     """Helper function to ensure nvidia systems function on this architecture, TODO
     """
     pass
 
-
 if __name__ == "__main__":
-    #c = Configuration(generate_new_yaml=True)
+    #dump_default_yaml("../config.yaml")
     c = Configuration()
     print(c.contents)

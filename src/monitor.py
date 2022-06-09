@@ -5,18 +5,23 @@ import formatter
 
 import pandas
 import logging
-import argparse
 import pprint
+import sys
 #import testrun
 
 
 logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
-def run():
+def run(argv=sys.argv):
     """
     Main run script for Mantis Monitor
     """
-    config = configuration.Configuration()
+    config_location = None
+    if len(argv) > 1:
+        config_location = argv[1]
+    else:
+        logging.warning("No config file provided; running with no-op test benchmark")
+    config = configuration.Configuration(location=config_location)
 
     all_dataframes = []
     dataframe_columns = ["benchmark_name", "collector_name", "iteration", "timescale", "units", "measurements"]
