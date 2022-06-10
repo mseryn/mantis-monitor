@@ -116,8 +116,10 @@ def check_perf():
     perf_overall = subprocess.run("perf", capture_output=True)
     if not perf_overall:
         #logging.info("Uh-oh, it looks like there's an issue using perf!")
+        pass
     else:
         #logging.info("Perf outputs")
+        pass
 
 def get_available_perf():
     """Helper function to query perf and return all available counters

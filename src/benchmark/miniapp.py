@@ -24,7 +24,7 @@ class MiniApp(Benchmark):
         setup_commands.append("source /etc/profile.d/z00_lmod.sh")
         setup_commands.append("module load conda")
         setup_commands.append("conda activate")
-        setup_commands.append("source Documents/my_env/bin/activate")
+        setup_commands.append("source /home/hnegron/Documents/my_env/bin/activate")
         # TODO hunter ensure this correctly sets your subdirectory per size of benchmark
         #setup_commands.append("/lus/grand/projects/SEEr-planning/{subdirectory}/05_Simulation_ML/ML_PythonC++_Embedding/ThetaGPU/".format(subdirectory=self.size_dir)
         setup_commands.append("cd /home/hnegron/Miniapps/{subdirectory}/".format(subdirectory=self.size_dir)
