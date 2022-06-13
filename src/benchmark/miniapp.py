@@ -12,11 +12,11 @@ from benchmark.benchmark import Benchmark
 
 class MiniApp(Benchmark):
     @classmethod
-    def generate_benchmarks(arguments):
+    def generate_benchmarks(self, arguments):
         run_these_benchmarks = []
         for size in arguments["sizes"]:
             for gpu_count in arguments["gpu_counts"]:
-                run_these_benchmarks.append(MiniApp(self, {"size":size, "gpu_count":gpu_count}))
+                run_these_benchmarks.append(MiniApp({"size":size, "gpu_count":gpu_count}))
         return run_these_benchmarks
 
     def before_all(self):
@@ -27,7 +27,7 @@ class MiniApp(Benchmark):
         setup_commands.append("source /home/hnegron/Documents/my_env/bin/activate")
         # TODO hunter ensure this correctly sets your subdirectory per size of benchmark
         #setup_commands.append("/lus/grand/projects/SEEr-planning/{subdirectory}/05_Simulation_ML/ML_PythonC++_Embedding/ThetaGPU/".format(subdirectory=self.size_dir)
-        setup_commands.append("cd /home/hnegron/Miniapps/{subdirectory}/".format(subdirectory=self.size_dir)
+        setup_commands.append("cd /home/hnegron/Miniapps/{subdirectory}/".format(subdirectory=self.size_dir))
         setup_commands.append("source setup.sh")
         return setup_commands
 
@@ -52,7 +52,8 @@ class MiniApp(Benchmark):
                                 "F": "miniappF", \
                                 }
 
-        self.size_dir = sizes_to_directories[size]
-        self.name = "MiniApp_{gpu_count}GPUs_size{size}".format(gpu_count = gpu_count, size = size)
+        self.size_dir = sizes_to_directories[self.size]
+        self.name = "MiniApp_{gpu_count}GPUs_size{size}".format(gpu_count = self.gpu_count, size = self.size)
 
-Benchmark.register_benchmark_from_arguments("MiniApp", MiniApp, cross_product=["sizes", "gpu_counts"])
+#Benchmark.register_benchmark_from_arguments("MiniApp", MiniApp, cross_product=["sizes", "gpu_counts"])
+Benchmark.register_benchmark("MiniApp", MiniApp)
