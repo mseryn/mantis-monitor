@@ -29,8 +29,7 @@ def run(argv=sys.argv):
 
     run_benchmarks = []
     for name, arguments in config.contents["benchmarks"].items():
-        # TODO eliminate "runner" argument and just use name?
-        run_benchmarks.extend(benchmark.benchmark.Benchmark.get_benchmarks(arguments["runner"], arguments))
+        run_benchmarks.extend(benchmark.benchmark.Benchmark.get_benchmarks(name, arguments))
 
     # TODO should move iterations into collector? What about statistics? Hold off for now.
 
