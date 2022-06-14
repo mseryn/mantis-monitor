@@ -21,12 +21,12 @@ class Benchmark():
         Benchmark.implementations[name] = benchmark_class
 
     @staticmethod
-    def get_benchmark_class(name):
-        return Benchmark.implementations[name]
+    def get_benchmarks(name, arguments):
+        return Benchmark.implementations[name].generate_benchmarks(arguments)
 
     @classmethod
-    def generate_benchmarks(arguments):
-        pass
+    def generate_benchmarks(cls, arguments):
+        return [cls(arguments)]
 
     def __init__(self, arguments): #location = "", runscript = "", arguments = "", name = ""):
         self.name = ""

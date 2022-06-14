@@ -62,7 +62,6 @@ def generate_default_config():
     default_yaml = {
         'benchmarks': {
             'TestBench': {
-                'runner': "TestBench",
                 'waittimes': [1, 4, 8],
             },
         },
