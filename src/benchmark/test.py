@@ -14,10 +14,7 @@ logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelnam
 class TestBench(Benchmark):
     @classmethod
     def generate_benchmarks(cls, arguments):
-        run_these_benchmarks = []
-        for time in arguments["waittimes"]:
-            run_these_benchmarks.append(TestBench({"time":time}))
-        return run_these_benchmarks
+        return [cls({"time": time}) for time in arguments["waittimes"]]
 
     def before_each(self):
         components = 'echo "running this before each test bench run"'
