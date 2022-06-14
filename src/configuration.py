@@ -120,9 +120,9 @@ def get_default_counters(all_counters):
     return matches
 
 def dump_default_yaml(location):
-    config = generate_yaml()
+    config = generate_default_config()
     with open(location, 'w') as yamlfile:
-        yaml.dump(contents, yamlfile)
+        yaml.dump(config, yamlfile)
         logging.info("Dumped new yaml file at %s", location)
 
 
