@@ -17,25 +17,20 @@ class TestBench(Benchmark):
         return [cls({"time": time}) for time in arguments["waittimes"]]
 
     def before_each(self):
-        components = 'echo "running this before each test bench run"'
-        subprocess.run(components.split(" "))
+        print("echo running this before each test bench run")
+        print("running test bench with time {time} sec".format(time = self.time))
 
     def after_each(self):
-        components = 'echo "running this after each test bench run"'
-        subprocess.run(components.split(" "))
+        print("echo running this after each test bench run")
 
     def before_all(self):
-        components = 'echo "running this before ALL test bench runs"'
-        subprocess.run(components.split(" "))
+        print("echo running this before each test bench configuration")
 
     def after_all(self):
-        components = 'echo "running this after ALL test bench runs"'
-        subprocess.run(components.split(" "))
+        print("echo running this after each test bench configuration")
 
     def get_run_command(self):
-        components = "echo 'running test bench with time {time} sec".format(time = self.time)
-        subprocess.run(components.split(" "))
-        return("sleep {time}".format(time = self.time))
+        return "sleep {time}".format(time = self.time)
 
     def __init__(self, arguments):
         self.time = arguments["time"]
