@@ -15,14 +15,20 @@ class Benchmark():
 
     implementations = {}
 
-    # Make sure this is unique TODO
     @staticmethod
     def register_benchmark(name, benchmark_class):
+        if name in Benchmark.implementations:
+            logging.error("A benchmark named {} was supplied to be registered, but a benchmark by that name already exists".format(name))
+            raise ValueError("Benchmark name collision")
         Benchmark.implementations[name] = benchmark_class
 
     @staticmethod
     def get_benchmarks(name, arguments):
-        return Benchmark.implementations[name].generate_benchmarks(arguments)
+        try:
+            return Benchmark.implementations[name].generate_benchmarks(arguments)
+        except KeyError:
+            logging.error("A benchmark named {} was requested, but no benchmark by that name exists (is the configuration correct?)".format(name))
+            raise
 
     @classmethod
     def generate_benchmarks(cls, arguments):
