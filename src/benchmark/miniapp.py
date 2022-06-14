@@ -7,17 +7,17 @@ See LICENSE for details
 
 #import logging
 from benchmark.benchmark import Benchmark
+import itertools
 
 #logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 class MiniApp(Benchmark):
     @classmethod
-    def generate_benchmarks(self, arguments):
-        run_these_benchmarks = []
-        for size in arguments["sizes"]:
-            for gpu_count in arguments["gpu_counts"]:
-                run_these_benchmarks.append(MiniApp({"size":size, "gpu_count":gpu_count}))
-        return run_these_benchmarks
+    def generate_benchmarks(cls, arguments):
+        return [
+            cls({"size": size, "gpu_count": gpu_count})
+            for size, gpu_count in itertools.product(arguments["sizes"], arguments["gpu_count"])
+        ]
 
     def before_all(self):
         setup_commands = []
@@ -43,7 +43,7 @@ class MiniApp(Benchmark):
         self.size = arguments["size"]
         self.gpu_count = arguments["gpu_count"]
         
-        #TODO hunter, replace these with the relevant subdirectory locations, see line 24 in setup above for use
+        #TODO hunter, replace these with the relevant subdirectory locations, see line 29 in setup above for use
         sizes_to_directories = {"A": "miniappA", \
                                 "B": "miniappB", \
                                 "C": "miniappC", \
