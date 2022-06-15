@@ -7,11 +7,11 @@ See LICENSE for details
 """
 
 #import logging
-from mantis_monitor.benchmark.benchmark import Benchmark
+import mantis_monitor
 
 #logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
-class XSBench(Benchmark):
+class XSBench(mantis_monitor.benchmark.benchmark.Benchmark):
     @classmethod
     def generate_benchmarks(cls, arguments):
         return [cls({"type": typestr}) for typestr in arguments["types"]]
@@ -31,4 +31,4 @@ class XSBench(Benchmark):
                     }
         self.location = locations[self.typestr]
 
-Benchmark.register_benchmark("XSBench", XSBench)
+mantis_monitor.monitor.run_with(XSBench)
