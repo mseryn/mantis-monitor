@@ -7,11 +7,11 @@ See LICENSE for details
 """
 
 import logging
-from mantis_monitor.benchmark.benchmark import Benchmark
+import mantis_monitor
 
 logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
-class XSBench(Benchmark):
+class XSBench(mantis_monitor.benchmark.benchmark.Benchmark):
     def get_run_command(self):
         # ./location/XSBench -m event
         return_string = [self.location]
@@ -35,5 +35,4 @@ class XSBenchOpenmpOffload(XSBench):
 
         self.location = arguments["loc"]
 
-Benchmark.register_benchmark("XSBenchOpenmpOffload", XSBenchOpenmpOffload)
-Benchmark.register_benchmark("XSBenchCuda", XSBenchCuda)
+mantis_monitor.monitor.run_with(XSBenchOpenmpOffload, XSBenchCuda)

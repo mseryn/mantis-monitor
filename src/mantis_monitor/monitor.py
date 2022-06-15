@@ -55,5 +55,10 @@ def run(argv=sys.argv):
             converted_data = this_formatter.convert(data)
             this_formatter.save(filename, converted_data)
 
+def run_with(*classes):
+    for c in classes:
+        benchmark.benchmark.Benchmark.register_benchmark(c.__name__, c)
+    run()
+
 if __name__ == "__main__":
     run()
