@@ -6,7 +6,7 @@ See LICENSE for details
 """
 
 #import logging
-from benchmark.benchmark import Benchmark
+from mantis_monitor.benchmark.benchmark import Benchmark
 import subprocess
 
 #logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
