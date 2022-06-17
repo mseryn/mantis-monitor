@@ -3,22 +3,20 @@ benchmarks:
     runner: "TestBench"
     waittimes:
       - 1
-      - 4
-      - 8
 
 collection_modes:
   perf:
     pmu_count: 4
-  memory:
+  nvidia:
+    modes:
+      - power_summary
+#  memory:
 #    modes:
 #      - high_watermark
 #      - memory_over_time
-#  nvidia:
-#    modes:
 #      - api_trace
 #      - gpu_trace
 #      - power_over_time
-#      - power_summary
 #    gen: sm_80
 
 formatter_modes:
@@ -28,10 +26,8 @@ formatter_modes:
 perf_counters:
 - instructions
 - cache-misses
-- cache-references
-- cpu-cycles
 
 iterations: 1
 time_count: 1000
 log: true
-test_name: TESTNAME
+test_name: nvidiapoweroverTime

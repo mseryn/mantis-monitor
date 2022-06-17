@@ -97,13 +97,8 @@ class PerfTestRun():
 
     def run(self):
         # Run it
-<<<<<<< HEAD
-        logging.info("Running following command:")
-        logging.info(self.runcommand)
-=======
         #logging.info("running following command:")
         #logging.info(self.runcommand)
->>>>>>> removing logging since it's badly broken in ubuntu and python 3.8
 
         runcommand_parts = self.runcommand.split(" ")
         output = subprocess.run(runcommand_parts, capture_output=True, text=True)

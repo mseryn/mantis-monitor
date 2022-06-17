@@ -23,25 +23,14 @@ class Configuration:
         """The config file used during this invocation of mantis-monitor"""
         self.location = location
         """Config file location, a string"""
-<<<<<<< HEAD
         if location and os.path.exists(location):
             self.contents = yaml.safe_load(open(location))
-            logging.info("Read config yaml at %s", location)
+            #logging.info("Read config yaml at %s", location)
         elif location:
-            logging.error("A config file was provided but could not be found")
+            #logging.error("A config file was provided but could not be found")
             raise ValueError("Config file not found")
         else:
             self.contents = generate_default_config()
-=======
-        if os.path.exists(self.location) and not generate_new_yaml:
-            self.contents = yaml.load(open(self.location))
-            #logging.info("read yaml file at %s", self.location)
-        else:
-            self.contents = generate_yaml()
-            with open(self.location, 'w') as yamlfile:
-                yaml.dump(self.contents, yamlfile)
-                #logging.info("Dumped new yaml file at %s", self.location)
->>>>>>> removing logging since it's badly broken in ubuntu and python 3.8
 
         self.set_all_contents()
         check_perf()
@@ -96,7 +85,7 @@ def generate_default_config():
         'time_count': 1000,
         'log': True,
         #'debug': True,
-        'test_name': 'DEFAULT',
+        'test_name': 'GENERATEDDEFAULT',
     }
 
     return default_yaml

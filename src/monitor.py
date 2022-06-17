@@ -21,8 +21,10 @@ def run(argv=sys.argv):
     if len(argv) > 1:
         config_location = argv[1]
     else:
-        logging.warning("No config file provided; running with no-op test benchmark")
+        #logging.warning("No config file provided; running with no-op test benchmark")
+        pass
     config = configuration.Configuration(location=config_location)
+    config.print_all()
 
     all_dataframes = []
     dataframe_columns = ["benchmark_name", "collector_name", "iteration", "timescale", "units", "measurements"]
@@ -46,6 +48,10 @@ def run(argv=sys.argv):
                     this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
                     this_collector.run_all()
                     data = pandas.concat([data, pandas.DataFrame(this_collector.data)])
+                if "nvidia" in mode:
+                    this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
+                    this_collector.run_all()
+                    #data = pandas.concat([data, pandas.DataFrame(this_collector.data)])
 
         each_benchmark.after_all()
 
