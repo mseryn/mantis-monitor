@@ -45,7 +45,7 @@ class NvidiaCollector(Collector):
     def setup(self):
         if "power_summary" in self.modes:
             current_filename = self.filename.format(nvidia_identifier = "power_summary")
-            self.testruns.append(PowerSummaryTestRun("nvidiapowersummary", self.benchmark, current_filename, self.iteration)
+            self.testruns.append(PowerSummaryTestRun("nvidiapowersummary", self.benchmark, current_filename, self.iteration, self.timescale))
 
         # add more here as more modes supported
 
@@ -62,21 +62,22 @@ class PowerSummaryTestRun():
     This is the implementation of the power summary nvidia testrun
     Makes use of summary mode for nvidia-smi
     """
-    def __init__(self, name, benchmark, filename, iteration):
+    def __init__(self, name, benchmark, filename, iteration, timescale):
         self.name = name
         self.benchmark = benchmark
         self.filename = filename
         self.iteration = iteration
+        self.timescale = timescale
 
         self.smi_runstring = "nvidia-smi --query-gpu=timestamp,index,power.draw --loop-ms=1000 --format=csv > {filename}.csv"
-        self.smi_runcommand = self.smi_runcommand.format(filename = self.filename)
+        self.smi_runcommand = self.smi_runstring.format(filename = self.filename)
         self.bench_runcommand = self.benchmark.get_run_command()
         self.data = {   "benchmark_name":   self.benchmark.name, \
                         "collector_name":   self.name, \
                         "iteration":        self.iteration, \
                         "timescale":        self.timescale, \
                         "units":            "count per timescale milliseconds", \
-                        "measurements": self.counters, \
+                        "measurements": ["not sure"], \
                         }
 
     def run(self):
