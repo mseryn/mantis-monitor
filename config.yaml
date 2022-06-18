@@ -10,6 +10,8 @@ collection_modes:
   nvidia:
     modes:
       - power_summary
+    gen:
+      - sm_80
 #  memory:
 #    modes:
 #      - high_watermark

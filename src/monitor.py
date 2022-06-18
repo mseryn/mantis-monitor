@@ -22,7 +22,7 @@ def run(argv=sys.argv):
         config_location = argv[1]
     else:
         #logging.warning("No config file provided; running with no-op test benchmark")
-        pass
+        print("MUST PROVIDE CONFIG FILE AT RUNTIME or default is used")
     config = configuration.Configuration(location=config_location)
     config.print_all()
 
