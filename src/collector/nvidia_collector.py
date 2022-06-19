@@ -187,7 +187,7 @@ class NsysTestRun():
         self.filename = filename
         self.iteration = iteration
         self.runstring = "nsys profile --gpu-metrics-device=all -o {filename} {runcommand}"
-        self.parsestring = "nsys stats --format csv small_test-iteration_0-benchmark_XSBench_cuda-nvidia_gpu_trace.qdrep -o {}".format(self.filename)
+        self.parsestring = "nsys stats --format csv {filename}.qdrep -o {filename}".format(filename = self.filename)
         self.runcommand = self.runstring.format(filename = self.filename, runcommand = self.benchmark.get_run_command())
         self.data = []
         self.data_prototype = {
