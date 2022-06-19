@@ -65,9 +65,6 @@ class PerfCollector(Collector):
             self.data.append(data)
 
 
-        print("in perf run all")
-        print(self.data)
-
 # --- Begin test run for perf
 class PerfTestRun():
     """
@@ -103,10 +100,10 @@ class PerfTestRun():
         runcommand_parts = self.runcommand.split(" ")
         output = subprocess.run(runcommand_parts, capture_output=True, text=True)
         if output.returncode != 0:
-            logging.error("Perf command failed with error:")
+            #logging.error("Perf command failed with error:")
             # TODO: multiline log messages are theoretically bad practice
-            logging.error(output.stderr)
-            logging.error("Check that all configured counters are valid")
+            #logging.error(output.stderr)
+            #logging.error("Check that all configured counters are valid")
             # should we be louder about this?
             return self.data
 
@@ -123,8 +120,6 @@ class PerfTestRun():
         # Clean up files
         os.remove(self.filename)
 
-        print("in perf testrun")
-        print(self.data)
         return self.data
 # --- End test run for perf
 

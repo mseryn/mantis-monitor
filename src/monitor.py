@@ -42,18 +42,21 @@ def run(argv=sys.argv):
         each_benchmark.before_all()
 
         for iteration in range(0, config.iterations):
-            # TODO remove this once more modes supported
+            # TODO generalize this once format consistent
             for mode in config.collector_modes:
                 if "perf" in mode:
                     this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
                     this_collector.run_all()
-                    data = pandas.concat([data, pandas.DataFrame(this_collector.data)])
+                    new_data = pandas.DataFrame(this_collector.data)
+                    data = pandas.concat([data, new_data])
                 if "nvidia" in mode:
                     this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
                     this_collector.run_all()
-                    #data = pandas.concat([data, pandas.DataFrame(this_collector.data)])
+                    new_data = pandas.DataFrame(this_collector.data)
+                    data = pandas.concat([data, new_data])
 
         each_benchmark.after_all()
+
 
     filename = config.test_name
     if config.formatter_modes:

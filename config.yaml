@@ -1,15 +1,27 @@
 benchmarks:
+  XSBench:
+    runner: "XSBench"
+    types:
+      - cuda
+      - openmp-threading
   TestBench:
     runner: "TestBench"
     waittimes:
       - 1
+      - 8
+      - 16
 
 collection_modes:
   perf:
     pmu_count: 4
   nvidia:
     modes:
-      - power_summary
+      - power_time
+      - utilization_time
+      - memory_basic_time
+      - temperature_time
+      - clocks_time
+      - gpu_trace
     gen:
       - sm_80
 #  memory:
@@ -19,7 +31,6 @@ collection_modes:
 #      - api_trace
 #      - gpu_trace
 #      - power_over_time
-#    gen: sm_80
 
 formatter_modes:
 - PandasPickle
@@ -27,9 +38,13 @@ formatter_modes:
 
 perf_counters:
 - instructions
+- L1-dcache-load-misses
 - cache-misses
+- cache-references
+- major-faults
+- minor-faults
 
-iterations: 1
+iterations: 5
 time_count: 1000
 log: true
-test_name: nvidiapoweroverTime
+test_name: secondBigTest
