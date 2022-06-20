@@ -103,7 +103,7 @@ class SMIOverTimeTestRun():
         self.units = units
 
         measurements_string = ",".join(self.measurements)
-        self.smi_runstring = "nvidia-smi --query-gpu=timestamp,index,{measure} --loop-ms=1000 --format=csv"
+        self.smi_runstring = "nvidia-smi --query-gpu=timestamp,index,{measure} --loop-ms=1000 --format=csv,noheader,nounits"
         self.smi_runcommand = self.smi_runstring.format(filename = self.filename, measure = measurements_string)
         self.bench_runcommand = self.benchmark.get_run_command()
         self.data = {   "benchmark_name":   self.benchmark.name, \
@@ -132,7 +132,6 @@ class SMIOverTimeTestRun():
         # Collect data
         gpu_indices = set()
         with open(smi_filename, 'r') as csvfile:
-            next(csvfile)
             for line in csvfile:
                 line = line.strip().split(",")
                 if len(line) > 1:
@@ -141,7 +140,7 @@ class SMIOverTimeTestRun():
                     gpu_indices.add(gpu_index)
                     for i, measurement in enumerate(self.measurements):
                         key = "gpu_{index}_{measurement}".format(index = gpu_index, measurement = measurement)
-                        self.data.setdefault(key, []).append((time, float(line[i+2].split()[0].strip())))
+                        self.data.setdefault(key, []).append((time, float(line[i+2].strip())))
 
         # Clean up files
         os.remove(smi_filename)
