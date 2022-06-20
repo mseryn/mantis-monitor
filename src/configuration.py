@@ -40,13 +40,19 @@ class Configuration:
         self.collector_modes = self.contents["collection_modes"]
         self.benchmarks = self.contents["benchmarks"]
         self.formatter_modes = self.contents["formatter_modes"]
-        self.perf_counters = self.contents["perf_counters"]
 
         self.log = self.contents["log"]
 
         self.test_name = self.contents["test_name"]
         self.iterations = self.contents["iterations"]
         self.timescale = self.contents["time_count"]
+
+        #check_before_set = ["perf_counters"]
+        #for check_key in check_before_set:
+        #    if check_key in self.contents.keys():
+        #        self.check_key = self.contents[check_key]
+        if "perf_counters" in self.contents.keys():
+            self.perf_counters = self.contents["perf_counters"]
 
     def print_all(self):
         pprint.pprint(self.contents)
