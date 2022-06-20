@@ -93,21 +93,16 @@ class SMIOverTimeTestRun():
     """
     This is the generic SMI implementation to collect measurements over time
     """
-    def __init__(self, name, benchmark, filename, iteration, timescale, measurements_list, units):
+    def __init__(self, name, benchmark, filename, iteration, timescale, measurements, units):
         self.name = name
         self.benchmark = benchmark
         self.filename = filename
         self.iteration = iteration
         self.timescale = timescale
-        self.measurements_list = measurements_list
-        self.measurements = {}
+        self.measurements = measurements
         self.units = units
-        index = 2
-        for measurement in measurements_list:
-            self.measurements[measurement] = index
-            index = index + 1
 
-        measurements_string = ",".join(list(self.measurements.keys()))
+        measurements_string = ",".join(self.measurements)
         self.smi_runstring = "nvidia-smi --query-gpu=timestamp,index,{measure} --loop-ms=1000 --format=csv"
         self.smi_runcommand = self.smi_runstring.format(filename = self.filename, measure = measurements_string)
         self.bench_runcommand = self.benchmark.get_run_command()
@@ -116,7 +111,7 @@ class SMIOverTimeTestRun():
                         "iteration":        self.iteration, \
                         "timescale":        self.timescale, \
                         "units":            self.units, \
-                        "measurements":     self.measurements_list, \
+                        "measurements":     self.measurements, \
                         }
 
     def run(self):
@@ -133,42 +128,20 @@ class SMIOverTimeTestRun():
         # Kill SMI
         smi_proc.kill()
         smi_data.close()
-        
-        # Determine number of GPUs measured
-        gpu_indices = []
-        first = True
-        with open(smi_filename, 'r') as csvfile:
-            for line in csvfile:
-                line = line.strip().split(",")
-                if len(line) > 1 and not first:
-                    gpu_index = line[1].strip()
-                    if gpu_index not in gpu_indices:
-                        gpu_indices.append(gpu_index)
-                    else:
-                        break
-                if first:
-                    first = False
-
-        # Add metadata to measurements column as well as empty data columns
-        for gpu_index in gpu_indices:
-            for measurement in self.measurements.keys():
-                keyname = "gpu_{index}_{measurement}".format(index = gpu_index, measurement = measurement)
-                self.data[keyname] = []
 
         # Collect data
-        first = True
+        gpu_indices = set()
         with open(smi_filename, 'r') as csvfile:
+            next(csvfile)
             for line in csvfile:
                 line = line.strip().split(",")
-                if len(line) > 1 and not first:
+                if len(line) > 1:
                     time = line[0]
                     gpu_index = line[1].strip()
-                    for measurement_name, measurement_index in self.measurements.items():
-                        measurement_value = float(line[measurement_index].split()[0].strip())
-                        keyname = "gpu_{index}_{measurement}".format(index = gpu_index, measurement = measurement_name)
-                        self.data[keyname].append((time, measurement_value))
-                if first:
-                    first = False
+                    gpu_indices.add(gpu_index)
+                    for i, measurement in enumerate(self.measurements):
+                        key = "gpu_{index}_{measurement}".format(index = gpu_index, measurement = measurement)
+                        self.data.setdefault(key, []).append((time, float(line[i+2].split()[0].strip())))
 
         # Clean up files
         os.remove(smi_filename)
