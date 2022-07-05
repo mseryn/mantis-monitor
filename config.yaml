@@ -1,15 +1,19 @@
 benchmarks:
+  GridMini:
+    runner: "GridMini"
+    types:
+      - cuda
+      - openmp-offload
+  RSBench:
+    runner: "RSBench"
+    types:
+      - cuda
+      - openmp-offload
   XSBench:
     runner: "XSBench"
     types:
       - cuda
-      - openmp-threading
-  TestBench:
-    runner: "TestBench"
-    waittimes:
-      - 1
-      - 8
-      - 16
+      - openmp-offload
 
 collection_modes:
   perf:
@@ -33,7 +37,6 @@ collection_modes:
 #      - power_over_time
 
 formatter_modes:
-- PandasPickle
 - CSV
 
 perf_counters:
@@ -44,7 +47,7 @@ perf_counters:
 - major-faults
 - minor-faults
 
-iterations: 5
+iterations: 3
 time_count: 1000
 log: true
-test_name: secondBigTest
+test_name: all_3i_24June2022
