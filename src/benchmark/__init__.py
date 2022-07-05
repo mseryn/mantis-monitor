@@ -4,3 +4,4 @@ from . import xsbench
 from . import rsbench
 from . import gridmini
 from . import test
+from . import miniapp_testing

@@ -21,26 +21,27 @@ class MiniApp(Benchmark):
         ]   
 
     def before_each(self):
-        setup_commands = []
-        setup_commands.append("source /etc/profile.d/z00_lmod.sh")
-        setup_commands.append("module load conda")
-        setup_commands.append("conda activate")
-#        setup_commands.append("source /home/hnegron/Documents/my_env/bin/activate")
-        setup_commands.append("source /lus/grand/projects/SEEr-planning/miniapp_env/bin/activate")
-        # TODO hunter ensure this correctly sets your subdirectory per size of benchmark
-        #setup_commands.append("/lus/grand/projects/SEEr-planning/{subdirectory}/05_Simulation_ML/ML_PythonC++_Embedding/ThetaGPU/".format(subdirectory=self.size_dir)
-        setup_commands.append("cd ~/miniapps/{subdirectory}/".format(subdirectory=self.size_dir))
-        setup_commands.append("source setup.sh")
-        for setupcommand in setup_commands:
-            print(setupcommand)
-            parts = setupcommand.split(" ")
-            subprocess.run(parts)
+        #print(self.pre_command + "./setup.sh")
+        #subprocess.run(self.pre_command + "./setup.sh", shell=True, executable="/bin/bash")
+        #setup_commands = []
+        #setup_commands.append("source /etc/profile.d/z00_lmod.sh")
+        #setup_commands.append("module load conda")
+        #setup_commands.append("conda activate")
+        #setup_commands.append("source /lus/grand/projects/SEEr-planning/miniapp_env/bin/activate")
+        #setup_commands.append("source ~/miniapps/{subdirectory}/setup.sh".format(subdirectory=self.size_dir))
+        #setup_commands.append("source setup.sh")
+        #for setupcommand in setup_commands:
+        #    print(setupcommand)
+        #    parts = setupcommand.split(" ")
+        #    print(parts)
+        pass
+        #    subprocess.run(parts, shell=True)
 
     def get_run_command(self):
         # changes depending on gpu_count
         # format string with arg as parameter
-        print("mpirun -np {gpu_count} ./app --device".format(gpu_count = self.gpu_count))
-        return "mpirun -np {gpu_count} ./app --device".format(gpu_count = self.gpu_count)
+        print("mpirun -np {gpu_count} app --device gpu".format(gpu_count = self.gpu_count))
+        return self.pre_command + "mpirun -np {gpu_count} app --device gpu".format(gpu_count = self.gpu_count)
 
     def __init__(self, arguments):
         # format string on name including size and gpu count
@@ -59,6 +60,8 @@ class MiniApp(Benchmark):
                                 }
 
         self.size_dir = sizes_to_directories[self.size]
+        #self.pre_command = "source /etc/profile.d/z00_lmod.sh; module load conda; conda activate; source /lus/grand/projects/SEEr-planning/miniapp_env/bin/activate; cd ~/miniapps/{subdirectory}/; ".format(subdirectory=self.size_dir)
+        self.pre_command = "module load conda; conda activate; source /lus/grand/projects/SEEr-planning/miniapp_env/bin/activate; cd ~/miniapps/{subdirectory}/app_build/; ".format(subdirectory=self.size_dir)
         self.name = "MiniApp_{gpu_count}GPUs_size{size}".format(gpu_count = self.gpu_count, size = self.size)
 
 #Benchmark.register_benchmark_from_arguments("MiniApp", MiniApp, cross_product=["sizes", "gpu_counts"])

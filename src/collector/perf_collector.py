@@ -98,7 +98,7 @@ class PerfTestRun():
         #logging.info(self.runcommand)
 
         runcommand_parts = self.runcommand.split(" ")
-        output = subprocess.run(runcommand_parts, capture_output=True, text=True)
+        output = subprocess.run(runcommand_parts, shell=True, capture_output=True, text=True)
         if output.returncode != 0:
             #logging.error("Perf command failed with error:")
             # TODO: multiline log messages are theoretically bad practice
