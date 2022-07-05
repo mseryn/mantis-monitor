@@ -17,7 +17,7 @@ class XSBench(Benchmark):
         return [cls({"type": typestr}) for typestr in arguments["types"]]
 
     def get_run_command(self):
-        return "/home/mcorneli/xsbench/{location}/XSBench -m event".format(location = self.location)
+        return "/home/mcorneli/mantis-benchmarks/xsbench/{location}/XSBench -m event".format(location = self.location)
 #        return "sleep {time}".format(time = self.time)
 
     def __init__(self, arguments):
