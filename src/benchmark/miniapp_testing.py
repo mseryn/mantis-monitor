@@ -9,6 +9,41 @@ See LICENSE for details
 from benchmark.benchmark import Benchmark
 import itertools
 import subprocess
+import os
+
+
+def bracketed_split(string, delimiter, strip_brackets=False):
+    """ Split a string by the delimiter unless it is inside brackets.
+    e.g.
+        list(bracketed_split('abc,(def,ghi),jkl', delimiter=',')) == ['abc', '(def,ghi)', 'jkl']
+    """
+
+    openers = '{'
+    closers = '}'
+    opener_to_closer = dict(zip(openers, closers))
+    opening_bracket = dict()
+    current_string = ''
+    depth = 0
+    for c in string:
+        if c in openers:
+            depth += 1
+            opening_bracket[depth] = c
+            if strip_brackets and depth == 1:
+                continue
+        elif c in closers:
+            assert depth > 0, f"You exited more brackets that we have entered in string {string}"
+            assert c == opener_to_closer[opening_bracket[depth]], f"Closing bracket {c} did not match opening bracket {opening_bracket[depth]} in string {string}"
+            depth -= 1
+            if strip_brackets and depth == 0:
+                continue
+        if depth == 0 and c == delimiter:
+            yield current_string
+            current_string = ''
+        else:
+            current_string += c
+    assert depth == 0, f'You did not close all brackets in string {string}'
+    yield current_string
+
 
 #logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
@@ -20,28 +55,18 @@ class MiniApp(Benchmark):
             for size, gpu_count in itertools.product(arguments["sizes"], arguments["gpu_count"])
         ]   
 
-    def before_each(self):
-        #print(self.pre_command + "./setup.sh")
-        #subprocess.run(self.pre_command + "./setup.sh", shell=True, executable="/bin/bash")
-        #setup_commands = []
-        #setup_commands.append("source /etc/profile.d/z00_lmod.sh")
-        #setup_commands.append("module load conda")
-        #setup_commands.append("conda activate")
-        #setup_commands.append("source /lus/grand/projects/SEEr-planning/miniapp_env/bin/activate")
-        #setup_commands.append("source ~/miniapps/{subdirectory}/setup.sh".format(subdirectory=self.size_dir))
-        #setup_commands.append("source setup.sh")
-        #for setupcommand in setup_commands:
-        #    print(setupcommand)
-        #    parts = setupcommand.split(" ")
-        #    print(parts)
-        pass
-        #    subprocess.run(parts, shell=True)
+#    def before_each(self):
+#        print('Setting env using command ' + self.env_command)
+#        envout = subprocess.check_output(self.env_command + '; echo ========================; env -0', shell=True, executable="/bin/bash", encoding='UTF-8', cwd=self.cwd)
+#        envout = envout.split('========================')[1].strip().strip('\0')
+#        self.env = dict(list(line.split('=', 1) for line in bracketed_split(envout, '\0')))
+#        subprocess.run('./setup.sh', shell=True, cwd=self.cwd, env=self.env)
 
     def get_run_command(self):
         # changes depending on gpu_count
         # format string with arg as parameter
         print("mpirun -np {gpu_count} app --device gpu".format(gpu_count = self.gpu_count))
-        return self.pre_command + "mpirun -np {gpu_count} app --device gpu".format(gpu_count = self.gpu_count)
+        return "mpirun -np {gpu_count} app --device gpu".format(gpu_count = self.gpu_count)
 
     def __init__(self, arguments):
         # format string on name including size and gpu count
@@ -61,7 +86,9 @@ class MiniApp(Benchmark):
 
         self.size_dir = sizes_to_directories[self.size]
         #self.pre_command = "source /etc/profile.d/z00_lmod.sh; module load conda; conda activate; source /lus/grand/projects/SEEr-planning/miniapp_env/bin/activate; cd ~/miniapps/{subdirectory}/; ".format(subdirectory=self.size_dir)
-        self.pre_command = "module load conda; conda activate; source /lus/grand/projects/SEEr-planning/miniapp_env/bin/activate; cd ~/miniapps/{subdirectory}/app_build/; ".format(subdirectory=self.size_dir)
+        self.env_command = "module load conda; conda activate; source /lus/grand/projects/SEEr-planning/miniapp_env/bin/activate"
+        self.env = None
+        self.cwd = os.path.expanduser("~/miniapps/{subdirectory}/app_build/".format(subdirectory=self.size_dir))
         self.name = "MiniApp_{gpu_count}GPUs_size{size}".format(gpu_count = self.gpu_count, size = self.size)
 
 #Benchmark.register_benchmark_from_arguments("MiniApp", MiniApp, cross_product=["sizes", "gpu_counts"])

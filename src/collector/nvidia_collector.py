@@ -10,6 +10,7 @@ See LICENSE for details
 import math
 import subprocess
 import os
+import os.path
 import csv
 import copy
 
@@ -129,7 +130,7 @@ class SMIOverTimeTestRun():
 
         # Run benchmark
         print('Running command' + self.bench_runcommand)
-        discarded_output = subprocess.run(self.bench_runcommand, capture_output=True, shell=True, executable="/bin/bash")
+        discarded_output = subprocess.run(self.bench_runcommand, capture_output=True, shell=True, executable="/bin/bash", env=self.benchmark.env, cwd=self.benchmark.cwd)
         print(discarded_output)
 
         # Kill SMI
@@ -190,7 +191,9 @@ class NsysTestRun():
         self.iteration = iteration
         self.runstring = "nsys profile --gpu-metrics-device=all -o {filename} {runcommand}"
         self.parsestring = "nsys stats --format csv {filename}.qdrep -o {filename}".format(filename = self.filename)
-        self.runcommand = self.runstring.format(filename = self.filename, runcommand = self.benchmark.get_run_command())
+
+        self.bench_runcommand = self.benchmark.get_run_command()
+        self.runcommand = self.runstring.format(filename = self.filename, runcommand = self.bench_runcommand)
         self.data = []
         self.data_prototype = {
             "benchmark_name": self.benchmark.name,
@@ -219,18 +222,18 @@ class NsysTestRun():
                                }
         # Run it
         #runcommand_parts = self.runcommand.split(" ")
-        output = subprocess.run(self.runcommand, capture_output=True, shell=True, executable="/bin/bash")
+        output = subprocess.run(self.runcommand, capture_output=True, shell=True, executable="/bin/bash", env=self.benchmark.env, cwd=self.benchmark.cwd)
         print(output)
 
         # Gather data
         #parsecommand_parts = self.parsestring.split(" ")
-        output = subprocess.run(self.parsestring, capture_output=True, shell=True)
+        output = subprocess.run(self.parsestring, capture_output=True, shell=True, cwd=self.benchmark.cwd)
         print(output)
 
         # Collect data
         # We will go through every possible collection mode and store it only if it contains data
         for filename_suffix, contents_name in files_to_names.items():
-            filename = "{filename_prefix}_{filename_suffix}".format(filename_prefix = self.filename, filename_suffix = filename_suffix)
+            filename = os.path.join(self.benchmark.cwd, "{filename_prefix}_{filename_suffix}".format(filename_prefix = self.filename, filename_suffix = filename_suffix))
             sub_data = []
             data_copy = copy.deepcopy(self.data_prototype)
             with open(filename, 'r') as csvfile:
@@ -246,8 +249,8 @@ class NsysTestRun():
             # Clean up files
             os.remove(filename)
 
-        os.remove("{}.qdrep".format(self.filename))
-        os.remove("{}.sqlite".format(self.filename))
+        os.remove("{}.qdrep".format(os.path.join(self.benchmark.cwd, self.filename)))
+        os.remove("{}.sqlite".format(os.path.join(self.benchmark.cwd, self.filename)))
 
         return self.data
 
