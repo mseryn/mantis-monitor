@@ -13,6 +13,7 @@ import os
 import os.path
 import csv
 import copy
+import datetime
 
 import pprint
 import pandas
@@ -125,7 +126,9 @@ class SMIOverTimeTestRun():
 
         # Run benchmark
         print('Running command' + self.bench_runcommand)
+        starttime = datetime.now()
         discarded_output = subprocess.run(self.bench_runcommand, capture_output=True, shell=True, executable="/bin/bash", env=self.benchmark.env, cwd=self.benchmark.cwd)
+        endtime = datetime.now()
         print(discarded_output)
 
         # Kill SMI
@@ -147,6 +150,9 @@ class SMIOverTimeTestRun():
 
         # Clean up files
         os.remove(smi_filename)
+
+        duration = endtime - starttime  
+        self.data["duration"] = duration.total_seconds()
 
         return self.data
 
@@ -194,7 +200,9 @@ class NsysTestRun():
                                }
         # Run it
         #runcommand_parts = self.runcommand.split(" ")
+        starttime = datetime.now()
         output = subprocess.run(self.runcommand, capture_output=True, shell=True, executable="/bin/bash", env=self.benchmark.env, cwd=self.benchmark.cwd)
+        endtime = datetime.now()
         print(output)
 
         # Gather data
@@ -223,6 +231,9 @@ class NsysTestRun():
 
         os.remove("{}.qdrep".format(os.path.join(self.benchmark.cwd, self.filename)))
         os.remove("{}.sqlite".format(os.path.join(self.benchmark.cwd, self.filename)))
+
+        duration = endtime - starttime  
+        self.data["duration"] = duration.total_seconds()
 
         return self.data
 

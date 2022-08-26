@@ -10,6 +10,7 @@ See LICENSE for details
 import math
 import subprocess
 import os
+import datetime
 
 import pprint
 
@@ -88,7 +89,9 @@ class PerfTestRun():
             "timescale":      self.timescale,
             "units":          "count per timescale milliseconds",
             "measurements":   self.counters,
+            "duration":       0, 
         }
+        self.duration = None
         for counter in self.counters:
             self.data[counter] = []
 
@@ -98,7 +101,11 @@ class PerfTestRun():
         #logging.info(self.runcommand)
 
         runcommand_parts = self.runcommand.split(" ")
+
+        startime = datetime.now()
         output = subprocess.run(runcommand_parts, shell=True, capture_output=True, text=True)
+        endtime = datetime.now()
+
         if output.returncode != 0:
             #logging.error("Perf command failed with error:")
             # TODO: multiline log messages are theoretically bad practice
@@ -119,6 +126,9 @@ class PerfTestRun():
 
         # Clean up files
         os.remove(self.filename)
+
+        duration = endtime - starttime 
+        self.data["duration"] = duration.total_seconds()
 
         return self.data
 # --- End test run for perf
