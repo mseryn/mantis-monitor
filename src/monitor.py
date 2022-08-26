@@ -4,13 +4,14 @@ import collector
 import formatter
 
 import pandas
-import logging
+#import logging
+import argparse
 import pprint
 import sys
 #import testrun
 
 
-logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
+#logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 def run(argv=sys.argv):
     """
@@ -20,8 +21,10 @@ def run(argv=sys.argv):
     if len(argv) > 1:
         config_location = argv[1]
     else:
-        logging.warning("No config file provided; running with no-op test benchmark")
+        #logging.warning("No config file provided; running with no-op test benchmark")
+        print("MUST PROVIDE CONFIG FILE AT RUNTIME or default is used")
     config = configuration.Configuration(location=config_location)
+    config.print_all()
 
     all_dataframes = []
     dataframe_columns = ["benchmark_name", "collector_name", "iteration", "timescale", "units", "measurements"]
@@ -39,14 +42,21 @@ def run(argv=sys.argv):
         each_benchmark.before_all()
 
         for iteration in range(0, config.iterations):
-            # TODO remove this once more modes supported
+            # TODO generalize this once format consistent
             for mode in config.collector_modes:
                 if "perf" in mode:
                     this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
                     this_collector.run_all()
-                    data = pandas.concat([data, pandas.DataFrame(this_collector.data)])
+                    new_data = pandas.DataFrame(this_collector.data)
+                    data = pandas.concat([data, new_data])
+                if "nvidia" in mode:
+                    this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
+                    this_collector.run_all()
+                    new_data = pandas.DataFrame(this_collector.data)
+                    data = pandas.concat([data, new_data])
 
         each_benchmark.after_all()
+
 
     filename = config.test_name
     if config.formatter_modes:

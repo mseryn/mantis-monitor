@@ -6,7 +6,7 @@ This code is licensed under LGPL v 2.1
 See LICENSE for details
 """
 
-import logging
+#import logging
 import math
 import subprocess
 import os
@@ -15,8 +15,8 @@ import pprint
 
 from collector.collector import Collector
 
-logging.basicConfig(filename='testing.log', encoding='utf-8', \
-    format='%(levelname)s:%(message)s', level=logging.DEBUG)
+#logging.basicConfig(filename='testing.log', encoding='utf-8', \
+#    format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 class PerfCollector(Collector):
     """
@@ -65,9 +65,6 @@ class PerfCollector(Collector):
             self.data.append(data)
 
 
-        print("in perf run all")
-        print(self.data)
-
 # --- Begin test run for perf
 class PerfTestRun():
     """
@@ -97,16 +94,16 @@ class PerfTestRun():
 
     def run(self):
         # Run it
-        logging.info("Running following command:")
-        logging.info(self.runcommand)
+        #logging.info("running following command:")
+        #logging.info(self.runcommand)
 
         runcommand_parts = self.runcommand.split(" ")
-        output = subprocess.run(runcommand_parts, capture_output=True, text=True)
+        output = subprocess.run(runcommand_parts, shell=True, capture_output=True, text=True)
         if output.returncode != 0:
-            logging.error("Perf command failed with error:")
+            #logging.error("Perf command failed with error:")
             # TODO: multiline log messages are theoretically bad practice
-            logging.error(output.stderr)
-            logging.error("Check that all configured counters are valid")
+            #logging.error(output.stderr)
+            #logging.error("Check that all configured counters are valid")
             # should we be louder about this?
             return self.data
 
@@ -123,8 +120,6 @@ class PerfTestRun():
         # Clean up files
         os.remove(self.filename)
 
-        print("in perf testrun")
-        print(self.data)
         return self.data
 # --- End test run for perf
 

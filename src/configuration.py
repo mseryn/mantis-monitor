@@ -7,13 +7,13 @@ See LICENSE for details
 """
 
 import pprint
-import logging
+#import logging
 import yaml
 import subprocess
 import os
 
 #TODO how do I make sure all the logs go to the same place? Just reuse the name?
-logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
+#logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 class Configuration:
     """
@@ -25,9 +25,9 @@ class Configuration:
         """Config file location, a string"""
         if location and os.path.exists(location):
             self.contents = yaml.safe_load(open(location))
-            logging.info("Read config yaml at %s", location)
+            #logging.info("Read config yaml at %s", location)
         elif location:
-            logging.error("A config file was provided but could not be found")
+            #logging.error("A config file was provided but could not be found")
             raise ValueError("Config file not found")
         else:
             self.contents = generate_default_config()
@@ -40,13 +40,19 @@ class Configuration:
         self.collector_modes = self.contents["collection_modes"]
         self.benchmarks = self.contents["benchmarks"]
         self.formatter_modes = self.contents["formatter_modes"]
-        self.perf_counters = self.contents["perf_counters"]
 
         self.log = self.contents["log"]
 
         self.test_name = self.contents["test_name"]
         self.iterations = self.contents["iterations"]
         self.timescale = self.contents["time_count"]
+
+        #check_before_set = ["perf_counters"]
+        #for check_key in check_before_set:
+        #    if check_key in self.contents.keys():
+        #        self.check_key = self.contents[check_key]
+        if "perf_counters" in self.contents.keys():
+            self.perf_counters = self.contents["perf_counters"]
 
     def print_all(self):
         pprint.pprint(self.contents)
@@ -85,7 +91,7 @@ def generate_default_config():
         'time_count': 1000,
         'log': True,
         #'debug': True,
-        'test_name': 'DEFAULT',
+        'test_name': 'GENERATEDDEFAULT',
     }
 
     return default_yaml
@@ -129,9 +135,11 @@ def dump_default_yaml(location):
 def check_perf():
     perf_overall = subprocess.run("perf", capture_output=True)
     if not perf_overall:
-        logging.info("Uh-oh, it looks like there's an issue using perf!")
+        pass
+        #logging.info("Uh-oh, it looks like there's an issue using perf!")
     else:
-        logging.info("Perf outputs")
+        pass
+        #logging.info("Perf outputs")
 
 def get_available_perf():
     """Helper function to query perf and return all available counters

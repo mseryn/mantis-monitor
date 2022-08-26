@@ -6,34 +6,29 @@ This code is licensed under LGPL v 2.1
 See LICENSE for details
 """
 
-import logging
+#import logging
 from benchmark.benchmark import Benchmark
 
-logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
+#logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 class XSBench(Benchmark):
+    @classmethod
+    def generate_benchmarks(cls, arguments):
+        return [cls({"type": typestr}) for typestr in arguments["types"]]
+
     def get_run_command(self):
-        # ./location/XSBench -m event
-        return_string = [self.location]
-        return_string.extend(self.arguments)
-        return " ".join(return_string)
-        
-class XSBenchCuda(XSBench):
+        return "/home/mcorneli/mantis-benchmarks/xsbench/{location}/XSBench -m event".format(location = self.location)
+#        return "sleep {time}".format(time = self.time)
+
     def __init__(self, arguments):
-        self.arguments = ["-m event"]
-        self.name = "XSBench_CUDA"
-        self.description = "CUDA implementation of microbenchmark XSBench"
+        self.typestr = arguments["type"]
+        #self.time = arguments["time"]
+        #self.name = "TestBench_time{time}s".format(time = self.time)
+        self.name = "XSBench_{typestr}".format(typestr = self.typestr)
+        locations = {"cuda": "cuda", \
+                    "openmp-offload": "openmp-offload", \
+                    "openmp-threading": "openmp-threading",\
+                    }
+        self.location = locations[self.typestr]
 
-        self.location = arguments["loc"]
-
-class XSBenchOpenmpOffload(XSBench):
-    def __init__(self, arguments):
-        self.arguments = ["-m event"]
-        self.name = "XSBench_OpenMP_Offload"
-        self.description = \
-            "OpenMP offloading (GPU-offload) implementation of microbenchmark XSBench"
-
-        self.location = arguments["loc"]
-
-Benchmark.register_benchmark("XSBenchOpenmpOffload", XSBenchOpenmpOffload)
-Benchmark.register_benchmark("XSBenchCuda", XSBenchCuda)
+Benchmark.register_benchmark("XSBench", XSBench)
