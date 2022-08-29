@@ -212,8 +212,9 @@ class NsysTestRun():
 
         # Collect data
         # We will go through every possible collection mode and store it only if it contains data
+        cwd_path_component = self.benchmark.cwd or ''
         for filename_suffix, contents_name in files_to_names.items():
-            filename = os.path.join(self.benchmark.cwd, "{filename_prefix}_{filename_suffix}".format(filename_prefix = self.filename, filename_suffix = filename_suffix))
+            filename = os.path.join(cwd_path_component, "{filename_prefix}_{filename_suffix}".format(filename_prefix = self.filename, filename_suffix = filename_suffix))
             sub_data = []
             data_copy = copy.deepcopy(self.data_prototype)
             with open(filename, 'r') as csvfile:
@@ -229,8 +230,8 @@ class NsysTestRun():
             # Clean up files
             os.remove(filename)
 
-        os.remove("{}.qdrep".format(os.path.join(self.benchmark.cwd, self.filename)))
-        os.remove("{}.sqlite".format(os.path.join(self.benchmark.cwd, self.filename)))
+        os.remove("{}.qdrep".format(os.path.join(cwd_path_component, self.filename)))
+        os.remove("{}.sqlite".format(os.path.join(cwd_path_component, self.filename)))
 
         duration = endtime - starttime
         self.data["duration"] = duration.total_seconds()

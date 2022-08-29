@@ -103,7 +103,7 @@ class PerfTestRun():
         runcommand_parts = self.runcommand.split(" ")
 
         startime = datetime.datetime.now()
-        output = subprocess.run(runcommand_parts, shell=True, capture_output=True, text=True)
+        output = subprocess.run(runcommand_parts, shell=True, capture_output=True, text=True, cwd=self.benchmark.cwd, env=self.benchmark.env)
         endtime = datetime.datetime.now()
 
         if output.returncode != 0:
@@ -115,7 +115,7 @@ class PerfTestRun():
             return self.data
 
         # Collect data
-        with open(self.filename, 'r') as csvfile:
+        with open(os.path.join((self.benchmark.cwd or '') + self.filename), 'r') as csvfile:
             for line in csvfile:
                 line = line.strip().split(",")
                 if len(line) > 1 and "#" not in line[0]:
