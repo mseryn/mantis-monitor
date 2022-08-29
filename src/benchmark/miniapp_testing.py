@@ -53,7 +53,7 @@ class MiniApp(Benchmark):
         return [
             cls({"size": size, "gpu_count": gpu_count})
             for size, gpu_count in itertools.product(arguments["sizes"], arguments["gpu_count"])
-        ]   
+        ]
 
 #    def before_each(self):
 #        print('Setting env using command ' + self.env_command)

@@ -13,7 +13,7 @@ from formatter.formatter import Formatter
 class CSVFormatter(Formatter):
     def __init__(self):
         self.name = "CSV"
-    
+
     def convert(self, data):
         # Not needed for this
         return data

@@ -27,7 +27,7 @@ class NvidiaCollector(Collector):
     """
     This is the implementation of the nvidia tool data collector
     """
-    
+
     def __init__(self, configuration, iteration, benchmark):
         self.name = "NvidiaCollector"
         self.description = "Collector for configuring nvidia profiling metric collection"
@@ -151,7 +151,7 @@ class SMIOverTimeTestRun():
         # Clean up files
         os.remove(smi_filename)
 
-        duration = endtime - starttime  
+        duration = endtime - starttime
         self.data["duration"] = duration.total_seconds()
 
         return self.data
@@ -232,7 +232,7 @@ class NsysTestRun():
         os.remove("{}.qdrep".format(os.path.join(self.benchmark.cwd, self.filename)))
         os.remove("{}.sqlite".format(os.path.join(self.benchmark.cwd, self.filename)))
 
-        duration = endtime - starttime  
+        duration = endtime - starttime
         self.data["duration"] = duration.total_seconds()
 
         return self.data

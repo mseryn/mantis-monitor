@@ -23,7 +23,7 @@ class PerfCollector(Collector):
     """
     This is the implementation of the perf data collector
     """
-    
+
     def __init__(self, configuration, iteration, benchmark):
         self.name = "PerfCollector"
         self.description = "Collector for configuring perf metric collection"
@@ -47,11 +47,11 @@ class PerfCollector(Collector):
 
         for i in range(0, num_perf_testruns):
             # NOTE - name is currently just the perf iteration count, make this meaningful later if needed
-            start = i * self.pmu_count 
+            start = i * self.pmu_count
             stop = min(num_perf_counters, ((i+1) * self.pmu_count))
             counters_list = self.counters[start:stop]
             current_filename = self.filename.format(perfrun_count = i)
-            name = "_".join([self.name, str(self.global_ID)]) 
+            name = "_".join([self.name, str(self.global_ID)])
             current_testrun = PerfTestRun(name, counters_list, self.timescale,\
                 self.benchmark, current_filename, self.iteration)
             self.testruns.append(current_testrun)
@@ -89,7 +89,7 @@ class PerfTestRun():
             "timescale":      self.timescale,
             "units":          "count per timescale milliseconds",
             "measurements":   self.counters,
-            "duration":       0, 
+            "duration":       0,
         }
         self.duration = None
         for counter in self.counters:
@@ -127,7 +127,7 @@ class PerfTestRun():
         # Clean up files
         os.remove(self.filename)
 
-        duration = endtime - starttime 
+        duration = endtime - starttime
         self.data["duration"] = duration.total_seconds()
 
         return self.data

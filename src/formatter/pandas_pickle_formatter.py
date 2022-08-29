@@ -14,7 +14,7 @@ from formatter.formatter import Formatter
 class PandasPickleFormatter(Formatter):
     def __init__(self):
         self.name = "PandasPickle"
-    
+
     def convert(self, data):
         # Not needed for this
         return data
