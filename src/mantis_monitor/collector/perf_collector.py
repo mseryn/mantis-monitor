@@ -100,18 +100,19 @@ class PerfTestRun():
         #logging.info("running following command:")
         #logging.info(self.runcommand)
 
-        runcommand_parts = self.runcommand.split(" ")
-
         startime = datetime.datetime.now()
-        output = subprocess.run(runcommand_parts, shell=True, capture_output=True, text=True, cwd=self.benchmark.cwd, env=self.benchmark.env)
+        process = subprocess.run(self.runcommand, shell=True, cwd=self.benchmark.cwd, env=self.benchmark.env)
         endtime = datetime.datetime.now()
 
-        if output.returncode != 0:
+        if process.returncode != 0:
             #logging.error("Perf command failed with error:")
             # TODO: multiline log messages are theoretically bad practice
-            #logging.error(output.stderr)
+            #logging.error(process.stderr)
             #logging.error("Check that all configured counters are valid")
             # should we be louder about this?
+            print('Oops, bad data...')
+            #print(process.stderr)
+            # is it really a good idea to just drop this?
             return self.data
 
         # Collect data

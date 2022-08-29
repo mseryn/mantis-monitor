@@ -125,11 +125,10 @@ class SMIOverTimeTestRun():
         smi_proc = subprocess.Popen(self.smi_runcommand.split(" "), stdout = smi_data)
 
         # Run benchmark
-        print('Running command' + self.bench_runcommand)
+        print('Running command ' + self.bench_runcommand)
         starttime = datetime.datetime.now()
-        discarded_output = subprocess.run(self.bench_runcommand, capture_output=True, shell=True, executable="/bin/bash", env=self.benchmark.env, cwd=self.benchmark.cwd)
+        process = subprocess.run(self.bench_runcommand, shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
         endtime = datetime.datetime.now()
-        print(discarded_output)
 
         # Kill SMI
         smi_proc.kill()
@@ -199,16 +198,12 @@ class NsysTestRun():
                                "vulkanmarkerssum.csv": "vulkan_marker_summary", \
                                }
         # Run it
-        #runcommand_parts = self.runcommand.split(" ")
         starttime = datetime.datetime.now()
-        output = subprocess.run(self.runcommand, capture_output=True, shell=True, executable="/bin/bash", env=self.benchmark.env, cwd=self.benchmark.cwd)
+        process = subprocess.run(self.runcommand, shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
         endtime = datetime.datetime.now()
-        print(output)
 
         # Gather data
-        #parsecommand_parts = self.parsestring.split(" ")
-        output = subprocess.run(self.parsestring, capture_output=True, shell=True, cwd=self.benchmark.cwd)
-        print(output)
+        process = subprocess.run(self.parsestring, shell=True, cwd=self.benchmark.cwd)
 
         # Collect data
         # We will go through every possible collection mode and store it only if it contains data
