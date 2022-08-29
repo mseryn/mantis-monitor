@@ -6,7 +6,7 @@ See LICENSE for details
 """
 
 #import logging
-from benchmark.benchmark import Benchmark
+import mantis_monitor
 import itertools
 import subprocess
 import os
@@ -47,7 +47,7 @@ def bracketed_split(string, delimiter, strip_brackets=False):
 
 #logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
-class MiniApp(Benchmark):
+class MiniApp(mantis_monitor.benchmark.benchmark.Benchmark):
     @classmethod
     def generate_benchmarks(cls, arguments):
         return [
@@ -91,6 +91,5 @@ class MiniApp(Benchmark):
         self.cwd = os.path.expanduser("~/miniapps/{subdirectory}/app_build/".format(subdirectory=self.size_dir))
         self.name = "MiniApp_{gpu_count}GPUs_size{size}".format(gpu_count = self.gpu_count, size = self.size)
 
-#Benchmark.register_benchmark_from_arguments("MiniApp", MiniApp, cross_product=["sizes", "gpu_counts"])
-Benchmark.register_benchmark("MiniApp", MiniApp)
+mantis_monitor.monitor.run_with(MiniApp)
 
