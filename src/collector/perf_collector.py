@@ -102,9 +102,9 @@ class PerfTestRun():
 
         runcommand_parts = self.runcommand.split(" ")
 
-        startime = datetime.now()
+        startime = datetime.datetime.now()
         output = subprocess.run(runcommand_parts, shell=True, capture_output=True, text=True)
-        endtime = datetime.now()
+        endtime = datetime.datetime.now()
 
         if output.returncode != 0:
             #logging.error("Perf command failed with error:")

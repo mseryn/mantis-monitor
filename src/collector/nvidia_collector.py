@@ -126,9 +126,9 @@ class SMIOverTimeTestRun():
 
         # Run benchmark
         print('Running command' + self.bench_runcommand)
-        starttime = datetime.now()
+        starttime = datetime.datetime.now()
         discarded_output = subprocess.run(self.bench_runcommand, capture_output=True, shell=True, executable="/bin/bash", env=self.benchmark.env, cwd=self.benchmark.cwd)
-        endtime = datetime.now()
+        endtime = datetime.datetime.now()
         print(discarded_output)
 
         # Kill SMI
@@ -200,9 +200,9 @@ class NsysTestRun():
                                }
         # Run it
         #runcommand_parts = self.runcommand.split(" ")
-        starttime = datetime.now()
+        starttime = datetime.datetime.now()
         output = subprocess.run(self.runcommand, capture_output=True, shell=True, executable="/bin/bash", env=self.benchmark.env, cwd=self.benchmark.cwd)
-        endtime = datetime.now()
+        endtime = datetime.datetime.now()
         print(output)
 
         # Gather data
