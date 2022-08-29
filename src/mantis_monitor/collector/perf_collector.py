@@ -121,7 +121,10 @@ class PerfTestRun():
                 if len(line) > 1 and "#" not in line[0]:
                     time = float(line[0])
                     measurement_name = line[3]
-                    measurement_value = float(line[1])
+                    try:
+                        measurement_value = float(line[1])
+                    except ValueError:
+                        measurement_value = None
                     self.data[measurement_name].append((time, measurement_value))
 
         # Clean up files
