@@ -1,5 +1,5 @@
 """
-Implementation of Mantis perf collector
+Implementation of Mantis time-to-completion collector
 
 Author: Melanie Cornelius
 This code is licensed under LGPL v 2.1
@@ -35,25 +35,26 @@ class TTCCollector(Collector):
         self.setup()
 
     def run_all(self):
+        self.benchmark.before_each()
+
         self.data = {
             "benchmark_name": self.benchmark.name,
             "collector_name": self.name,
             "iteration":      self.iteration,
             "units":          "s",
             "measurements":   "time_to_completion",
-            "duration":       0, 
+            "duration":       0,
         }
-        self.runcommand = self.runstring.format(self.counters_string, self.timescale, self.filename, \
-            self.benchmark.get_run_command())
 
-        runcommand_parts = self.benchmark.get_run_command().split(" ")
+        starttime = datetime.datetime.now()
+        process = subprocess.run(self.benchmark.get_run_command(), shell=True, cwd=self.benchmark.cwd, env=self.benchmark.env)
+        endtime = datetime.datetime.now()
 
-        startime = datetime.now()
-        output = subprocess.run(runcommand_parts, shell=True, capture_output=True, text=True)
-        endtime = datetime.now()
+        self.data["duration"] = (endtime - starttime).total_seconds()
+        self.data = [self.data]
 
-        self.data["duration"] = duration.total_seconds()
+        self.benchmark.after_each()
 
-        self.data.append(data)
+
 
 Collector.register_collector("time_to_completion", TTCCollector)

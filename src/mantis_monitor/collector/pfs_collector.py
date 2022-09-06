@@ -1,5 +1,5 @@
 """
-Implementation of Mantis nvidia SMI collector
+Implementation of Mantis proc filesystem collector
 
 Author: Melanie Cornelius
 This code is licensed under LGPL v 2.1
@@ -26,9 +26,9 @@ from mantis_monitor.collector.collector import Collector
 
 class PFSCollector(Collector):
     """
-    This is the implementation of the nvidia tool data collector
+    This is the implementation of the proc filesystem data collector
     """
-    
+
     def __init__(self, configuration, iteration, benchmark):
         self.name = "PFSCollector"
         self.description = "Collector for configuring proc filesystem metric collection"
@@ -50,16 +50,12 @@ class PFSCollector(Collector):
 
 
     def run_all(self):
-        this_testrun.benchmark.before_each()
+        self.benchmark.before_each()
 
-        data = PFSTimeTestRun("Utilization", self.benchmark, current_filename, self.iteration, self.timescale, \
-            self.measurements, "unknown").run()
+        self.data.append(PFSTimeTestRun("Utilization", self.benchmark, self.filename, self.iteration, self.timescale, \
+            self.measurements, "unknown").run())
 
-        this_testrun.benchmark.after_each()
-        if isinstance(data, list):
-            self.data.extend(data)
-        else:
-            self.data.append(data)
+        self.benchmark.after_each()
 
 class PFSTimeTestRun():
     """
@@ -75,9 +71,6 @@ class PFSTimeTestRun():
         self.units = units
 
         measurements_string = ",".join(self.measurements)
-        self.smi_runstring = "nvidia-smi --query-gpu=timestamp,index,{measure} --loop-ms=1000 --format=csv,noheader,nounits"
-        self.smi_runcommand = self.smi_runstring.format(filename = self.filename, measure = measurements_string)
-        self.bench_runcommand = self.benchmark.get_run_command()
         self.data = {   "benchmark_name":   self.benchmark.name, \
                         "collector_name":   self.name, \
                         "iteration":        self.iteration, \
@@ -94,31 +87,32 @@ class PFSTimeTestRun():
         mem_vals = []
 
         # Run benchmark
-        starttime = datetime.now()
+        starttime = datetime.datetime.now()
 
-        code_proc = subprocess.Popen(self.bench_runcommand.split(" "), executable="/bin/bash", env=self.benchmark.env, cwd=self.benchmark.cwd)
+        process = subprocess.Popen(self.benchmark.get_run_command(), shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
 
-        while (code_proc.poll() is None):
-            time = datetime.now()
+        # TODO: probably don't spin-loop here!
+        while (process.poll() is None):
+            time = datetime.datetime.now()
             cpu_val = psutil.cpu_percent(interval=None, percpu=True)
             cpu_vals[time] = cpu_val
-            mem = psutil.virtual_memory().used
+            mem_val = psutil.virtual_memory().used
             mem_vals.append((time, mem_val))
 
-        endtime = datetime.now()
+        endtime = datetime.datetime.now()
 
         # Collect data
         if "memory_utilization" in self.measurements:
             self.data["memory_utilization"] = mem_vals
 
         if "cpu_utilization" in self.measurements:
+            # TODO: don't do this
             for i in range(0, cpu_count):
                 column = "cpu_{index}_utilization".format(index = i)
                 parsed_data = [(x, y[i]) for x, y in cpu_vals.items()]
                 self.data[column] = parsed_data
 
-        duration = endtime - starttime  
-        self.data["duration"] = duration.total_seconds()
+        self.data["duration"] = (endtime - starttime).total_seconds()
 
         return self.data
 
