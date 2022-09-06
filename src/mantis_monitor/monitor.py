@@ -54,6 +54,16 @@ def run(argv=sys.argv):
                     this_collector.run_all()
                     new_data = pandas.DataFrame(this_collector.data)
                     data = pandas.concat([data, new_data])
+                if "time_to_completion" in mode:
+                    this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
+                    this_collector.run_all()
+                    new_data = pandas.DataFrame(this_collector.data)
+                    data = pandas.concat([data, new_data])
+                if "utilization" in mode:
+                    this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
+                    this_collector.run_all()
+                    new_data = pandas.DataFrame(this_collector.data)
+                    data = pandas.concat([data, new_data])
 
         each_benchmark.after_all()
 
