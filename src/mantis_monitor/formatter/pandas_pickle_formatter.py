@@ -9,12 +9,12 @@ See LICENSE for details
 import pickle
 import pandas
 
-from formatter.formatter import Formatter
+from mantis_monitor.formatter.formatter import Formatter
 
 class PandasPickleFormatter(Formatter):
     def __init__(self):
         self.name = "PandasPickle"
-    
+
     def convert(self, data):
         # Not needed for this
         return data

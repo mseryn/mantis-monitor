@@ -8,12 +8,12 @@ See LICENSE for details
 
 import pandas
 
-from formatter.formatter import Formatter
+from mantis_monitor.formatter.formatter import Formatter
 
 class JSONFormatter(Formatter):
     def __init__(self):
         self.name = "CSV"
-    
+
     def convert(self, data):
         # Not needed for this
         return data

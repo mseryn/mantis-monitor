@@ -6,7 +6,7 @@ This code is licensed under LGPL v 2.1
 See LICENSE for details
 """
 
-#import logging
+import logging
 import subprocess
 
 #logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
@@ -14,6 +14,10 @@ import subprocess
 class Benchmark():
 
     implementations = {}
+
+    # create attributes for instances (not shared; immutable)
+    cwd = None
+    env = None
 
     @staticmethod
     def register_benchmark(name, benchmark_class):
@@ -24,11 +28,10 @@ class Benchmark():
 
     @staticmethod
     def get_benchmarks(name, arguments):
-        try:
-            return Benchmark.implementations[name].generate_benchmarks(arguments)
-        except KeyError:
+        if name not in Benchmark.implementations:
             logging.error("A benchmark named {} was requested, but no benchmark by that name exists (is the configuration correct?)".format(name))
-            raise
+            return None
+        return Benchmark.implementations[name].generate_benchmarks(arguments)
 
     @classmethod
     def generate_benchmarks(cls, arguments):

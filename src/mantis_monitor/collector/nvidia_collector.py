@@ -18,7 +18,7 @@ import datetime
 import pprint
 import pandas
 
-from collector.collector import Collector
+from mantis_monitor.collector.collector import Collector
 
 #logging.basicConfig(filename='testing.log', encoding='utf-8', \
 #    format='%(levelname)s:%(message)s', level=logging.DEBUG)
@@ -27,7 +27,7 @@ class NvidiaCollector(Collector):
     """
     This is the implementation of the nvidia tool data collector
     """
-    
+
     def __init__(self, configuration, iteration, benchmark):
         self.name = "NvidiaCollector"
         self.description = "Collector for configuring nvidia profiling metric collection"
@@ -125,11 +125,10 @@ class SMIOverTimeTestRun():
         smi_proc = subprocess.Popen(self.smi_runcommand.split(" "), stdout = smi_data)
 
         # Run benchmark
-        print('Running command' + self.bench_runcommand)
-        starttime = datetime.now()
-        discarded_output = subprocess.run(self.bench_runcommand, capture_output=True, shell=True, executable="/bin/bash", env=self.benchmark.env, cwd=self.benchmark.cwd)
-        endtime = datetime.now()
-        print(discarded_output)
+        print('Running command ' + self.bench_runcommand)
+        starttime = datetime.datetime.now()
+        process = subprocess.run(self.bench_runcommand, shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
+        endtime = datetime.datetime.now()
 
         # Kill SMI
         smi_proc.kill()
@@ -151,8 +150,7 @@ class SMIOverTimeTestRun():
         # Clean up files
         os.remove(smi_filename)
 
-        duration = endtime - starttime  
-        self.data["duration"] = duration.total_seconds()
+        self.data["duration"] = (endtime - starttime).total_seconds()
 
         return self.data
 
@@ -199,21 +197,19 @@ class NsysTestRun():
                                "vulkanmarkerssum.csv": "vulkan_marker_summary", \
                                }
         # Run it
-        #runcommand_parts = self.runcommand.split(" ")
-        starttime = datetime.now()
-        output = subprocess.run(self.runcommand, capture_output=True, shell=True, executable="/bin/bash", env=self.benchmark.env, cwd=self.benchmark.cwd)
-        endtime = datetime.now()
-        print(output)
+        starttime = datetime.datetime.now()
+        process = subprocess.run(self.runcommand, shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
+        endtime = datetime.datetime.now()
+        duration = (endtime - starttime).total_seconds()
 
         # Gather data
-        #parsecommand_parts = self.parsestring.split(" ")
-        output = subprocess.run(self.parsestring, capture_output=True, shell=True, cwd=self.benchmark.cwd)
-        print(output)
+        process = subprocess.run(self.parsestring, shell=True, cwd=self.benchmark.cwd)
 
         # Collect data
         # We will go through every possible collection mode and store it only if it contains data
+        cwd_path_component = self.benchmark.cwd or ''
         for filename_suffix, contents_name in files_to_names.items():
-            filename = os.path.join(self.benchmark.cwd, "{filename_prefix}_{filename_suffix}".format(filename_prefix = self.filename, filename_suffix = filename_suffix))
+            filename = os.path.join(cwd_path_component, "{filename_prefix}_{filename_suffix}".format(filename_prefix = self.filename, filename_suffix = filename_suffix))
             sub_data = []
             data_copy = copy.deepcopy(self.data_prototype)
             with open(filename, 'r') as csvfile:
@@ -223,17 +219,16 @@ class NsysTestRun():
 
             if len(sub_data) > 1:
                 data_copy["measurements"].append(contents_name)
+                data_copy["duration"] = duration
                 data_copy[contents_name] = sub_data
 
                 self.data.append(data_copy)
             # Clean up files
             os.remove(filename)
 
-        os.remove("{}.qdrep".format(os.path.join(self.benchmark.cwd, self.filename)))
-        os.remove("{}.sqlite".format(os.path.join(self.benchmark.cwd, self.filename)))
+        os.remove("{}.qdrep".format(os.path.join(cwd_path_component, self.filename)))
+        os.remove("{}.sqlite".format(os.path.join(cwd_path_component, self.filename)))
 
-        duration = endtime - starttime  
-        self.data["duration"] = duration.total_seconds()
 
         return self.data
 

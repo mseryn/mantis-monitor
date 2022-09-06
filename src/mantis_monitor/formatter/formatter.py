@@ -27,7 +27,7 @@ class Formatter():
 
     def __init__(self):
         self.name = ""
-    
+
     def convert(self, data):
         pass
 

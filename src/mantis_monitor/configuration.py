@@ -75,7 +75,6 @@ def generate_default_config():
             'perf': {
                 'pmu_count': 4,
             },
-            'memory': None,
             #'memory': {
             #    'modes': ['high_watermark', 'memory_over_time'],
             #},

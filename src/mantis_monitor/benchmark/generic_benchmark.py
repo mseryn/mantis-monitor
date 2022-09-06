@@ -7,11 +7,11 @@ See LICENSE for details
 """
 
 import logging
-from benchmark.benchmark import Benchmark
+from mantis_monitor.benchmark.benchmark import Benchmark
 
 class GenericBenchmark(Benchmark):
 
-    def __init__(self, arguments): 
+    def __init__(self, arguments):
         # mandatory is a name and a command to run
         if "cmd" not in arguments or "name" not in arguments:
             print("for a generic benchmark, must provide a name and cmd to run")

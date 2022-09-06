@@ -1,7 +1,7 @@
-import benchmark
-import configuration
-import collector
-import formatter
+from mantis_monitor import benchmark
+from mantis_monitor import configuration
+from mantis_monitor import collector
+from mantis_monitor import formatter
 
 import pandas
 #import logging
@@ -32,7 +32,7 @@ def run(argv=sys.argv):
 
     run_benchmarks = []
     for name, arguments in config.contents["benchmarks"].items():
-        run_benchmarks.extend(benchmark.benchmark.Benchmark.get_benchmarks(name, arguments))
+        run_benchmarks.extend(benchmark.benchmark.Benchmark.get_benchmarks(name, arguments) or [])
 
     # TODO should move iterations into collector? What about statistics? Hold off for now.
 
@@ -41,16 +41,10 @@ def run(argv=sys.argv):
 
         each_benchmark.before_all()
 
-        for iteration in range(0, config.iterations):
-            # TODO generalize this once format consistent
+        for iteration in range(config.iterations):
             for mode in config.collector_modes:
-                if "perf" in mode:
-                    this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
-                    this_collector.run_all()
-                    new_data = pandas.DataFrame(this_collector.data)
-                    data = pandas.concat([data, new_data])
-                if "nvidia" in mode:
-                    this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
+                this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
+                if this_collector:
                     this_collector.run_all()
                     new_data = pandas.DataFrame(this_collector.data)
                     data = pandas.concat([data, new_data])
@@ -64,6 +58,11 @@ def run(argv=sys.argv):
             this_formatter = formatter.formatter.Formatter.get_formatter(mode)
             converted_data = this_formatter.convert(data)
             this_formatter.save(filename, converted_data)
+
+def run_with(*classes):
+    for c in classes:
+        benchmark.benchmark.Benchmark.register_benchmark(c.__name__, c)
+    run()
 
 if __name__ == "__main__":
     run()

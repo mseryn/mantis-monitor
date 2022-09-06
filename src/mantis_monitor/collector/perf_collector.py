@@ -14,7 +14,7 @@ import datetime
 
 import pprint
 
-from collector.collector import Collector
+from mantis_monitor.collector.collector import Collector
 
 #logging.basicConfig(filename='testing.log', encoding='utf-8', \
 #    format='%(levelname)s:%(message)s', level=logging.DEBUG)
@@ -23,7 +23,7 @@ class PerfCollector(Collector):
     """
     This is the implementation of the perf data collector
     """
-    
+
     def __init__(self, configuration, iteration, benchmark):
         self.name = "PerfCollector"
         self.description = "Collector for configuring perf metric collection"
@@ -47,11 +47,11 @@ class PerfCollector(Collector):
 
         for i in range(0, num_perf_testruns):
             # NOTE - name is currently just the perf iteration count, make this meaningful later if needed
-            start = i * self.pmu_count 
+            start = i * self.pmu_count
             stop = min(num_perf_counters, ((i+1) * self.pmu_count))
             counters_list = self.counters[start:stop]
             current_filename = self.filename.format(perfrun_count = i)
-            name = "_".join([self.name, str(self.global_ID)]) 
+            name = "_".join([self.name, str(self.global_ID)])
             current_testrun = PerfTestRun(name, counters_list, self.timescale,\
                 self.benchmark, current_filename, self.iteration)
             self.testruns.append(current_testrun)
@@ -89,7 +89,7 @@ class PerfTestRun():
             "timescale":      self.timescale,
             "units":          "count per timescale milliseconds",
             "measurements":   self.counters,
-            "duration":       0, 
+            "duration":       0,
         }
         self.duration = None
         for counter in self.counters:
@@ -100,35 +100,38 @@ class PerfTestRun():
         #logging.info("running following command:")
         #logging.info(self.runcommand)
 
-        runcommand_parts = self.runcommand.split(" ")
+        startime = datetime.datetime.now()
+        process = subprocess.run(self.runcommand, shell=True, cwd=self.benchmark.cwd, env=self.benchmark.env)
+        endtime = datetime.datetime.now()
 
-        startime = datetime.now()
-        output = subprocess.run(runcommand_parts, shell=True, capture_output=True, text=True)
-        endtime = datetime.now()
-
-        if output.returncode != 0:
+        if process.returncode != 0:
             #logging.error("Perf command failed with error:")
             # TODO: multiline log messages are theoretically bad practice
-            #logging.error(output.stderr)
+            #logging.error(process.stderr)
             #logging.error("Check that all configured counters are valid")
             # should we be louder about this?
+            print('Oops, bad data...')
+            #print(process.stderr)
+            # is it really a good idea to just drop this?
             return self.data
 
         # Collect data
-        with open(self.filename, 'r') as csvfile:
+        with open(os.path.join((self.benchmark.cwd or '') + self.filename), 'r') as csvfile:
             for line in csvfile:
                 line = line.strip().split(",")
                 if len(line) > 1 and "#" not in line[0]:
                     time = float(line[0])
                     measurement_name = line[3]
-                    measurement_value = float(line[1])
+                    try:
+                        measurement_value = float(line[1])
+                    except ValueError:
+                        measurement_value = None
                     self.data[measurement_name].append((time, measurement_value))
 
         # Clean up files
         os.remove(self.filename)
 
-        duration = endtime - starttime 
-        self.data["duration"] = duration.total_seconds()
+        self.data["duration"] = (endtime - starttime).total_seconds()
 
         return self.data
 # --- End test run for perf
