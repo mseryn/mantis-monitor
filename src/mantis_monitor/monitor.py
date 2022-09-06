@@ -32,7 +32,7 @@ def run(argv=sys.argv):
 
     run_benchmarks = []
     for name, arguments in config.contents["benchmarks"].items():
-        run_benchmarks.extend(benchmark.benchmark.Benchmark.get_benchmarks(name, arguments))
+        run_benchmarks.extend(benchmark.benchmark.Benchmark.get_benchmarks(name, arguments) or [])
 
     # TODO should move iterations into collector? What about statistics? Hold off for now.
 
@@ -41,26 +41,10 @@ def run(argv=sys.argv):
 
         each_benchmark.before_all()
 
-        for iteration in range(0, config.iterations):
-            # TODO generalize this once format consistent
+        for iteration in range(config.iterations):
             for mode in config.collector_modes:
-                if "perf" in mode:
-                    this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
-                    this_collector.run_all()
-                    new_data = pandas.DataFrame(this_collector.data)
-                    data = pandas.concat([data, new_data])
-                if "nvidia" in mode:
-                    this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
-                    this_collector.run_all()
-                    new_data = pandas.DataFrame(this_collector.data)
-                    data = pandas.concat([data, new_data])
-                if "time_to_completion" in mode:
-                    this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
-                    this_collector.run_all()
-                    new_data = pandas.DataFrame(this_collector.data)
-                    data = pandas.concat([data, new_data])
-                if "utilization" in mode:
-                    this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
+                this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
+                if this_collector:
                     this_collector.run_all()
                     new_data = pandas.DataFrame(this_collector.data)
                     data = pandas.concat([data, new_data])
