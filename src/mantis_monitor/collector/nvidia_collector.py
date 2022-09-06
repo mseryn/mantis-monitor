@@ -150,8 +150,7 @@ class SMIOverTimeTestRun():
         # Clean up files
         os.remove(smi_filename)
 
-        duration = endtime - starttime
-        self.data["duration"] = duration.total_seconds()
+        self.data["duration"] = (endtime - starttime).total_seconds()
 
         return self.data
 
@@ -201,6 +200,7 @@ class NsysTestRun():
         starttime = datetime.datetime.now()
         process = subprocess.run(self.runcommand, shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
         endtime = datetime.datetime.now()
+        duration = (endtime - starttime).total_seconds()
 
         # Gather data
         process = subprocess.run(self.parsestring, shell=True, cwd=self.benchmark.cwd)
@@ -219,6 +219,7 @@ class NsysTestRun():
 
             if len(sub_data) > 1:
                 data_copy["measurements"].append(contents_name)
+                data_copy["duration"] = duration
                 data_copy[contents_name] = sub_data
 
                 self.data.append(data_copy)
@@ -228,8 +229,6 @@ class NsysTestRun():
         os.remove("{}.qdrep".format(os.path.join(cwd_path_component, self.filename)))
         os.remove("{}.sqlite".format(os.path.join(cwd_path_component, self.filename)))
 
-        duration = endtime - starttime
-        self.data["duration"] = duration.total_seconds()
 
         return self.data
 

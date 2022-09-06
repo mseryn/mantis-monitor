@@ -131,8 +131,7 @@ class PerfTestRun():
         # Clean up files
         os.remove(self.filename)
 
-        duration = endtime - starttime
-        self.data["duration"] = duration.total_seconds()
+        self.data["duration"] = (endtime - starttime).total_seconds()
 
         return self.data
 # --- End test run for perf
