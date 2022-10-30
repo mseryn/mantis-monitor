@@ -50,10 +50,11 @@ def run():
                 if this_collector:
                     this_collector.run_all()
                     new_data = pandas.DataFrame(this_collector.data)
-                    data = pandas.concat([data, new_data]).reset_index()
+                    data = pandas.concat([data, new_data])
 
         each_benchmark.after_all()
 
+    data = data.reset_index()
 
     filename = config.test_name
     if config.formatter_modes:

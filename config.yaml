@@ -1,11 +1,11 @@
 benchmarks:
   XSBench:
     types:
-      - cuda
+#      - cuda
       - openmp-threading
   RSBench:
     types:
-      - cuda
+#      - cuda
       - openmp-threading
 
 collection_modes:
