@@ -50,7 +50,7 @@ def run():
                 if this_collector:
                     this_collector.run_all()
                     new_data = pandas.DataFrame(this_collector.data)
-                    data = pandas.concat([data, new_data])
+                    data = pandas.concat([data, new_data]).reset_index()
 
         each_benchmark.after_all()
 
