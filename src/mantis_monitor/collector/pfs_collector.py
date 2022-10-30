@@ -109,7 +109,7 @@ class PFSTimeTestRun():
             # TODO: don't do this
             for i in range(0, cpu_count):
                 column = "cpu_{index}_utilization".format(index = i)
-                parsed_data = [(x, y[i]) for x, y in cpu_vals.items()]
+                parsed_data = [[x, y[i]] for x, y in cpu_vals.items()]
                 self.data[column] = parsed_data
 
         self.data["duration"] = (endtime - starttime).total_seconds()

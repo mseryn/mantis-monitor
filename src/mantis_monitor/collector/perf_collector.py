@@ -100,7 +100,7 @@ class PerfTestRun():
         #logging.info("running following command:")
         #logging.info(self.runcommand)
 
-        startime = datetime.datetime.now()
+        starttime = datetime.datetime.now()
         process = subprocess.run(self.runcommand, shell=True, cwd=self.benchmark.cwd, env=self.benchmark.env)
         endtime = datetime.datetime.now()
 
@@ -126,7 +126,7 @@ class PerfTestRun():
                         measurement_value = float(line[1])
                     except ValueError:
                         measurement_value = None
-                    self.data[measurement_name].append((time, measurement_value))
+                    self.data[measurement_name].append([time, measurement_value])
 
         # Clean up files
         os.remove(self.filename)

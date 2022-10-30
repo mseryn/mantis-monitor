@@ -7,6 +7,7 @@ See LICENSE for details
 """
 
 import pandas
+import csv
 
 from mantis_monitor.formatter.formatter import Formatter
 
@@ -23,6 +24,7 @@ class CSVFormatter(Formatter):
         data.to_csv(filename)
 
     def open(self, filename):
+        # This is where the bug lives for extra ""
         data = pandas.read_csv(filename)
         return data
 

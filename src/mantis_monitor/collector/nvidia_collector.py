@@ -145,7 +145,7 @@ class SMIOverTimeTestRun():
                     gpu_indices.add(gpu_index)
                     for i, measurement in enumerate(self.measurements):
                         key = "gpu_{index}_{measurement}".format(index = gpu_index, measurement = measurement)
-                        self.data.setdefault(key, []).append((time, float(line[i+2].strip())))
+                        self.data.setdefault(key, []).append([time, float(line[i+2].strip())])
 
         # Clean up files
         os.remove(smi_filename)
