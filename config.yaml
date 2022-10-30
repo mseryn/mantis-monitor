@@ -44,4 +44,4 @@ perf_counters:
 iterations: 1
 time_count: 1000
 log: true
-test_name: xsbench_ihmd_28102022
+test_name: xsbench_ahmd_smalltest
