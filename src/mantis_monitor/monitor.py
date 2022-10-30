@@ -104,7 +104,7 @@ async def main():
 
                 for this_collector in collectors:
                     new_data = pandas.DataFrame(this_collector.data)
-                    data = pandas.concat([data, new_data]).reset_index()
+                    data = pandas.concat([data, new_data])
 
         for bench in benchmarks[1]:
             bench.after_all()
