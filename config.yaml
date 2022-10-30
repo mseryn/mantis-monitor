@@ -1,33 +1,26 @@
 benchmarks:
-  GridMini:
-    runner: "GridMini"
-    types:
-      - cuda
-      - openmp-offload
-  RSBench:
-    runner: "RSBench"
-    types:
-      - cuda
-      - openmp-offload
   XSBench:
-    runner: "XSBench"
     types:
       - cuda
-      - openmp-offload
+      - openmp-threading
+  RSBench:
+    types:
+      - cuda
+      - openmp-threading
 
 collection_modes:
   perf:
     pmu_count: 4
-  nvidia:
-    modes:
-      - power_time
-      - utilization_time
-      - memory_basic_time
-      - temperature_time
-      - clocks_time
-      - gpu_trace
-    gen:
-      - sm_80
+#  nvidia:
+#    modes:
+#      - power_time
+#      - utilization_time
+#      - memory_basic_time
+#      - temperature_time
+#      - clocks_time
+#      - gpu_trace
+#    gen:
+#      - sm_80
 #  memory:
 #    modes:
 #      - high_watermark
@@ -38,16 +31,17 @@ collection_modes:
 
 formatter_modes:
 - CSV
+- PandasPickle
 
 perf_counters:
 - instructions
 - L1-dcache-load-misses
 - cache-misses
 - cache-references
-- major-faults
-- minor-faults
+#- major-faults
+#- minor-faults
 
-iterations: 3
+iterations: 1
 time_count: 1000
 log: true
-test_name: all_3i_24June2022
+test_name: xsbench_ihmd_28102022

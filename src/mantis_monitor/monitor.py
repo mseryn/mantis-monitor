@@ -8,21 +8,26 @@ import pandas
 import argparse
 import pprint
 import sys
-#import testrun
 
-
-#logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
-
-def run(argv=sys.argv):
+def run():
     """
     Main run script for Mantis Monitor
     """
-    config_location = None
-    if len(argv) > 1:
-        config_location = argv[1]
-    else:
-        #logging.warning("No config file provided; running with no-op test benchmark")
-        print("MUST PROVIDE CONFIG FILE AT RUNTIME or default is used")
+    parser = argparse.ArgumentParser(
+                        prog = 'Mantis-Monitor',
+                        description = 'Monitoring suite for program performance profiling',
+                        epilog = 'Please contact melanie.e.cornelius@gmail.com for additional information.')
+
+    parser.add_argument("config", type=str,
+                        help="Location of configuration file")
+    parser.add_argument("--log", type=bool, default=False, 
+                        help="print logs to file, defaults to false")
+    parser.add_argument("--v", action="store_true",
+                        help="print verbose information to std out")
+
+    args = parser.parse_args()
+
+    config_location = args.config
     config = configuration.Configuration(location=config_location)
     config.print_all()
 
@@ -33,8 +38,6 @@ def run(argv=sys.argv):
     run_benchmarks = []
     for name, arguments in config.contents["benchmarks"].items():
         run_benchmarks.extend(benchmark.benchmark.Benchmark.get_benchmarks(name, arguments) or [])
-
-    # TODO should move iterations into collector? What about statistics? Hold off for now.
 
     run_collectors = []
     for each_benchmark in run_benchmarks:
@@ -57,12 +60,17 @@ def run(argv=sys.argv):
         for mode in config.formatter_modes:
             this_formatter = formatter.formatter.Formatter.get_formatter(mode)
             converted_data = this_formatter.convert(data)
+            print(type(converted_data))
+            print(converted_data)
             this_formatter.save(filename, converted_data)
 
 def run_with(*classes):
+    """
+        Hannah, what is this?
+    """
     for c in classes:
         benchmark.benchmark.Benchmark.register_benchmark(c.__name__, c)
     run()
 
 if __name__ == "__main__":
-    run()
+    run(args)
