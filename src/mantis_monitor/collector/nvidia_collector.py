@@ -165,8 +165,8 @@ class NsysTestRun():
         self.benchmark = benchmark
         self.filename = filename
         self.iteration = iteration
-        self.runstring = "nsys profile --gpu-metrics-device=all -o {filename} {runcommand}"
-        self.parsestring = "nsys stats --format csv {filename}.qdrep -o {filename}".format(filename = self.filename)
+        self.runstring = "nsys profile --force-overwrite=true --gpu-metrics-device=all -o {filename} {runcommand}"
+        self.parsestring = "nsys stats --format csv {filename}.{{suffix}} -o {filename}".format(filename = self.filename)
 
         self.bench_runcommand = self.benchmark.get_run_command()
         self.runcommand = self.runstring.format(filename = self.filename, runcommand = self.bench_runcommand)
@@ -184,6 +184,7 @@ class NsysTestRun():
     def run(self):
         files_to_names = {"cudaapisum.csv" : "cuda_api_summary", \
                                "dx12gpumarkersum.csv": "dx12_gpu_marker_summary", \
+                               "dx11pixsum.csv": "dx11pixsum", \
                                "gpukernsum.csv": "gpu_kernel_summary", \
                                "gpumemsizesum.csv": "gpu_mem_size_summary", \
                                "gpumemtimesum.csv": "gpu_mem_time_summary", \
@@ -203,6 +204,12 @@ class NsysTestRun():
         duration = (endtime - starttime).total_seconds()
 
         # Gather data
+        parsestring_suffix = "placeholder-should-change"
+        if os.path.isfile(".".join([self.filename, "qdrep"])):
+            parsestring_suffix = "qdrep"
+        elif os.path.isfile(".".join([self.filename, "nsys-rep"])):
+            parsestring_suffix = "nsys-rep"
+        self.parsestring = self.parsestring.format(suffix = parsestring_suffix)
         process = subprocess.run(self.parsestring, shell=True, cwd=self.benchmark.cwd)
 
         # Collect data
@@ -212,10 +219,13 @@ class NsysTestRun():
             filename = os.path.join(cwd_path_component, "{filename_prefix}_{filename_suffix}".format(filename_prefix = self.filename, filename_suffix = filename_suffix))
             sub_data = []
             data_copy = copy.deepcopy(self.data_prototype)
-            with open(filename, 'r') as csvfile:
-                reader = csv.DictReader(csvfile)
-                for row in reader:
-                    sub_data.append(row)
+            if os.path.isfile(filename):
+                with open(filename, 'r') as csvfile:
+                    reader = csv.DictReader(csvfile)
+                    for row in reader:
+                        sub_data.append(row)
+                # Clean up files
+                os.remove(filename)
 
             if len(sub_data) > 1:
                 data_copy["measurements"].append(contents_name)
@@ -223,10 +233,8 @@ class NsysTestRun():
                 data_copy[contents_name] = sub_data
 
                 self.data.append(data_copy)
-            # Clean up files
-            os.remove(filename)
 
-        os.remove("{}.qdrep".format(os.path.join(cwd_path_component, self.filename)))
+#        os.remove("{}.qdrep".format(os.path.join(cwd_path_component, self.filename)))
         os.remove("{}.sqlite".format(os.path.join(cwd_path_component, self.filename)))
 
 
