@@ -1,15 +1,72 @@
 benchmarks:
-  XSBench:
-    types:
-      - cuda
+#  XSBench:
+#    types:
+#      - cuda
 #      - openmp-threading
 #  RSBench:
 #    types:
 #      - cuda
 #      - openmp-threading
   generic_benchmark:
-    name: xsbench-manual
+    name: xsbench-cuda
     cmd: "~/XSBench/cuda/XSBench -m event"
+  generic_benchmark:
+    name: xsbench-ompthreading
+    cmd: "~/XSBench/openmp-threading/XSBench -m event"
+  generic_benchmark:
+    name: rsbench-cuda
+    cmd: "~/RSBench/cuda/rsbench -m event"
+  generic_benchmark:
+    name: rsbench-ompthreading
+    cmd: "~/RSBench/openmp-threading/rsbench -m event"
+  generic_benchmark:
+    name: minigan-cuda
+    cmd: "../minigan_torch_env/bin/python3 minigan_driver.py"
+    cwd: "/home/mseryn/miniGAN/pytorch"
+  generic_benchmark:
+    name: minigan-no-cuda
+    cmd: "../minigan_torch_env/bin/python3 minigan_driver.py --no-cuda"
+    cwd: "/home/mseryn/miniGAN/pytorch"
+  generic_benchmark:
+    name: npb-is-c-mpi
+    cmd: "./bin/is.C.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
+  generic_benchmark:
+    name: npb-is-c-ompt
+    cmd: "./bin/is.C.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
+  generic_benchmark:
+    name: npb-cg-b-mpi
+    cmd: "./bin/cg.B.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
+  generic_benchmark:
+    name: npb-cg-b-ompt
+    cmd: "./bin/cg.B.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
+  generic_benchmark:
+    name: npb-ep-b-mpi
+    cmd: "./bin/ep.B.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
+  generic_benchmark:
+    name: npb-ep-b-ompt
+    cmd: "./bin/ep.B.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
+  generic_benchmark:
+    name: npb-ft-b-mpi
+    cmd: "./bin/ft.B.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
+  generic_benchmark:
+    name: npb-ft-b-ompt
+    cmd: "./bin/ft.B.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
+  generic_benchmark:
+    name: npb-mg-c-mpi
+    cmd: "./bin/mg.C.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
+  generic_benchmark:
+    name: npb-mg-c-ompt
+    cmd: "./bin/mg.C.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
 
 collection_modes:
   perf:

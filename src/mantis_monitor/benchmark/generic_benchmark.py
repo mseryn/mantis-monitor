@@ -17,6 +17,8 @@ class GenericBenchmark(Benchmark):
             print("for a generic benchmark, must provide a name and cmd to run")
         self.run = arguments["cmd"]
         self.name = arguments["name"]
+        if "cwd" in arguments:
+            self.cwd = arguments["cwd"]
 
     def get_run_command(self):
         return self.run

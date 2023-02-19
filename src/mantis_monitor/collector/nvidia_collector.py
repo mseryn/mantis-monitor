@@ -163,7 +163,7 @@ class NsysTestRun():
         self.name = name
         self.timescale = timescale
         self.benchmark = benchmark
-        self.filename = filename
+        self.filename = os.path.join(os.getcwd(), filename)
         self.iteration = iteration
         self.runstring = "nsys profile --force-overwrite=true --gpu-metrics-device=all -o {filename} {runcommand}"
         self.parsestring = "nsys stats --format csv {filename}.{{suffix}} -o {filename}".format(filename = self.filename)
@@ -179,6 +179,7 @@ class NsysTestRun():
             "units":          "summary statistics",
             "measurements":   [],
         }
+
 
 
     def run(self):

@@ -116,7 +116,8 @@ class PerfTestRun():
             return self.data
 
         # Collect data
-        with open(os.path.join((self.benchmark.cwd or '') + self.filename), 'r') as csvfile:
+        with open(os.path.join((self.benchmark.cwd or ''), self.filename), 'r') as csvfile:
+        #with open(self.filename, 'r') as csvfile:
             for line in csvfile:
                 line = line.strip().split(",")
                 if len(line) > 1 and "#" not in line[0]:
@@ -129,7 +130,8 @@ class PerfTestRun():
                     self.data[measurement_name].append([time, measurement_value])
 
         # Clean up files
-        os.remove(self.filename)
+        #os.remove(self.filename)
+        os.remove(os.path.join((self.benchmark.cwd or ''), self.filename))
 
         self.data["duration"] = (endtime - starttime).total_seconds()
 
