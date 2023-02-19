@@ -9,6 +9,7 @@ See LICENSE for details
 #import logging
 import math
 import subprocess
+import asyncio
 import os
 import os.path
 import csv
@@ -28,10 +29,11 @@ class NvidiaCollector(Collector):
     This is the implementation of the nvidia tool data collector
     """
 
-    def __init__(self, configuration, iteration, benchmark):
+    def __init__(self, configuration, iteration, benchmark, benchmark_set):
         self.name = "NvidiaCollector"
         self.description = "Collector for configuring nvidia profiling metric collection"
         self.benchmark = benchmark
+        self.benchmark_set = benchmark_set
         self.iteration = iteration
 
         self.modes = configuration.collector_modes["nvidia"]["modes"]
@@ -39,8 +41,8 @@ class NvidiaCollector(Collector):
 
         self.timescale = configuration.timescale # note this needs to be ms, same as configuration file
         self.testruns = []
-        self.filename = "{testname}-iteration_{iter_count}-benchmark_{benchstring}-nvidia_{{nvidia_identifier}}".format(testname = configuration.test_name, \
-            iter_count = iteration, benchstring = benchmark.name)
+        self.filename = "{testname}-iteration_{iter_count}-benchmark_{benchstring}-set_{benchsetstring}-nvidia_{{nvidia_identifier}}".format(testname = configuration.test_name, \
+            iter_count = iteration, benchstring = benchmark.name, benchsetstring = self.benchmark_set)
         self.data = []
         self.global_ID = 0
 
@@ -51,26 +53,26 @@ class NvidiaCollector(Collector):
         if "power_time" in self.modes:
             current_filename = self.filename.format(nvidia_identifier = "power_time")
             self.testruns.append(SMIOverTimeTestRun("NvidiaPowerTime", self.benchmark, current_filename, self.iteration, self.timescale, \
-                ["power.draw"], "time, W"))
+                ["power.draw"], "time, W", self.benchmark_set))
         if "utilization_time" in self.modes:
             current_filename = self.filename.format(nvidia_identifier = "utilization_time")
             self.testruns.append(SMIOverTimeTestRun("NvidiaUtilizationTime", self.benchmark, current_filename, self.iteration, self.timescale, \
-                ["utilization.gpu","utilization.memory"], "time, pct"))
+                ["utilization.gpu","utilization.memory"], "time, pct", self.benchmark_set))
         if "memory_basic_time" in self.modes:
             current_filename = self.filename.format(nvidia_identifier = "memory_basic_time")
             self.testruns.append(SMIOverTimeTestRun("NvidiaMemoryBasicTime", self.benchmark, current_filename, self.iteration, self.timescale, \
-                ["memory.total", "memory.used", "memory.free"], "time, GB"))
+                ["memory.total", "memory.used", "memory.free"], "time, GB", self.benchmark_set))
         if "temperature_time" in self.modes:
             current_filename = self.filename.format(nvidia_identifier = "temperature_time")
             self.testruns.append(SMIOverTimeTestRun("NvidiaTemperatureTime", self.benchmark, current_filename, self.iteration, self.timescale, \
-                ["temperature.gpu","temperature.memory"], "time, C"))
+                ["temperature.gpu","temperature.memory"], "time, C", self.benchmark_set))
         if "clocks_time" in self.modes:
             current_filename = self.filename.format(nvidia_identifier = "clocks_time")
             self.testruns.append(SMIOverTimeTestRun("NvidiaClocksTime", self.benchmark, current_filename, self.iteration, self.timescale, \
-                ["clocks.current.graphics","clocks.current.sm", "clocks.current.memory", "clocks.current.video"], "time, clocks"))
+                ["clocks.current.graphics","clocks.current.sm", "clocks.current.memory", "clocks.current.video"], "time, clocks", self.benchmark_set))
         if "gpu_trace" in self.modes:
             current_filename = self.filename.format(nvidia_identifier = "gpu_trace")
-            self.testruns.append(NsysTestRun("NvidiaGPUTrace", self.timescale, self.benchmark, current_filename, self.iteration))
+            self.testruns.append(NsysTestRun("NvidiaGPUTrace", self.timescale, self.benchmark, current_filename, self.iteration, self.benchmark_set))
 
         # add more here as more modes supported
         """
@@ -81,23 +83,25 @@ class NvidiaCollector(Collector):
          17       - clocks_time
         """
 
-    def run_all(self):
+    async def run_all(self):
         for this_testrun in self.testruns:
             this_testrun.benchmark.before_each()
-            data = this_testrun.run()
+            data = await this_testrun.run()
             this_testrun.benchmark.after_each()
             if isinstance(data, list):
                 self.data.extend(data)
             else:
                 self.data.append(data)
+            yield
 
 class SMIOverTimeTestRun():
     """
     This is the generic SMI implementation to collect measurements over time
     """
-    def __init__(self, name, benchmark, filename, iteration, timescale, measurements, units):
+    def __init__(self, name, benchmark, filename, iteration, timescale, measurements, units, benchmark_set):
         self.name = name
         self.benchmark = benchmark
+        self.benchmark_set = benchmark_set
         self.filename = filename
         self.iteration = iteration
         self.timescale = timescale
@@ -109,6 +113,7 @@ class SMIOverTimeTestRun():
         self.smi_runcommand = self.smi_runstring.format(filename = self.filename, measure = measurements_string)
         self.bench_runcommand = self.benchmark.get_run_command()
         self.data = {   "benchmark_name":   self.benchmark.name, \
+                        "benchmark_set":    self.benchmark_set, \
                         "collector_name":   self.name, \
                         "iteration":        self.iteration, \
                         "timescale":        self.timescale, \
@@ -116,7 +121,8 @@ class SMIOverTimeTestRun():
                         "measurements":     self.measurements, \
                         }
 
-    def run(self):
+    # TODO (zcornelius): Fix SMI to use as a process wrapper here, instead of system-wide
+    async def run(self):
         # Run it
 
         # Start SMI
@@ -127,7 +133,10 @@ class SMIOverTimeTestRun():
         # Run benchmark
         print('Running command ' + self.bench_runcommand)
         starttime = datetime.datetime.now()
-        process = subprocess.run(self.bench_runcommand, shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
+        process = await asyncio.create_subprocess_shell(self.bench_runcommand, cwd=self.benchmark.cwd, env=self.benchmark.env)
+        await process.wait()
+        # Old subprocess mechanism
+        # process = subprocess.run(self.bench_runcommand, shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
         endtime = datetime.datetime.now()
 
         # Kill SMI
@@ -159,20 +168,22 @@ class NsysTestRun():
     """
     This is the implementation of the nsys gpu trace testrun
     """
-    def __init__(self, name, timescale, benchmark, filename, iteration):
+    def __init__(self, name, timescale, benchmark, filename, iteration, benchmark_set):
         self.name = name
         self.timescale = timescale
         self.benchmark = benchmark
+        self.benchmark_set = benchmark_set
         self.filename = os.path.join(os.getcwd(), filename)
         self.iteration = iteration
         self.runstring = "nsys profile --force-overwrite=true --gpu-metrics-device=all -o {filename} {runcommand}"
-        self.parsestring = "nsys stats --format csv {filename}.{{suffix}} -o {filename}".format(filename = self.filename)
+        self.parsestring = "nsys stats --force-overwrite=true --format csv {filename}.{{suffix}} -o {filename}".format(filename = self.filename)
 
         self.bench_runcommand = self.benchmark.get_run_command()
         self.runcommand = self.runstring.format(filename = self.filename, runcommand = self.bench_runcommand)
         self.data = []
         self.data_prototype = {
             "benchmark_name": self.benchmark.name,
+            "benchmark_set":  self.benchmark_set,
             "collector_name": self.name,
             "iteration":      self.iteration,
             "timescale":      self.timescale,
@@ -182,7 +193,7 @@ class NsysTestRun():
 
 
 
-    def run(self):
+    async def run(self):
         files_to_names = {"cudaapisum.csv" : "cuda_api_summary", \
                                "dx12gpumarkersum.csv": "dx12_gpu_marker_summary", \
                                "dx11pixsum.csv": "dx11pixsum", \
@@ -200,7 +211,9 @@ class NsysTestRun():
                                }
         # Run it
         starttime = datetime.datetime.now()
-        process = subprocess.run(self.runcommand, shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
+        process = await asyncio.create_subprocess_shell(self.runcommand, cwd=self.benchmark.cwd, env=self.benchmark.env)
+        await process.wait()
+        # process = subprocess.run(self.runcommand, shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
         endtime = datetime.datetime.now()
         duration = (endtime - starttime).total_seconds()
 

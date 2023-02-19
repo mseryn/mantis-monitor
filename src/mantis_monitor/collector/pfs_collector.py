@@ -24,15 +24,21 @@ from mantis_monitor.collector.collector import Collector
 #logging.basicConfig(filename='testing.log', encoding='utf-8', \
 #    format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
+async def is_running(proc):
+    with contextlib.suppress(asyncio.TimeoutError):
+        await asyncio.wait_for(proc.wait(), 1e-6)
+    return proc.returncode is None
+
 class PFSCollector(Collector):
     """
     This is the implementation of the proc filesystem data collector
     """
 
-    def __init__(self, configuration, iteration, benchmark):
+    def __init__(self, configuration, iteration, benchmark, benchmark_set):
         self.name = "PFSCollector"
         self.description = "Collector for configuring proc filesystem metric collection"
         self.benchmark = benchmark
+        self.benchmark_set = benchmark_set
         self.iteration = iteration
 
         self.measurements = configuration.collector_modes["utilization"]
@@ -44,26 +50,30 @@ class PFSCollector(Collector):
                 }
 
         self.timescale = configuration.timescale # note this needs to be ms, same as configuration file
-        self.filename = "{testname}-iteration_{iter_count}-benchmark_{benchstring}-utilization".format(testname = configuration.test_name, \
-            iter_count = iteration, benchstring = benchmark.name)
+        self.filename = "{testname}-iteration_{iter_count}-benchmark_{benchstring}-set_{benchsetstring}-utilization".format(testname = configuration.test_name, \
+            iter_count = iteration, benchstring = benchmark.name, benchsetstring = self.benchmark_set)
         self.data = []
 
 
-    def run_all(self):
+    async def run_all(self):
         self.benchmark.before_each()
 
-        self.data.append(PFSTimeTestRun("Utilization", self.benchmark, self.filename, self.iteration, self.timescale, \
-            self.measurements, "unknown").run())
+        data = await (PFSTimeTestRun("Utilization", self.benchmark, self.filename, self.iteration, self.timescale, \
+            self.measurements, "unknown", self.benchmark_set).run())
+
+        self.data.append(data)
 
         self.benchmark.after_each()
+        yield
 
 class PFSTimeTestRun():
     """
     This is the generic Proc FS testrun to collect utilization measurements over time
     """
-    def __init__(self, name, benchmark, filename, iteration, timescale, measurements, units):
+    def __init__(self, name, benchmark, filename, iteration, timescale, measurements, units, benchmark_set):
         self.name = name
         self.benchmark = benchmark
+        self.benchmark_set = benchmark_set
         self.filename = filename
         self.iteration = iteration
         self.timescale = timescale
@@ -72,6 +82,7 @@ class PFSTimeTestRun():
 
         measurements_string = ",".join(self.measurements)
         self.data = {   "benchmark_name":   self.benchmark.name, \
+                        "benchmark_set":    self.benchmark_set, \
                         "collector_name":   self.name, \
                         "iteration":        self.iteration, \
                         "timescale":        self.timescale, \
@@ -79,7 +90,7 @@ class PFSTimeTestRun():
                         "measurements":     self.measurements, \
                         }
 
-    def run(self):
+    async def run(self):
         # Run it
 
         cpu_count = psutil.cpu_count()
@@ -89,10 +100,11 @@ class PFSTimeTestRun():
         # Run benchmark
         starttime = datetime.datetime.now()
 
-        process = subprocess.Popen(self.benchmark.get_run_command(), shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
+        process = await asyncio.create_subprocess_shell(self.benchmark.get_run_command(), cwd=self.benchmark.cwd, env=self.benchmark.env)
+        # process = subprocess.Popen(self.benchmark.get_run_command(), shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
 
-        # TODO: probably don't spin-loop here!
-        while (process.poll() is None):
+        while (await is_running(process)):
+            await asyncio.sleep(0.5)
             time = datetime.datetime.now()
             cpu_val = psutil.cpu_percent(interval=None, percpu=True)
             cpu_vals[time] = cpu_val

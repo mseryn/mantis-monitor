@@ -39,6 +39,10 @@ class Configuration:
     def set_all_contents(self):
         self.collector_modes = self.contents["collection_modes"]
         self.benchmarks = self.contents["benchmarks"]
+        if "benchmark_matrix" in self.contents:
+            self.benchmark_matrix = self.contents["benchmark_matrix"]
+        else:
+            self.benchmark_matrix = None
         self.formatter_modes = self.contents["formatter_modes"]
 
         self.log = self.contents["log"]

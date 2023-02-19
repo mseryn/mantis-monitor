@@ -8,8 +8,10 @@ import pandas
 import argparse
 import pprint
 import sys
+import collections.abc
+import asyncio
 
-def run():
+async def main():
     """
     Main run script for Mantis Monitor
     """
@@ -36,23 +38,65 @@ def run():
     data = pandas.DataFrame(columns = dataframe_columns)
 
     run_benchmarks = []
-    for name, arguments in config.contents["benchmarks"].items():
-        run_benchmarks.extend(benchmark.benchmark.Benchmark.get_benchmarks(name, arguments) or [])
+    
+    # Process benchmark matrix configuration
+    if isinstance(config.benchmark_matrix, collections.abc.Sequence):
+        bench_sets = []
+        for benchmark_set in config.benchmark_matrix:
+            benchmarks = []
+            for bench in benchmark_set:
+                bench_datas = [ b for b in config.contents["benchmarks"] if b["name"] == bench ]
+                if len(bench_datas) != 1:
+                    raise Exception("Could not match benchmark name " + bench + " to a single configured benchmark")
+                bench_data = bench_datas[0]
+                if "type" not in bench_data:
+                    bench_data["type"] = "generic_benchmark"
+                benchmarks.extend(benchmark.benchmark.Benchmark.get_benchmarks(bench_data["type"], bench_data))
+            bench_sets.append((':'.join(benchmark_set),benchmarks))
+        run_benchmarks = bench_sets
+    else:
+        for bench in config.contents["benchmarks"]:
+            if "type" not in bench:
+                bench["type"] = "generic_benchmark"
+            print("Adding benchmark ", bench["type"], bench["name"])
+            run_benchmarks.extend(benchmark.benchmark.Benchmark.get_benchmarks(bench["type"], bench) or [])
 
     run_collectors = []
     for each_benchmark in run_benchmarks:
+        benchmarks = each_benchmark
+        if type(benchmarks) is not tuple:
+            benchmarks = ('solo', [benchmarks])
 
-        each_benchmark.before_all()
+        for bench in benchmarks[1]:
+            bench.before_all()
 
         for iteration in range(config.iterations):
             for mode in config.collector_modes:
-                this_collector = collector.collector.Collector.get_collector(mode, config, iteration, each_benchmark)
-                if this_collector:
-                    this_collector.run_all()
+                generators = []
+                collectors = []
+                for bench in benchmarks[1]:
+                    this_collector = collector.collector.Collector.get_collector(mode, config, iteration, bench, benchmarks[0])
+                    if this_collector:
+                        collectors.append(this_collector)
+                        generators.append(this_collector.run_all())
+                running_collectors = True
+                while running_collectors:
+                    testruns = list(map(lambda x: x.asend(None), generators))
+                    print("Running testruns:", testruns)
+                    results = await asyncio.gather(*testruns, return_exceptions=True)
+                    print("Results:", results)
+                    running_collectors = False
+                    for result in results:
+                        if not isinstance(result, StopAsyncIteration):
+                            running_collectors = True
+                    
+
+                for this_collector in collectors:
                     new_data = pandas.DataFrame(this_collector.data)
                     data = pandas.concat([data, new_data])
 
-        each_benchmark.after_all()
+        for bench in benchmarks[1]:
+            bench.after_all()
 
     data = data.reset_index()
 
@@ -65,6 +109,9 @@ def run():
             print(converted_data)
             this_formatter.save(filename, converted_data)
 
+def run():
+    asyncio.run(main())
+
 def run_with(*classes):
     """
         Hannah, what is this?
@@ -74,4 +121,4 @@ def run_with(*classes):
     run()
 
 if __name__ == "__main__":
-    run(args)
+    run()

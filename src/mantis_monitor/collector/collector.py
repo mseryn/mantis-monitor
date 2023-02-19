@@ -39,18 +39,19 @@ class Collector():
         Collector.implementations[name] = collector_class
 
     @staticmethod
-    def get_collector(name, configuration, iteration, benchmark):
+    def get_collector(name, configuration, iteration, benchmark, benchmark_set):
         if name not in Collector.implementations:
             logging.error("A collector named {} was requested, but no collector by that name exists (is the configuration correct?)".format(name))
             return None
-        return Collector.implementations[name](configuration, iteration, benchmark)
+        return Collector.implementations[name](configuration, iteration, benchmark, benchmark_set)
 
 
 
-    def __init__(self, configuration, iteration, benchmark):
+    def __init__(self, configuration, iteration, benchmark, benchmark_set = "solo"):
         self.name = ""
         self.description = ""
         self.benchmark = benchmark
+        self.benchmark_set = benchmark_set
         self.iteration = iteration
         self.configuration = configuration
         self.testruns = []
@@ -60,6 +61,6 @@ class Collector():
     def setup(self):
         pass
 
-    def run_all(self):
-        pass
+    async def run_all(self):
+        yield None
 

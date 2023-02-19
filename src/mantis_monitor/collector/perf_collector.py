@@ -9,6 +9,7 @@ See LICENSE for details
 #import logging
 import math
 import subprocess
+import asyncio
 import os
 import datetime
 
@@ -24,17 +25,18 @@ class PerfCollector(Collector):
     This is the implementation of the perf data collector
     """
 
-    def __init__(self, configuration, iteration, benchmark):
+    def __init__(self, configuration, iteration, benchmark, benchmark_set):
         self.name = "PerfCollector"
         self.description = "Collector for configuring perf metric collection"
         self.benchmark = benchmark
+        self.benchmark_set = benchmark_set
         self.iteration = iteration
         self.counters = configuration.perf_counters
         self.pmu_count = configuration.collector_modes["perf"]["pmu_count"]
         self.timescale = configuration.timescale # note this needs to be ms, same as configuration file
         self.testruns = []
-        self.filename = "{testname}-iteration_{iter_count}-benchmark_{benchstring}-perfrun_{{perfrun_count}}".format(testname = configuration.test_name, \
-            iter_count = iteration, benchstring = benchmark.name)
+        self.filename = "{testname}-iteration_{iter_count}-benchmark_{benchstring}-set_{benchsetstring}-perfrun_{{perfrun_count}}".format(testname = configuration.test_name, \
+            iter_count = iteration, benchstring = benchmark.name, benchsetstring = self.benchmark_set)
         self.data = []
         self.global_ID = 0
 
@@ -53,17 +55,18 @@ class PerfCollector(Collector):
             current_filename = self.filename.format(perfrun_count = i)
             name = "_".join([self.name, str(self.global_ID)])
             current_testrun = PerfTestRun(name, counters_list, self.timescale,\
-                self.benchmark, current_filename, self.iteration)
+                self.benchmark, current_filename, self.iteration, self.benchmark_set)
             self.testruns.append(current_testrun)
 
             self.global_ID = self.global_ID + 1
 
-    def run_all(self):
+    async def run_all(self):
         for this_testrun in self.testruns:
             this_testrun.benchmark.before_each()
-            data = this_testrun.run()
+            data = await this_testrun.run()
             this_testrun.benchmark.after_each()
             self.data.append(data)
+            yield
 
 
 # --- Begin test run for perf
@@ -71,11 +74,12 @@ class PerfTestRun():
     """
     This is the implementation of the perf data testrun
     """
-    def __init__(self, name, counters, timescale, benchmark, filename, iteration):
+    def __init__(self, name, counters, timescale, benchmark, filename, iteration, benchmark_set):
         self.name = name
         self.counters = counters
         self.timescale = timescale
         self.benchmark = benchmark
+        self.benchmark_set = benchmark_set
         self.filename = filename
         self.iteration = iteration
         self.runstring = "perf stat -x , -a -e {} -I {} -o {} {}"
@@ -84,6 +88,7 @@ class PerfTestRun():
             self.benchmark.get_run_command())
         self.data = {
             "benchmark_name": self.benchmark.name,
+            "benchmark_set":  self.benchmark_set,
             "collector_name": self.name,
             "iteration":      self.iteration,
             "timescale":      self.timescale,
@@ -95,13 +100,15 @@ class PerfTestRun():
         for counter in self.counters:
             self.data[counter] = []
 
-    def run(self):
+    async def run(self):
         # Run it
         #logging.info("running following command:")
         #logging.info(self.runcommand)
 
         starttime = datetime.datetime.now()
-        process = subprocess.run(self.runcommand, shell=True, cwd=self.benchmark.cwd, env=self.benchmark.env)
+        process = await asyncio.create_subprocess_shell(self.runcommand, cwd=self.benchmark.cwd, env=self.benchmark.env)
+        await process.wait()
+        # process = subprocess.run(self.runcommand, shell=True, cwd=self.benchmark.cwd, env=self.benchmark.env)
         endtime = datetime.datetime.now()
 
         if process.returncode != 0:

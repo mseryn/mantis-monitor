@@ -1,3 +1,7 @@
+benchmark_matrix:
+    -
+        - npb-is-c-mpi
+        - npb-cg-b-mpi
 benchmarks:
 #  XSBench:
 #    types:
@@ -7,64 +11,48 @@ benchmarks:
 #    types:
 #      - cuda
 #      - openmp-threading
-  generic_benchmark:
-    name: xsbench-cuda
+  - name: xsbench-cuda
     cmd: "~/XSBench/cuda/XSBench -m event"
-  generic_benchmark:
-    name: xsbench-ompthreading
+  - name: xsbench-ompthreading
     cmd: "~/XSBench/openmp-threading/XSBench -m event"
-  generic_benchmark:
-    name: rsbench-cuda
+  - name: rsbench-cuda
     cmd: "~/RSBench/cuda/rsbench -m event"
-  generic_benchmark:
-    name: rsbench-ompthreading
+  - name: rsbench-ompthreading
     cmd: "~/RSBench/openmp-threading/rsbench -m event"
-  generic_benchmark:
-    name: minigan-cuda
+  - name: minigan-cuda
     cmd: "../minigan_torch_env/bin/python3 minigan_driver.py"
     cwd: "/home/mseryn/miniGAN/pytorch"
-  generic_benchmark:
-    name: minigan-no-cuda
+  - name: minigan-no-cuda
     cmd: "../minigan_torch_env/bin/python3 minigan_driver.py --no-cuda"
     cwd: "/home/mseryn/miniGAN/pytorch"
-  generic_benchmark:
-    name: npb-is-c-mpi
+  - name: npb-is-c-mpi
     cmd: "./bin/is.C.x"
     cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
-  generic_benchmark:
-    name: npb-is-c-ompt
+  - name: npb-is-c-ompt
     cmd: "./bin/is.C.x"
     cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
-  generic_benchmark:
-    name: npb-cg-b-mpi
+  - name: npb-cg-b-mpi
     cmd: "./bin/cg.B.x"
     cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
-  generic_benchmark:
-    name: npb-cg-b-ompt
+  - name: npb-cg-b-ompt
     cmd: "./bin/cg.B.x"
     cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
-  generic_benchmark:
-    name: npb-ep-b-mpi
+  - name: npb-ep-b-mpi
     cmd: "./bin/ep.B.x"
     cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
-  generic_benchmark:
-    name: npb-ep-b-ompt
+  - name: npb-ep-b-ompt
     cmd: "./bin/ep.B.x"
     cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
-  generic_benchmark:
-    name: npb-ft-b-mpi
+  - name: npb-ft-b-mpi
     cmd: "./bin/ft.B.x"
     cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
-  generic_benchmark:
-    name: npb-ft-b-ompt
+  - name: npb-ft-b-ompt
     cmd: "./bin/ft.B.x"
     cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
-  generic_benchmark:
-    name: npb-mg-c-mpi
+  - name: npb-mg-c-mpi
     cmd: "./bin/mg.C.x"
     cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
-  generic_benchmark:
-    name: npb-mg-c-ompt
+  - name: npb-mg-c-ompt
     cmd: "./bin/mg.C.x"
     cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
 
@@ -81,9 +69,9 @@ collection_modes:
       - gpu_trace
     gen:
       - sm_60
-  memory:
-    modes:
-      - high_watermark
+#  memory:
+#    modes:
+#      - high_watermark
 #      - memory_over_time
 #      - api_trace
 #      - gpu_trace
