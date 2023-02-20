@@ -57,25 +57,20 @@ benchmarks:
     cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
 
 collection_modes:
-  perf:
-    pmu_count: 4
-  nvidia:
-    modes:
+#  perf:
+#    pmu_count: 4
+#  nvidia:
+#    modes:
 #      - power_time
 #      - utilization_time
 #      - memory_basic_time
 #      - temperature_time
 #      - clocks_time
-      - gpu_trace
-    gen:
-      - sm_60
-#  memory:
-#    modes:
-#      - high_watermark
-#      - memory_over_time
-#      - api_trace
 #      - gpu_trace
-#      - power_over_time
+#    gen:
+#      - sm_60
+  utilization:
+    - ''
 
 formatter_modes:
 - CSV
