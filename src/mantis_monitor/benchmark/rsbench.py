@@ -10,33 +10,28 @@ You should have received a copy of the GNU General Public License along with Man
 
 #import logging
 from mantis_monitor.benchmark.benchmark import Benchmark
-import subprocess
+import mantis_monitor
 
 #logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
-class TestBench(Benchmark):
+class RSBench(Benchmark):
     @classmethod
     def generate_benchmarks(cls, arguments):
-        return [cls({"time": time}) for time in arguments["waittimes"]]
-
-    def before_each(self):
-        print("echo running this before each test bench run")
-        print("running test bench with time {time} sec".format(time = self.time))
-
-    def after_each(self):
-        print("echo running this after each test bench run")
-
-    def before_all(self):
-        print("echo running this before each test bench configuration")
-
-    def after_all(self):
-        print("echo running this after each test bench configuration")
+        return [cls({"type": typestr}) for typestr in arguments["types"]]
 
     def get_run_command(self):
-        return "sleep {time}".format(time = self.time)
+        return "/home/mseryn/RSBench/{location}/rsbench -m event".format(location = self.location)
+#        return "sleep {time}".format(time = self.time)
 
     def __init__(self, arguments):
-        self.time = arguments["time"]
-        self.name = "TestBench_time{time}s".format(time = self.time)
+        self.typestr = arguments["type"]
+        #self.time = arguments["time"]
+        #self.name = "TestBench_time{time}s".format(time = self.time)
+        self.name = "RSBench_{typestr}".format(typestr = self.typestr)
+        locations = {"cuda": "cuda", \
+                    "openmp-offload": "openmp-offload", \
+                    "openmp-threading": "openmp-threading",\
+                    }
+        self.location = locations[self.typestr]
 
-Benchmark.register_benchmark("TestBench", TestBench)
+Benchmark.register_benchmark("RSBench", RSBench)

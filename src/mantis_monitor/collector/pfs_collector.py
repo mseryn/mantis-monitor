@@ -1,19 +1,21 @@
 """
-Implementation of Mantis proc filesystem collector
+This file is part of the Mantis data collection suite. Mantis, including the data collection suite (mantis-monitor) and is copyright (C) 2016 by Melanie Cornelius.
 
-Author: Melanie Cornelius
-This code is licensed under LGPL v 2.1
-See LICENSE for details
+Mantis is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+Mantis is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with Mantis. If not, see <https://www.gnu.org/licenses/>.
 """
 
 #import logging
 import math
-import subprocess
+import asyncio
 import os
 import os.path
 import csv
 import copy
-import datetime
+import time
 import psutil
 
 import pprint
@@ -29,13 +31,12 @@ class PFSCollector(Collector):
     This is the implementation of the proc filesystem data collector
     """
 
-    def __init__(self, configuration, iteration, benchmark):
+    def __init__(self, configuration, iteration, benchmark, benchmark_set):
         self.name = "PFSCollector"
         self.description = "Collector for configuring proc filesystem metric collection"
         self.benchmark = benchmark
+        self.benchmark_set = benchmark_set
         self.iteration = iteration
-
-        self.measurements = configuration.collector_modes["utilization"]
 
         # set up units - better way?
         units = {"default":             "unknown",
@@ -44,75 +45,94 @@ class PFSCollector(Collector):
                 }
 
         self.timescale = configuration.timescale # note this needs to be ms, same as configuration file
-        self.filename = "{testname}-iteration_{iter_count}-benchmark_{benchstring}-utilization".format(testname = configuration.test_name, \
-            iter_count = iteration, benchstring = benchmark.name)
+        self.filename = "{testname}-iteration_{iter_count}-benchmark_{benchstring}-set_{benchsetstring}-utilization".format(testname = configuration.test_name, \
+            iter_count = iteration, benchstring = benchmark.name, benchsetstring = self.benchmark_set)
         self.data = []
 
 
-    def run_all(self):
+    async def run_all(self):
         self.benchmark.before_each()
 
-        self.data.append(PFSTimeTestRun("Utilization", self.benchmark, self.filename, self.iteration, self.timescale, \
-            self.measurements, "unknown").run())
+        data = await (PFSTimeTestRun("Utilization", self.benchmark, self.filename, self.iteration, self.timescale, \
+            "unknown", self.benchmark_set).run())
+
+        self.data.append(data)
 
         self.benchmark.after_each()
+        yield
 
 class PFSTimeTestRun():
     """
     This is the generic Proc FS testrun to collect utilization measurements over time
     """
-    def __init__(self, name, benchmark, filename, iteration, timescale, measurements, units):
+    def __init__(self, name, benchmark, filename, iteration, timescale, units, benchmark_set):
         self.name = name
         self.benchmark = benchmark
+        self.benchmark_set = benchmark_set
         self.filename = filename
         self.iteration = iteration
         self.timescale = timescale
-        self.measurements = measurements
         self.units = units
+        self.measurements = []
 
-        measurements_string = ",".join(self.measurements)
         self.data = {   "benchmark_name":   self.benchmark.name, \
+                        "benchmark_set":    self.benchmark_set, \
                         "collector_name":   self.name, \
                         "iteration":        self.iteration, \
                         "timescale":        self.timescale, \
+                        "measurements":     [], \
                         "units":            self.units, \
-                        "measurements":     self.measurements, \
                         }
 
-    def run(self):
+    async def run(self):
         # Run it
 
         cpu_count = psutil.cpu_count()
-        cpu_vals = {}
-        mem_vals = []
 
         # Run benchmark
-        starttime = datetime.datetime.now()
+        starttime = time.time()
 
-        process = subprocess.Popen(self.benchmark.get_run_command(), shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
+        process = await asyncio.create_subprocess_shell(self.benchmark.get_run_command(), cwd=self.benchmark.cwd, env=self.benchmark.env)
+        # process = subprocess.Popen(self.benchmark.get_run_command(), shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
 
-        # TODO: probably don't spin-loop here!
-        while (process.poll() is None):
-            time = datetime.datetime.now()
-            cpu_val = psutil.cpu_percent(interval=None, percpu=True)
-            cpu_vals[time] = cpu_val
-            mem_val = psutil.virtual_memory().used
-            mem_vals.append((time, mem_val))
+        await asyncio.sleep(0.1) # Let the shell start up
 
-        endtime = datetime.datetime.now()
+        shell_proc = psutil.Process(process.pid)
+        children = shell_proc.children()
+        main_child = children[0]
 
-        # Collect data
-        if "memory_utilization" in self.measurements:
-            self.data["memory_utilization"] = mem_vals
+        if (len(children) != 1):
+            print("WARNING: More than one child detected for shell process")
+            print("Proc filesystem data likely to be inaccurate")
+        main_child.cpu_percent() # Returns dummy 0.0 value for the first call
 
-        if "cpu_utilization" in self.measurements:
-            # TODO: don't do this
-            for i in range(0, cpu_count):
-                column = "cpu_{index}_utilization".format(index = i)
-                parsed_data = [[x, y[i]] for x, y in cpu_vals.items()]
-                self.data[column] = parsed_data
+        while (shell_proc.is_running()):
+            await asyncio.sleep(0.5)
+            timestamp = time.time() - starttime
+            try:
+                measurements = main_child.as_dict(['memory_info', 'cpu_percent', 'io_counters'])
+            except psutil.NoSuchProcess as e:
+                break
 
-        self.data["duration"] = (endtime - starttime).total_seconds()
+            measurement = {
+                "cpu_percent": measurements["cpu_percent"],
+                "time": timestamp
+            }
+            measurement.update(measurements["memory_info"]._asdict())
+            measurement.update(measurements["io_counters"]._asdict())
+            self.measurements.append(measurement)
+
+        self.data["duration"] = time.time() - starttime
+
+        # pivot measurement format
+        for row in self.measurements:
+            for key in row.keys():
+                if key == "time":
+                    continue
+                if key not in self.data:
+                    self.data[key] = []
+                    self.data["measurements"].append(key)
+                self.data[key].append([row["time"], row[key]])
 
         return self.data
 

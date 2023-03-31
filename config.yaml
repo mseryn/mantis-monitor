@@ -1,19 +1,465 @@
+benchmark_matrix:
+    -
+        - xsbench-cuda
+        - xsbench-cuda
+    -
+        - xsbench-cuda
+        - xsbench-ompthreading
+    -
+        - xsbench-cuda
+        - rsbench-cuda
+    -
+        - xsbench-cuda
+        - rsbench-ompthreading
+    -
+        - xsbench-cuda
+        - minigan-cuda
+    -
+        - xsbench-cuda
+        - minigan-no-cuda
+    -
+        - xsbench-cuda
+        - npb-is-c-mpi
+    -
+        - xsbench-cuda
+        - npb-is-c-ompt
+    -
+        - xsbench-cuda
+        - npb-cg-b-mpi
+    -
+        - xsbench-cuda
+        - npb-cg-b-ompt
+    -
+        - xsbench-cuda
+        - npb-ep-b-mpi
+    -
+        - xsbench-cuda
+        - npb-ep-b-ompt
+    -
+        - xsbench-cuda
+        - npb-ft-b-mpi
+    -
+        - xsbench-cuda
+        - npb-ft-b-ompt
+    -
+        - xsbench-cuda
+        - npb-mg-c-mpi
+    -
+        - xsbench-cuda
+        - npb-mg-c-ompt
+    -
+        - xsbench-ompthreading
+        - xsbench-ompthreading
+    -
+        - xsbench-ompthreading
+        - rsbench-cuda
+    -
+        - xsbench-ompthreading
+        - rsbench-ompthreading
+    -
+        - xsbench-ompthreading
+        - minigan-cuda
+    -
+        - xsbench-ompthreading
+        - minigan-no-cuda
+    -
+        - xsbench-ompthreading
+        - npb-is-c-mpi
+    -
+        - xsbench-ompthreading
+        - npb-is-c-ompt
+    -
+        - xsbench-ompthreading
+        - npb-cg-b-mpi
+    -
+        - xsbench-ompthreading
+        - npb-cg-b-ompt
+    -
+        - xsbench-ompthreading
+        - npb-ep-b-mpi
+    -
+        - xsbench-ompthreading
+        - npb-ep-b-ompt
+    -
+        - xsbench-ompthreading
+        - npb-ft-b-mpi
+    -
+        - xsbench-ompthreading
+        - npb-ft-b-ompt
+    -
+        - xsbench-ompthreading
+        - npb-mg-c-mpi
+    -
+        - xsbench-ompthreading
+        - npb-mg-c-ompt
+    -
+        - rsbench-cuda
+        - rsbench-cuda
+    -
+        - rsbench-cuda
+        - rsbench-ompthreading
+    -
+        - rsbench-cuda
+        - minigan-cuda
+    -
+        - rsbench-cuda
+        - minigan-no-cuda
+    -
+        - rsbench-cuda
+        - npb-is-c-mpi
+    -
+        - rsbench-cuda
+        - npb-is-c-ompt
+    -
+        - rsbench-cuda
+        - npb-cg-b-mpi
+    -
+        - rsbench-cuda
+        - npb-cg-b-ompt
+    -
+        - rsbench-cuda
+        - npb-ep-b-mpi
+    -
+        - rsbench-cuda
+        - npb-ep-b-ompt
+    -
+        - rsbench-cuda
+        - npb-ft-b-mpi
+    -
+        - rsbench-cuda
+        - npb-ft-b-ompt
+    -
+        - rsbench-cuda
+        - npb-mg-c-mpi
+    -
+        - rsbench-cuda
+        - npb-mg-c-ompt
+    -
+        - rsbench-ompthreading
+        - rsbench-ompthreading
+    -
+        - rsbench-ompthreading
+        - minigan-cuda
+    -
+        - rsbench-ompthreading
+        - minigan-no-cuda
+    -
+        - rsbench-ompthreading
+        - npb-is-c-mpi
+    -
+        - rsbench-ompthreading
+        - npb-is-c-ompt
+    -
+        - rsbench-ompthreading
+        - npb-cg-b-mpi
+    -
+        - rsbench-ompthreading
+        - npb-cg-b-ompt
+    -
+        - rsbench-ompthreading
+        - npb-ep-b-mpi
+    -
+        - rsbench-ompthreading
+        - npb-ep-b-ompt
+    -
+        - rsbench-ompthreading
+        - npb-ft-b-mpi
+    -
+        - rsbench-ompthreading
+        - npb-ft-b-ompt
+    -
+        - rsbench-ompthreading
+        - npb-mg-c-mpi
+    -
+        - rsbench-ompthreading
+        - npb-mg-c-ompt
+    -
+        - minigan-cuda
+        - minigan-cuda
+    -
+        - minigan-cuda
+        - minigan-no-cuda
+    -
+        - minigan-cuda
+        - npb-is-c-mpi
+    -
+        - minigan-cuda
+        - npb-is-c-ompt
+    -
+        - minigan-cuda
+        - npb-cg-b-mpi
+    -
+        - minigan-cuda
+        - npb-cg-b-ompt
+    -
+        - minigan-cuda
+        - npb-ep-b-mpi
+    -
+        - minigan-cuda
+        - npb-ep-b-ompt
+    -
+        - minigan-cuda
+        - npb-ft-b-mpi
+    -
+        - minigan-cuda
+        - npb-ft-b-ompt
+    -
+        - minigan-cuda
+        - npb-mg-c-mpi
+    -
+        - minigan-cuda
+        - npb-mg-c-ompt
+    -
+        - minigan-no-cuda
+        - minigan-no-cuda
+    -
+        - minigan-no-cuda
+        - npb-is-c-mpi
+    -
+        - minigan-no-cuda
+        - npb-is-c-ompt
+    -
+        - minigan-no-cuda
+        - npb-cg-b-mpi
+    -
+        - minigan-no-cuda
+        - npb-cg-b-ompt
+    -
+        - minigan-no-cuda
+        - npb-ep-b-mpi
+    -
+        - minigan-no-cuda
+        - npb-ep-b-ompt
+    -
+        - minigan-no-cuda
+        - npb-ft-b-mpi
+    -
+        - minigan-no-cuda
+        - npb-ft-b-ompt
+    -
+        - minigan-no-cuda
+        - npb-mg-c-mpi
+    -
+        - minigan-no-cuda
+        - npb-mg-c-ompt
+    -
+        - npb-is-c-mpi
+        - npb-is-c-mpi
+    -
+        - npb-is-c-mpi
+        - npb-is-c-ompt
+    -
+        - npb-is-c-mpi
+        - npb-cg-b-mpi
+    -
+        - npb-is-c-mpi
+        - npb-cg-b-ompt
+    -
+        - npb-is-c-mpi
+        - npb-ep-b-mpi
+    -
+        - npb-is-c-mpi
+        - npb-ep-b-ompt
+    -
+        - npb-is-c-mpi
+        - npb-ft-b-mpi
+    -
+        - npb-is-c-mpi
+        - npb-ft-b-ompt
+    -
+        - npb-is-c-mpi
+        - npb-mg-c-mpi
+    -
+        - npb-is-c-mpi
+        - npb-mg-c-ompt
+    -
+        - npb-is-c-ompt
+        - npb-is-c-ompt
+    -
+        - npb-is-c-ompt
+        - npb-cg-b-mpi
+    -
+        - npb-is-c-ompt
+        - npb-cg-b-ompt
+    -
+        - npb-is-c-ompt
+        - npb-ep-b-mpi
+    -
+        - npb-is-c-ompt
+        - npb-ep-b-ompt
+    -
+        - npb-is-c-ompt
+        - npb-ft-b-mpi
+    -
+        - npb-is-c-ompt
+        - npb-ft-b-ompt
+    -
+        - npb-is-c-ompt
+        - npb-mg-c-mpi
+    -
+        - npb-is-c-ompt
+        - npb-mg-c-ompt
+    -
+        - npb-cg-b-mpi
+        - npb-cg-b-mpi
+    -
+        - npb-cg-b-mpi
+        - npb-cg-b-ompt
+    -
+        - npb-cg-b-mpi
+        - npb-ep-b-mpi
+    -
+        - npb-cg-b-mpi
+        - npb-ep-b-ompt
+    -
+        - npb-cg-b-mpi
+        - npb-ft-b-mpi
+    -
+        - npb-cg-b-mpi
+        - npb-ft-b-ompt
+    -
+        - npb-cg-b-mpi
+        - npb-mg-c-mpi
+    -
+        - npb-cg-b-mpi
+        - npb-mg-c-ompt
+    -
+        - npb-cg-b-ompt
+        - npb-cg-b-ompt
+    -
+        - npb-cg-b-ompt
+        - npb-ep-b-mpi
+    -
+        - npb-cg-b-ompt
+        - npb-ep-b-ompt
+    -
+        - npb-cg-b-ompt
+        - npb-ft-b-mpi
+    -
+        - npb-cg-b-ompt
+        - npb-ft-b-ompt
+    -
+        - npb-cg-b-ompt
+        - npb-mg-c-mpi
+    -
+        - npb-cg-b-ompt
+        - npb-mg-c-ompt
+    -
+        - npb-ep-b-mpi
+        - npb-ep-b-mpi
+    -
+        - npb-ep-b-mpi
+        - npb-ep-b-ompt
+    -
+        - npb-ep-b-mpi
+        - npb-ft-b-mpi
+    -
+        - npb-ep-b-mpi
+        - npb-ft-b-ompt
+    -
+        - npb-ep-b-mpi
+        - npb-mg-c-mpi
+    -
+        - npb-ep-b-mpi
+        - npb-mg-c-ompt
+    -
+        - npb-ep-b-ompt
+        - npb-ep-b-ompt
+    -
+        - npb-ep-b-ompt
+        - npb-ft-b-mpi
+    -
+        - npb-ep-b-ompt
+        - npb-ft-b-ompt
+    -
+        - npb-ep-b-ompt
+        - npb-mg-c-mpi
+    -
+        - npb-ep-b-ompt
+        - npb-mg-c-ompt
+    -
+        - npb-ft-b-mpi
+        - npb-ft-b-mpi
+    -
+        - npb-ft-b-mpi
+        - npb-ft-b-ompt
+    -
+        - npb-ft-b-mpi
+        - npb-mg-c-mpi
+    -
+        - npb-ft-b-mpi
+        - npb-mg-c-ompt
+    -
+        - npb-ft-b-ompt
+        - npb-ft-b-ompt
+    -
+        - npb-ft-b-ompt
+        - npb-mg-c-mpi
+    -
+        - npb-ft-b-ompt
+        - npb-mg-c-ompt
+    -
+        - npb-mg-c-mpi
+        - npb-mg-c-mpi
+    -
+        - npb-mg-c-mpi
+        - npb-mg-c-ompt
+    -
+        - npb-mg-c-ompt
+        - npb-mg-c-ompt
 benchmarks:
-  GridMini:
-    runner: "GridMini"
-    types:
-      - cuda
-      - openmp-offload
-  RSBench:
-    runner: "RSBench"
-    types:
-      - cuda
-      - openmp-offload
-  XSBench:
-    runner: "XSBench"
-    types:
-      - cuda
-      - openmp-offload
+#  XSBench:
+#    types:
+#      - cuda
+#      - openmp-threading
+#  RSBench:
+#    types:
+#      - cuda
+#      - openmp-threading
+  - name: xsbench-cuda
+    cmd: "~/XSBench/cuda/XSBench -m event"
+  - name: xsbench-ompthreading
+    cmd: "~/XSBench/openmp-threading/XSBench -m event"
+  - name: rsbench-cuda
+    cmd: "~/RSBench/cuda/rsbench -m event"
+  - name: rsbench-ompthreading
+    cmd: "~/RSBench/openmp-threading/rsbench -m event"
+  - name: minigan-cuda
+    cmd: "../minigan_torch_env/bin/python3 minigan_driver.py"
+    cwd: "/home/mseryn/miniGAN/pytorch"
+  - name: minigan-no-cuda
+    cmd: "../minigan_torch_env/bin/python3 minigan_driver.py --no-cuda"
+    cwd: "/home/mseryn/miniGAN/pytorch"
+  - name: npb-is-c-mpi
+    cmd: "./bin/is.C.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
+  - name: npb-is-c-ompt
+    cmd: "./bin/is.C.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
+  - name: npb-cg-b-mpi
+    cmd: "./bin/cg.B.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
+  - name: npb-cg-b-ompt
+    cmd: "./bin/cg.B.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
+  - name: npb-ep-b-mpi
+    cmd: "./bin/ep.B.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
+  - name: npb-ep-b-ompt
+    cmd: "./bin/ep.B.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
+  - name: npb-ft-b-mpi
+    cmd: "./bin/ft.B.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
+  - name: npb-ft-b-ompt
+    cmd: "./bin/ft.B.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
+  - name: npb-mg-c-mpi
+    cmd: "./bin/mg.C.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-MPI"
+  - name: npb-mg-c-ompt
+    cmd: "./bin/mg.C.x"
+    cwd: "/home/mseryn/NPB3.4.2/NPB3.4-OMP"
 
 collection_modes:
   perf:
@@ -27,17 +473,13 @@ collection_modes:
       - clocks_time
       - gpu_trace
     gen:
-      - sm_80
-#  memory:
-#    modes:
-#      - high_watermark
-#      - memory_over_time
-#      - api_trace
-#      - gpu_trace
-#      - power_over_time
+      - sm_60
+  utilization:
+    - ''
 
 formatter_modes:
 - CSV
+- PandasPickle
 
 perf_counters:
 - instructions
@@ -45,9 +487,12 @@ perf_counters:
 - cache-misses
 - cache-references
 - major-faults
+- power/energy-pkg/
+- amd_iommu_0/mem_trans_total/
+- cpu-cycles
 - minor-faults
 
-iterations: 3
+iterations: 1
 time_count: 1000
 log: true
-test_name: all_3i_24June2022
+test_name: ahmd_all_pairs
