@@ -109,6 +109,15 @@ async def main():
         for bench in benchmarks[1]:
             bench.after_all()
 
+        temp_data = data.reset_index()
+
+        filename = config.test_name + '_incomplete'
+        if config.formatter_modes:
+            for mode in config.formatter_modes:
+                this_formatter = formatter.formatter.Formatter.get_formatter(mode)
+                converted_data = this_formatter.convert(temp_data)
+                this_formatter.save(filename, converted_data)
+
     data = data.reset_index()
 
     filename = config.test_name
