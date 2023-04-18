@@ -10,6 +10,12 @@ You should have received a copy of the GNU General Public License along with Man
 
 ---
 
+This repo has a perminant home at https://github.com/mseryn/mantis-monitor
+
+Any other location might be out-of-date
+
+---
+
 Special thanks to contributors zcorneli and hgreenbl
 
 Thanks for all the support, Dr. Zhiling Lan (Illinois Institute of Technology)!
