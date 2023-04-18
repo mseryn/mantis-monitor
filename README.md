@@ -13,3 +13,5 @@ You should have received a copy of the GNU General Public License along with Man
 Special thanks to contributors zcorneli and hgreenbl
 
 Thanks for all the support, Dr. Zhiling Lan (Illinois Institute of Technology)!
+
+This work is supported in part by US National Science Foundation grants CCF-2119294.
