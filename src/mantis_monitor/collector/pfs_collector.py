@@ -108,7 +108,8 @@ class PFSTimeTestRun():
         main_child.cpu_percent() # Returns dummy 0.0 value for the first call
 
         while (shell_proc.is_running()):
-            await asyncio.sleep(0.5)
+            #await asyncio.sleep(0.5)
+            await asyncio.sleep(1)
             timestamp = time.time() - starttime
             try:
                 measurements = main_child.as_dict(['memory_info', 'cpu_percent', 'io_counters'])
