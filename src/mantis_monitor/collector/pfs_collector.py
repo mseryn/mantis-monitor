@@ -21,6 +21,7 @@ import psutil
 
 import pprint
 import pandas
+import numbers
 
 from mantis_monitor.collector.collector import Collector
 
@@ -93,6 +94,8 @@ class PFSTimeTestRun():
         # Run benchmark
         starttime = time.time()
 
+        print(self.benchmark.env)
+
         process = await asyncio.create_subprocess_shell(self.benchmark.get_run_command(), cwd=self.benchmark.cwd, env=self.benchmark.env)
         # process = subprocess.Popen(self.benchmark.get_run_command(), shell=True, executable="/bin/bash", cwd=self.benchmark.cwd, env=self.benchmark.env)
 
@@ -100,29 +103,42 @@ class PFSTimeTestRun():
 
         shell_proc = psutil.Process(process.pid)
         children = shell_proc.children()
-        main_child = children[0]
+        
+        for child in shell_proc.children(True):
+            child.cpu_percent() # Returns dummy 0.0 value for the first call
+        old_net_counters = psutil.net_io_counters(nowrap=True)._asdict()
 
-        if (len(children) != 1):
-            print("WARNING: More than one child detected for shell process")
-            print("Proc filesystem data likely to be inaccurate")
-        main_child.cpu_percent() # Returns dummy 0.0 value for the first call
-
+        await asyncio.sleep(1)
         while (shell_proc.is_running()):
-            #await asyncio.sleep(0.5)
-            await asyncio.sleep(1)
             timestamp = time.time() - starttime
-            try:
-                measurements = main_child.as_dict(['memory_info', 'cpu_percent', 'io_counters'])
-            except psutil.NoSuchProcess as e:
-                break
+            measurement = {}
+            measurement_sets = ['memory_info', 'cpu_percent', 'io_counters']
+            for child in shell_proc.children(True):
+                try:
+                    child_measurements = child.as_dict(measurement_sets)
+                except psutil.NoSuchProcess as e:
+                    continue
+                for mset in measurement_sets:
+                    # Convert scalar values to dict values
+                    if (isinstance(child_measurements[mset], numbers.Number)):
+                        if mset not in measurement:
+                            measurement[mset] = 0
+                        measurement[mset] += child_measurements[mset]
+                    else:
+                        for key, value in child_measurements[mset]._asdict().items():
+                            if key not in measurement:
+                                measurement[key] = 0
+                            measurement[key] += value
+            # Process network counters
+            # These are absolute values, so compare against the last reading
+            net_counters = psutil.net_io_counters(nowrap=True)._asdict()
+            for key, value in net_counters.items():
+                measurement[key] = value - old_net_counters[key]
+            old_net_counters = net_counters
 
-            measurement = {
-                "cpu_percent": measurements["cpu_percent"],
-                "time": timestamp
-            }
-            measurement.update(measurements["memory_info"]._asdict())
-            measurement.update(measurements["io_counters"]._asdict())
+            measurement["time"] = timestamp
             self.measurements.append(measurement)
+            await asyncio.sleep(1)
 
         self.data["duration"] = time.time() - starttime
 

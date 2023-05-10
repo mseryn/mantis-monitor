@@ -22,6 +22,8 @@ class GenericBenchmark(Benchmark):
         self.name = arguments["name"]
         if "cwd" in arguments:
             self.cwd = arguments["cwd"]
+        if "env" in arguments:
+            self.env = arguments["env"]
 
     def get_run_command(self):
         return self.run
