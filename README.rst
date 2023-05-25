@@ -1,5 +1,5 @@
 Welcome to the docs for Mantis-Monitor
-===================================
+======================================
 
 This file is part of the Mantis data collection suite. Mantis, including the data collection suite (mantis-monitor) and the dashboard (mantis-dash) are copyright (C) 2016-2023 by Melanie Cornelius.
 
