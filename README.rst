@@ -14,7 +14,7 @@ You should have received a copy of the GNU General Public License along with Man
 
 ---
 
-This repo has a `perminant home <https://github.com/mseryn/mantis-monitor>_`.
+This repo has a `perminant home <https://github.com/mseryn/mantis-monitor>`_.
 
 Any other location might be out-of-date
 
