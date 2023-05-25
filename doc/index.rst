@@ -10,7 +10,7 @@ Each tool is integrated through Mantis's *standard OO design*, and the result is
 
 Mantis is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with Mantis. If not, see <https://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License along with Mantis. If not, see https://www.gnu.org/licenses/.
 
 ---
 
@@ -26,3 +26,10 @@ Special thanks to contributors zcorneli and hgreenbl
 .. note::
 
    This project is under active development and is supported in part by US National Science Foundation grants CCF-2119294.
+
+Contents
+--------
+
+.. toctree::
+
+   api
