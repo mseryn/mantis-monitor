@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>mantis_monitor.formatter.formatter.Formatter &#8212; mantis-monitor 2016 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="mantis_monitor.formatter.csv_formatter" href="mantis_monitor.formatter.csv_formatter.html" />
+    <link rel="prev" title="mantis_monitor.formatter.formatter" href="mantis_monitor.formatter.formatter.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="mantis-monitor-formatter-formatter-formatter">
+<h1>mantis_monitor.formatter.formatter.Formatter<a class="headerlink" href="#mantis-monitor-formatter-formatter-formatter" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="mantis_monitor.formatter.formatter.Formatter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mantis_monitor.formatter.formatter.</span></span><span class="sig-name descname"><span class="pre">Formatter</span></span><a class="headerlink" href="#mantis_monitor.formatter.formatter.Formatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the generic form for a formatter; use as an interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>implementations</strong> – List of all registered Formatter classes</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="mantis_monitor.formatter.formatter.Formatter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mantis_monitor.formatter.formatter.Formatter.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Init the object</p>
+<p>Sets the name to an empty string</p>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mantis_monitor.formatter.formatter.Formatter.__init__" title="mantis_monitor.formatter.formatter.Formatter.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</p></td>
+<td><p>Init the object</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mantis_monitor.formatter.formatter.Formatter.get_formatter" title="mantis_monitor.formatter.formatter.Formatter.get_formatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_formatter</span></code></a>(name)</p></td>
+<td><p>Using the string name of a Formatter implementation, return the object</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mantis_monitor.formatter.formatter.Formatter.open" title="mantis_monitor.formatter.formatter.Formatter.open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open</span></code></a>(filename)</p></td>
+<td><p>Take the Formatter file format or type and transform it to the UDF</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mantis_monitor.formatter.formatter.Formatter.register_formatter" title="mantis_monitor.formatter.formatter.Formatter.register_formatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_formatter</span></code></a>(name, formatter_class)</p></td>
+<td><p>Register a new formatter class</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mantis_monitor.formatter.formatter.Formatter.save" title="mantis_monitor.formatter.formatter.Formatter.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(filename, data)</p></td>
+<td><p>Take the UDF and transform it to the desired Formatter file format or type</p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">implementations</span></code></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="mantis_monitor.formatter.formatter.Formatter.get_formatter">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_formatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mantis_monitor.formatter.formatter.Formatter.get_formatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Using the string name of a Formatter implementation, return the object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Name of the Formatter to return</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Formatter.implementations[name]()</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#mantis_monitor.formatter.formatter.Formatter" title="mantis_monitor.formatter.formatter.Formatter">Formatter</a>() class object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mantis_monitor.formatter.formatter.Formatter.open">
+<span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mantis_monitor.formatter.formatter.Formatter.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take the Formatter file format or type and transform it to the UDF</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Path to the location of the file to read</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mantis_monitor.formatter.formatter.Formatter.register_formatter">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register_formatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formatter_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mantis_monitor.formatter.formatter.Formatter.register_formatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register a new formatter class</p>
+<p>Call this at the end of your new-formatter.py file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – New name for the formatter</p></li>
+<li><p><strong>formatter_class</strong> (<a class="reference internal" href="#mantis_monitor.formatter.formatter.Formatter" title="mantis_monitor.formatter.formatter.Formatter"><em>Formatter</em></a><em>(</em><em>)</em>) – Formatter class made for registration</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mantis_monitor.formatter.formatter.Formatter.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mantis_monitor.formatter.formatter.Formatter.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take the UDF and transform it to the desired Formatter file format
+or type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – Path to the location of the new file</p></li>
+<li><p><strong>data</strong> (<em>pandas.DataFrame</em><em>(</em><em>)</em>) – UDF Pandas DataFrame</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">mantis-monitor</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mantis_monitor.html">mantis_monitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mantis_monitor.formatter.html">mantis_monitor.formatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mantis_monitor.formatter.formatter.html">mantis_monitor.formatter.formatter</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">mantis_monitor.formatter.formatter.Formatter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mantis_monitor.formatter.formatter.Formatter"><code class="docutils literal notranslate"><span class="pre">Formatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mantis_monitor.formatter.formatter.Formatter.__init__"><code class="docutils literal notranslate"><span class="pre">Formatter.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mantis_monitor.formatter.formatter.Formatter.get_formatter"><code class="docutils literal notranslate"><span class="pre">Formatter.get_formatter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mantis_monitor.formatter.formatter.Formatter.open"><code class="docutils literal notranslate"><span class="pre">Formatter.open()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mantis_monitor.formatter.formatter.Formatter.register_formatter"><code class="docutils literal notranslate"><span class="pre">Formatter.register_formatter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mantis_monitor.formatter.formatter.Formatter.save"><code class="docutils literal notranslate"><span class="pre">Formatter.save()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mantis_monitor.formatter.csv_formatter.html">mantis_monitor.formatter.csv_formatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mantis_monitor.formatter.csv_formatter.CSVFormatter.html">mantis_monitor.formatter.csv_formatter.CSVFormatter</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../api.html">API</a><ul>
+      <li>Previous: <a href="mantis_monitor.formatter.formatter.html" title="previous chapter">mantis_monitor.formatter.formatter</a></li>
+      <li>Next: <a href="mantis_monitor.formatter.csv_formatter.html" title="next chapter">mantis_monitor.formatter.csv_formatter</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Melanie Cornelius.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/modules/mantis_monitor.formatter.formatter.Formatter.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
