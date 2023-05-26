@@ -18,10 +18,6 @@ class CSVFormatter(Formatter):
     def __init__(self):
         self.name = "CSV"
 
-    def convert(self, data):
-        # Not needed for this
-        return data
-
     def save(self, filename, data):
         filename = filename + ".csv"
         data.to_csv(filename)

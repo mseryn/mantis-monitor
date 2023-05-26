@@ -17,10 +17,6 @@ class JSONFormatter(Formatter):
     def __init__(self):
         self.name = "CSV"
 
-    def convert(self, data):
-        # Not needed for this
-        return data
-
     def save(self, filename, data):
         filename = filename + ".json"
         data.to_json(filename)

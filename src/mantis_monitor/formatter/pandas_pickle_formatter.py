@@ -18,10 +18,6 @@ class PandasPickleFormatter(Formatter):
     def __init__(self):
         self.name = "PandasPickle"
 
-    def convert(self, data):
-        # Not needed for this
-        return data
-
     def save(self, filename, data):
         filename = filename + ".pkl"
         data.to_pickle(filename)
