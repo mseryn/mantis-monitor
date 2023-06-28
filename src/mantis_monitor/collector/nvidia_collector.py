@@ -15,6 +15,17 @@
 # You should have received a copy of the GNU General Public License along
 # with Mantis. If not, see <https://www.gnu.org/licenses/>.
 
+"""
+This file contains the implementation of the Nvidia Collector.
+
+The Nvidia Collector can take many forms and use several tools:
+- NVIDIA-smi
+- nvprof
+- ncu
+
+This Collector is a good example of leveraging different TestRun()
+implementations to achieve different monitoring tasks.
+"""
 
 #import logging
 import math
@@ -36,10 +47,41 @@ from mantis_monitor.collector.collector import Collector
 
 class NvidiaCollector(Collector):
     """
-    This is the implementation of the nvidia tool data collector
-    """
+    This is the implementation of the base NVIDIA Collector.
 
+    It inherits directly from the Collector() class.
+
+    :ivar name: NvidiaCollector
+    :ivar description: Describes this collector
+    :ivar benchmark: Benchmark class this Collector is initiated against
+    :ivar benchmark_set: Colon-seprated list of benchmarks co-running with the benchmark
+    :ivar iteration: The statistical or experimental iteration
+    :ivar configuration: Configuration object from this mantis-monitor instance
+    :ivar testruns: List of TestRun() instances to run against this Collector
+    :ivar data: Data from this Collector instance stored in the UDF
+
+    :ivar modes: Which metrics to collect, comes from Configuration()
+    :ivar gen: The SM value on the system, comes from Configuration()
+    :ivar global_id: An int used to uniquely identify each TestRun()
+    :ivar timescale: The time between collections in MS, comes from Configuration()
+    :ivar filename: A unique filename to use for intermediate data storage
+    """
     def __init__(self, configuration, iteration, benchmark, benchmark_set):
+        """
+        Init the object
+        Run setup
+
+        :param configuration: Configuration object from this mantis-monitor instance
+        :type configuration: Configuration()
+        :param iteration: The current experimental iteration
+        :type iteration: int
+        :param benchmark: Benchmark class this Collector is initiated against
+        :type benchmark: Benchmark()
+        :param benchmark_set: Colon-seprated list of benchmarks co-running with the benchmark
+        :type benchmark_set: str
+
+        :return: None
+        """
         self.name = "NvidiaCollector"
         self.description = "Collector for configuring nvidia profiling metric collection"
         self.benchmark = benchmark
@@ -60,6 +102,27 @@ class NvidiaCollector(Collector):
 
 
     def setup(self):
+        """
+        Sets up all SMIOverTimeTestRun() and NsysTestRun() instances to collect 
+        all counters and metrics
+
+        Attempts to abstract away from the user what values are needed
+
+        Currently supported modes include:
+        - power_time
+        - utilization_time
+        - memory_basic_time
+        - temperature_time
+        - clocks_time
+
+        TODO:
+        - Extend backward to use nvprof based on SM version
+        - Overlap modes that can co-collect
+        - Embrace the NVP datatype
+
+        :return: None
+        """
+
         if "power_time" in self.modes:
             current_filename = self.filename.format(nvidia_identifier = "power_time")
             self.testruns.append(SMIOverTimeTestRun("NvidiaPowerTime", self.benchmark, current_filename, self.iteration, self.timescale, \
@@ -84,16 +147,13 @@ class NvidiaCollector(Collector):
             current_filename = self.filename.format(nvidia_identifier = "gpu_trace")
             self.testruns.append(NsysTestRun("NvidiaGPUTrace", self.timescale, self.benchmark, current_filename, self.iteration, self.benchmark_set))
 
-        # add more here as more modes supported
-        """
-                 13       - power_time
-         14       - utilization_time
-         15       - memory_basic_time
-         16       - temperature_time
-         17       - clocks_time
-        """
-
     async def run_all(self):
+        """
+        Runs all TestRun() instances for this Benchmark()
+
+        :return: None, yielded for each invocation of the Benchmark associated
+        with this Collector instance
+        """
         for this_testrun in self.testruns:
             this_testrun.benchmark.before_each()
             data = await this_testrun.run()
@@ -106,9 +166,44 @@ class NvidiaCollector(Collector):
 
 class SMIOverTimeTestRun():
     """
-    This is the generic SMI implementation to collect measurements over time
+    Encapsulates each individual call to NVIDIA smi over time
+
+    :ivar name: This TestRun()'s unique name (using global_id)
+    :ivar measurements: The list of metrics to collect
+    :ivar units: The units of the measurements
+    :ivar timescale: The time between collections in MS, comes from Configuration()
+    :ivar filename: A unique filename to use for intermediate data storage
+    :ivar benchmark: Benchmark class this Collector is initiated against
+    :ivar benchmark_set: Colon-seprated list of benchmarks co-running with the benchmark
+    :ivar iteration: The statistical or experimental iteration
+    :ivar data: The data collected during this instance of NVIDIA smi
+    :ivar duration: The duration which this instance of NVIDIA smi ran for
+
+    The format of stored data is as follows (in a dictionary):
+    - "benchmark_name": self.benchmark.name,
+    - "benchmark_set":  self.benchmark_set,
+    - "collector_name": self.name,
+    - "iteration":      self.iteration,
+    - "timescale":      self.timescale,
+    - "units":          "count per timescale milliseconds",
+    - "measurements":   self.counters,
+    - "duration":       0,
     """
     def __init__(self, name, benchmark, filename, iteration, timescale, measurements, units, benchmark_set):
+        """
+        Init this TestRun()
+
+        :param name: This TestRun()'s unique name (using global_id)
+        :param measurements: The list of metrics to collect
+        :param units: The units of the measurements
+        :param timescale: The time between collections in MS, comes from Configuration()
+        :param filename: A unique filename to use for intermediate data storage
+        :param benchmark: Benchmark class this Collector is initiated against
+        :param benchmark_set: Colon-seprated list of benchmarks co-running with the benchmark
+        :param iteration: The statistical or experimental iteration
+
+        :return: None
+        """
         self.name = name
         self.benchmark = benchmark
         self.benchmark_set = benchmark_set
@@ -117,6 +212,7 @@ class SMIOverTimeTestRun():
         self.timescale = timescale
         self.measurements = measurements
         self.units = units
+        self.duration = 0
 
         measurements_string = ",".join(self.measurements)
         self.smi_runstring = "nvidia-smi --query-gpu=timestamp,index,{measure} --loop-ms=1000 --format=csv,noheader,nounits"
@@ -129,10 +225,15 @@ class SMIOverTimeTestRun():
                         "timescale":        self.timescale, \
                         "units":            self.units, \
                         "measurements":     self.measurements, \
+                        "duration":         self.duration, \
                         }
 
     # TODO (zcornelius): Fix SMI to use as a process wrapper here, instead of system-wide
     async def run(self):
+        """
+        Call this to run this instance of NVIDIA SMI
+        """
+
         # Run it
 
         # Start SMI
@@ -169,7 +270,8 @@ class SMIOverTimeTestRun():
         # Clean up files
         os.remove(smi_filename)
 
-        self.data["duration"] = (endtime - starttime).total_seconds()
+        self.duration = (endtime - starttime).total_seconds()
+        self.data["duration"] = self.duration
 
         return self.data
 
@@ -177,8 +279,60 @@ class SMIOverTimeTestRun():
 class NsysTestRun():
     """
     This is the implementation of the nsys gpu trace testrun
+
+    GPU tracing produces lots of data and many options. This implementation
+    collects summary metrics over several categories of data:
+
+    - cuda_api_summary
+    - dx12_gpu_marker_summary
+    - dx11pixsum
+    - gpu_kernel_summary
+    - gpu_mem_size_summary
+    - gpu_mem_time_summary
+    - khr_debug_pu_summary
+    - khr_debug_summary
+    - nvtx_summary
+    - openmp_summary
+    - os_runtime_summary
+    - pixel_summary
+    - vulkan_gpu_marker_summary
+    - vulkan_marker_summary
+
+    :ivar name: This TestRun()'s unique name (using global_id)
+    :ivar timescale: The time between collections in MS, comes from Configuration()
+    :ivar filename: A unique filename to use for intermediate data storage
+    :ivar benchmark: Benchmark class this Collector is initiated against
+    :ivar benchmark_set: Colon-seprated list of benchmarks co-running with the benchmark
+    :ivar iteration: The statistical or experimental iteration
+    :ivar data: The data collected during this instance of NVIDIA smi
+    :ivar duration: The duration which this instance of NVIDIA smi ran for
+    :ivar runstring: The command to run gpu tracing using nsys
+    :ivar parsestring: The command to digest data from gpu tracing through nsys
+    :ivar runcommand: The full command with inserted Benchmark() run information
+
+    The format of stored data is as follows (in a dictionary):
+    - "benchmark_name": self.benchmark.name,
+    - "benchmark_set":  self.benchmark_set,
+    - "collector_name": self.name,
+    - "iteration":      self.iteration,
+    - "timescale":      self.timescale,
+    - "units":          "count per timescale milliseconds",
+    - "measurements":   self.counters,
+    - "duration":       0,
     """
     def __init__(self, name, timescale, benchmark, filename, iteration, benchmark_set):
+        """
+        Init this TestRun()
+
+        :param name: This TestRun()'s unique name (using global_id)
+        :param timescale: The time between collections in MS, comes from Configuration()
+        :param filename: A unique filename to use for intermediate data storage
+        :param benchmark: Benchmark class this Collector is initiated against
+        :param benchmark_set: Colon-seprated list of benchmarks co-running with the benchmark
+        :param iteration: The statistical or experimental iteration
+
+        :return: None
+        """
         self.name = name
         self.timescale = timescale
         self.benchmark = benchmark
@@ -187,6 +341,7 @@ class NsysTestRun():
         self.iteration = iteration
         self.runstring = "nsys profile --force-overwrite=true --gpu-metrics-device=all -o {filename} {runcommand}"
         self.parsestring = "nsys stats --force-overwrite=true --format csv {filename}.{{suffix}} -o {filename}".format(filename = self.filename)
+        self.duration = 0
 
         self.bench_runcommand = self.benchmark.get_run_command()
         self.runcommand = self.runstring.format(filename = self.filename, runcommand = self.bench_runcommand)
@@ -199,11 +354,33 @@ class NsysTestRun():
             "timescale":      self.timescale,
             "units":          "summary statistics",
             "measurements":   [],
+            "duration":       0,
         }
 
 
 
     async def run(self):
+        """
+        Call this to run this instance of NVIDIA nsys using GPU trace mode
+
+        Currently attempts to collect:
+        - cuda_api_summary
+        - dx12_gpu_marker_summary
+        - dx11pixsum
+        - gpu_kernel_summary
+        - gpu_mem_size_summary
+        - gpu_mem_time_summary
+        - khr_debug_pu_summary
+        - khr_debug_summary
+        - nvtx_summary
+        - openmp_summary
+        - os_runtime_summary
+        - pixel_summary
+        - vulkan_gpu_marker_summary
+        - vulkan_marker_summary
+
+        Anything that doesn't produce files is ignored.
+        """
         files_to_names = {"cudaapisum.csv" : "cuda_api_summary", \
                                "dx12gpumarkersum.csv": "dx12_gpu_marker_summary", \
                                "dx11pixsum.csv": "dx11pixsum", \

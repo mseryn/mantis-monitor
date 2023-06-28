@@ -63,7 +63,7 @@ class Formatter():
         :type name: str
 
         :return: Formatter.implementations[name]()
-        :rtype: Formatter() class object
+        :rtype: Formatter()
         """
 
     def __init__(self):
@@ -71,6 +71,8 @@ class Formatter():
         Init the object
 
         Sets the name to an empty string
+
+        :return: None
         """
         self.name = ""
 
