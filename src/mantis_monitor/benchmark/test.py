@@ -23,7 +23,6 @@ of leveraging some of the available function calls built into
 the Benchmark class.
 """
 from mantis_monitor.benchmark.benchmark import Benchmark
-import subprocess
 
 class TestBench(Benchmark):
     """
