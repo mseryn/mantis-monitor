@@ -86,8 +86,8 @@ class Collector():
 
         :param name: New name for the collector
         :type name: str
-        :param formatter_class: Collector class made for registration
-        :type formatter_class: Collector()
+        :param collector_class: Collector class made for registration
+        :type collector_class: Collector()
         """
 
         if name in Collector.implementations:
