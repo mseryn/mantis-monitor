@@ -1,31 +1,70 @@
+# This file is part of the Mantis-Monitor data collection suite.
+# Mantis, including the data collection suite (mantis-monitor) and is
+# copyright (C) 2016-2023 by Melanie Cornelius.
+
+# Mantis is free software:
+# you can redistribute it and/or modify it under the terms of the GNU Lesser
+# General Public License as published by the Free Software Foundation,
+# either version 3 of the License, or (at your option) any later version.
+
+# Mantis is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License along
+# with Mantis. If not, see <https://www.gnu.org/licenses/>.
+
 """
-This file is part of the Mantis data collection suite. Mantis, including the data collection suite (mantis-monitor) and is copyright (C) 2016-2023 by Melanie Cornelius.
+This file contains the implementation of the Configuration class in
+mantis-monitor. Currently, there is only one form of the Configuration
+class.
 
-Mantis is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+This object is responsible for translating the config.yaml into
+meaningful objects from the rest of the mantis-monitor architecture.
 
-Mantis is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with Mantis. If not, see <https://www.gnu.org/licenses/>.
-
+There is MUCH to do to improve this file, the current form is
+functional and flexible.
 """
-
 import pprint
-#import logging
 import yaml
 import subprocess
 import os
 
-#TODO how do I make sure all the logs go to the same place? Just reuse the name?
-#logging.basicConfig(filename='testing.log', encoding='utf-8', format='%(levelname)s:%(message)s', level=logging.DEBUG)
-
 class Configuration:
     """
     Outer-most object to control Configuration elements
+
+    If no config file is offered, a generated default configuration, using
+    the TestBenchmark Benchmark and the Linux time tool, will be used and written
+    in the current directory.
+
+    :ivar location: The config.yaml file to use, passed as the first (and only)
+    argument to mantis-monitor.
+    :ivar contents: The config.yaml contents loaded from the given file
+    :ivar collector_modes: Which collectors to use in which modes
+    :ivar benchmarks: Which Benchmarks to run, either custom Benchmark classes
+    or items handed to the config.yaml file to auto-config into GenericBenchmark classes.
+    :ivar benchmark_matrix: If provided, these benchmarks will co-run.
+    :ivar formatter_modes: Which Formatter classes to use for outputting final data
+    :ivar log: Boolean controlling whether or not to log data
+    :ivar test_name: String to use as the name for this set of Benchmarks, Collectors, and
+    Formatters
+    :ivar iterations: The number of times to repeat the entire combination of all Benchmarks
+    and Collectors, used to get statistically relevant experimental data
+    :ivar timescale: The ms used between each time step during measurements over time
+    :ivar perf_counters: A list of string Linux perf tool counters to measure
+
+    .. todo ::
+        Logging is broken system-wide. The Logging module in Python broke, need to fix this.
     """
     def __init__(self, location=None):
-        """The config file used during this invocation of mantis-monitor"""
+        """
+        Init the object.
+
+        :param location: A string of the path to the config.yaml file to use
+        """
         self.location = location
-        """Config file location, a string"""
         if location and os.path.exists(location):
             self.contents = yaml.safe_load(open(location))
             #logging.info("Read config yaml at %s", location)
@@ -34,12 +73,17 @@ class Configuration:
             raise ValueError("Config file not found")
         else:
             self.contents = generate_default_config()
+            dump_default_config(self.contents)
 
         self.set_all_contents()
         check_perf()
         check_nvidia()
 
     def set_all_contents(self):
+        """
+        Using the contents from the .yaml file, populate instance variables
+        with appropriate information.
+        """
         self.collector_modes = self.contents["collection_modes"]
         self.benchmarks = self.contents["benchmarks"]
         if "benchmark_matrix" in self.contents:
@@ -62,14 +106,19 @@ class Configuration:
             self.perf_counters = self.contents["perf_counters"]
 
     def print_all(self):
+        """
+        A simple helper function to pretty-print the contents of the
+        config.yaml file
+        """
         pprint.pprint(self.contents)
 
 
 def generate_default_config():
-    """Helper function to generate a new default configuration
     """
-    # Get possible perf counters and search for default counters
-    selected_counters = get_default_counters(get_available_perf())
+    Helper function to generate a new default configuration
+
+    :return: A dict of the contents of a default .yaml file
+    """
 
     # Build default yaml
     default_yaml = {
@@ -79,16 +128,7 @@ def generate_default_config():
             },
         },
         'collection_modes': {
-            'perf': {
-                'pmu_count': 4,
-            },
-            #'memory': {
-            #    'modes': ['high_watermark', 'memory_over_time'],
-            #},
-            #'nvidia': {
-            #    'modes': ['api_trace', 'gpu_trace', 'power_over_time', 'power_summary'],
-            #    'gen': 'sm_80',
-            #},
+            'ttc': ''
         },
         'formatter_modes': ['PandasPickle', 'CSV'],
         'perf_counters': selected_counters,
@@ -96,18 +136,24 @@ def generate_default_config():
         'iterations': 1,
         'time_count': 1000,
         'log': True,
-        #'debug': True,
         'test_name': 'GENERATEDDEFAULT',
     }
 
     return default_yaml
 
 def get_default_counters(all_counters):
-    """Function to do string closest-matching on perf counter names
+    """
+    Function to do string closest-matching on perf counter names
     Early implementation should ignore case
     Add more match strings here for better fuzzy matching on new architectures
     If this becomes unwieldy or enormous, move to fuzzy string matching, but it would be overkill
     in the current implementation
+
+    :return: a list of matched Perf counters
+
+    .. todo ::
+        Correct against system's perf counters
+        Fuzzy match for spelling, similar counters, etc
     """
     match_strings = {
         "instructions": ["instructions"],
@@ -131,37 +177,40 @@ def get_default_counters(all_counters):
 
     return matches
 
-def dump_default_yaml(location):
-    config = generate_default_config()
-    with open(location, 'w') as yamlfile:
+def dump_default_yaml(config):
+    """
+    Saves a generated .yaml file to DEFAULT.yaml
+
+    :param config: The config dict object to save
+    :param location: The location at which to save this file
+    """
+    with open("DEFAULT.yaml", 'w') as yamlfile:
         yaml.dump(config, yamlfile)
-        logging.info("Dumped new yaml file at %s", location)
 
 
 def check_perf():
+    """
+    Checks if perf can be used on this system
+
+    .. todo ::
+        Need to also check if PERF_EVENT_PARANOID is appropriate for using perf stat
+    """
     perf_overall = subprocess.run("perf", capture_output=True)
     if not perf_overall:
         pass
-        #logging.info("Uh-oh, it looks like there's an issue using perf!")
+        print("You're using PERF, but it doesn't look like you can use this on this system")
     else:
         pass
-        #logging.info("Perf outputs")
-
-def get_available_perf():
-    """Helper function to query perf and return all available counters
-    """
-    perf_list_raw = subprocess.run(
-        # get events only, exclude metrics (for now)
-        ["perf", "list", "--raw-dump", "hw", "sw", "cache", "tracepoint", "pmu", "sdt"],
-        capture_output=True, text=True)
-    return set(perf_list_raw.stdout.split())
 
 def check_nvidia():
-    """Helper function to ensure nvidia systems function on this architecture, TODO
+    """
+    Helper function to ensure nvidia systems function on this architecture
+
+    .. todo ::
+        Need to do this
     """
     pass
 
 if __name__ == "__main__":
-    #dump_default_yaml("../config.yaml")
     c = Configuration()
     print(c.contents)
