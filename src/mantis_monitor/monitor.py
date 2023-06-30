@@ -1,12 +1,25 @@
+# This file is part of the Mantis-Monitor data collection suite.
+# Mantis, including the data collection suite (mantis-monitor) and is
+# copyright (C) 2016-2023 by Melanie Cornelius.
+
+# Mantis is free software:
+# you can redistribute it and/or modify it under the terms of the GNU Lesser
+# General Public License as published by the Free Software Foundation,
+# either version 3 of the License, or (at your option) any later version.
+
+# Mantis is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License along
+# with Mantis. If not, see <https://www.gnu.org/licenses/>.
+
 """
-This file is part of the Mantis data collection suite. Mantis, including the data collection suite (mantis-monitor) and is copyright (C) 2016-2023 by Melanie Cornelius.
+This is the main file which runs mantis-monitor.
 
-Mantis is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-
-Mantis is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with Mantis. If not, see <https://www.gnu.org/licenses/>.
-
+Here, all objects are used and coordinated with as little entanglement
+as possible.
 """
 
 from mantis_monitor import benchmark
@@ -15,7 +28,6 @@ from mantis_monitor import collector
 from mantis_monitor import formatter
 
 import pandas
-#import logging
 import argparse
 import pprint
 import sys
@@ -25,6 +37,13 @@ import asyncio
 async def main():
     """
     Main run script for Mantis Monitor
+
+    - Parses arguments to mantis-monitor
+    - Constructs the Configuration object
+    - Constructs Collector objects
+    - Constructs Benchmark objects
+    - Initializes each combination of Collectors and Benchmarks, possibly with co-running if indicated
+    - Uses the requested Formatters to output data
     """
     parser = argparse.ArgumentParser(
                         prog = 'Mantis-Monitor',
@@ -130,6 +149,9 @@ async def main():
             this_formatter.save(filename, converted_data)
 
 def run():
+    """
+    Command to run mantis-monitor
+    """
     asyncio.run(main())
 
 def run_with(*classes):
