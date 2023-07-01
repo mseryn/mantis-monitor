@@ -156,7 +156,7 @@ def run():
 
 def run_with(*classes):
     """
-        Hannah, what is this?
+        Left over from something - Hannah, what is this?
     """
     for c in classes:
         benchmark.benchmark.Benchmark.register_benchmark(c.__name__, c)

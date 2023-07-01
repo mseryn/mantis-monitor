@@ -1,4 +1,4 @@
-﻿mantis\_monitor.formatter.formatter.Formatter
+mantis\_monitor.formatter.formatter.Formatter
 =============================================
 
 .. currentmodule:: mantis_monitor.formatter.formatter

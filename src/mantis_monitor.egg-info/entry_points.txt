@@ -1,0 +1,2 @@
+[console_scripts]
+mantis-monitor = mantis_monitor.monitor:run

@@ -1,3 +1,4 @@
 [build-system]
+name = "mantis_monitor"
 requires = ["setuptools>=42"]
 build-backend = "setuptools.build_meta"

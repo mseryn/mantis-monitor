@@ -1,4 +1,4 @@
-﻿mantis\_monitor.formatter.csv\_formatter.CSVFormatter
+mantis\_monitor.formatter.csv\_formatter.CSVFormatter
 =====================================================
 
 .. currentmodule:: mantis_monitor.formatter.csv_formatter

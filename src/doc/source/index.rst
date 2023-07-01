@@ -1,10 +1,20 @@
-Welcome to the docs for Mantis-Monitor
+Welcome to the docs for mantis-monitor
 ======================================
 
-This file is part of the Mantis data collection suite. Mantis, including the data collection suite (mantis-monitor) and the dashboard (mantis-dash) are copyright (C) 2016-2023 by Melanie Cornelius.
+mantis-monitor is a system to simlpify program monitoring and data collection. 
 
-Mantis is a suite using **standard, off-the-shelf** monitoring tools.
-Each tool is integrated through Mantis's *standard OO design*, and the result is a single, unified schema of results from all requested forms of monitoring.
+The intents of Mantis are as follows:
+- Use many monitoring tools from one invocation
+- Run many codes and variations on codes from one invocation
+- Recieve all data in one schema
+- Make it easy to extend the framework to include new monitoring tools and output to new data formats
+
+Mantis requires **no code changes** and **minimal user configuration** for use.
+All data is output to the user **in a single file and single schema** regardless of the monitoring tool used.
+Further, Mantis uses **standard, off-the-shelf** monitoring tools and is easily extended to support more.
+Mantis leverages *standard OO design* and is easily extended to cover changing research concerns.
+
+This file is part of the Mantis data collection suite. Mantis, including the data collection suite (mantis-monitor) and the dashboard (mantis-dash) are copyright (C) 2016-2023 by Melanie Cornelius.
 
 **Mantis is free software**: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
@@ -33,4 +43,6 @@ Contents
 .. toctree::
 
    Home <self>
+   getting_started
+   config_walkthrough
    api

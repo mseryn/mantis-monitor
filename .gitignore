@@ -1,2 +1,3 @@
-*.yaml
+config*.yaml
 *.log
+/src/doc/build
