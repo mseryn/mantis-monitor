@@ -28,6 +28,12 @@ from mantis_monitor.collector.collector import Collector
 #logging.basicConfig(filename='testing.log', encoding='utf-8', \
 #    format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
+def selectProcessByPid(array, default, pid):
+    for child in array:
+        if child.pid == pid:
+            return child
+    return default
+
 class PFSCollector(Collector):
     """
     This is the implementation of the proc filesystem data collector
@@ -102,9 +108,9 @@ class PFSTimeTestRun():
         await asyncio.sleep(0.1) # Let the shell start up
 
         shell_proc = psutil.Process(process.pid)
-        children = shell_proc.children()
+        children = shell_proc.children(True)
         
-        for child in shell_proc.children(True):
+        for child in children:
             child.cpu_percent() # Returns dummy 0.0 value for the first call
         old_net_counters = psutil.net_io_counters(nowrap=True)._asdict()
 
@@ -113,7 +119,9 @@ class PFSTimeTestRun():
             timestamp = time.time() - starttime
             measurement = {}
             measurement_sets = ['memory_info', 'cpu_percent', 'io_counters']
-            for child in shell_proc.children(True):
+            new_children = shell_proc.children(True)
+            children = [ selectProcessByPid(children, child, child.pid) for child in new_children ]
+            for child in children:
                 try:
                     child_measurements = child.as_dict(measurement_sets)
                 except psutil.NoSuchProcess as e:
