@@ -1,0 +1,20 @@
+benchmarks:
+  - type: TestBench
+    name: aaaaaTestBench
+    waittimes:
+      - 1
+      - 4
+      - 8
+
+collection_modes:
+  ttc:
+    - ''
+
+formatter_modes:
+- PandasPickle
+- CSV
+
+iterations: 1
+log: true
+test_name: test_application
+time_count: 1000
