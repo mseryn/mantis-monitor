@@ -13,6 +13,7 @@ import logging
 import math
 import subprocess
 import os
+import asyncio
 
 import pprint
 
@@ -66,4 +67,8 @@ class Collector():
 
     async def run_all(self):
         yield None
+
+    async def run_bare(self):
+        process = await asyncio.create_subprocess_shell(self.benchmark.get_run_command(), cwd=self.benchmark.cwd, env=self.benchmark.env)
+        await process.wait()
 
