@@ -93,8 +93,26 @@ async def main():
                 running_collectors = True
                 while running_collectors:
                     testruns = list(map(lambda x: x.asend(None), generators))
-                    print("Running testruns:", testruns)
-                    results = await asyncio.gather(*testruns, return_exceptions=True)
+                    tasks = [asyncio.create_task(testrun) for testrun in testruns]
+                    print("Running testruns:", testruns, tasks)
+                    running_testrun = True
+                    while running_testrun:
+                        runset = []
+                        running_testrun = False
+                        for i in range(len(benchmarks[1])):
+                            if tasks[i].done():
+                                runset.append(asyncio.create_task(collectors[i].run_bare()))
+                            else:
+                                running_testrun = True
+                                runset.append(tasks[i])
+                        if not running_testrun:
+                            break
+                        
+                        done, pending = await asyncio.wait(runset, return_when=asyncio.FIRST_COMPLETED)
+                    if len(pending) > 0:
+                        await asyncio.wait(pending)
+                    results = [task.exception() for task in tasks]
+                    # results = await asyncio.gather(*testruns, return_exceptions=True)
                     print("Results:", results)
                     running_collectors = False
                     for result in results:

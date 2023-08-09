@@ -4,20 +4,25 @@ benchmarks:
     - 1
     - 4
     - 8
+
 collection_modes:
   memory: null
   perf:
     pmu_count: 4
+
 formatter_modes:
 - PandasPickle
 - CSV
-iterations: 1
-log: true
+
 perf_counters:
 - instructions
 - cpu-cycles
 - LLC-stores
 - page-faults
 - major-faults
-test_name: DEFAULT
+
+iterations: 1
+log: true
+test_name: test
 time_count: 1000
+
