@@ -134,8 +134,10 @@ async def main():
         if config.formatter_modes:
             for mode in config.formatter_modes:
                 this_formatter = formatter.formatter.Formatter.get_formatter(mode)
-                converted_data = this_formatter.convert(temp_data)
-                this_formatter.save(filename, converted_data)
+                if this_formatter is None:
+                    print(f"Formatter {mode} not found, skipping.")
+                    print("Available formatters:", formatter.formatter.Formatter.implementations.keys())
+                this_formatter.save(filename, temp_data)
 
     data = data.reset_index()
 
@@ -143,10 +145,8 @@ async def main():
     if config.formatter_modes:
         for mode in config.formatter_modes:
             this_formatter = formatter.formatter.Formatter.get_formatter(mode)
-            converted_data = this_formatter.convert(data)
-            print(type(converted_data))
-            print(converted_data)
-            this_formatter.save(filename, converted_data)
+            print(data)
+            this_formatter.save(filename, data)
 
 def run():
     """

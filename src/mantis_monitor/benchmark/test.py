@@ -49,14 +49,14 @@ class TestBench(Benchmark):
         """
         A set of strings to run before every TestBench run command
         """
-        print("echo running this before each test bench run")
+        print("running this before each test bench run")
         print("running test bench with time {time} sec".format(time = self.time))
 
     def after_each(self):
         """
         A set of strings to run after every TestBench run command
         """
-        print("echo running this after each test bench run")
+        print("running this after each test bench run")
 
     def before_all(self):
         """
@@ -64,7 +64,7 @@ class TestBench(Benchmark):
         
         This only runs once even if many TestBench objects run in a row.
         """
-        print("echo running this before each test bench configuration")
+        print("running this before each test bench configuration")
 
     def after_all(self):
         """
@@ -72,7 +72,7 @@ class TestBench(Benchmark):
         
         This only runs once even if many TestBench objects run in a row.
         """
-        print("echo running this after each test bench configuration")
+        print("running this after each test bench configuration")
 
     def get_run_command(self):
         """
@@ -80,6 +80,7 @@ class TestBench(Benchmark):
 
         :return: a string command to run for the appropriate amount of time
         """
+        print("returning run command for TestBench with time {time} sec".format(time = self.time))
         return "sleep {time}".format(time = self.time)
 
     def __init__(self, arguments):

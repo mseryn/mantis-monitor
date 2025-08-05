@@ -65,6 +65,7 @@ class Formatter():
         :return: Formatter.implementations[name]()
         :rtype: Formatter()
         """
+        return Formatter.implementations.get(name, None)()
 
     def __init__(self):
         """

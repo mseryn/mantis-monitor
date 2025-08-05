@@ -4,11 +4,15 @@ benchmarks:
     waittimes:
       - 1
       - 4
-      - 8
+  - type: generic_benchmark 
+    cmd: echo "Hi I'm echoing; sleep 1"
+    name: NamedTest
 
 collection_modes:
   ttc:
     - ''
+  utilization:
+    - memory_info
 
 formatter_modes:
 - PandasPickle
