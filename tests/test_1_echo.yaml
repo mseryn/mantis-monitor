@@ -1,0 +1,16 @@
+benchmarks:
+  - type: generic_benchmark 
+    name: EchoTest
+    cmd: echo "Hi I'm echoing; sleep 1"
+
+collection_modes:
+  ttc:
+    - ''
+
+formatter_modes:
+- CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_echo
