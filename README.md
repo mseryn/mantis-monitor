@@ -2,6 +2,8 @@
 
 **Mantis** is an open-source Python toolkit that streamlines performance monitoring and profiling in high-performance computing (HPC) environments. It wraps and unifies diverse monitoring tools to deliver a consistent, user-friendly experience—empowering researchers and developers to collect, analyze, and compare application performance across heterogeneous systems with ease.
 
+For full documentation, please visit [the wiki](https://github.com/mseryn/mantis-monitor/wiki).
+
 ---
 
 ## 🚀 Why Mantis?
