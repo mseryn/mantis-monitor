@@ -1,12 +1,14 @@
 benchmarks:
+  - type: generic_benchmark 
+    name: NamedTest
+    cmd: echo "Hi I'm echoing; sleep 1"
+  
   - type: TestBench
-    name: aaaaaTestBench
+    name: NameOfThisTestBench
     waittimes:
       - 1
       - 4
-  - type: generic_benchmark 
-    cmd: echo "Hi I'm echoing; sleep 1"
-    name: NamedTest
+      - 3
 
 collection_modes:
   ttc:
@@ -20,5 +22,5 @@ formatter_modes:
 
 iterations: 1
 log: true
-test_name: test_application
 time_count: 1000
+test_name: test_application
