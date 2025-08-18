@@ -20,12 +20,8 @@ Dynamic: license-file
 # mantis-monitor
 Mantis-monitor, a suite to perform code-external profiling using a range of standard profiling tools and producing one data format
 
-Please visit the documentation at 
-https://mantis-monitor.readthedocs.io/en/latest/
-
 This file is part of the Mantis-Monitor data collection suite.
 Mantis, including the data collection suite (mantis-monitor) and is
-copyright (C) 2016-2023 by Melanie Cornelius.
 
 Mantis is free software:
 you can redistribute it and/or modify it under the terms of the GNU Lesser
