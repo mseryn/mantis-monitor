@@ -29,10 +29,10 @@ from mantis_monitor import formatter
 
 import pandas
 import argparse
-import pprint
-import sys
 import collections.abc
 import asyncio
+
+
 
 async def main():
     """
@@ -61,9 +61,12 @@ async def main():
 
     config_location = args.config
     config = configuration.Configuration(location=config_location)
+    
+    print("Welcome to Mantis-Monitor!")
+    print("This is the configuration file contents:")
     config.print_all()
+    print("Now beginning the data collection process...")
 
-    all_dataframes = []
     dataframe_columns = ["benchmark_name", "collector_name", "iteration", "timescale", "units", "measurements"]
     data = pandas.DataFrame(columns = dataframe_columns)
 
@@ -91,7 +94,6 @@ async def main():
             print("Adding benchmark ", bench["type"], bench["name"])
             run_benchmarks.extend(benchmark.benchmark.Benchmark.get_benchmarks(bench["type"], bench) or [])
 
-    run_collectors = []
     for each_benchmark in run_benchmarks:
         benchmarks = each_benchmark
         if type(benchmarks) is not tuple:

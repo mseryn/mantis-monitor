@@ -1,6 +1,5 @@
 # This file is part of the Mantis-Monitor data collection suite.
 # Mantis, including the data collection suite (mantis-monitor) and is
-# copyright (C) 2016-2023 by Melanie Cornelius.
 
 # Mantis is free software:
 # you can redistribute it and/or modify it under the terms of the GNU Lesser
@@ -28,7 +27,6 @@ functional and flexible.
 """
 import pprint
 import yaml
-import subprocess
 import os
 
 class Configuration:
@@ -76,8 +74,6 @@ class Configuration:
             dump_default_config(self.contents)
 
         self.set_all_contents()
-        check_perf()
-        check_nvidia()
 
     def set_all_contents(self):
         """
@@ -130,8 +126,7 @@ def generate_default_config():
         'collection_modes': {
             'ttc': ''
         },
-        'formatter_modes': ['PandasPickle', 'CSV'],
-        'perf_counters': selected_counters,
+        'formatter_modes': ['CSV'],
 
         'iterations': 1,
         'time_count': 1000,
@@ -140,42 +135,6 @@ def generate_default_config():
     }
 
     return default_yaml
-
-def get_default_counters(all_counters):
-    """
-    Function to do string closest-matching on perf counter names
-    Early implementation should ignore case
-    Add more match strings here for better fuzzy matching on new architectures
-    If this becomes unwieldy or enormous, move to fuzzy string matching, but it would be overkill
-    in the current implementation
-
-    :return: a list of matched Perf counters
-
-    .. todo ::
-        Correct against system's perf counters
-        Fuzzy match for spelling, similar counters, etc
-    """
-    match_strings = {
-        "instructions": ["instructions"],
-        "cycles": ["cycles", "cpu-cycles"],
-        "LLC stores": ["LLC-stores"],
-        "page faults": ["page-faults"],
-        "major faults": ["major-faults"],
-        #"memory BW": ["DRAM_BW_Use"],
-        #"cpu power": ["Average_Frequency"],
-        #"cpu utilization": ["CPU_Utilization"],
-    }
-
-    all_counters_folded = {counter.casefold() : counter for counter in all_counters}
-    matches = []
-    for match_string_category, match_string_list in match_strings.items():
-        for match_string in match_string_list:
-            counter = all_counters_folded.get(match_string.casefold())
-            if counter:
-                matches.append(counter)
-                break
-
-    return matches
 
 def dump_default_yaml(config):
     """
@@ -186,30 +145,6 @@ def dump_default_yaml(config):
     """
     with open("DEFAULT.yaml", 'w') as yamlfile:
         yaml.dump(config, yamlfile)
-
-
-def check_perf():
-    """
-    Checks if perf can be used on this system
-
-    .. todo ::
-        Need to also check if PERF_EVENT_PARANOID is appropriate for using perf stat
-    """
-    perf_overall = subprocess.run("perf", capture_output=True)
-    if not perf_overall:
-        pass
-        print("You're using PERF, but it doesn't look like you can use this on this system")
-    else:
-        pass
-
-def check_nvidia():
-    """
-    Helper function to ensure nvidia systems function on this architecture
-
-    .. todo ::
-        Need to do this
-    """
-    pass
 
 if __name__ == "__main__":
     c = Configuration()
