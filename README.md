@@ -100,28 +100,6 @@ See the [Unified Data Schema documentation](https://github.com/mseryn/mantis-mon
 
 ---
 
-## ⚡ Quick Start
-
-1. **Install Mantis**  
-   *(Recommended: use a Python virtual environment)*
-
-   ```bash
-   pip install mantis-monitor
-   ```
-
-2. **Write a YAML Configuration File**  
-   Define your experiment parameters and monitoring tools. See [example configs](https://github.com/mseryn/mantis-monitor/wiki/Configuration-Examples).
-
-3. **Run Your Experiment**  
-   ```bash
-   mantis-monitor path/to/config.yaml
-   ```
-
-4. **Analyze Output**  
-   Unified results are exported as JSON, CSV, or other formats—ready for scripting, visualization, or publication.
-
----
-
 ## 📚 Documentation & Resources
 
 - 📖 **Full Documentation**  
@@ -138,14 +116,6 @@ See the [Unified Data Schema documentation](https://github.com/mseryn/mantis-mon
 
 ---
 
-## 🤝 Contributing
-
-Mantis is open-source and community-driven. Contributions, feedback, and bug reports are always welcome.
-
-See our [contributing guide](https://github.com/mseryn/mantis-monitor/blob/main/CONTRIBUTING.md) for how to get involved.
-
----
-
 ## 📄 License
 
 Mantis is released under the **GNU Lesser General Public License (LGPL v3)**. See the [LICENSE](LICENSE) file for details.
@@ -158,8 +128,3 @@ If you use Mantis in your research or publications, please cite:
 
 > [CITATION GOES HERE – add BibTeX or DOI]
 
----
-
-## 🙏 Acknowledgments
-
-Mantis is developed by and for the HPC research community. We thank all contributors, users, and testers who have helped shape and improve the project.
