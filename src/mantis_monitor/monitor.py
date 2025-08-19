@@ -31,6 +31,7 @@ import pandas
 import argparse
 import collections.abc
 import asyncio
+import os
 
 
 
@@ -149,6 +150,12 @@ async def main():
             this_formatter = formatter.formatter.Formatter.get_formatter(mode)
             print(data)
             this_formatter.save(filename, data)
+
+    # Now removing any files with "incomplete" in their name
+    for file in os.listdir('.'):
+        if "incomplete" in file:
+            print("Removing incomplete file:", file)
+            os.remove(file)
 
 def run():
     """

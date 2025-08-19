@@ -1,6 +1,5 @@
 # This file is part of the Mantis-Monitor data collection suite.
 # Mantis, including the data collection suite (mantis-monitor) and is 
-# copyright (C) 2016-2023 by Melanie Cornelius.
 
 # Mantis is free software: 
 # you can redistribute it and/or modify it under the terms of the GNU Lesser 
