@@ -6,19 +6,19 @@ For full documentation, please visit [the wiki](https://github.com/mseryn/mantis
 
 ---
 
-## 🚀 Why Mantis?
+## Why Mantis?
 
 Performance monitoring is essential in HPC, but it’s often complex, fragmented, and error-prone. Existing tools are powerful—but inconsistent in interfaces, output formats, and usage constraints. Mantis addresses this challenge by:
 
-- 🧩 Operating entirely in user space—no root, kernel modules, or system hooks required.
-- 📄 Using a single, structured YAML configuration file to define monitoring tasks.
-- 🛠️ Orchestrating a wide range of profiling and monitoring tools behind the scenes.
-- 📊 Producing unified, analysis-ready outputs in structured formats like JSON, CSV, Parquet, and Pandas.
-- 🔁 Enabling repeatable and portable performance experiments across HPC environments.
+- Operating entirely in user space—no root, kernel modules, or system hooks required.
+- Using a single, structured YAML configuration file to define monitoring tasks.
+- 🛠Orchestrating a wide range of profiling and monitoring tools behind the scenes.
+- Producing unified, analysis-ready outputs in structured formats like JSON, CSV, Parquet, and Pandas.
+- Enabling repeatable and portable performance experiments across HPC environments.
 
 ---
 
-## 🧰 Key Features
+## Key Features
 
 - **Unified Tool Integration**  
   Seamlessly wraps heterogeneous profiling and monitoring tools:
@@ -43,7 +43,7 @@ Performance monitoring is essential in HPC, but it’s often complex, fragmented
 
 ---
 
-## 🧪 Supported Tools
+## Supported Tools
 
 Mantis supports a wide variety of profiling and monitoring tools, including but not limited to:
 
@@ -67,7 +67,7 @@ See the [documentation](https://github.com/mseryn/mantis-monitor/wiki) for a ful
 
 ---
 
-## 🧱 Architecture
+## Architecture
 
 Mantis follows a clean, modular design to ensure extensibility and transparency:
 
@@ -85,7 +85,7 @@ Mantis follows a clean, modular design to ensure extensibility and transparency:
 
 ---
 
-## 🧬 The Unified Data Schema (UDS)
+## The Unified Data Schema (UDS)
 
 At the core of Mantis is its **Unified Data Schema (UDS)**: a structured, extensible format that abstracts and unifies metrics from all supported tools.
 
@@ -100,29 +100,29 @@ See the [Unified Data Schema documentation](https://github.com/mseryn/mantis-mon
 
 ---
 
-## 📚 Documentation & Resources
+## Documentation & Resources
 
-- 📖 **Full Documentation**  
+- **Full Documentation**  
   https://github.com/mseryn/mantis-monitor/wiki
 
-- 🧾 **YAML Configuration Examples**  
+- **YAML Configuration Examples**  
   [Sample configs](https://github.com/mseryn/mantis-monitor/wiki/Configuration-Examples)
 
-- 🧑‍💻 **Extending Mantis**  
+- **Extending Mantis**  
   [Developer Guide](https://github.com/mseryn/mantis-monitor/wiki/Extending-Mantis)
 
-- 📐 **Unified Data Schema (UDS)**  
+- **Unified Data Schema (UDS)**  
   [Schema Reference](https://github.com/mseryn/mantis-monitor/wiki/Unified-Data-Schema)
 
 ---
 
-## 📄 License
+## License
 
 Mantis is released under the **GNU Lesser General Public License (LGPL v3)**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 📢 Citation
+## Citation
 
 If you use Mantis in your research or publications, please cite:
 
