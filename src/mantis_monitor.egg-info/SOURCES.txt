@@ -18,12 +18,15 @@ src/mantis_monitor/benchmark/rsbench.py
 src/mantis_monitor/benchmark/test.py
 src/mantis_monitor/benchmark/xsbench.py
 src/mantis_monitor/collector/__init__.py
+src/mantis_monitor/collector/amdsmi_collector.py
+src/mantis_monitor/collector/bpf_collector.py
 src/mantis_monitor/collector/collector.py
 src/mantis_monitor/collector/nvidia_collector.py
 src/mantis_monitor/collector/perf_collector.py
 src/mantis_monitor/collector/pfs_collector.py
 src/mantis_monitor/collector/rrdtool_collector.py
 src/mantis_monitor/collector/ttc_collector.py
+src/mantis_monitor/collector/uprof_collector.py
 src/mantis_monitor/formatter/__init__.py
 src/mantis_monitor/formatter/csv_formatter.py
 src/mantis_monitor/formatter/formatter.py
