@@ -1,0 +1,73 @@
+# Example mantis-monitor configuration for the Perf Collector.
+#
+# The Perf Collector wraps `perf stat` to sample hardware performance
+# counters at regular intervals while the benchmark runs.
+#
+# Prerequisites
+# -------------
+#   * Linux `perf` tool installed (e.g. `sudo apt install linux-perf` or
+#     `sudo dnf install perf`)
+#   * `/proc/sys/kernel/perf_event_paranoid` set to <= 0 for full
+#     hardware counter access, or run mantis-monitor as root:
+#       sudo sysctl -w kernel.perf_event_paranoid=0
+#   * Counters in `perf_counters` must be valid on the target machine;
+#     run `perf list` to see all available events.
+#
+# Key configuration fields
+# ------------------------
+#   perf_counters   — list of perf event names to collect.  The collector
+#                     batches them into groups of `pmu_count` and re-runs
+#                     the benchmark once per group.
+#   pmu_count       — max hardware counters per perf invocation.  4 is a
+#                     safe default; most x86 CPUs have at least 4 general-
+#                     purpose PMU registers.  Increase for CPUs with more
+#                     (e.g. 6 on modern Intel), decrease if you see
+#                     multiplexing warnings.
+#   time_count      — sampling interval in milliseconds (maps to `perf
+#                     stat -I`).  1000 = one sample per second.
+#
+# Data produced (one time-series per counter)
+# -------------------------------------------
+#   Each counter produces a list of [timestamp_s, value] pairs.
+#   Units are "count per timescale milliseconds".
+#   A None value means perf reported the counter as unavailable that
+#   interval (e.g. due to PMU multiplexing or a transient error).
+#
+# About the benchmark below
+# -------------------------
+#   The Python one-liner keeps a CPU core busy for several seconds,
+#   generating measurable instruction, cycle, and branch counts.
+#   Replace it with any workload of interest.
+
+benchmarks:
+  - type: generic_benchmark
+    name: cpu_intensive_test
+    # Summation loop — no external dependencies, runs ~3-6 s on modern hardware.
+    cmd: "python3 -c \"x = sum(range(10**7)); print(x)\""
+
+collection_modes:
+  perf:
+    # Batch size: the 6 counters below are split into two perf runs
+    # (4 + 2) so the benchmark is executed twice total.
+    # Set to 6 (or more) to run everything in a single perf invocation
+    # if your CPU supports that many simultaneous PMU counters.
+    pmu_count: 4
+
+# Top-level perf counter list — these are standard hardware events
+# available on virtually all x86_64 Linux systems.  Add or remove
+# entries as needed for your workload.
+perf_counters:
+  - cycles                  # CPU clock cycles consumed
+  - instructions            # retired instructions
+  - cache-references        # last-level cache accesses
+  - cache-misses            # last-level cache misses
+  - branch-instructions     # taken + not-taken branches
+  - branch-misses           # mispredicted branches
+
+formatter_modes:
+  - CSV
+
+iterations: 2
+log: true
+time_count: 1000
+test_name: test_perf

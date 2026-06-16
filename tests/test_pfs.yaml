@@ -1,0 +1,72 @@
+# Example mantis-monitor configuration for the PFS (proc filesystem) Collector.
+#
+# The PFS Collector uses psutil to poll the /proc filesystem once per second
+# and record per-process resource usage across the entire benchmark process
+# tree (the launched process and all its descendants).
+#
+# Prerequisites
+# -------------
+#   * `psutil` Python package (already a mantis-monitor dependency)
+#   * No elevated privileges required — /proc is world-readable for the
+#     calling user's own processes.
+#
+# Metrics collected automatically (one time-series each)
+# -------------------------------------------------------
+# Memory (from /proc/<pid>/statm and /proc/<pid>/status):
+#   rss           — Resident Set Size in bytes
+#   vms           — Virtual Memory Size in bytes
+#   shared        — Shared memory in bytes
+#   text          — Text (code) segment size in bytes
+#   data          — Data + stack size in bytes
+#
+# CPU:
+#   cpu_percent   — Aggregate CPU utilisation across all child processes (%)
+#
+# Per-process IO (from /proc/<pid>/io):
+#   read_count    — Number of read() syscalls issued
+#   write_count   — Number of write() syscalls issued
+#   read_bytes    — Bytes read from storage (after page-cache)
+#   write_bytes   — Bytes written to storage (after page-cache)
+#   read_chars    — Bytes passed to read() including page-cache hits
+#   write_chars   — Bytes passed to write() including page-cache hits
+#
+# Network IO (from /proc/net/dev — system-wide delta per interval):
+#   bytes_sent    — Bytes transmitted across all interfaces
+#   bytes_recv    — Bytes received across all interfaces
+#   packets_sent  — Packets transmitted
+#   packets_recv  — Packets received
+#   errin / errout / dropin / dropout — error and drop counters
+#
+# Note: the value listed under `utilization:` in collection_modes is
+# currently informational — all metric groups above are always collected.
+#
+# About the benchmark below
+# -------------------------
+#   `dd` copies 64 MiB of random data to a temporary file, exercising
+#   CPU, memory, and both read and write IO paths.  The file is removed
+#   by the shell after `dd` completes.
+#   Replace with any workload of interest — ideally one that runs for at
+#   least 3 seconds so several 1-second samples are collected.
+
+benchmarks:
+  - type: generic_benchmark
+    name: io_workload
+    # Read 64 MiB of random data and write it to a temp file, then clean up.
+    cmd: "dd if=/dev/urandom of=/tmp/mantis_pfs_test bs=1M count=64 2>/dev/null && rm -f /tmp/mantis_pfs_test"
+
+  - type: generic_benchmark
+    name: cpu_and_memory_workload
+    # Allocate and sum a large list to stress CPU and RSS simultaneously.
+    cmd: "python3 -c \"data = list(range(5*10**6)); print(sum(data))\""
+
+collection_modes:
+  utilization:
+    - memory_info
+
+formatter_modes:
+  - CSV
+
+iterations: 2
+log: true
+time_count: 1000
+test_name: test_pfs

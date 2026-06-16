@@ -1,0 +1,36 @@
+# Example mantis-monitor configuration for the BPF IO-latency collector.
+#
+# The BPF collector attaches eBPF tracepoints to the benchmark process and
+# measures average read/write syscall latency once per second.
+#
+# Prerequisites
+# -------------
+#   * Linux kernel >= 4.7
+#   * python3-bcc installed (e.g. `sudo apt install python3-bcc`)
+#   * CAP_BPF + CAP_PERFMON capabilities, or run mantis-monitor as root
+#
+# Metrics produced (all in nanoseconds, averaged per 1-second window)
+# -------------------------------------------------------------------
+#   io_read_latency_ns      — average read() syscall latency
+#   io_write_latency_ns     — average write() syscall latency
+#   io_combined_latency_ns  — average latency across all IO (read + write)
+#
+# A None value means no operations of that type occurred in that second.
+
+benchmarks:
+  - type: generic_benchmark
+    name: sleep_io_test
+    cmd: "dd if=/dev/urandom of=/tmp/mantis_bpf_test bs=4k count=256 2>/dev/null"
+
+collection_modes:
+  bpf:
+    metrics:
+      - io_latency
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: bpf_io_latency_test
