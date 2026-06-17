@@ -52,12 +52,12 @@ benchmarks:
   - type: generic_benchmark
     name: io_workload
     # Read 64 MiB of random data and write it to a temp file, then clean up.
-    cmd: "dd if=/dev/urandom of=/tmp/mantis_pfs_test bs=1M count=64 2>/dev/null && rm -f /tmp/mantis_pfs_test"
+    cmd: "sleep 1; dd if=/dev/urandom of=/tmp/mantis_pfs_test bs=1M count=64 2>/dev/null && rm -f /tmp/mantis_pfs_test"
 
   - type: generic_benchmark
     name: cpu_and_memory_workload
     # Allocate and sum a large list to stress CPU and RSS simultaneously.
-    cmd: "python3 -c \"data = list(range(5*10**6)); print(sum(data))\""
+    cmd: "sleep 1; python3 -c \"data = list(range(5*10**6)); print(sum(data))\""
 
 collection_modes:
   utilization:

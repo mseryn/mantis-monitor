@@ -43,7 +43,7 @@ benchmarks:
   - type: generic_benchmark
     name: cpu_intensive_test
     # Summation loop — no external dependencies, runs ~3-6 s on modern hardware.
-    cmd: "python3 -c \"x = sum(range(10**7)); print(x)\""
+    cmd: "sleep 2; python3 -c \"x = sum(range(10**7)); print(x)\""
 
 collection_modes:
   perf:
@@ -57,7 +57,7 @@ collection_modes:
 # available on virtually all x86_64 Linux systems.  Add or remove
 # entries as needed for your workload.
 perf_counters:
-  - cycles                  # CPU clock cycles consumed
+  - cpu-cycles              # CPU clock cycles consumed
   - instructions            # retired instructions
   - cache-references        # last-level cache accesses
   - cache-misses            # last-level cache misses
