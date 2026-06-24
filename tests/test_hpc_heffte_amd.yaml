@@ -1,0 +1,46 @@
+# mantis-monitor — HPC benchmark: heFFTe (spectral / distributed FFT), AMD.
+#
+# Workload : Highly Efficient FFT for Exascale — 3D complex-to-complex transform benchmark. Backend (fftw/cufft/rocfft) is the first argument; requires an MPI launcher even for 1 rank.
+# Collectors: perf (host CPU counters) + bpf (IO latency) + utilization (pfs) + rocm (GPU telemetry via rocm-smi).
+#
+# Build/run instructions: see SETUP_HPC.md (section "heFFTe").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs) and SETUP_GPU.md (rocm).
+#
+# Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: heffte_amd
+    cmd: "mpirun -np 1 ./hpc/heffte/build/benchmarks/speed3d_c2c rocfft double 256 256 256"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+  rocm:
+    metrics:
+      - temperature
+      - power
+      - use
+      - clock
+      - voltage
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_heffte_amd

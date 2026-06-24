@@ -1,0 +1,41 @@
+# mantis-monitor — HPC benchmark: Quicksilver (MC particle transport), CPU.
+#
+# Workload : Monte Carlo dynamic particle transport proxy (LLNL), OpenMP build,
+#            reduced particle count for a short run.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "Quicksilver").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# The -i input deck and -n particle count control problem size; pick a small
+# example deck (see SETUP_HPC.md). Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: quicksilver_omp_cpu
+    cmd: "./hpc/Quicksilver/build-openmp/qs -i ./hpc/Quicksilver/Examples/AllScattering/scatteringOnly.inp -n 100000"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_quicksilver_cpu

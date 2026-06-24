@@ -1,0 +1,39 @@
+# mantis-monitor — HPC benchmark: RAJAPerf (kernel performance suite), CPU.
+#
+# Workload : RAJA Performance Suite — dozens of representative kernels (basic, polybench, stream, apps). -v selects the variant; --npasses 1 keeps it short.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "RAJAPerf").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: rajaperf_cpu
+    cmd: "./hpc/RAJAPerf/build-omp/bin/raja-perf.exe -v Base_OpenMP --npasses 1"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_rajaperf_cpu

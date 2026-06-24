@@ -1,0 +1,39 @@
+# mantis-monitor — HPC benchmark: GROMACS (molecular dynamics (production app)), CPU.
+#
+# Workload : Production MD engine running a benchmark .tpr. -nsteps caps the run; -resethway -noconfout keep it short and skip output. -nb selects CPU vs GPU nonbonded.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "GROMACS").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: gromacs_cpu
+    cmd: "./hpc/gromacs/build-cpu/bin/gmx mdrun -s ./hpc/gromacs/bench/benchMEM.tpr -nsteps 10000 -resethway -noconfout -nb cpu"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_gromacs_cpu

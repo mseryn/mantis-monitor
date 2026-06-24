@@ -1,0 +1,49 @@
+# mantis-monitor — HPC benchmark: HPGMG (geometric multigrid), NVIDIA.
+#
+# Workload : High Performance Geometric Multigrid (finite-volume), full multigrid F-cycles. Args are log2(box size) and boxes-per-rank.
+# Collectors: perf (host CPU counters) + bpf (IO latency) + utilization (pfs) + nvidia (GPU telemetry via nvidia-smi).
+#
+# Build/run instructions: see SETUP_HPC.md (section "HPGMG").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs) and SETUP_GPU.md (nvidia).
+#
+# NOTE: AMD HIP is via community forks only; no clean upstream HIP, so no
+# AMD variant (per the matrix).
+# Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: hpgmg_nvidia
+    cmd: "./hpc/hpgmg-cuda/build/bin/hpgmg-fv 6 8"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+  nvidia:
+    gen: 8
+    modes:
+      - power_time
+      - utilization_time
+      - memory_basic_time
+      - temperature_time
+      - clocks_time
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_hpgmg_nvidia

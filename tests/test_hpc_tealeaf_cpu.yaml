@@ -1,0 +1,39 @@
+# mantis-monitor — HPC benchmark: TeaLeaf (heat conduction / CG solver), CPU.
+#
+# Workload : Linear heat-conduction mini-app (UoB-HPC port) solving an implicit sparse system each step with a conjugate-gradient solver.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "CloverLeaf / TeaLeaf").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: tealeaf_cpu
+    cmd: "./hpc/TeaLeaf/build-omp/tealeaf --file ./hpc/TeaLeaf/InputDecks/tea_bm_short.in"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_tealeaf_cpu

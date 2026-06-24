@@ -1,0 +1,42 @@
+# mantis-monitor — HPC benchmark: SNAP (deterministic Sn transport), CPU.
+#
+# Workload : SN (discrete ordinates) Application Proxy for PARTISN (LANL),
+#            OpenMP build. Reads an input deck and writes a results file.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "SNAP").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# NOTE: SNAP has no first-class AMD/HIP backend, so there is no AMD variant
+# (per the matrix). Provide a small input deck (see SETUP_HPC.md); the deck
+# controls problem size. Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: snap_omp_cpu
+    cmd: "./hpc/SNAP/src/snap ./hpc/SNAP/inputs/small.inp snap_cpu_out.txt"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_snap_cpu

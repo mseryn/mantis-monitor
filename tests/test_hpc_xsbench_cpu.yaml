@@ -1,0 +1,42 @@
+# mantis-monitor — HPC benchmark: XSBench (nuclear / MC neutron transport), CPU.
+#
+# Workload : Monte Carlo macroscopic cross-section lookup (event-based), small
+#            problem size. Pointer-chasing + random memory access pattern.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "XSBench / RSBench").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# Binary path & size below assume the layout in SETUP_HPC.md (clone/build under
+# ./hpc/). Run mantis-monitor from the repo root. Tune -s {small,large,XL} and
+# -l <lookups> for a longer/shorter run.
+
+benchmarks:
+  - type: generic_benchmark
+    name: xsbench_omp_cpu
+    cmd: "./hpc/XSBench/openmp-threading/XSBench -m event -s small"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_xsbench_cpu

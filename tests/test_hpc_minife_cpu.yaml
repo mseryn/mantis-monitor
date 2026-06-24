@@ -1,0 +1,39 @@
+# mantis-monitor — HPC benchmark: miniFE (implicit finite element), CPU.
+#
+# Workload : Unstructured implicit finite-element mini-app: assembles and CG-solves a 3D problem. nx/ny/nz set the element grid. GPU variants use the Kokkos build.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "miniFE").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: minife_cpu
+    cmd: "./hpc/miniFE/openmp/src/miniFE.x nx=128 ny=128 nz=128"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_minife_cpu

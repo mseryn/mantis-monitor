@@ -1,0 +1,40 @@
+# mantis-monitor — HPC benchmark: Kripke (deterministic Sn transport), CPU.
+#
+# Workload : Structured deterministic Sn neutral-particle transport mini-app
+#            (LLNL, RAJA-based), OpenMP backend selected at runtime via --arch.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "Kripke").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# --zones / --niter control problem size. Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: kripke_omp_cpu
+    cmd: "./hpc/Kripke/build-openmp/kripke.exe --arch OpenMP --zones 32,32,32 --niter 10"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_kripke_cpu

@@ -1,0 +1,42 @@
+# mantis-monitor — HPC benchmark: Nekbone (CFD / spectral element), CPU.
+#
+# Workload : Proxy for the Nek5000 spectral-element CFD solver — conjugate
+#            gradient on a 3D Poisson problem, OpenMP build. Problem size is
+#            set in the example's SIZE / data.rea files.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "Nekbone").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# NOTE: Upstream GPU support is via community forks; no clean HIP backend, so
+# no AMD variant (per the matrix). Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: nekbone_omp_cpu
+    cmd: "./hpc/Nekbone/test/example1/nekbone"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_nekbone_cpu

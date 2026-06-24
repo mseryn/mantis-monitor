@@ -1,0 +1,39 @@
+# mantis-monitor — HPC benchmark: AMG2023 (algebraic multigrid (HYPRE)), CPU.
+#
+# Workload : Algebraic multigrid solve on a 3D problem via HYPRE. -n sets the per-process grid; -P the process grid (1x1x1 here).
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "AMG2023").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: amg2023_cpu
+    cmd: "./hpc/AMG2023/build-cpu/test/amg -P 1 1 1 -n 96 96 96"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_amg2023_cpu

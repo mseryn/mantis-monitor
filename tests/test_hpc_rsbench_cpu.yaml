@@ -1,0 +1,40 @@
+# mantis-monitor — HPC benchmark: RSBench (nuclear / MC transport, multipole), CPU.
+#
+# Workload : Monte Carlo cross-section lookup via the multipole method
+#            (event-based), small problem size. More FLOP-heavy than XSBench.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "XSBench / RSBench").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# Run mantis-monitor from the repo root. Tune -s {small,large,XL} / -l <lookups>.
+
+benchmarks:
+  - type: generic_benchmark
+    name: rsbench_omp_cpu
+    cmd: "./hpc/RSBench/openmp-threading/rsbench -m event -s small"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_rsbench_cpu

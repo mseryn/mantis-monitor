@@ -1,0 +1,40 @@
+# mantis-monitor — HPC benchmark: CoMD (molecular dynamics), CPU.
+#
+# Workload : Classical molecular-dynamics proxy (ExMatEx/ECP) integrating a Lennard-Jones or EAM potential. -x/-y/-z set the lattice (atom count).
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "CoMD").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# NOTE: Upstream AMD HIP is via a community fork only; no AMD variant here.
+# Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: comd_cpu
+    cmd: "./hpc/CoMD/bin/CoMD-openmp -e -x 20 -y 20 -z 20"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_comd_cpu

@@ -1,0 +1,47 @@
+# mantis-monitor — HPC benchmark: CloverLeaf (hydrodynamics / compressible Euler), AMD.
+#
+# Workload : Compressible Euler hydrodynamics on the HIP build.
+# Collectors: perf (host CPU counters) + bpf (IO latency) +
+#             utilization (pfs) + rocm (GPU telemetry via rocm-smi).
+#
+# Build/run instructions: see SETUP_HPC.md (section "CloverLeaf / TeaLeaf").
+# Collector permissions:  see SETUP.md (perf+BPF+pfs) and SETUP_GPU.md (rocm).
+#
+# Requires the HIP build (-DMODEL=hip). Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: cloverleaf_hip_amd
+    cmd: "./hpc/CloverLeaf/build-hip/clover_leaf --file ./hpc/CloverLeaf/InputDecks/clover_bm_short.in"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+  rocm:
+    metrics:
+      - temperature
+      - power
+      - use
+      - clock
+      - voltage
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_cloverleaf_amd

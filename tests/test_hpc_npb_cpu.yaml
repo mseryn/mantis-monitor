@@ -1,0 +1,40 @@
+# mantis-monitor — HPC benchmark: NPB (CFD kernel suite (NAS Parallel Benchmarks)), CPU.
+#
+# Workload : NAS Parallel Benchmarks CG (conjugate gradient, irregular sparse) at class B. CPU uses NPB-OMP; NVIDIA uses the NPB-GPU CUDA port. Swap cg for ep/ft/mg/lu/sp/bt as desired.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "NPB").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# NOTE: AMD support is limited; CPU + NVIDIA variants only (per matrix).
+# Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: npb_cpu
+    cmd: "./hpc/NPB-OMP/bin/cg.B.x"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_npb_cpu

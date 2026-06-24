@@ -1,0 +1,46 @@
+# mantis-monitor — HPC benchmark: miniFE (implicit finite element), AMD.
+#
+# Workload : Unstructured implicit finite-element mini-app: assembles and CG-solves a 3D problem. nx/ny/nz set the element grid. GPU variants use the Kokkos build.
+# Collectors: perf (host CPU counters) + bpf (IO latency) + utilization (pfs) + rocm (GPU telemetry via rocm-smi).
+#
+# Build/run instructions: see SETUP_HPC.md (section "miniFE").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs) and SETUP_GPU.md (rocm).
+#
+# Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: minife_amd
+    cmd: "./hpc/miniFE/kokkos-hip/src/miniFE.x nx=128 ny=128 nz=128"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+  rocm:
+    metrics:
+      - temperature
+      - power
+      - use
+      - clock
+      - voltage
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_minife_amd

@@ -1,0 +1,39 @@
+# mantis-monitor — HPC benchmark: HPCG (sparse iterative solver / multigrid), CPU.
+#
+# Workload : High Performance Conjugate Gradients — sparse matrix-vector, symmetric Gauss-Seidel smoothing, and a multigrid V-cycle. --rt sets the (short) runtime.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "HPCG").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: hpcg_cpu
+    cmd: "./hpc/hpcg/build/bin/xhpcg --nx=64 --ny=64 --nz=64 --rt=30"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_hpcg_cpu

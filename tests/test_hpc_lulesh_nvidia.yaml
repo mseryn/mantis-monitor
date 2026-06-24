@@ -1,0 +1,49 @@
+# mantis-monitor — HPC benchmark: LULESH (hydrodynamics / shock hydro), NVIDIA.
+#
+# Workload : LULESH shock hydrodynamics on the CUDA build.
+# Collectors: perf (host CPU counters) + bpf (IO latency) +
+#             utilization (pfs) + nvidia (GPU telemetry via nvidia-smi).
+#
+# Build/run instructions: see SETUP_HPC.md (section "LULESH").
+# Collector permissions:  see SETUP.md (perf+BPF+pfs) and SETUP_GPU.md (nvidia).
+#
+# Requires the CUDA LULESH build (LLNL/LULESH cuda branch / cuda sources).
+# Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: lulesh_cuda_nvidia
+    cmd: "./hpc/LULESH/build-cuda/lulesh -s 45 -i 100"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+  nvidia:
+    gen: 8
+    modes:
+      - power_time
+      - utilization_time
+      - memory_basic_time
+      - temperature_time
+      - clocks_time
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_lulesh_nvidia

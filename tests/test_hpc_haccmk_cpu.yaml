@@ -1,0 +1,41 @@
+# mantis-monitor — HPC benchmark: HACCmk (cosmology / N-body kernel), CPU.
+#
+# Workload : HACC short-force N-body compute kernel (CORAL-2 microkernel) — a compute-bound gravitational short-range force evaluation.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Build/run instructions: see SETUP_HPC.md (section "HACCmk").
+# Collector permissions:  see SETUP.md (perf + BPF + pfs).
+#
+# NOTE: HACCmk is primarily a CPU OpenMP microkernel; the CUDA build is less
+# standard (full HACC is heavy). No AMD variant (per matrix).
+# Run mantis-monitor from the repo root.
+
+benchmarks:
+  - type: generic_benchmark
+    name: haccmk_cpu
+    cmd: "./hpc/HACCmk/hacc_omp.exe"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_hpc_haccmk_cpu
