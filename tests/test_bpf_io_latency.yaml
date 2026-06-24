@@ -20,7 +20,7 @@
 benchmarks:
   - type: generic_benchmark
     name: sleep_io_test
-    cmd: "sleep 1; dd if=/dev/urandom of=/tmp/mantis_bpf_test bs=4k count=256 2>/dev/null"
+    cmd: "dd if=/dev/urandom of=/tmp/mantis_bpf_test bs=4k count=4096 oflag=dsync 2>/dev/null"
 
 collection_modes:
   bpf:
