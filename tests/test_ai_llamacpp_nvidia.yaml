@@ -1,0 +1,53 @@
+# mantis-monitor — AI benchmark: llama.cpp (llama-bench), NVIDIA GPU.
+#
+# Workload : LLM inference offloaded to an NVIDIA GPU (-ngl 99).
+# Collectors: perf (host CPU counters) + bpf (IO latency) +
+#             utilization (pfs) + nvidia (GPU telemetry via nvidia-smi).
+#
+# Install / build instructions:  see SETUP_AI.md  (llama.cpp CUDA build).
+# Collector permission setup:     see SETUP.md (perf+BPF+pfs) and
+#                                 SETUP_GPU.md (nvidia-smi).
+#
+# Requires llama.cpp built with CUDA (-DGGML_CUDA=ON) so -ngl can offload
+# layers to the GPU. mantis-monitor reruns the workload once per collector.
+#
+# Paths are relative to the directory you launch mantis-monitor from.
+
+benchmarks:
+  - type: generic_benchmark
+    name: llamacpp_qwen0_5b_nvidia
+    # -ngl 99 offloads all transformer layers to the GPU.
+    cmd: "./llama.cpp/build/bin/llama-bench -m models/qwen2.5-0.5b-instruct-q4_k_m.gguf -p 256 -n 128 -ngl 99"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+  nvidia:
+    gen: 8
+    modes:
+      - power_time
+      - utilization_time
+      - memory_basic_time
+      - temperature_time
+      - clocks_time
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_ai_llamacpp_nvidia

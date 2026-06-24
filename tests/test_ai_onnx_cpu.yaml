@@ -1,0 +1,45 @@
+# mantis-monitor — AI benchmark: ONNX Runtime inference, CPU-only.
+#
+# Workload : ResNet-50 inference loop on CPU, driven by the bundled
+#            tests/ai_workloads/onnx_infer_bench.py helper.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Install instructions:        see SETUP_AI.md  (section "ONNX Runtime").
+# Collector permission setup:  see SETUP.md     (perf + BPF + pfs).
+#
+# NOTE: mantis-monitor runs the benchmark once per collector. The model is
+# loaded from disk each run (BPF io_latency read traffic); the inference loop
+# provides sustained CPU compute for perf and pfs.
+#
+# Paths are relative to the directory you launch mantis-monitor from
+# (run from the repo root).
+
+benchmarks:
+  - type: generic_benchmark
+    name: onnx_resnet50_cpu
+    cmd: "python3 tests/ai_workloads/onnx_infer_bench.py --model models/resnet50-v1-7.onnx --provider cpu --runs 200"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_ai_onnx_cpu

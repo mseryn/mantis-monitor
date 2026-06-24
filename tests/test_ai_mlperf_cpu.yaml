@@ -1,0 +1,45 @@
+# mantis-monitor — AI benchmark: MLPerf Inference (MLCommons), CPU-only.
+#
+# Workload : MLPerf Inference ResNet-50, Offline scenario, reference
+#            implementation on the onnxruntime CPU backend, driven by the
+#            MLCommons CM automation.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Install instructions:        see SETUP_AI.md  (section "MLPerf Inference").
+# Collector permission setup:  see SETUP.md     (perf + BPF + pfs).
+#
+# IMPORTANT: MLPerf is the heaviest option. You MUST warm the CM cache first
+# (download model + dataset, build the harness) by running the benchmark once
+# standalone as described in SETUP_AI.md. Otherwise the first mantis run will
+# try to download multi-GB artifacts mid-measurement, and will re-download for
+# every collector. Once the cache is warm, the command below reuses it.
+
+benchmarks:
+  - type: generic_benchmark
+    name: mlperf_resnet50_cpu
+    cmd: "cm run script --tags=run-mlperf,inference,_performance-only --model=resnet50 --implementation=reference --framework=onnxruntime --category=edge --scenario=Offline --device=cpu --quiet --rerun"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_ai_mlperf_cpu

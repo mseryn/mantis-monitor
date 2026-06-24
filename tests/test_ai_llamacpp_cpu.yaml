@@ -1,0 +1,47 @@
+# mantis-monitor — AI benchmark: llama.cpp (llama-bench), CPU-only.
+#
+# Workload : LLM inference (prompt prefill + token generation) on CPU.
+# Collectors: perf (CPU counters) + bpf (IO latency) + utilization (pfs).
+#
+# Install / build instructions:  see SETUP_AI.md  (section "llama.cpp").
+# Collector permission setup:     see SETUP.md     (perf + BPF + pfs).
+#
+# NOTE: mantis-monitor runs the benchmark once PER collector (and perf re-runs
+# it once per counter group), so the model is loaded several times — that disk
+# read traffic is exactly what the BPF io_latency collector measures. Keep the
+# model small and iterations low.
+#
+# Paths below are relative to the directory you launch mantis-monitor from
+# (run from the repo root). Adjust the binary/model paths to your build.
+
+benchmarks:
+  - type: generic_benchmark
+    name: llamacpp_qwen0_5b_cpu
+    # -p = prompt tokens (prefill, compute-heavy), -n = generated tokens.
+    # Build llama-bench per SETUP_AI.md; download a small GGUF model.
+    cmd: "./llama.cpp/build/bin/llama-bench -m models/qwen2.5-0.5b-instruct-q4_k_m.gguf -p 256 -n 128"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_ai_llamacpp_cpu

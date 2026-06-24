@@ -1,0 +1,56 @@
+# mantis-monitor — AI benchmark: MLPerf Inference (MLCommons), NVIDIA GPU.
+#
+# Workload : MLPerf Inference ResNet-50, Offline scenario, reference
+#            implementation on the CUDA device, driven by MLCommons CM.
+# Collectors: perf (host CPU counters) + bpf (IO latency) +
+#             utilization (pfs) + nvidia (GPU telemetry via nvidia-smi).
+#
+# Install instructions:        see SETUP_AI.md  (MLPerf Inference, CUDA).
+# Collector permission setup:  see SETUP.md (perf+BPF+pfs) and
+#                              SETUP_GPU.md (nvidia-smi).
+#
+# IMPORTANT: Warm the CM cache first (see SETUP_AI.md) so artifacts are not
+# downloaded mid-measurement / re-downloaded per collector.
+#
+# This uses the reference implementation with --device=cuda (needs
+# onnxruntime-gpu). For the optimized NVIDIA harness, swap
+# --implementation=reference for --implementation=nvidia per MLCommons docs
+# (heavier setup).
+
+benchmarks:
+  - type: generic_benchmark
+    name: mlperf_resnet50_nvidia
+    cmd: "cm run script --tags=run-mlperf,inference,_performance-only --model=resnet50 --implementation=reference --framework=onnxruntime --category=edge --scenario=Offline --device=cuda --quiet --rerun"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+  nvidia:
+    gen: 8
+    modes:
+      - power_time
+      - utilization_time
+      - memory_basic_time
+      - temperature_time
+      - clocks_time
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_ai_mlperf_nvidia

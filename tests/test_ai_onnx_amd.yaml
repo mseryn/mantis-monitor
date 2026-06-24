@@ -1,0 +1,51 @@
+# mantis-monitor — AI benchmark: ONNX Runtime inference, AMD GPU.
+#
+# Workload : ResNet-50 inference loop on the ROCm execution provider, driven
+#            by tests/ai_workloads/onnx_infer_bench.py.
+# Collectors: perf (host CPU counters) + bpf (IO latency) +
+#             utilization (pfs) + rocm (GPU telemetry via rocm-smi).
+#
+# Install instructions:        see SETUP_AI.md  (ONNX Runtime, onnxruntime-rocm).
+# Collector permission setup:  see SETUP.md (perf+BPF+pfs) and
+#                              SETUP_GPU.md (rocm-smi).
+#
+# Requires onnxruntime built/installed with the ROCm execution provider.
+# If you use the MIGraphX provider instead, change --provider to migraphx.
+# Paths are relative to the directory you launch mantis-monitor from.
+
+benchmarks:
+  - type: generic_benchmark
+    name: onnx_resnet50_amd
+    cmd: "python3 tests/ai_workloads/onnx_infer_bench.py --model models/resnet50-v1-7.onnx --provider rocm --runs 500"
+
+collection_modes:
+  perf:
+    pmu_count: 4
+  bpf:
+    metrics:
+      - io_latency
+  utilization:
+    - memory_info
+  rocm:
+    metrics:
+      - temperature
+      - power
+      - use
+      - clock
+      - voltage
+
+perf_counters:
+  - cpu-cycles
+  - instructions
+  - cache-references
+  - cache-misses
+  - branch-instructions
+  - branch-misses
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_ai_onnx_amd
