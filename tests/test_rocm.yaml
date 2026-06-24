@@ -1,0 +1,74 @@
+# Example mantis-monitor configuration for the ROCm SMI (AMD GPU) Collector.
+#
+# The ROCm collector samples AMD GPU telemetry by polling `rocm-smi --json`
+# once per `time_count` milliseconds for the lifetime of the benchmark.
+# (`rocm-smi` has no built-in over-time mode, so mantis-monitor does the
+# polling itself and timestamps each sample.)
+#
+# Prerequisites
+# -------------
+#   * An AMD GPU with the ROCm stack installed.
+#   * `rocm-smi` on PATH (verify with `rocm-smi --showtemp`).
+#   * Your user able to query the GPU — typically membership in the `render`
+#     and `video` groups.  See SETUP_GPU.md for full setup.
+#
+# Metrics produced (per GPU, one time-series each)
+# ------------------------------------------------
+# Field names come straight from `rocm-smi` and vary slightly by ROCm version.
+# Every NUMERIC field returned by the configured flags is collected and named
+# `gpu_<index>_<sanitized_field_name>`, e.g.:
+#   gpu_0_temperature_sensor_edge_c
+#   gpu_0_average_graphics_package_power_w
+#   gpu_0_gpu_use
+#   gpu_0_gpu_memory_use
+#   gpu_0_sclk_clock_speed
+#   gpu_0_voltage_mv
+# A field is dropped for an interval if rocm-smi reports it as "N/A".
+#
+# About the benchmark below
+# -------------------------
+#   The default workload just keeps the process alive for ~6 seconds so the
+#   collector captures several samples of (likely idle) GPU telemetry — enough
+#   to confirm the collector works end to end.
+#
+#   To see real GPU ACTIVITY, replace `cmd` with an actual GPU workload, e.g.:
+#     cmd: "rocm-bandwidth-test"
+#     cmd: "/opt/rocm/bin/rocminfo"          # quick, light
+#     cmd: "./my_hip_app"                    # your HIP/ROCm binary
+#   Aim for a workload that runs at least a few seconds.
+
+benchmarks:
+  - type: generic_benchmark
+    name: gpu_idle_probe
+    # Replace with a real GPU workload to see activity (see note above).
+    cmd: "python3 -c \"import time; time.sleep(6)\""
+
+collection_modes:
+  rocm:
+    # All keys below are OPTIONAL.
+    #
+    # metrics: keep only fields whose (sanitized) name contains one of these
+    # case-insensitive substrings.  Omit to collect every numeric field.
+    metrics:
+      - temperature
+      - power
+      - use
+      - clock
+      - voltage
+    #
+    # flags: override the rocm-smi query flags.  Defaults to:
+    #   --showtemp --showpower --showuse --showmemuse --showclocks --showvoltage
+    # flags:
+    #   - --showtemp
+    #   - --showpower
+    #
+    # rocm_smi_path: path/name of the rocm-smi binary (default: rocm-smi).
+    # rocm_smi_path: /opt/rocm/bin/rocm-smi
+
+formatter_modes:
+  - CSV
+
+iterations: 1
+log: true
+time_count: 1000
+test_name: test_rocm
