@@ -2,3 +2,4 @@ config*.yaml
 *.log
 /src/doc/build
 *.csv
+*.swp
