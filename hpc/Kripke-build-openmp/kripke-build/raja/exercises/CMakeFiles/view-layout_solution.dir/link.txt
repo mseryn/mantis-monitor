@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -fopenmp -Wl,--dependency-file=CMakeFiles/view-layout_solution.dir/link.d "CMakeFiles/view-layout_solution.dir/view-layout_solution.cpp.o" -o ../../bin/view-layout_solution  /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libRAJA.a /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libcamp.a -ldl

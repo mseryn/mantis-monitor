@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -fopenmp -Wl,--dependency-file=CMakeFiles/ex2_approx-pi_solution.dir/link.d "CMakeFiles/ex2_approx-pi_solution.dir/ex2_approx-pi_solution.cpp.o" -o ../../../bin/ex2_approx-pi_solution  /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libRAJA.a /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libcamp.a -ldl

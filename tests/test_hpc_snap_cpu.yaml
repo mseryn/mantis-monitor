@@ -14,7 +14,7 @@
 benchmarks:
   - type: generic_benchmark
     name: snap_omp_cpu
-    cmd: "./hpc/SNAP/src/snap ./hpc/SNAP/inputs/small.inp snap_cpu_out.txt"
+    cmd: "./hpc/SNAP/src/gsnap ./hpc/SNAP/inputs/small.inp snap_cpu_out.txt"
 
 collection_modes:
   perf:

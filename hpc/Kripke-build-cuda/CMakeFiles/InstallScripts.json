@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/drew/mantis-monitor/hpc/Kripke-build-cuda/cmake_install.cmake",
+		"/home/drew/mantis-monitor/hpc/Kripke-build-cuda/blt/thirdparty_builtin/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

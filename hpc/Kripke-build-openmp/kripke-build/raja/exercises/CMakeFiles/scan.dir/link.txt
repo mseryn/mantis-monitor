@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -fopenmp -Wl,--dependency-file=CMakeFiles/scan.dir/link.d CMakeFiles/scan.dir/scan.cpp.o -o ../../bin/scan  /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libRAJA.a /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libcamp.a -ldl

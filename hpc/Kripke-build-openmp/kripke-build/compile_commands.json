@@ -1,0 +1,506 @@
+[
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/BaseVar.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/BaseVar.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/BaseVar.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/BaseVar.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/MemoryManager.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/MemoryManager.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/MemoryManager.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/MemoryManager.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DataStore.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DataStore.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DataStore.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DataStore.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DomainVar.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DomainVar.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DomainVar.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DomainVar.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Data.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Data.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Data.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Data.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Decomp.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Decomp.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Decomp.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Decomp.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Energy.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Energy.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Energy.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Energy.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Quadrature.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Quadrature.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Quadrature.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Quadrature.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Space.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Space.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Space.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Space.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/InputVariables.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/InputVariables.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/InputVariables.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/InputVariables.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LPlusTimes.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LPlusTimes.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LPlusTimes.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LPlusTimes.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LTimes.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LTimes.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LTimes.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LTimes.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Population.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Population.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Population.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Population.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Scattering.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Scattering.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Scattering.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Scattering.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Source.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Source.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Source.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Source.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/SweepSubdomain.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/SweepSubdomain.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/SweepSubdomain.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/SweepSubdomain.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/BlockJacobiComm.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/BlockJacobiComm.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/BlockJacobiComm.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/BlockJacobiComm.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/SweepComm.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/SweepComm.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/SweepComm.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/SweepComm.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/PartitionSpace.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/PartitionSpace.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/PartitionSpace.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/PartitionSpace.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/Set.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/Set.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/Set.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/Set.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SteadyStateSolver.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SteadyStateSolver.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SteadyStateSolver.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SteadyStateSolver.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SweepSolver.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SweepSolver.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SweepSolver.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SweepSolver.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Timing.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Timing.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Timing.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Timing.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke/src -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/kripke.exe.dir/home/drew/mantis-monitor/hpc/Kripke/src/kripke.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/src/kripke.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/kripke.cpp",
+  "output": "CMakeFiles/kripke.exe.dir/home/drew/mantis-monitor/hpc/Kripke/src/kripke.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/RAJA.dir/src/AlignedRangeIndexSetBuilders.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/AlignedRangeIndexSetBuilders.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/AlignedRangeIndexSetBuilders.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/AlignedRangeIndexSetBuilders.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/RAJA.dir/src/DepGraphNode.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/DepGraphNode.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/DepGraphNode.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/DepGraphNode.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/RAJA.dir/src/LockFreeIndexSetBuilders.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/LockFreeIndexSetBuilders.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/LockFreeIndexSetBuilders.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/LockFreeIndexSetBuilders.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/RAJA.dir/src/MemUtils_CUDA.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/MemUtils_CUDA.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/MemUtils_CUDA.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/MemUtils_CUDA.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/RAJA.dir/src/MemUtils_HIP.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/MemUtils_HIP.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/MemUtils_HIP.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/MemUtils_HIP.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/RAJA.dir/src/MemUtils_SYCL.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/MemUtils_SYCL.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/MemUtils_SYCL.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/MemUtils_SYCL.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/RAJA.dir/src/PluginStrategy.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/PluginStrategy.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/PluginStrategy.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/PluginStrategy.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIC -fopenmp -o CMakeFiles/camp.dir/src/errors.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/src/errors.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/src/errors.cpp",
+  "output": "raja/tpl/camp/CMakeFiles/camp.dir/src/errors.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/atomic-histogram.dir/atomic-histogram.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/atomic-histogram.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/atomic-histogram.cpp",
+  "output": "raja/exercises/CMakeFiles/atomic-histogram.dir/atomic-histogram.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/atomic-histogram_solution.dir/atomic-histogram_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/atomic-histogram_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/atomic-histogram_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/atomic-histogram_solution.dir/atomic-histogram_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/dot-product.dir/dot-product.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/dot-product.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/dot-product.cpp",
+  "output": "raja/exercises/CMakeFiles/dot-product.dir/dot-product.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/dot-product_solution.dir/dot-product_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/dot-product_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/dot-product_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/dot-product_solution.dir/dot-product_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/kernelintro-execpols.dir/kernelintro-execpols.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-execpols.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-execpols.cpp",
+  "output": "raja/exercises/CMakeFiles/kernelintro-execpols.dir/kernelintro-execpols.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/kernelintro-execpols_solution.dir/kernelintro-execpols_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-execpols_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-execpols_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/kernelintro-execpols_solution.dir/kernelintro-execpols_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/launchintro-execpols.dir/launchintro-execpols.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launchintro-execpols.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launchintro-execpols.cpp",
+  "output": "raja/exercises/CMakeFiles/launchintro-execpols.dir/launchintro-execpols.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/launchintro-execpols_solution.dir/launchintro-execpols_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launchintro-execpols_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launchintro-execpols_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/launchintro-execpols_solution.dir/launchintro-execpols_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/kernelintro-nested-loop-reorder.dir/kernelintro-nested-loop-reorder.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-nested-loop-reorder.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-nested-loop-reorder.cpp",
+  "output": "raja/exercises/CMakeFiles/kernelintro-nested-loop-reorder.dir/kernelintro-nested-loop-reorder.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/kernelintro-nested-loop-reorder_solution.dir/kernelintro-nested-loop-reorder_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-nested-loop-reorder_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-nested-loop-reorder_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/kernelintro-nested-loop-reorder_solution.dir/kernelintro-nested-loop-reorder_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/kernel-matrix-transpose.dir/kernel-matrix-transpose.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose.cpp",
+  "output": "raja/exercises/CMakeFiles/kernel-matrix-transpose.dir/kernel-matrix-transpose.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/kernel-matrix-transpose_solution.dir/kernel-matrix-transpose_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/kernel-matrix-transpose_solution.dir/kernel-matrix-transpose_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/launch-matrix-transpose.dir/launch-matrix-transpose.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose.cpp",
+  "output": "raja/exercises/CMakeFiles/launch-matrix-transpose.dir/launch-matrix-transpose.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/launch-matrix-transpose_solution.dir/launch-matrix-transpose_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/launch-matrix-transpose_solution.dir/launch-matrix-transpose_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/kernel-matrix-transpose-tiled.dir/kernel-matrix-transpose-tiled.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-tiled.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-tiled.cpp",
+  "output": "raja/exercises/CMakeFiles/kernel-matrix-transpose-tiled.dir/kernel-matrix-transpose-tiled.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/kernel-matrix-transpose-tiled_solution.dir/kernel-matrix-transpose-tiled_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-tiled_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-tiled_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/kernel-matrix-transpose-tiled_solution.dir/kernel-matrix-transpose-tiled_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/launch-matrix-transpose-tiled.dir/launch-matrix-transpose-tiled.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-tiled.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-tiled.cpp",
+  "output": "raja/exercises/CMakeFiles/launch-matrix-transpose-tiled.dir/launch-matrix-transpose-tiled.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/launch-matrix-transpose-tiled_solution.dir/launch-matrix-transpose-tiled_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-tiled_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-tiled_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/launch-matrix-transpose-tiled_solution.dir/launch-matrix-transpose-tiled_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/kernel-matrix-transpose-local-array.dir/kernel-matrix-transpose-local-array.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-local-array.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-local-array.cpp",
+  "output": "raja/exercises/CMakeFiles/kernel-matrix-transpose-local-array.dir/kernel-matrix-transpose-local-array.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/kernel-matrix-transpose-local-array_solution.dir/kernel-matrix-transpose-local-array_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-local-array_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-local-array_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/kernel-matrix-transpose-local-array_solution.dir/kernel-matrix-transpose-local-array_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/launch-matrix-transpose-local-array.dir/launch-matrix-transpose-local-array.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-local-array.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-local-array.cpp",
+  "output": "raja/exercises/CMakeFiles/launch-matrix-transpose-local-array.dir/launch-matrix-transpose-local-array.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/launch-matrix-transpose-local-array_solution.dir/launch-matrix-transpose-local-array_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-local-array_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-local-array_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/launch-matrix-transpose-local-array_solution.dir/launch-matrix-transpose-local-array_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/offset-layout-stencil.dir/offset-layout-stencil.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/offset-layout-stencil.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/offset-layout-stencil.cpp",
+  "output": "raja/exercises/CMakeFiles/offset-layout-stencil.dir/offset-layout-stencil.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/offset-layout-stencil_solution.dir/offset-layout-stencil_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/offset-layout-stencil_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/offset-layout-stencil_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/offset-layout-stencil_solution.dir/offset-layout-stencil_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/permuted-layout-batch-matrix-multiply.dir/permuted-layout-batch-matrix-multiply.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/permuted-layout-batch-matrix-multiply.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/permuted-layout-batch-matrix-multiply.cpp",
+  "output": "raja/exercises/CMakeFiles/permuted-layout-batch-matrix-multiply.dir/permuted-layout-batch-matrix-multiply.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/permuted-layout-batch-matrix-multiply_solution.dir/permuted-layout-batch-matrix-multiply_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/permuted-layout-batch-matrix-multiply_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/permuted-layout-batch-matrix-multiply_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/permuted-layout-batch-matrix-multiply_solution.dir/permuted-layout-batch-matrix-multiply_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/reductions.dir/reductions.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/reductions.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/reductions.cpp",
+  "output": "raja/exercises/CMakeFiles/reductions.dir/reductions.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/reductions_solution.dir/reductions_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/reductions_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/reductions_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/reductions_solution.dir/reductions_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/scan.dir/scan.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/scan.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/scan.cpp",
+  "output": "raja/exercises/CMakeFiles/scan.dir/scan.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/scan_solution.dir/scan_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/scan_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/scan_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/scan_solution.dir/scan_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/segment-indexset-basics.dir/segment-indexset-basics.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/segment-indexset-basics.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/segment-indexset-basics.cpp",
+  "output": "raja/exercises/CMakeFiles/segment-indexset-basics.dir/segment-indexset-basics.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/segment-indexset-basics_solution.dir/segment-indexset-basics_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/segment-indexset-basics_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/segment-indexset-basics_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/segment-indexset-basics_solution.dir/segment-indexset-basics_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/sort.dir/sort.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/sort.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/sort.cpp",
+  "output": "raja/exercises/CMakeFiles/sort.dir/sort.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/sort_solution.dir/sort_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/sort_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/sort_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/sort_solution.dir/sort_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/vector-addition.dir/vector-addition.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vector-addition.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vector-addition.cpp",
+  "output": "raja/exercises/CMakeFiles/vector-addition.dir/vector-addition.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/vector-addition_solution.dir/vector-addition_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vector-addition_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vector-addition_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/vector-addition_solution.dir/vector-addition_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/vertexsum-indexset.dir/vertexsum-indexset.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vertexsum-indexset.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vertexsum-indexset.cpp",
+  "output": "raja/exercises/CMakeFiles/vertexsum-indexset.dir/vertexsum-indexset.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/vertexsum-indexset_solution.dir/vertexsum-indexset_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vertexsum-indexset_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vertexsum-indexset_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/vertexsum-indexset_solution.dir/vertexsum-indexset_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/view-layout.dir/view-layout.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/view-layout.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/view-layout.cpp",
+  "output": "raja/exercises/CMakeFiles/view-layout.dir/view-layout.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/view-layout_solution.dir/view-layout_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/view-layout_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/view-layout_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/view-layout_solution.dir/view-layout_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/ex2_approx-pi.dir/ex2_approx-pi.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex2_approx-pi.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex2_approx-pi.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex2_approx-pi.dir/ex2_approx-pi.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/ex2_approx-pi_solution.dir/ex2_approx-pi_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex2_approx-pi_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex2_approx-pi_solution.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex2_approx-pi_solution.dir/ex2_approx-pi_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/ex5_line-of-sight.dir/ex5_line-of-sight.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex5_line-of-sight.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex5_line-of-sight.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex5_line-of-sight.dir/ex5_line-of-sight.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/ex5_line-of-sight_solution.dir/ex5_line-of-sight_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex5_line-of-sight_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex5_line-of-sight_solution.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex5_line-of-sight_solution.dir/ex5_line-of-sight_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/ex6_stencil-offset-layout.dir/ex6_stencil-offset-layout.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex6_stencil-offset-layout.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex6_stencil-offset-layout.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex6_stencil-offset-layout.dir/ex6_stencil-offset-layout.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/ex6_stencil-offset-layout_solution.dir/ex6_stencil-offset-layout_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex6_stencil-offset-layout_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex6_stencil-offset-layout_solution.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex6_stencil-offset-layout_solution.dir/ex6_stencil-offset-layout_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/ex8_tiled-matrix-transpose.dir/ex8_tiled-matrix-transpose.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex8_tiled-matrix-transpose.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex8_tiled-matrix-transpose.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex8_tiled-matrix-transpose.dir/ex8_tiled-matrix-transpose.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/ex8_tiled-matrix-transpose_solution.dir/ex8_tiled-matrix-transpose_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex8_tiled-matrix-transpose_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex8_tiled-matrix-transpose_solution.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex8_tiled-matrix-transpose_solution.dir/ex8_tiled-matrix-transpose_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/ex9_matrix-transpose-local-array.dir/ex9_matrix-transpose-local-array.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex9_matrix-transpose-local-array.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex9_matrix-transpose-local-array.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex9_matrix-transpose-local-array.dir/ex9_matrix-transpose-local-array.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/c++  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/include -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-openmp/kripke-build/raja/tpl/camp/include -O3 -DNDEBUG -std=c++17 -fPIE -fopenmp -o CMakeFiles/ex9_matrix-transpose-local-array_solution.dir/ex9_matrix-transpose-local-array_solution.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex9_matrix-transpose-local-array_solution.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex9_matrix-transpose-local-array_solution.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex9_matrix-transpose-local-array_solution.dir/ex9_matrix-transpose-local-array_solution.cpp.o"
+}
+]

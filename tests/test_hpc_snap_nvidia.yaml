@@ -13,7 +13,7 @@
 benchmarks:
   - type: generic_benchmark
     name: snap_acc_nvidia
-    cmd: "./hpc/SNAP/src-acc/snap ./hpc/SNAP/inputs/small.inp snap_gpu_out.txt"
+    cmd: "./hpc/SNAP/src-acc/gsnap ./hpc/SNAP/inputs/small.inp snap_gpu_out.txt"
 
 collection_modes:
   perf:

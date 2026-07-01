@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libcamp.a CMakeFiles/camp.dir/src/errors.cpp.o
+/usr/bin/ranlib /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libcamp.a

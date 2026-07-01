@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libRAJA.a CMakeFiles/RAJA.dir/src/AlignedRangeIndexSetBuilders.cpp.o CMakeFiles/RAJA.dir/src/DepGraphNode.cpp.o CMakeFiles/RAJA.dir/src/LockFreeIndexSetBuilders.cpp.o CMakeFiles/RAJA.dir/src/MemUtils_CUDA.cpp.o CMakeFiles/RAJA.dir/src/MemUtils_HIP.cpp.o CMakeFiles/RAJA.dir/src/MemUtils_SYCL.cpp.o CMakeFiles/RAJA.dir/src/PluginStrategy.cpp.o
+/usr/bin/ranlib /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libRAJA.a

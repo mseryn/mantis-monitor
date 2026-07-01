@@ -34,7 +34,7 @@ NVIDIA variants add the **nvidia** collector and the AMD variants add the
   group), so a single config executes the workload several times. Keep problem
   sizes small while validating; every config defaults to `iterations: 1`.
 * **Collector permissions** must be set up first:
-  * perf + BPF + pfs → [`SETUP.md`](SETUP.md)
+  * perf + BPF + pfs → [`SETUP_TESTS.md`](SETUP_TESTS.md)
   * `nvidia-smi` (NVIDIA variants) → [`SETUP_GPU.md`](SETUP_GPU.md)
   * `rocm-smi` (AMD variants) → [`SETUP_GPU.md`](SETUP_GPU.md)
 * **Problem sizes** in the example commands are deliberately small (target a
@@ -185,14 +185,14 @@ cd hpc
 git clone https://github.com/lanl/SNAP.git
 cd SNAP
 
-# CPU (OpenMP) — produces src/snap
+# CPU (OpenMP) — produces src/gsnap
 make -C src
 
-# NVIDIA (OpenACC) — build with an NVHPC (PGI) compiler into a separate dir.
+# NVIDIA (OpenACC) — build with an NVHPC compiler into a separate dir.
 # Adjust SNAP's Makefile compiler/flags for OpenACC, then:
-#   make -C src   # output copied to src-acc/snap
-mkdir -p src-acc   # place the OpenACC-built `snap` binary here
-cd ../..
+#   make -C src   # move/copy resulting binary to src-acc/gsnap
+mkdir -p src-acc
+
 ```
 
 SNAP reads an input deck and writes an output file; problem size is set in the
@@ -201,13 +201,13 @@ decks in the repo's `qasnap`/`doc` examples and shrink the spatial/angular
 dimensions).
 
 ```bash
-./hpc/SNAP/src/snap ./hpc/SNAP/inputs/small.inp snap_cpu_out.txt
+./hpc/SNAP/src/gsnap ./hpc/SNAP/inputs/small.inp snap_cpu_out.txt
 mantis-monitor tests/test_hpc_snap_cpu.yaml          # or _nvidia
 ```
 
 > SNAP build details vary by compiler (gfortran vs NVHPC) and version — consult
 > the repo's `README`/`Makefile`. The configs assume the CPU binary at
-> `src/snap` and the GPU binary at `src-acc/snap`.
+> `src/gsnap` and the GPU binary at `src-acc/gsnap`.
 
 ---
 
@@ -272,7 +272,28 @@ then build Laghos against it; select the device at runtime with `-d cpu|cuda|hip
 # 1) build MFEM (serial, or with CUDA/HIP) per https://mfem.org
 cd hpc && git clone https://github.com/CEED/Laghos.git && cd Laghos
 make            # links your MFEM; place binaries at build-cpu/ build-cuda/ build-hip/
-cd ../..
+
+cd hpc
+git clone https://github.com/mfem/mfem.git
+cd mfem
+
+Build MFEM for CPU
+mkdir build-cpu && cd build-cpu
+cmake .. -DMFEM_USE_MPI=YES -DMFEM_USE_METIS=YES -DMFEM_USE_HYPRE=YES
+make -j
+cd ..
+
+Build MFEM for NVIDIA CUDA
+mkdir build-cuda && cd build-cuda
+cmake .. -DMFEM_USE_MPI=YES -DMFEM_USE_METIS=YES -DMFEM_USE_HYPRE=YES -DMFEM_USE_CUDA=YES
+make -j
+cd ..
+
+Build MFEM for AMD HIP
+mkdir build-hip && cd build-hip
+cmake .. -DMFEM_USE_MPI=YES -DMFEM_USE_METIS=YES -DMFEM_USE_HYPRE=YES -DMFEM_USE_HIP=YES
+make -j
+
 ```
 
 Run knobs: `-p <problem>`, `-rs <refines>`, `-tf <final time>`.

@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -fopenmp -Wl,--dependency-file=CMakeFiles/sort_solution.dir/link.d CMakeFiles/sort_solution.dir/sort_solution.cpp.o -o ../../bin/sort_solution  /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libRAJA.a /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libcamp.a -ldl

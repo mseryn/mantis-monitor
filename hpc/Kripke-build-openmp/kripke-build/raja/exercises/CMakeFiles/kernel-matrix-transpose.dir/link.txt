@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -fopenmp -Wl,--dependency-file=CMakeFiles/kernel-matrix-transpose.dir/link.d "CMakeFiles/kernel-matrix-transpose.dir/kernel-matrix-transpose.cpp.o" -o ../../bin/kernel-matrix-transpose  /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libRAJA.a /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libcamp.a -ldl

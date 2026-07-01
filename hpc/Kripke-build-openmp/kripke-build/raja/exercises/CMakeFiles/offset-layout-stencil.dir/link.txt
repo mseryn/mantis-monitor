@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -fopenmp -Wl,--dependency-file=CMakeFiles/offset-layout-stencil.dir/link.d "CMakeFiles/offset-layout-stencil.dir/offset-layout-stencil.cpp.o" -o ../../bin/offset-layout-stencil  /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libRAJA.a /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libcamp.a -ldl

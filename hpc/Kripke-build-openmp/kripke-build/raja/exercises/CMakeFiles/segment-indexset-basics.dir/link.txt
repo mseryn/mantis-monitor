@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -fopenmp -Wl,--dependency-file=CMakeFiles/segment-indexset-basics.dir/link.d "CMakeFiles/segment-indexset-basics.dir/segment-indexset-basics.cpp.o" -o ../../bin/segment-indexset-basics  /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libRAJA.a /home/drew/mantis-monitor/hpc/Kripke-build-openmp/lib/libcamp.a -ldl
