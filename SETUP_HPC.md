@@ -301,9 +301,24 @@ Run knobs: `-p <problem>`, `-rs <refines>`, `-tf <final time>`.
 ## Nekbone  (CPU + NVIDIA)
 
 ```bash
-cd hpc && git clone https://github.com/Nek5000/Nekbone.git && cd ..
-# CPU: cd Nekbone/test/example1 && ./makenek ... -> nekbone
-# NVIDIA: use a CUDA Nekbone fork (Nekbone CUDA / NekBench) -> Nekbone-cuda/test/nekbone
+
+# CPU reference
+cd hpc
+git clone https://github.com/Nek5000/Nekbone.git
+cd Nekbone/test/example1
+./makenek nekbone
+
+Cleanup binary and generate an executable named "nekbone"
+mkdir -p ../../build-cpu
+mv nekbone ../../build-cpu/
+cd ../../..
+
+# NVIDIA: use a CUDA alternate Nekbone repository (Nekbone CUDA / NekBench)  
+cd hpc
+git clone https://github.com/AMDComputeLibraries/Nekbone.git Nekbone-cuda
+cd Nekbone-cuda/test/nek_gpu1
+./makenek.cuda
+
 ```
 
 Problem size is set in the example's `SIZE` / `data.rea` files.
