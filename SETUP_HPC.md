@@ -355,6 +355,38 @@ Build HYPRE (add `--with-cuda` / `--with-hip` for GPU), then AMG2023 against it:
 ```bash
 cd hpc && git clone https://github.com/LLNL/AMG2023.git
 # configure with your HYPRE; build into build-cpu / build-cuda / build-hip -> test/amg
+cd ..
+
+# HYPRE Configure and Build (CPU)
+cmake -S hpc/hypre/src -B hpc/hypre/build-cpu \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DHYPRE_WITH_OPENMP=ON \
+    -DCMAKE_INSTALL_PREFIX=${PWD}/hpc/hypre/install-cpu
+cmake --build hpc/hypre/build-cpu -j
+cmake --install hpc/hypre/build-cpu
+
+# AMG2023 Configure and Build (CPU)
+cmake -S hpc/AMG2023 -B hpc/AMG2023/build-cpu \
+      -DHYPRE_PREFIX=${PWD}/hpc/hypre/install-cpu
+cmake --build hpc/AMG2023/build-cpu -j
+
+# HYPRE Configure and Build (CUDA)
+cmake -S hpc/hypre/src -B hpc/hypre/build-cuda \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DHYPRE_WITH_CUDA=ON \
+      -DCMAKE_CUDA_ARCHITECTURES=80 \
+      -DCMAKE_INSTALL_PREFIX=${PWD}/hpc/hypre/install-cuda
+cmake --build hpc/hypre/build-cuda -j
+cmake --install hpc/hypre/build-cuda
+
+# AMG2023 Configure and Build (CUDA)
+cmake -S hpc/AMG2023 -B hpc/AMG2023/build-cuda \
+      -DHYPRE_PREFIX=${PWD}/hpc/hypre/install-cuda
+cmake --build hpc/AMG2023/build-cuda -j
+
+# AMG/HIP Configure and Build follows the same instructions but 
+swap the CUDA flags out for ROCm/HIP compiler variables (-DHYPRE_WITH_HIP=ON and HIP=1)
+
 ```
 
 Run knobs: `-n <nx ny nz>` (per-rank grid), `-P <px py pz>` (process grid).
@@ -363,9 +395,26 @@ Run knobs: `-n <nx ny nz>` (per-rank grid), `-P <px py pz>` (process grid).
 
 ```bash
 cd hpc && git clone https://github.com/Mantevo/miniFE.git
+git clone https://github.com/kokkos/kokkos.git
+cd kokkos
+git checkout tags/3.7.02
+cd ..
+
 # CPU: build miniFE/openmp -> openmp/src/miniFE.x
+cd miniFE/openmp/src
+cp Makefile.gnu.openmp Makefile
+make -j
+
 # NVIDIA: build the Kokkos variant with Kokkos+CUDA -> kokkos/src/miniFE.x
+cd ../../kokkos/src
+make clean
+make -j CUDA=1 KOKKOS_ARCH=Ampere80 KOKKOS_PATH=${HOME}/mantis-monitor/hpc/kokkos
+cd ../../../..
+
 # AMD:    build the Kokkos variant with Kokkos+HIP  -> kokkos-hip/src/miniFE.x
+Configure and Build follows the same instructions but swap the CUDA 
+flags out for ROCm/HIP compiler variables (-DHYPRE_WITH_HIP=ON and HIP=1)
+
 ```
 
 Run knobs: `nx= ny= nz=`.
