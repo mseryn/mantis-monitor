@@ -419,7 +419,7 @@ flags out for ROCm/HIP compiler variables (-DHYPRE_WITH_HIP=ON and HIP=1)
 
 Run knobs: `nx= ny= nz=`.
 
-## HPGMG  (CPU + NVIDIA)
+## HPGMG  (CPU + NVIDIA) -- NO LONGER ACCESSIBLE
 
 ```bash
 cd hpc && git clone https://bitbucket.org/hpgmg/hpgmg.git   # or a github mirror
@@ -436,7 +436,7 @@ Args: `<log2 box size> <boxes per rank>` (configs use `6 8`).
 Configs: `test_hpc_{minibude,gromacs}_{cpu,nvidia,amd}.yaml`,
 `test_hpc_{comd,miniqmc}_{cpu,nvidia}.yaml`.
 
-## CoMD  (CPU + NVIDIA)
+## CoMD  (CPU + NVIDIA) -- ExaMiniMD Fix
 
 ```bash
 cd hpc && git clone https://github.com/ECP-copa/CoMD.git
@@ -451,10 +451,21 @@ Run knobs: `-x -y -z` (unit cells), `-e` (EAM potential).
 UoB-HPC CMake `-DMODEL=<backend>`, same pattern as CloverLeaf (binary `bude`):
 
 ```bash
-cd hpc && git clone https://github.com/UoB-HPC/miniBUDE.git && cd ..
-cmake -S hpc/miniBUDE -B hpc/miniBUDE/build-omp  -DMODEL=omp  && cmake --build hpc/miniBUDE/build-omp -j
-cmake -S hpc/miniBUDE -B hpc/miniBUDE/build-cuda -DMODEL=cuda && cmake --build hpc/miniBUDE/build-cuda -j
-cmake -S hpc/miniBUDE -B hpc/miniBUDE/build-hip  -DMODEL=hip  && cmake --build hpc/miniBUDE/build-hip -j
+cd hpc && git clone https://github.com/UoB-HPC/miniBUDE.git && cd miniBUDE
+
+# Configure and Build CPU (OpenMP)
+cmake -S . -B build-omp \
+    -DMODEL=omp \
+    -DCMAKE_BUILD_TYPE=Release
+cmake --build build-omp -j$(nproc)
+
+# Configure and build NVIDIA (CUDA)
+cmake -S . -B build-cuda \
+    -DMODEL=cuda \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_CUDA_COMPILER=/usr/local/cuda/bin/nvcc \
+    -DCUDA_ARCH=sm_75
+cmake --build build-cuda -j$(nproc)
 ```
 
 Run knobs: `--deck data/bm1` (or `bm2`), `-i <iters>`.
@@ -462,9 +473,18 @@ Run knobs: `--deck data/bm1` (or `bm2`), `-i <iters>`.
 ## miniQMC  (CPU + NVIDIA)
 
 ```bash
-cd hpc && git clone https://github.com/QMCPACK/miniqmc.git && cd ..
-cmake -S hpc/miniqmc -B hpc/miniqmc/build && cmake --build hpc/miniqmc/build -j      # CPU -> build/bin/miniqmc
-# NVIDIA: configure with -DENABLE_OFFLOAD=ON (OpenMP target) -> build-offload/bin/miniqmc
+cd hpc && git clone https://github.com/QMCPACK/miniqmc.git && cd miniqmc
+
+# Configure and Build CPU
+cmake -S . -B build \
+    -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j$(nproc)
+
+# Configure and Build NVIDIA 
+cmake -S . -B build-offload \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_OFFLOAD=ON
+cmake --build build-offload -j$(nproc)
 ```
 
 Run knobs: `-g "nx ny nz"` (supercell tiling).
@@ -472,10 +492,39 @@ Run knobs: `-g "nx ny nz"` (supercell tiling).
 ## GROMACS  (CPU / NVIDIA / AMD)
 
 ```bash
+
 cd hpc && git clone https://gitlab.com/gromacs/gromacs.git
-# CPU:    cmake -DGMX_GPU=OFF                              -> build-cpu/bin/gmx
-# NVIDIA: cmake -DGMX_GPU=CUDA                             -> build-cuda/bin/gmx
-# AMD:    cmake -DGMX_GPU=SYCL -DGMX_SYCL=ACPP (hipSYCL)   -> build-hip/bin/gmx
+cd gromacs
+
+# Required developmet packages must be installed if not already
+sudo apt update
+sudo apt install \
+    cmake \
+    build-essential \
+    git \
+    libfftw3-dev
+sudo apt install libopenmpi-dev openmpi-bin
+
+# CPU:
+cmake -S . -B build-cpu \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DGMX_GPU=OFF
+cmake --build build-cpu -j$(nproc)
+
+# NVIDIA:
+cmake -S . -B build-cuda \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DGMX_GPU=CUDA \
+    -DCMAKE_CUDA_ARCHITECTURES=75
+cmake --build build-cuda -j$(nproc)
+
+# AMD:
+cmake -S . -B build-hip \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DGMX_GPU=SYCL \
+    -DGMX_SYCL=ACPP \
+    -DGMX_BUILD_OWN_FFTW=ON
+cmake --build build-hip -j$(nproc)
 ```
 
 Drop a benchmark `.tpr` (e.g. the Max-Planck benchMEM/benchPEP sets) into
@@ -492,9 +541,21 @@ Configs: `test_hpc_{babelstream,rajaperf,heffte}_{cpu,nvidia,amd}.yaml`.
 
 ```bash
 cd hpc && git clone https://github.com/UoB-HPC/BabelStream.git && cd ..
-cmake -S hpc/BabelStream -B hpc/BabelStream/build-omp  -DMODEL=omp  && cmake --build hpc/BabelStream/build-omp -j   # omp-stream
-cmake -S hpc/BabelStream -B hpc/BabelStream/build-cuda -DMODEL=cuda && cmake --build hpc/BabelStream/build-cuda -j  # cuda-stream
-cmake -S hpc/BabelStream -B hpc/BabelStream/build-hip  -DMODEL=hip  && cmake --build hpc/BabelStream/build-hip -j   # hip-stream
+
+# CPU
+cmake -S hpc/BabelStream -B hpc/BabelStream/build-omp -DMODEL=omp
+cmake --build hpc/BabelStream/build-omp -j
+
+# NVIDIA
+cmake -S hpc/BabelStream -B hpc/BabelStream/build-cuda \
+  -DMODEL=cuda \
+  -DCMAKE_CUDA_COMPILER=$(which nvcc) \
+  -DCUDA_ARCH=sm_75
+cmake --build hpc/BabelStream/build-cuda -j
+
+# AMD
+cmake -S hpc/BabelStream -B hpc/BabelStream/build-hip -DMODEL=hip
+cmake --build hpc/BabelStream/build-hip -j
 ```
 
 Run knobs: `-s <elements>`, `-n <reps>`.
@@ -502,10 +563,26 @@ Run knobs: `-s <elements>`, `-n <reps>`.
 ## RAJAPerf  (CPU / NVIDIA / AMD)
 
 ```bash
-cd hpc && git clone --recursive https://github.com/LLNL/RAJAPerf.git && cd ..
-cmake -S hpc/RAJAPerf -B hpc/RAJAPerf/build-omp  -DENABLE_OPENMP=On && cmake --build hpc/RAJAPerf/build-omp -j
-cmake -S hpc/RAJAPerf -B hpc/RAJAPerf/build-cuda -DENABLE_CUDA=On   && cmake --build hpc/RAJAPerf/build-cuda -j
-cmake -S hpc/RAJAPerf -B hpc/RAJAPerf/build-hip  -DENABLE_HIP=On    && cmake --build hpc/RAJAPerf/build-hip -j
+cd hpc && git clone --recursive https://github.com/LLNL/RAJAPerf.git && cd RAJAPerf
+
+# CPU
+cmake -S . -B build-omp \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_OPENMP=ON
+cmake --build build-omp -j$(nproc)
+
+# NVIDIA
+cmake -S . -B build-cuda \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_CUDA=ON \
+    -DCMAKE_CUDA_ARCHITECTURES=75
+cmake --build build-cuda -j$(nproc)
+
+# AMD
+cmake -S . -B build-hip \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_HIP=ON
+cmake --build build-hip -j$(nproc)
 ```
 
 Binary `bin/raja-perf.exe`. Knobs: `-v Base_OpenMP|Base_CUDA|Base_HIP`,
@@ -515,9 +592,33 @@ Binary `bin/raja-perf.exe`. Knobs: `-v Base_OpenMP|Base_CUDA|Base_HIP`,
 
 ```bash
 cd hpc && git clone https://github.com/icl-utk-edu/heffte.git && cd ..
-cmake -S hpc/heffte -B hpc/heffte/build \
-  -DHeffte_ENABLE_FFTW=ON -DHeffte_ENABLE_CUDA=ON -DHeffte_ENABLE_ROCM=ON
-cmake --build hpc/heffte/build -j        # -> build/benchmarks/speed3d_c2c
+
+# Install build tools if not installed already
+sudo apt update
+sudo apt install -y \
+  cmake git build-essential \
+  openmpi-bin libopenmpi-dev \
+  libfftw3-dev
+
+# CPU
+cmake -S hpc/heffte -B hpc/heffte/build-cpu \
+  -DHeffte_ENABLE_FFTW=ON
+cmake --build hpc/heffte/build-cpu -j
+
+# NVIDIA
+cmake -S hpc/heffte -B hpc/heffte/build-cuda \
+  -DHeffte_ENABLE_FFTW=ON \
+  -DHeffte_ENABLE_CUDA=ON \
+  -DCMAKE_CUDA_COMPILER=$(which nvcc) \
+  -DCUDA_ARCH=sm_75 \
+  -DCMAKE_CXX_FLAGS="-fno-lto" \
+  -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
+cmake --build hpc/heffte/build-cuda -j
+
+# AMD
+cmake -S hpc/heffte -B hpc/heffte/build-rocm \
+  -DHeffte_ENABLE_FFTW=ON \
+  -DHeffte_ENABLE_ROCM=ON
 ```
 
 Needs an MPI launcher even for 1 rank:
@@ -530,20 +631,32 @@ Needs an MPI launcher even for 1 rank:
 Configs: `test_hpc_{su3_bench,sw4lite,warpx,miniweather}_{cpu,nvidia,amd}.yaml`,
 `test_hpc_haccmk_{cpu,nvidia}.yaml`.
 
-## su3_bench  (CPU / NVIDIA / AMD)
+## su3_bench  (CPU / NVIDIA / AMD) -- ACCESS ISSUES
 
 ```bash
 cd hpc && git clone https://github.com/NERSC/su3_bench.git && cd su3_bench
-make -f Makefile.openmp     # -> su3_bench_openmp (rename per the repo's targets)
-make -f Makefile.cuda       # -> su3_bench_cuda
-make -f Makefile.hip        # -> su3_bench_hip
-cd ../..
+
+# Install dependencies
+sudo apt update
+sudo apt install -y \
+    git build-essential \
+    libopenmpi-dev openmpi-bin
+
+# CPU
+make -f Makefile.openmp
+
+# NVIDIA
+make -f Makefile.cuda
+
+# AMD
+make -f Makefile.hip
+
 ```
 
 The configs expect binaries named `su3_bench_{openmp,cuda,hip}`; adjust to your
 Makefile's actual output names. No runtime args (fixed problem).
 
-## HACCmk  (CPU + NVIDIA)
+## HACCmk  (CPU + NVIDIA) -- ACCESS ISSUES
 
 Part of the CORAL-2 benchmark suite (asc.llnl.gov/coral-2-benchmarks). Build the
 OpenMP microkernel `hacc_omp.exe`; the CUDA variant `hacc_cuda.exe` comes from
@@ -552,10 +665,25 @@ the GPU port. Both run a fixed compute kernel (no args).
 ## SW4lite  (CPU / NVIDIA / AMD)
 
 ```bash
+
+# Install dependencies
+sudo apt update
+sudo apt install -y \
+  git build-essential make cmake \
+  openmpi-bin libopenmpi-dev \
+  libfftw3-dev
+
 cd hpc && git clone https://github.com/geodynamics/sw4lite.git && cd sw4lite
-make                # CPU -> optimize/sw4lite
-# GPU: build the RAJA/CUDA and RAJA/HIP variants -> optimize_cuda/sw4lite, optimize_hip/sw4lite
-cd ../..
+
+# CPU
+make
+
+# NVIDIA
+make -f Makefile.cuda
+
+# AMD
+make hip
+
 ```
 
 Run with an input deck, e.g. `tests/pointsource/pointsource.in`.
@@ -563,15 +691,45 @@ Run with an input deck, e.g. `tests/pointsource/pointsource.in`.
 ## WarpX  (CPU / NVIDIA / AMD)
 
 ```bash
-cd hpc && git clone https://github.com/ECP-WarpX/WarpX.git && cd ..
-cmake -S hpc/WarpX -B hpc/WarpX/build-omp  -DWarpX_COMPUTE=OMP  -DWarpX_DIMS=3 && cmake --build hpc/WarpX/build-omp -j
-cmake -S hpc/WarpX -B hpc/WarpX/build-cuda -DWarpX_COMPUTE=CUDA -DWarpX_DIMS=3 && cmake --build hpc/WarpX/build-cuda -j
-cmake -S hpc/WarpX -B hpc/WarpX/build-hip  -DWarpX_COMPUTE=HIP  -DWarpX_DIMS=3 && cmake --build hpc/WarpX/build-hip -j
+
+# Install dependencies
+sudo apt update
+sudo apt install -y \
+  git build-essential cmake \
+  python3 python3-pip \
+  openmpi-bin libopenmpi-dev
+sudo apt install -y \
+  libfftw3-dev \
+  libhdf5-dev \
+  pkg-config
+
+cd hpc && git clone https://github.com/ECP-WarpX/WarpX.git && cd WarpX
+
+# CPU
+cmake -S . -B build-omp \
+  -DWarpX_COMPUTE=OMP \
+  -DWarpX_DIMS=3
+cmake --build build-omp -j
+
+# NVIDIA
+cmake -S . -B build-cuda \
+  -DWarpX_COMPUTE=CUDA \
+  -DWarpX_DIMS=3 \
+  -DCMAKE_CUDA_COMPILER=$(which nvcc) \
+  -DCMAKE_CUDA_ARCHITECTURES=75
+cmake --build build-cuda -j
+
+# AMD
+cmake -S . -B build-hip \
+  -DWarpX_COMPUTE=HIP \
+  -DWarpX_DIMS=3
+cmake --build build-hip -j
+
 ```
 
 Binary `bin/warpx.3d`. Pass an example input + `max_step=<N>` to cap timesteps.
 
-## miniWeather  (CPU / NVIDIA / AMD)
+## miniWeather  (CPU / NVIDIA / AMD) -- BUILD ERRORS
 
 ```bash
 cd hpc && git clone https://github.com/mrnorman/miniWeather.git
@@ -599,7 +757,7 @@ cd ../..
 Run knobs: `-g <scale>` (2^scale-vertex Kronecker graph), `-n <trials>`. Swap
 `bfs` for `pr`/`sssp`/`cc`/etc.
 
-## Gunrock  (NVIDIA only)
+## Gunrock  (NVIDIA only) -- BUILD ERRORS
 
 ```bash
 cd hpc && git clone --recursive https://github.com/gunrock/gunrock.git
@@ -610,14 +768,14 @@ Provide a Matrix-Market graph (the repo ships small datasets under
 `datasets/`). The CLI differs between classic Gunrock and "essentials" — adjust
 the config `cmd:` to match your build.
 
-## NPB  (CPU + NVIDIA)
+## NPB  (NVIDIA)
 
 ```bash
-# CPU (NPB-OMP): from the NASA NPB3.x distribution
-#   cd hpc/NPB-OMP/NPB3.x-OMP && make CG CLASS=B   -> bin/cg.B.x
-# NVIDIA (NPB-GPU CUDA port):
-cd hpc && git clone https://github.com/GMAP/NPB-GPU.git
-#   build the CUDA CG, class B -> NPB-GPU/bin/cg.B
+cd hpc
+git clone https://github.com/GMAP/NPB-GPU.git
+cd NPB-GPU/CUDA
+cd CG
+make CLASS=B
 ```
 
 Swap `cg` for `ep/ft/mg/lu/sp/bt`; class `A` is shorter, `C` longer.
