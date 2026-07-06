@@ -1,6 +1,8 @@
-# started on Wed Jul  1 12:56:44 2026
+# started on Mon Jul  6 11:56:41 2026
 
-# started on Wed Jul  1 12:56:44 2026
+0.000036368,665838,,branch-instructions,10087137,100.00,,
+0.000036368,74158,,branch-misses,10038726,100.00,,
+# started on Mon Jul  6 11:56:41 2026
 
-0.000029819,2417559,,branch-instructions,38888024,100.00,,
-0.000029819,229258,,branch-misses,38847187,100.00,,
+0.002306125,1925417,,branch-instructions,31780926,100.00,,
+0.002306125,176524,,branch-misses,31779985,100.00,,

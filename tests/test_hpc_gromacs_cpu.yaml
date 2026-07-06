@@ -16,9 +16,9 @@ benchmarks:
 collection_modes:
   perf:
     pmu_count: 4
-  bpf:
-    metrics:
-      - io_latency
+#  bpf:
+#    metrics:
+#      - io_latency
   utilization:
     - memory_info
 

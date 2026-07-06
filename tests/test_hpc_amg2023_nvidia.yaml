@@ -11,14 +11,14 @@
 benchmarks:
   - type: generic_benchmark
     name: amg2023_nvidia
-    cmd: "./hpc/AMG2023/build-cuda/test/amg -P 1 1 1 -n 128 128 128"
+    cmd: "./hpc/AMG2023/build-cuda/amg -P 1 1 1 -n 128 128 128"
 
 collection_modes:
   perf:
     pmu_count: 4
-  bpf:
-    metrics:
-      - io_latency
+#  bpf:
+#    metrics:
+#      - io_latency
   utilization:
     - memory_info
   nvidia:

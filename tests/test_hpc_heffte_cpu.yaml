@@ -11,7 +11,7 @@
 benchmarks:
   - type: generic_benchmark
     name: heffte_cpu
-    cmd: "mpirun -np 1 ./hpc/heffte/build/benchmarks/speed3d_c2c fftw double 256 256 256"
+    cmd: "mpirun -np 1 ./hpc/heffte/build-cpu/benchmarks/speed3d_c2c fftw double 256 256 256"
 
 collection_modes:
   perf:

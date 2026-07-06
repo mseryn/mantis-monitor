@@ -12,7 +12,7 @@
 benchmarks:
   - type: generic_benchmark
     name: cloverleaf_hip_amd
-    cmd: "./hpc/CloverLeaf/build-hip/clover_leaf --file ./hpc/CloverLeaf/InputDecks/clover_bm_short.in"
+    cmd: "./hpc/CloverLeaf/build-hip/hip-cloverleaf --file ./hpc/CloverLeaf/InputDecks/clover_bm_short.in"
 
 collection_modes:
   perf:

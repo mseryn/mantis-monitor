@@ -52,11 +52,6 @@ NVIDIA variants add the **nvidia** collector and the AMD variants add the
 
 ---
 
-# Batch 1 — Particle transport (nuclear)
-
-Configs: `test_hpc_{xsbench,rsbench,quicksilver,kripke,snap}_{cpu,nvidia,amd}.yaml`
-(SNAP is CPU + NVIDIA only — no first-class HIP backend.)
-
 ## XSBench / RSBench
 
 Monte Carlo neutron cross-section lookup proxies (ANL). Both build one binary
@@ -211,12 +206,6 @@ mantis-monitor tests/test_hpc_snap_cpu.yaml          # or _nvidia
 
 ---
 
-# Batch 2 — Hydrodynamics & CFD
-
-Configs: `test_hpc_{cloverleaf,laghos}_{cpu,nvidia,amd}.yaml`,
-`test_hpc_{lulesh,pennant,nekbone}_{cpu,nvidia}.yaml` (LULESH/PENNANT/Nekbone
-have no clean upstream HIP backend → CPU + NVIDIA only).
-
 ## CloverLeaf / TeaLeaf
 
 Both are UoB-HPC single-source ports built with CMake `-DMODEL=<backend>`. One
@@ -325,12 +314,6 @@ Problem size is set in the example's `SIZE` / `data.rea` files.
 
 ---
 
-# Batch 3 — Solvers / multigrid / FEM
-
-Configs: `test_hpc_{tealeaf,hpcg,amg2023,minife}_{cpu,nvidia,amd}.yaml`,
-`test_hpc_hpgmg_{cpu,nvidia}.yaml`. (TeaLeaf build is in the CloverLeaf/TeaLeaf
-section above.)
-
 ## HPCG  (CPU / NVIDIA / AMD)
 
 ```bash
@@ -421,28 +404,23 @@ Run knobs: `nx= ny= nz=`.
 
 ## HPGMG  (CPU + NVIDIA) -- NO LONGER ACCESSIBLE
 
-```bash
-cd hpc && git clone https://bitbucket.org/hpgmg/hpgmg.git   # or a github mirror
+# ```bash
+# cd hpc && git clone https://bitbucket.org/hpgmg/hpgmg.git   # or a github mirror
 # CPU finite-volume: ./build.sh -> build/bin/hpgmg-fv
 # NVIDIA: NVIDIA's hpgmg-cuda (or the CUDA branch) -> hpgmg-cuda/build/bin/hpgmg-fv
-```
+# ```
 
 Args: `<log2 box size> <boxes per rank>` (configs use `6 8`).
 
 ---
 
-# Batch 4 — Molecular dynamics / chemistry / QMC
+## CoMD  (CPU + NVIDIA) -- ExaMiniMD Fix (New repo)
 
-Configs: `test_hpc_{minibude,gromacs}_{cpu,nvidia,amd}.yaml`,
-`test_hpc_{comd,miniqmc}_{cpu,nvidia}.yaml`.
-
-## CoMD  (CPU + NVIDIA) -- ExaMiniMD Fix
-
-```bash
-cd hpc && git clone https://github.com/ECP-copa/CoMD.git
+# ```bash
+# cd hpc && git clone https://github.com/ECP-copa/CoMD.git
 # CPU: cd CoMD/src-openmp && make -> ../bin/CoMD-openmp
 # NVIDIA: use a CUDA CoMD fork -> CoMD-cuda/bin/CoMD-cuda
-```
+# ```
 
 Run knobs: `-x -y -z` (unit cells), `-e` (EAM potential).
 
@@ -533,10 +511,6 @@ Drop a benchmark `.tpr` (e.g. the Max-Planck benchMEM/benchPEP sets) into
 
 ---
 
-# Batch 5 — Memory / kernels / FFT
-
-Configs: `test_hpc_{babelstream,rajaperf,heffte}_{cpu,nvidia,amd}.yaml`.
-
 ## BabelStream  (CPU / NVIDIA / AMD)
 
 ```bash
@@ -626,41 +600,36 @@ Needs an MPI launcher even for 1 rank:
 
 ---
 
-# Batch 6 — Physics, geoscience, climate
-
-Configs: `test_hpc_{su3_bench,sw4lite,warpx,miniweather}_{cpu,nvidia,amd}.yaml`,
-`test_hpc_haccmk_{cpu,nvidia}.yaml`.
-
 ## su3_bench  (CPU / NVIDIA / AMD) -- ACCESS ISSUES
 
-```bash
-cd hpc && git clone https://github.com/NERSC/su3_bench.git && cd su3_bench
+# ```bash
+# cd hpc && git clone https://github.com/NERSC/su3_bench.git && cd su3_bench
 
 # Install dependencies
-sudo apt update
-sudo apt install -y \
-    git build-essential \
-    libopenmpi-dev openmpi-bin
+# sudo apt update
+# sudo apt install -y \
+#    git build-essential \
+#    libopenmpi-dev openmpi-bin
 
 # CPU
-make -f Makefile.openmp
+# make -f Makefile.openmp
 
 # NVIDIA
-make -f Makefile.cuda
+# make -f Makefile.cuda
 
 # AMD
-make -f Makefile.hip
+# make -f Makefile.hip
 
-```
+# ```
 
-The configs expect binaries named `su3_bench_{openmp,cuda,hip}`; adjust to your
-Makefile's actual output names. No runtime args (fixed problem).
+# The configs expect binaries named `su3_bench_{openmp,cuda,hip}`; adjust to your
+# Makefile's actual output names. No runtime args (fixed problem).
 
 ## HACCmk  (CPU + NVIDIA) -- ACCESS ISSUES
 
-Part of the CORAL-2 benchmark suite (asc.llnl.gov/coral-2-benchmarks). Build the
-OpenMP microkernel `hacc_omp.exe`; the CUDA variant `hacc_cuda.exe` comes from
-the GPU port. Both run a fixed compute kernel (no args).
+# Part of the CORAL-2 benchmark suite (asc.llnl.gov/coral-2-benchmarks). Build the
+# OpenMP microkernel `hacc_omp.exe`; the CUDA variant `hacc_cuda.exe` comes from
+# the GPU port. Both run a fixed compute kernel (no args).
 
 ## SW4lite  (CPU / NVIDIA / AMD)
 
@@ -688,64 +657,59 @@ make hip
 
 Run with an input deck, e.g. `tests/pointsource/pointsource.in`.
 
-## WarpX  (CPU / NVIDIA / AMD)
+## WarpX  (CPU / NVIDIA / AMD) -- Memory Limit Issue
 
-```bash
+# ```bash
 
 # Install dependencies
-sudo apt update
-sudo apt install -y \
-  git build-essential cmake \
-  python3 python3-pip \
-  openmpi-bin libopenmpi-dev
-sudo apt install -y \
-  libfftw3-dev \
-  libhdf5-dev \
-  pkg-config
+# sudo apt update
+# sudo apt install -y \
+#  git build-essential cmake \
+#  python3 python3-pip \
+#  openmpi-bin libopenmpi-dev
+# sudo apt install -y \
+#  libfftw3-dev \
+#  libhdf5-dev \
+#  pkg-config
 
-cd hpc && git clone https://github.com/ECP-WarpX/WarpX.git && cd WarpX
+# cd hpc && git clone https://github.com/ECP-WarpX/WarpX.git && cd WarpX
 
 # CPU
-cmake -S . -B build-omp \
-  -DWarpX_COMPUTE=OMP \
-  -DWarpX_DIMS=3
-cmake --build build-omp -j
+# cmake -S . -B build-omp \
+#  -DWarpX_COMPUTE=OMP \
+#  -DWarpX_DIMS=3
+# cmake --build build-omp -j
 
 # NVIDIA
-cmake -S . -B build-cuda \
-  -DWarpX_COMPUTE=CUDA \
-  -DWarpX_DIMS=3 \
-  -DCMAKE_CUDA_COMPILER=$(which nvcc) \
-  -DCMAKE_CUDA_ARCHITECTURES=75
-cmake --build build-cuda -j
+# cmake -S . -B build-cuda \
+#  -DWarpX_COMPUTE=CUDA \
+#  -DWarpX_DIMS=3 \
+#  -DCMAKE_CUDA_COMPILER=$(which nvcc) \
+#  -DCMAKE_CUDA_ARCHITECTURES=75
+# cmake --build build-cuda -j
 
 # AMD
-cmake -S . -B build-hip \
-  -DWarpX_COMPUTE=HIP \
-  -DWarpX_DIMS=3
-cmake --build build-hip -j
+# cmake -S . -B build-hip \
+#  -DWarpX_COMPUTE=HIP \
+#  -DWarpX_DIMS=3
+# cmake --build build-hip -j
 
-```
+# ```
 
-Binary `bin/warpx.3d`. Pass an example input + `max_step=<N>` to cap timesteps.
+# Binary `bin/warpx.3d`. Pass an example input + `max_step=<N>` to cap timesteps.
 
 ## miniWeather  (CPU / NVIDIA / AMD) -- BUILD ERRORS
 
-```bash
-cd hpc && git clone https://github.com/mrnorman/miniWeather.git
+# ```bash
+# cd hpc && git clone https://github.com/mrnorman/miniWeather.git
 # CMake build; pick the source variant per backend:
 #   openmp (CPU) / openacc (NVIDIA) / kokkos with Kokkos+HIP (AMD)
-```
+# ```
 
-Problem size (NX/NZ/SIM_TIME) is set via CMake `-D` defines / source constants —
-see the repo README. Reduce SIM_TIME for short runs.
+# Problem size (NX/NZ/SIM_TIME) is set via CMake `-D` defines / source constants —
+# see the repo README. Reduce SIM_TIME for short runs.
 
 ---
-
-# Batch 7 — Graph analytics + CFD kernel suite
-
-Configs: `test_hpc_gapbs_cpu.yaml`, `test_hpc_gunrock_nvidia.yaml`,
-`test_hpc_npb_{cpu,nvidia}.yaml`.
 
 ## gapbs  (CPU only)
 
@@ -759,14 +723,14 @@ Run knobs: `-g <scale>` (2^scale-vertex Kronecker graph), `-n <trials>`. Swap
 
 ## Gunrock  (NVIDIA only) -- BUILD ERRORS
 
-```bash
-cd hpc && git clone --recursive https://github.com/gunrock/gunrock.git
-cmake -S gunrock -B gunrock/build && cmake --build gunrock/build -j      # -> build/bin/bfs
+# ```bash
+# cd hpc && git clone --recursive https://github.com/gunrock/gunrock.git
+# cmake -S gunrock -B gunrock/build && cmake --build gunrock/build -j      # -> build/bin/bfs
 ```
 
-Provide a Matrix-Market graph (the repo ships small datasets under
-`datasets/`). The CLI differs between classic Gunrock and "essentials" — adjust
-the config `cmd:` to match your build.
+# Provide a Matrix-Market graph (the repo ships small datasets under
+# `datasets/`). The CLI differs between classic Gunrock and "essentials" — adjust
+# the config `cmd:` to match your build.
 
 ## NPB  (NVIDIA)
 
