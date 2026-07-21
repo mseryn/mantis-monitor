@@ -11,7 +11,7 @@
 benchmarks:
   - type: generic_benchmark
     name: tealeaf_amd
-    cmd: "./hpc/TeaLeaf/build-hip/tealeaf --file ./hpc/TeaLeaf/InputDecks/tea_bm_short.in"
+    cmd: "./hpc/TeaLeaf/build-hip/hip-tealeaf --file ./hpc/TeaLeaf/InputDecks/tea_bm_short.in"
 
 collection_modes:
   perf:

@@ -12,14 +12,14 @@
 benchmarks:
   - type: generic_benchmark
     name: npb_nvidia
-    cmd: "./hpc/NPB-GPU/bin/cg.B"
+    cmd: "./hpc/NPB-GPU/CUDA/bin/cg.B"
 
 collection_modes:
   perf:
     pmu_count: 4
-  bpf:
-    metrics:
-      - io_latency
+#  bpf:
+#    metrics:
+#      - io_latency
   utilization:
     - memory_info
   nvidia:

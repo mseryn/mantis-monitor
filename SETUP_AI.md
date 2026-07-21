@@ -53,13 +53,16 @@ cd llama.cpp
 **CPU only:**
 ```bash
 cmake -B build
-cmake --build build --config Release -j
+cmake --build build --config Release -j$(nproc)
 ```
 
 **NVIDIA (CUDA)** — needs the CUDA toolkit:
 ```bash
-cmake -B build -DGGML_CUDA=ON
-cmake --build build --config Release -j
+cmake -B build \
+    -DGGML_CUDA=ON \
+    -DCMAKE_CUDA_COMPILER=/usr/local/cuda/bin/nvcc \
+    -DCMAKE_CUDA_ARCHITECTURES=75
+cmake --build build --config Release -j$(nproc)
 ```
 
 **AMD (HIP/ROCm)** — needs ROCm + HIP:
@@ -85,6 +88,13 @@ huggingface-cli download Qwen/Qwen2.5-0.5B-Instruct-GGUF qwen2.5-0.5b-instruct-q
     --local-dir models
 # …or TinyLlama-1.1B:
 # huggingface-cli download TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf --local-dir models
+
+pip install -U "huggingface_hub[cli]"
+hf download \
+    Qwen/Qwen2.5-0.5B-Instruct-GGUF \
+    qwen2.5-0.5b-instruct-q4_k_m.gguf \
+    --local-dir models
+
 ```
 
 Make sure the filename in the test config's `cmd:` matches what you downloaded

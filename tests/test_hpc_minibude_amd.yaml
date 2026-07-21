@@ -11,7 +11,7 @@
 benchmarks:
   - type: generic_benchmark
     name: minibude_amd
-    cmd: "./hpc/miniBUDE/build-hip/bude --deck ./hpc/miniBUDE/data/bm1 -i 8"
+    cmd: "./hpc/miniBUDE/build-hip/hip-bude --deck ./hpc/miniBUDE/data/bm1 -i 8"
 
 collection_modes:
   perf:

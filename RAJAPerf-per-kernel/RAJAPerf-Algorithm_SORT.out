@@ -1,0 +1,44 @@
+Kernels run without MPI
+Kernel           ,    Problem size ,    Reps ,    Iterations/rep ,    Kernels/rep ,    BytesMoved/rep ,    FLOPS/rep ,    BytesTouched/rep ,    BytesRead/rep ,    BytesWritten/rep ,    BytesModifyWritten/rep ,    BytesAtomicModifyWritten/rep ,    BytesAllocated/rep , ChecksumConsistency   , OperationalComplexity   , MaxPerfectLoopDimensions    , ProblemDimensionality   
+Algorithm_SORT   ,         1000000 ,      20 ,           1000000 ,              1 ,          16000000 ,            0 ,             8000000 ,          8000000 ,             8000000 ,                   8000000 ,                               0 ,               8000000 , Consistent            , O(NlogN)                ,                           1 ,                        1
+
+
+Kernels run without MPI
+Kernel           , Variant   , Tuning   ,    Problem size , Checksum   ,    Mean time per rep (sec.) ,    Mean Bandwidth (GiB per sec.) ,    Mean flops (gigaFLOP per sec.)
+
+
+===================================================================================================
+Checksum Report 
+===================================================================================================
+Kernel         
+........................................................
+Variants       Result  Tolerance                   Checksum                    Checksum Rel Diff           
+                                                                               (vs. first variant listed)  
+----------------------------------------------------------------------------------------
+Algorithm_SORT 
+........................................................
+
+-------------------------------------------------------
+
+
+Mean Runtime Report (sec.) 
+Variant        
+Tuning         
+Algorithm_SORT 
+
+
+Mean Speedup Report (T_ref/T_var): ref var = Base_OpenMP 
+Variant        
+Tuning         
+Algorithm_SORT 
+
+
+FOM Report : signed speedup(-)/slowdown(+) for each PM (base vs. RAJA) -> (T_RAJA - T_base) / T_base )
+'OVER_TOL' in column to right if RAJA speedup is over tolerance
+Kernel         
+Algorithm_SORT 
+               
+Col Min        
+Col Max        
+Col Avg        
+Col Std Dev    

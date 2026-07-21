@@ -1,0 +1,46 @@
+Kernels run without MPI
+Kernel      ,    Problem size ,    Reps ,    Iterations/rep ,    Kernels/rep ,    BytesMoved/rep ,    FLOPS/rep ,    BytesTouched/rep ,    BytesRead/rep ,    BytesWritten/rep ,    BytesModifyWritten/rep ,    BytesAtomicModifyWritten/rep ,    BytesAllocated/rep , ChecksumConsistency          , OperationalComplexity   , MaxPerfectLoopDimensions    , ProblemDimensionality   
+Lcals_EOS   ,         1000000 ,     500 ,           1000000 ,              1 ,          32000048 ,     16000000 ,            32000048 ,         24000048 ,             8000000 ,                         0 ,                               0 ,              32000048 , ConsistentPerVariantTuning   , O(N)                    ,                           1 ,                        1
+
+
+Kernels run without MPI
+Kernel      , Variant       , Tuning    ,    Problem size , Checksum   ,    Mean time per rep (sec.) ,    Mean Bandwidth (GiB per sec.) ,    Mean flops (gigaFLOP per sec.)
+Lcals_EOS   , Base_OpenMP   , default   ,         1000000 , PASSED     ,                 0.000818849 ,                          36.3954 ,                           19.5396
+
+
+===================================================================================================
+Checksum Report 
+===================================================================================================
+Kernel              
+........................................................
+Variants            Result  Tolerance                   Checksum                    Checksum Rel Diff           
+                                                                                    (vs. first variant listed)  
+----------------------------------------------------------------------------------------
+Lcals_EOS           
+........................................................
+Base_OpenMP-default PASSED  1.0000000000000000364e-10   146956.26661945576102       0.0000000000000000000       
+
+-------------------------------------------------------
+
+
+Mean Runtime Report (sec.)  , 
+Variant    , Base_OpenMP
+Tuning     , default    
+Lcals_EOS  ,    0.409424
+
+
+Mean Speedup Report (T_ref/T_var): ref var = Base_OpenMP  , 
+Variant    , Base_OpenMP
+Tuning     , default    
+Lcals_EOS  ,       1.000
+
+
+FOM Report : signed speedup(-)/slowdown(+) for each PM (base vs. RAJA) -> (T_RAJA - T_base) / T_base ) ,  , 
+'OVER_TOL' in column to right if RAJA speedup is over tolerance ,  , 
+Kernel     , Base_OpenMP-default,        
+Lcals_EOS  , 0.00               ,base_ref
+           ,                    ,        
+Col Min    , 0.00               ,        
+Col Max    , 0.00               ,        
+Col Avg    , 0.00               ,        
+Col Std Dev , 0.00               ,        

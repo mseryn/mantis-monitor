@@ -1,0 +1,607 @@
+[2026-07-20 12:19:20,825 script_utils.py:88 INFO] - * mlcr run-mlperf,inference,_performance-only
+[2026-07-20 12:19:20,827 script_utils.py:88 INFO] -   * mlcr detect,os
+[2026-07-20 12:19:22,209 module.py:1879 INFO] -     - cache UID: 63961576e8cc4770
+[2026-07-20 12:19:22,211 script_utils.py:88 INFO] -   * mlcr detect,cpu
+[2026-07-20 12:19:22,228 script_utils.py:88 INFO] -     * mlcr detect,os
+[2026-07-20 12:19:22,229 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:22,306 module.py:1879 INFO] -       - cache UID: c73d0dba12b9462e
+[2026-07-20 12:19:22,308 script_utils.py:88 INFO] -   * mlcr get,python3
+[2026-07-20 12:19:22,359 module.py:3831 INFO] -       * /home/drew/mantis-venv/bin/python3
+[2026-07-20 12:19:22,375 customize.py:69 INFO] -             Detected version: 3.14.4
+[2026-07-20 12:19:22,376 module.py:4179 INFO] -       # Found artifact in /home/drew/mantis-venv/bin/python3
+[2026-07-20 12:19:22,396 customize.py:69 INFO] -         Detected version: 3.14.4
+[2026-07-20 12:19:22,410 module.py:1879 INFO] -     - cache UID: e6a7532be92641a5
+[2026-07-20 12:19:22,418 script_utils.py:88 INFO] -   * mlcr get,mlcommons,inference,src
+[2026-07-20 12:19:22,436 script_utils.py:88 INFO] -     * mlcr detect,os
+[2026-07-20 12:19:22,437 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:22,461 script_utils.py:88 INFO] -     * mlcr get,generic-python-lib,_package.loguru
+[2026-07-20 12:19:22,478 script_utils.py:88 INFO] -       * mlcr detect,os
+[2026-07-20 12:19:22,479 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:22,481 script_utils.py:88 INFO] -       * mlcr detect,cpu
+[2026-07-20 12:19:22,482 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/detect-cpu_c73d0dba/mlc-cached-state.json
+[2026-07-20 12:19:22,485 script_utils.py:88 INFO] -       * mlcr get,python3
+[2026-07-20 12:19:22,486 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:19:22,511 script_utils.py:88 INFO] -       * mlcr get,generic-python-lib,_pip
+[2026-07-20 12:19:22,527 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 12:19:22,528 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:22,529 script_utils.py:88 INFO] -         * mlcr detect,cpu
+[2026-07-20 12:19:22,531 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-cpu_c73d0dba/mlc-cached-state.json
+[2026-07-20 12:19:22,533 script_utils.py:88 INFO] -         * mlcr get,python3
+[2026-07-20 12:19:22,534 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:19:22,610 customize.py:152 INFO] -                   Detected version: 26.1.2
+[2026-07-20 12:19:22,689 module.py:1879 INFO] -           - cache UID: ce8bf71e4350453f
+[2026-07-20 12:19:22,757 customize.py:117 INFO] -               Extra PIP CMD:   --break-system-packages 
+[2026-07-20 12:19:23,306 customize.py:152 INFO] -               Detected version: 0.7.3
+[2026-07-20 12:19:23,320 module.py:1879 INFO] -           - cache UID: d9bf0abfb6eb491a
+[2026-07-20 12:19:23,323 script_utils.py:88 INFO] -     * mlcr get,python3
+[2026-07-20 12:19:23,324 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:19:23,350 script_utils.py:88 INFO] -     * mlcr get,generic-python-lib,_package.loguru
+[2026-07-20 12:19:23,353 script_utils.py:88 INFO] -       * mlcr get,python3
+[2026-07-20 12:19:23,354 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:19:23,416 customize.py:152 INFO] -               Detected version: 0.7.3
+[2026-07-20 12:19:23,419 script_utils.py:88 INFO] -         * mlcr get,python3
+[2026-07-20 12:19:23,420 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:19:23,420 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-generic-python-lib_d9bf0abf/mlc-cached-state.json
+[2026-07-20 12:19:23,433 script_utils.py:88 INFO] -           * mlcr get,git,repo,_branch.master,_repo.https://github.com/mlcommons/inference
+[2026-07-20 12:19:23,450 script_utils.py:88 INFO] -             * mlcr detect,os
+[2026-07-20 12:19:23,451 module.py:1046 INFO] -                  ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:39,455 module.py:1879 INFO] -               - cache UID: 97e5474aae494a58
+[2026-07-20 12:19:39,455 module.py:1933 INFO] -               * MLC cache path to the Git repo: /home/drew/MLC/repos/local/cache/get-git-repo_inference-src_97e5474a/inference
+[2026-07-20 12:19:39,507 module.py:1879 INFO] -               - cache UID: b0259f53de4545eb
+[2026-07-20 12:19:39,510 script_utils.py:88 INFO] -   * mlcr get,sut,description
+[2026-07-20 12:19:39,514 script_utils.py:88 INFO] -     * mlcr detect,os
+[2026-07-20 12:19:39,515 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:39,517 script_utils.py:88 INFO] -     * mlcr detect,cpu
+[2026-07-20 12:19:39,518 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/detect-cpu_c73d0dba/mlc-cached-state.json
+[2026-07-20 12:19:39,521 script_utils.py:88 INFO] -     * mlcr get,python3
+[2026-07-20 12:19:39,521 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:19:39,534 script_utils.py:88 INFO] -     * mlcr get,compiler
+[2026-07-20 12:19:39,586 module.py:3831 INFO] -         * /usr/bin/clang
+[2026-07-20 12:19:39,621 customize.py:73 INFO] -             Detected version: 21.1.8
+[2026-07-20 12:19:39,621 module.py:4179 INFO] -         # Found artifact in /usr/bin/clang
+[2026-07-20 12:19:39,652 customize.py:73 INFO] -         Detected version: 21.1.8
+[2026-07-20 12:19:39,653 script_utils.py:88 INFO] -     * mlcr get,compiler-flags
+[2026-07-20 12:19:39,655 script_utils.py:88 INFO] -       * mlcr detect,cpu
+[2026-07-20 12:19:39,657 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/detect-cpu_c73d0dba/mlc-cached-state.json
+[2026-07-20 12:19:39,686 module.py:1879 INFO] -         - cache UID: 26813f43f81b4b95
+[2026-07-20 12:19:39,688 script_utils.py:88 INFO] -     * mlcr get,cuda-devices
+[2026-07-20 12:19:39,707 script_utils.py:88 INFO] -       * mlcr get,cuda,_toolkit
+[2026-07-20 12:19:39,725 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 12:19:39,726 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:39,735 module.py:4113 INFO] -             # Requested paths: /home/drew/mantis-venv/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/local/cuda/bin:/usr/cuda/bin:/usr/local/cuda-11/bin:/usr/cuda-11/bin:/usr/local/cuda-12/bin:/usr/cuda-12/bin:/usr/local/packages/cuda:/opt/mlc-installs/cuda/install/bin
+[2026-07-20 12:19:39,762 module.py:3831 INFO] -             * /usr/local/cuda/bin/nvcc
+[2026-07-20 12:19:39,781 customize.py:107 INFO] -                 Detected version: 13.3
+[2026-07-20 12:19:39,781 module.py:3831 INFO] -             * /usr/bin/nvcc
+[2026-07-20 12:19:39,800 customize.py:107 INFO] -                 Detected version: 12.4
+[2026-07-20 12:19:39,800 module.py:3903 INFO] -           Selected 0: /usr/local/cuda/bin/nvcc
+[2026-07-20 12:19:39,800 module.py:4179 INFO] -             # Found artifact in /usr/local/cuda/bin/nvcc
+[2026-07-20 12:19:39,819 customize.py:107 INFO] -             Detected version: 13.3
+[2026-07-20 12:19:39,832 module.py:1879 INFO] -           - cache UID: 6761955920fd48d9
+[2026-07-20 12:19:39,832 module.py:1933 INFO] -           * ENV[CUDA_HOME]: /usr/local/cuda
+[2026-07-20 12:19:39,832 module.py:1933 INFO] -           * ENV[MLC_CUDA_PATH_LIB_CUDNN_EXISTS]: no
+[2026-07-20 12:19:39,832 module.py:1933 INFO] -           * ENV[MLC_CUDA_VERSION]: 13.3
+[2026-07-20 12:19:39,832 module.py:1933 INFO] -           * ENV[MLC_CUDA_VERSION_STRING]: cu133
+[2026-07-20 12:19:39,832 module.py:1933 INFO] -           * ENV[MLC_NVCC_BIN_WITH_PATH]: /usr/local/cuda/bin/nvcc
+[2026-07-20 12:19:41,089 module.py:1879 INFO] -           - cache UID: 3051fbadcfa54366
+[2026-07-20 12:19:41,091 script_utils.py:88 INFO] -     * mlcr get,cache,dir,_name.mlperf-inference-sut-descriptions
+[2026-07-20 12:19:41,135 module.py:1879 INFO] -       - cache UID: d8d5294894534640
+[2026-07-20 12:19:41,146 customize.py:56 INFO] - Generating SUT description file for drew_home_pc-onnxruntime
+[2026-07-20 12:19:41,159 script_utils.py:88 INFO] -   * mlcr get,mlperf,inference,results,dir,_version.r6.1-dev
+[2026-07-20 12:19:41,207 module.py:1879 INFO] -     - cache UID: 86fd765bdf934a3f
+[2026-07-20 12:19:41,209 script_utils.py:88 INFO] -   * mlcr install,pip-package,for-mlc-python,_package.tabulate
+[2026-07-20 12:19:41,770 module.py:1879 INFO] -     - cache UID: c8984c5307d24d4e
+[2026-07-20 12:19:41,772 script_utils.py:88 INFO] -   * mlcr get,mlperf,inference,utils
+[2026-07-20 12:19:41,781 script_utils.py:88 INFO] -     * mlcr get,mlperf,inference,src
+[2026-07-20 12:19:41,782 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-mlperf-inference-src_b0259f53/mlc-cached-state.json
+[2026-07-20 12:19:41,815 customize.py:273 INFO] - 
+Running loadgen scenario: Offline and mode: performance
+[2026-07-20 12:19:41,892 script_utils.py:88 INFO] - * mlcr app,mlperf,inference,generic,_reference,_resnet50,_onnxruntime,_cuda,_test,_r6.1-dev_default,_offline
+[2026-07-20 12:19:41,895 script_utils.py:88 INFO] -   * mlcr detect,os
+[2026-07-20 12:19:41,897 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:41,898 script_utils.py:88 INFO] -   * mlcr get,sys-utils-mlc
+[2026-07-20 12:19:41,913 script_utils.py:88 INFO] -     * mlcr detect,os
+[2026-07-20 12:19:41,914 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:41,921 script_utils.py:88 INFO] -   * mlcr get,python
+[2026-07-20 12:19:41,922 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:19:41,929 script_utils.py:88 INFO] -   * mlcr get,mlcommons,inference,src
+[2026-07-20 12:19:41,930 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/get-mlperf-inference-src_b0259f53/mlc-cached-state.json
+[2026-07-20 12:19:41,932 script_utils.py:88 INFO] -   * mlcr get,mlperf,inference,utils
+[2026-07-20 12:19:41,939 script_utils.py:88 INFO] -     * mlcr get,mlperf,inference,src
+[2026-07-20 12:19:41,940 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-mlperf-inference-src_b0259f53/mlc-cached-state.json
+[2026-07-20 12:19:41,951 script_utils.py:88 INFO] -   * mlcr get,dataset-aux,imagenet-aux
+[2026-07-20 12:19:41,969 script_utils.py:88 INFO] -     * mlcr download-and-extract,_extract,_wget,_url.https://armi.in/files/caffe_ilsvrc12.tar.gz
+[2026-07-20 12:19:41,992 script_utils.py:88 INFO] -       * mlcr download,file,_wget,_url.https://armi.in/files/caffe_ilsvrc12.tar.gz
+[2026-07-20 12:19:42,014 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 12:19:42,015 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:42,021 customize.py:139 INFO] - 
+[2026-07-20 12:19:42,021 customize.py:140 INFO] - Downloading from https://armi.in/files/caffe_ilsvrc12.tar.gz
+[2026-07-20 12:19:42,124 customize.py:307 INFO] - wget -nc  --tries=3 -O 'caffe_ilsvrc12.tar.gz'  https://armi.in/files/caffe_ilsvrc12.tar.gz || ((rm -f caffe_ilsvrc12.tar.gz || true) && wget -nc  --tries=3 -O 'caffe_ilsvrc12.tar.gz'  https://www.dropbox.com/s/92n2fyej3lzy3s3/caffe_ilsvrc12.tar.gz)
+[2026-07-20 12:19:42,589 module.py:1879 INFO] -           - cache UID: db8ddc03998b49f0
+[2026-07-20 12:19:42,592 script_utils.py:88 INFO] -         * mlcr extract,file,_keep,_path./home/drew/MLC/repos/local/cache/download-file_imagenet-aux-da_db8ddc03/caffe_ilsvrc12.tar.gz
+[2026-07-20 12:19:42,612 script_utils.py:88 INFO] -           * mlcr detect,os
+[2026-07-20 12:19:42,613 module.py:1046 INFO] -                ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:42,619 customize.py:190 INFO] - 
+[2026-07-20 12:19:42,619 customize.py:191 INFO] - Current directory: /home/drew/MLC/repos/local/cache/extract-file_imagenet-aux-da_e845d7c9
+[2026-07-20 12:19:42,619 customize.py:192 INFO] - Command line: "tar    --skip-old-files -xvzf  /home/drew/MLC/repos/local/cache/download-file_imagenet-aux-da_db8ddc03/caffe_ilsvrc12.tar.gz"
+[2026-07-20 12:19:42,619 customize.py:193 INFO] - 
+[2026-07-20 12:19:42,753 module.py:1879 INFO] -             - cache UID: e845d7c95a834eec
+[2026-07-20 12:19:42,775 module.py:1879 INFO] -             - cache UID: 7442b241b03e49a6
+[2026-07-20 12:19:42,791 module.py:1879 INFO] -             - cache UID: 1275723af71c411c
+[2026-07-20 12:19:42,794 script_utils.py:88 INFO] -   * mlcr get,cuda-devices
+[2026-07-20 12:19:42,795 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/get-cuda-devices_3051fbad/mlc-cached-state.json
+[2026-07-20 12:19:42,862 script_utils.py:88 INFO] -     * mlcr app,mlperf,reference,inference,_offline,_resnet50,_onnxruntime,_cuda,_fp32
+[2026-07-20 12:19:42,872 script_utils.py:88 INFO] -       * mlcr detect,os
+[2026-07-20 12:19:42,873 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:42,875 script_utils.py:88 INFO] -       * mlcr detect,cpu
+[2026-07-20 12:19:42,876 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/detect-cpu_c73d0dba/mlc-cached-state.json
+[2026-07-20 12:19:42,878 script_utils.py:88 INFO] -       * mlcr get,sys-utils-mlc
+[2026-07-20 12:19:42,887 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 12:19:42,889 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:42,897 script_utils.py:88 INFO] -       * mlcr get,python
+[2026-07-20 12:19:42,898 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:19:42,902 script_utils.py:88 INFO] -       * mlcr get,cuda,_cudnn
+[2026-07-20 12:19:42,919 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 12:19:42,920 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:42,927 module.py:4113 INFO] -             # Requested paths: /home/drew/mantis-venv/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/local/cuda/bin:/usr/cuda/bin:/usr/local/cuda-11/bin:/usr/cuda-11/bin:/usr/local/cuda-12/bin:/usr/cuda-12/bin:/usr/local/packages/cuda:/opt/mlc-installs/cuda/install/bin
+[2026-07-20 12:19:42,953 module.py:3831 INFO] -             * /usr/local/cuda/bin/nvcc
+[2026-07-20 12:19:42,969 customize.py:107 INFO] -                 Detected version: 13.3
+[2026-07-20 12:19:42,969 module.py:3831 INFO] -             * /usr/bin/nvcc
+[2026-07-20 12:19:42,983 customize.py:107 INFO] -                 Detected version: 12.4
+[2026-07-20 12:19:42,983 module.py:3903 INFO] -           Selected 0: /usr/local/cuda/bin/nvcc
+[2026-07-20 12:19:42,984 module.py:4179 INFO] -             # Found artifact in /usr/local/cuda/bin/nvcc
+[2026-07-20 12:19:42,998 customize.py:107 INFO] -             Detected version: 13.3
+[2026-07-20 12:19:43,001 script_utils.py:88 INFO] -         * mlcr get,nvidia,cudnn
+[2026-07-20 12:19:43,018 script_utils.py:88 INFO] -           * mlcr detect,os
+[2026-07-20 12:19:43,020 module.py:1046 INFO] -                ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:19:43,021 script_utils.py:88 INFO] -           * mlcr detect,sudo
+[2026-07-20 12:19:58,341 customize.py:180 ERROR] - Command failed: [sudo: authenticate] Password: 
+sudo: Authentication failed, try again.
+[sudo: authenticate] Password: 
+sudo: Authentication required but not attempted
+
+[2026-07-20 12:19:58,365 module.py:4113 INFO] -               # Requested paths: /home/drew/mantis-venv/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/local/cuda/bin:/usr/cuda/bin:/usr/local/cuda-11/bin:/usr/cuda-11/bin:/usr/local/cuda-12/bin:/usr/cuda-12/bin:/usr/local/packages/cuda:/opt/mlc-installs/cuda/install/bin:/usr/local/cuda/lib64:/usr/cuda/lib64:/usr/local/cuda/lib:/usr/cuda/lib:/usr/local/cuda-11/lib64:/usr/cuda-11/lib:/usr/local/cuda-12/lib:/usr/cuda-12/lib:/usr/local/packages/cuda/lib:$CUDNN_ROOT/lib:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/lib64:/usr/lib64:/usr/local/lib:/lib:/usr/lib
+[2026-07-20 12:19:58,427 main.py:137 ERROR] - Error during 'script' action: Script run execution failed in /home/drew/MLC/repos/mlcommons@mlperf-automations/automation/script/module.py. 
+Error : Please envoke mlcr get,cudnn --tar_file={full path to the cuDNN tar file}
+[2026-07-20 12:19:58,429 main.py:151 ERROR] -   at /home/drew/MLC/repos/mlcommons@mlperf-automations/script/run-mlperf-inference-app/customize.py:285 in preprocess
+[2026-07-20 12:19:58,429 main.py:182 ERROR] - Failed script: app,mlperf,inference,generic,_reference,_resnet50,_onnxruntime,_cuda,_test,_r6.1-dev_default,_offline
+[2026-07-20 12:19:58,429 main.py:183 ERROR] - To rerun just the failed part: mlcr app,mlperf,inference,generic,_reference,_resnet50,_onnxruntime,_cuda,_test,_r6.1-dev_default,_offline --automation=script --print_env=False --print_deps=False --dump_version_info=True
+[2026-07-20 12:19:58,429 main.py:205 ERROR] - Please file an issue at https://github.com/mlcommons/mlperf-automations/issues with the full console log.
+[2026-07-20 12:19:58,429 main.py:209 ERROR] - mlcflow 1.2.7
+[2026-07-20 12:19:58,460 main.py:214 ERROR] -   mlcommons@mlperf-automations: dev e2f6a588a
+[2026-07-20 12:46:57,330 script_utils.py:88 INFO] - * mlcr run-mlperf,inference,_performance-only
+[2026-07-20 12:46:57,332 script_utils.py:88 INFO] -   * mlcr detect,os
+[2026-07-20 12:46:58,650 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:46:58,651 script_utils.py:88 INFO] -   * mlcr detect,cpu
+[2026-07-20 12:46:58,653 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/detect-cpu_c73d0dba/mlc-cached-state.json
+[2026-07-20 12:46:58,655 script_utils.py:88 INFO] -   * mlcr get,python3
+[2026-07-20 12:46:58,656 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:46:58,663 script_utils.py:88 INFO] -   * mlcr get,mlcommons,inference,src
+[2026-07-20 12:46:58,665 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/get-mlperf-inference-src_b0259f53/mlc-cached-state.json
+[2026-07-20 12:46:58,667 script_utils.py:88 INFO] -   * mlcr get,sut,description
+[2026-07-20 12:46:58,670 script_utils.py:88 INFO] -     * mlcr detect,os
+[2026-07-20 12:46:58,671 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:46:58,672 script_utils.py:88 INFO] -     * mlcr detect,cpu
+[2026-07-20 12:46:58,673 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/detect-cpu_c73d0dba/mlc-cached-state.json
+[2026-07-20 12:46:58,676 script_utils.py:88 INFO] -     * mlcr get,python3
+[2026-07-20 12:46:58,677 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:46:58,689 script_utils.py:88 INFO] -     * mlcr get,compiler
+[2026-07-20 12:46:58,691 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-llvm_26813f43/mlc-cached-state.json
+[2026-07-20 12:46:58,693 script_utils.py:88 INFO] -     * mlcr get,cuda-devices
+[2026-07-20 12:46:58,695 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-cuda-devices_3051fbad/mlc-cached-state.json
+[2026-07-20 12:46:58,696 script_utils.py:88 INFO] -     * mlcr get,cache,dir,_name.mlperf-inference-sut-descriptions
+[2026-07-20 12:46:58,697 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-cache-dir_mlperf-inferenc_d8d52948/mlc-cached-state.json
+[2026-07-20 12:46:58,707 customize.py:56 INFO] - Generating SUT description file for drew_home_pc-onnxruntime
+[2026-07-20 12:46:58,719 script_utils.py:88 INFO] -   * mlcr get,mlperf,inference,results,dir,_version.r6.1-dev
+[2026-07-20 12:46:58,719 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/get-mlperf-inference-results-dir_86fd765b/mlc-cached-state.json
+[2026-07-20 12:46:58,721 script_utils.py:88 INFO] -   * mlcr install,pip-package,for-mlc-python,_package.tabulate
+[2026-07-20 12:46:58,722 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/install-pip-package-for-mlc-python_c8984c53/mlc-cached-state.json
+[2026-07-20 12:46:58,723 script_utils.py:88 INFO] -   * mlcr get,mlperf,inference,utils
+[2026-07-20 12:46:58,730 script_utils.py:88 INFO] -     * mlcr get,mlperf,inference,src
+[2026-07-20 12:46:58,732 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-mlperf-inference-src_b0259f53/mlc-cached-state.json
+[2026-07-20 12:46:58,769 customize.py:273 INFO] - 
+Running loadgen scenario: Offline and mode: performance
+[2026-07-20 12:46:58,852 script_utils.py:88 INFO] - * mlcr app,mlperf,inference,generic,_reference,_resnet50,_onnxruntime,_cuda,_test,_r6.1-dev_default,_offline
+[2026-07-20 12:46:58,856 script_utils.py:88 INFO] -   * mlcr detect,os
+[2026-07-20 12:46:58,857 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:46:58,859 script_utils.py:88 INFO] -   * mlcr get,sys-utils-mlc
+[2026-07-20 12:46:58,868 script_utils.py:88 INFO] -     * mlcr detect,os
+[2026-07-20 12:46:58,869 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:46:58,877 script_utils.py:88 INFO] -   * mlcr get,python
+[2026-07-20 12:46:58,878 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:46:58,885 script_utils.py:88 INFO] -   * mlcr get,mlcommons,inference,src
+[2026-07-20 12:46:58,886 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/get-mlperf-inference-src_b0259f53/mlc-cached-state.json
+[2026-07-20 12:46:58,888 script_utils.py:88 INFO] -   * mlcr get,mlperf,inference,utils
+[2026-07-20 12:46:58,895 script_utils.py:88 INFO] -     * mlcr get,mlperf,inference,src
+[2026-07-20 12:46:58,897 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-mlperf-inference-src_b0259f53/mlc-cached-state.json
+[2026-07-20 12:46:58,908 script_utils.py:88 INFO] -   * mlcr get,dataset-aux,imagenet-aux
+[2026-07-20 12:46:58,909 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/get-dataset-imagenet-aux_1275723a/mlc-cached-state.json
+[2026-07-20 12:46:58,912 script_utils.py:88 INFO] -   * mlcr get,cuda-devices
+[2026-07-20 12:46:58,913 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/get-cuda-devices_3051fbad/mlc-cached-state.json
+[2026-07-20 12:46:58,978 script_utils.py:88 INFO] -     * mlcr app,mlperf,reference,inference,_resnet50,_offline,_cuda,_onnxruntime,_fp32
+[2026-07-20 12:46:58,986 script_utils.py:88 INFO] -       * mlcr detect,os
+[2026-07-20 12:46:58,987 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:46:58,988 script_utils.py:88 INFO] -       * mlcr detect,cpu
+[2026-07-20 12:46:58,990 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/detect-cpu_c73d0dba/mlc-cached-state.json
+[2026-07-20 12:46:58,992 script_utils.py:88 INFO] -       * mlcr get,sys-utils-mlc
+[2026-07-20 12:46:59,001 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 12:46:59,002 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:46:59,010 script_utils.py:88 INFO] -       * mlcr get,python
+[2026-07-20 12:46:59,011 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:46:59,015 script_utils.py:88 INFO] -       * mlcr get,cuda,_cudnn
+[2026-07-20 12:46:59,026 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 12:46:59,027 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:46:59,034 module.py:4113 INFO] -             # Requested paths: /home/drew/mantis-venv/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/local/cuda/bin:/usr/cuda/bin:/usr/local/cuda-11/bin:/usr/cuda-11/bin:/usr/local/cuda-12/bin:/usr/cuda-12/bin:/usr/local/packages/cuda:/opt/mlc-installs/cuda/install/bin
+[2026-07-20 12:46:59,062 module.py:3831 INFO] -             * /usr/local/cuda/bin/nvcc
+[2026-07-20 12:46:59,078 customize.py:107 INFO] -                 Detected version: 13.3
+[2026-07-20 12:46:59,078 module.py:3831 INFO] -             * /usr/bin/nvcc
+[2026-07-20 12:46:59,096 customize.py:107 INFO] -                 Detected version: 12.4
+[2026-07-20 12:46:59,096 module.py:3903 INFO] -           Selected 0: /usr/local/cuda/bin/nvcc
+[2026-07-20 12:46:59,096 module.py:4179 INFO] -             # Found artifact in /usr/local/cuda/bin/nvcc
+[2026-07-20 12:46:59,111 customize.py:107 INFO] -             Detected version: 13.3
+[2026-07-20 12:46:59,113 script_utils.py:88 INFO] -         * mlcr get,nvidia,cudnn
+[2026-07-20 12:46:59,124 script_utils.py:88 INFO] -           * mlcr detect,os
+[2026-07-20 12:46:59,125 module.py:1046 INFO] -                ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:46:59,127 script_utils.py:88 INFO] -           * mlcr detect,sudo
+[2026-07-20 12:46:59,161 module.py:4113 INFO] -               # Requested paths: /home/drew/mantis-venv/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/local/cuda/bin:/usr/cuda/bin:/usr/local/cuda-11/bin:/usr/cuda-11/bin:/usr/local/cuda-12/bin:/usr/cuda-12/bin:/usr/local/packages/cuda:/opt/mlc-installs/cuda/install/bin:/usr/local/cuda/lib64:/usr/cuda/lib64:/usr/local/cuda/lib:/usr/cuda/lib:/usr/local/cuda-11/lib64:/usr/cuda-11/lib:/usr/local/cuda-12/lib:/usr/cuda-12/lib:/usr/local/packages/cuda/lib:$CUDNN_ROOT/lib:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/lib64:/usr/lib64:/usr/local/lib:/lib:/usr/lib
+[2026-07-20 12:46:59,222 module.py:4179 INFO] -               # Found artifact in /lib/x86_64-linux-gnu/libcudnn.so
+[2026-07-20 12:46:59,248 module.py:1879 INFO] -             - cache UID: 582830d8515f4998
+[2026-07-20 12:46:59,248 module.py:1933 INFO] -             * ENV[MLC_CUDA_PATH_INCLUDE_CUDNN]: None
+[2026-07-20 12:46:59,248 module.py:1933 INFO] -             * ENV[MLC_CUDA_PATH_LIB_CUDNN]: /lib/x86_64-linux-gnu
+[2026-07-20 12:46:59,248 module.py:1933 INFO] -             * ENV[MLC_CUDNN_VERSION]: vdetected
+[2026-07-20 12:46:59,263 module.py:1879 INFO] -             - cache UID: 964fee695a7c4385
+[2026-07-20 12:46:59,263 module.py:1933 INFO] -             * ENV[CUDA_HOME]: /usr/local/cuda
+[2026-07-20 12:46:59,263 module.py:1933 INFO] -             * ENV[MLC_CUDA_PATH_LIB_CUDNN_EXISTS]: yes
+[2026-07-20 12:46:59,263 module.py:1933 INFO] -             * ENV[MLC_CUDA_VERSION]: 13.3
+[2026-07-20 12:46:59,263 module.py:1933 INFO] -             * ENV[MLC_CUDA_VERSION_STRING]: cu133
+[2026-07-20 12:46:59,263 module.py:1933 INFO] -             * ENV[MLC_NVCC_BIN_WITH_PATH]: /usr/local/cuda/bin/nvcc
+[2026-07-20 12:46:59,290 script_utils.py:88 INFO] -       * mlcr get,generic-python-lib,_onnxruntime
+[2026-07-20 12:46:59,307 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 12:46:59,308 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:46:59,310 script_utils.py:88 INFO] -         * mlcr detect,cpu
+[2026-07-20 12:46:59,311 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-cpu_c73d0dba/mlc-cached-state.json
+[2026-07-20 12:46:59,314 script_utils.py:88 INFO] -         * mlcr get,python3
+[2026-07-20 12:46:59,315 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:46:59,340 script_utils.py:88 INFO] -         * mlcr get,generic-python-lib,_pip
+[2026-07-20 12:46:59,344 script_utils.py:88 INFO] -           * mlcr get,python3
+[2026-07-20 12:46:59,345 module.py:1046 INFO] -                ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:46:59,407 customize.py:152 INFO] -                   Detected version: 26.1.2
+[2026-07-20 12:46:59,410 script_utils.py:88 INFO] -             * mlcr get,python3
+[2026-07-20 12:46:59,411 module.py:1046 INFO] -                  ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:46:59,411 module.py:1046 INFO] -                  ! load /home/drew/MLC/repos/local/cache/get-generic-python-lib_ce8bf71e/mlc-cached-state.json
+[2026-07-20 12:46:59,471 customize.py:117 INFO] -                   Extra PIP CMD:   --break-system-packages 
+[2026-07-20 12:47:00,597 customize.py:152 INFO] -                   Detected version: 1.27.0
+[2026-07-20 12:47:00,612 module.py:1879 INFO] -               - cache UID: 1185429bf42b48e4
+[2026-07-20 12:47:00,638 script_utils.py:88 INFO] -       * mlcr get,generic-python-lib,_onnxruntime_gpu
+[2026-07-20 12:47:00,655 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 12:47:00,656 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:47:00,658 script_utils.py:88 INFO] -         * mlcr detect,cpu
+[2026-07-20 12:47:00,660 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-cpu_c73d0dba/mlc-cached-state.json
+[2026-07-20 12:47:00,662 script_utils.py:88 INFO] -         * mlcr get,python3
+[2026-07-20 12:47:00,663 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:47:00,689 script_utils.py:88 INFO] -         * mlcr get,generic-python-lib,_pip
+[2026-07-20 12:47:00,693 script_utils.py:88 INFO] -           * mlcr get,python3
+[2026-07-20 12:47:00,694 module.py:1046 INFO] -                ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:47:00,754 customize.py:152 INFO] -                   Detected version: 26.1.2
+[2026-07-20 12:47:00,757 script_utils.py:88 INFO] -             * mlcr get,python3
+[2026-07-20 12:47:00,758 module.py:1046 INFO] -                  ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:47:00,758 module.py:1046 INFO] -                  ! load /home/drew/MLC/repos/local/cache/get-generic-python-lib_ce8bf71e/mlc-cached-state.json
+[2026-07-20 12:47:00,762 script_utils.py:88 INFO] -         * mlcr get,cuda
+[2026-07-20 12:47:00,764 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-cuda_964fee69/mlc-cached-state.json
+[2026-07-20 12:47:00,764 module.py:1933 INFO] -           * ENV[CUDA_HOME]: /usr/local/cuda
+[2026-07-20 12:47:00,764 module.py:1933 INFO] -           * ENV[MLC_CUDA_PATH_LIB_CUDNN_EXISTS]: yes
+[2026-07-20 12:47:00,764 module.py:1933 INFO] -           * ENV[MLC_CUDA_VERSION]: 13.3
+[2026-07-20 12:47:00,765 module.py:1933 INFO] -           * ENV[MLC_CUDA_VERSION_STRING]: cu133
+[2026-07-20 12:47:00,765 module.py:1933 INFO] -           * ENV[MLC_NVCC_BIN_WITH_PATH]: /usr/local/cuda/bin/nvcc
+[2026-07-20 12:47:00,831 customize.py:152 INFO] -                   Detected version: 1.27.0
+[2026-07-20 12:47:00,904 module.py:1879 INFO] -           - cache UID: aa9195c8b8c940a6
+[2026-07-20 12:47:00,914 script_utils.py:88 INFO] -       * mlcr get,ml-model,image-classification,resnet50,raw,_onnx,_fp32
+[2026-07-20 12:47:00,939 script_utils.py:88 INFO] -         * mlcr download-and-extract,_url.https://armi.in/files/resnet50_v1_op11/resnet50_v1.onnx
+[2026-07-20 12:47:00,962 script_utils.py:88 INFO] -           * mlcr download,file,_mlcutil,_url.https://armi.in/files/resnet50_v1_op11/resnet50_v1.onnx
+[2026-07-20 12:47:00,982 script_utils.py:88 INFO] -             * mlcr detect,os
+[2026-07-20 12:47:00,983 module.py:1046 INFO] -                  ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:47:00,991 customize.py:139 INFO] - 
+[2026-07-20 12:47:00,991 customize.py:140 INFO] - Downloading from https://armi.in/files/resnet50_v1_op11/resnet50_v1.onnx
+[2026-07-20 12:47:12,670 module.py:1879 INFO] -               - cache UID: f365db717b354e3e
+[2026-07-20 12:47:12,689 module.py:1879 INFO] -               - cache UID: 3531294d83984b12
+[2026-07-20 12:47:12,709 module.py:1879 INFO] -               - cache UID: 3556b13fce5d49a9
+[2026-07-20 12:47:12,709 module.py:1933 INFO] -               * Path to the ML model: /home/drew/MLC/repos/local/cache/download-file_ml-model-resnet_f365db71/resnet50_v1.onnx
+[2026-07-20 12:47:12,721 script_utils.py:88 INFO] -       * mlcr get,dataset,image-classification,imagenet,preprocessed,_-for.mobilenet,_full,_NCHW
+[2026-07-20 12:47:12,745 script_utils.py:88 INFO] -         * mlcr get,python3
+[2026-07-20 12:47:12,746 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/mlc-cached-state.json
+[2026-07-20 12:47:12,750 script_utils.py:88 INFO] -         * mlcr get,dataset,image-classification,original,_full
+[2026-07-20 12:47:12,768 script_utils.py:88 INFO] -           * mlcr detect,os
+[2026-07-20 12:47:12,769 module.py:1046 INFO] -                ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:47:12,781 script_utils.py:88 INFO] -             * mlcr download-and-extract,file,_extract,_url.https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_val.tar
+[2026-07-20 12:47:12,792 script_utils.py:88 INFO] -               * mlcr download,file,_mlcutil,_url.https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_val.tar
+[2026-07-20 12:47:12,797 script_utils.py:88 INFO] -                 * mlcr detect,os
+[2026-07-20 12:47:12,798 module.py:1046 INFO] -                      ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 12:47:12,806 customize.py:139 INFO] - 
+[2026-07-20 12:47:12,806 customize.py:140 INFO] - Downloading from https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_val.tar
+[2026-07-20 13:06:08,701 script_utils.py:88 INFO] -                 * mlcr extract,file,_keep,_path./home/drew/MLC/repos/local/cache/get-dataset-imagenet-val_dc612d57/ILSVRC2012_img_val.tar
+[2026-07-20 13:06:08,705 script_utils.py:88 INFO] -                   * mlcr detect,os
+[2026-07-20 13:06:08,706 module.py:1046 INFO] -                        ! load /home/drew/MLC/repos/local/cache/detect-os_63961576/mlc-cached-state.json
+[2026-07-20 13:06:08,714 customize.py:190 INFO] - 
+[2026-07-20 13:06:08,714 customize.py:191 INFO] - Current directory: /home/drew/MLC/repos/local/cache/get-dataset-imagenet-val_dc612d57
+[2026-07-20 13:06:08,714 customize.py:192 INFO] - Command line: "mkdir -p imagenet-2012-val && tar    -C imagenet-2012-val  -xvf /home/drew/MLC/repos/local/cache/get-dataset-imagenet-val_dc612d57/ILSVRC2012_img_val.tar"
+[2026-07-20 13:06:08,714 customize.py:193 INFO] - 
+[2026-07-20 13:06:14,719 main.py:137 ERROR] - Error during 'script' action: Script run execution failed in /home/drew/MLC/repos/mlcommons@mlperf-automations/automation/script/module.py. 
+Error : Native run s[2026-07-20 13:15:10,579 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-cuda_67619559/meta.json
+[2026-07-20 13:15:10,579 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-dataset-imagenet-aux_1275723a/meta.json
+[2026-07-20 13:15:10,579 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/install-pip-package-for-mlc-python_c8984c53/meta.json
+[2026-07-20 13:15:10,579 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-llvm_26813f43/meta.json
+[2026-07-20 13:15:10,580 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-git-repo_inference-src_97e5474a/meta.json
+[2026-07-20 13:15:10,580 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-python3_e6a7532b/meta.json
+[2026-07-20 13:15:10,580 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-mlperf-inference-src_b0259f53/meta.json
+[2026-07-20 13:15:10,580 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-cuda_964fee69/meta.json
+[2026-07-20 13:15:10,580 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-generic-python-lib_ce8bf71e/meta.json
+[2026-07-20 13:15:10,580 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/download-file_imagenet-aux-da_db8ddc03/meta.json
+[2026-07-20 13:15:10,580 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/extract-file_imagenet-aux-da_e845d7c9/meta.json
+[2026-07-20 13:15:10,580 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-sys-utils-mlc_cd6cd1e2/meta.json
+[2026-07-20 13:15:10,580 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/download-and-extract_imagenet-aux-da_7442b241/meta.json
+[2026-07-20 13:15:10,581 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-cudnn_582830d8/meta.json
+[2026-07-20 13:15:10,581 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-cache-dir_mlperf-inferenc_d8d52948/meta.json
+[2026-07-20 13:15:10,581 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-generic-python-lib_d9bf0abf/meta.json
+[2026-07-20 13:15:10,581 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/detect-os_63961576/meta.json
+[2026-07-20 13:15:10,581 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-cuda-devices_3051fbad/meta.json
+[2026-07-20 13:15:10,581 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/get-mlperf-inference-results-dir_86fd765b/meta.json
+[2026-07-20 13:15:10,581 index.py:338 WARNING] - Detected deleted item: /home/drew/MLC/repos/local/cache/detect-cpu_c73d0dba/meta.json
+[2026-07-20 13:15:10,610 script_utils.py:88 INFO] - * mlcr run-mlperf,inference,_performance-only
+[2026-07-20 13:15:10,612 script_utils.py:88 INFO] -   * mlcr detect,os
+[2026-07-20 13:15:11,955 module.py:1879 INFO] -     - cache UID: b9bf43d3a88645fb
+[2026-07-20 13:15:11,957 script_utils.py:88 INFO] -   * mlcr detect,cpu
+[2026-07-20 13:15:11,972 script_utils.py:88 INFO] -     * mlcr detect,os
+[2026-07-20 13:15:11,973 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:12,046 module.py:1879 INFO] -       - cache UID: 7628a534a53f4493
+[2026-07-20 13:15:12,048 script_utils.py:88 INFO] -   * mlcr get,python3
+[2026-07-20 13:15:12,095 module.py:3831 INFO] -       * /home/drew/mantis-venv/bin/python3
+[2026-07-20 13:15:12,111 customize.py:69 INFO] -             Detected version: 3.14.4
+[2026-07-20 13:15:12,112 module.py:4179 INFO] -       # Found artifact in /home/drew/mantis-venv/bin/python3
+[2026-07-20 13:15:12,126 customize.py:69 INFO] -         Detected version: 3.14.4
+[2026-07-20 13:15:12,138 module.py:1879 INFO] -     - cache UID: 5634732cf3434c42
+[2026-07-20 13:15:12,145 script_utils.py:88 INFO] -   * mlcr get,mlcommons,inference,src
+[2026-07-20 13:15:12,159 script_utils.py:88 INFO] -     * mlcr detect,os
+[2026-07-20 13:15:12,160 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:12,184 script_utils.py:88 INFO] -     * mlcr get,generic-python-lib,_package.loguru
+[2026-07-20 13:15:12,199 script_utils.py:88 INFO] -       * mlcr detect,os
+[2026-07-20 13:15:12,200 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:12,202 script_utils.py:88 INFO] -       * mlcr detect,cpu
+[2026-07-20 13:15:12,203 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/detect-cpu_7628a534/mlc-cached-state.json
+[2026-07-20 13:15:12,205 script_utils.py:88 INFO] -       * mlcr get,python3
+[2026-07-20 13:15:12,206 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:12,230 script_utils.py:88 INFO] -       * mlcr get,generic-python-lib,_pip
+[2026-07-20 13:15:12,245 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 13:15:12,245 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:12,247 script_utils.py:88 INFO] -         * mlcr detect,cpu
+[2026-07-20 13:15:12,248 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-cpu_7628a534/mlc-cached-state.json
+[2026-07-20 13:15:12,250 script_utils.py:88 INFO] -         * mlcr get,python3
+[2026-07-20 13:15:12,251 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:12,319 customize.py:152 INFO] -                   Detected version: 26.1.2
+[2026-07-20 13:15:12,390 module.py:1879 INFO] -           - cache UID: bfd286b2b6b24092
+[2026-07-20 13:15:12,456 customize.py:152 INFO] -                   Detected version: 0.7.3
+[2026-07-20 13:15:12,528 module.py:1879 INFO] -           - cache UID: aa47f92ae17f4acb
+[2026-07-20 13:15:12,530 script_utils.py:88 INFO] -     * mlcr get,python3
+[2026-07-20 13:15:12,531 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:12,555 script_utils.py:88 INFO] -     * mlcr get,generic-python-lib,_package.loguru
+[2026-07-20 13:15:12,558 script_utils.py:88 INFO] -       * mlcr get,python3
+[2026-07-20 13:15:12,559 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:12,619 customize.py:152 INFO] -               Detected version: 0.7.3
+[2026-07-20 13:15:12,621 script_utils.py:88 INFO] -         * mlcr get,python3
+[2026-07-20 13:15:12,622 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:12,623 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-generic-python-lib_aa47f92a/mlc-cached-state.json
+[2026-07-20 13:15:12,636 script_utils.py:88 INFO] -           * mlcr get,git,repo,_branch.master,_repo.https://github.com/mlcommons/inference
+[2026-07-20 13:15:12,658 script_utils.py:88 INFO] -             * mlcr detect,os
+[2026-07-20 13:15:12,659 module.py:1046 INFO] -                  ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:27,507 module.py:1879 INFO] -               - cache UID: 542b447418b545e0
+[2026-07-20 13:15:27,507 module.py:1933 INFO] -               * MLC cache path to the Git repo: /home/drew/MLC/repos/local/cache/get-git-repo_inference-src_542b4474/inference
+[2026-07-20 13:15:27,558 module.py:1879 INFO] -               - cache UID: 30d209bd30ba4808
+[2026-07-20 13:15:27,561 script_utils.py:88 INFO] -   * mlcr get,sut,description
+[2026-07-20 13:15:27,567 script_utils.py:88 INFO] -     * mlcr detect,os
+[2026-07-20 13:15:27,568 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:27,569 script_utils.py:88 INFO] -     * mlcr detect,cpu
+[2026-07-20 13:15:27,571 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/detect-cpu_7628a534/mlc-cached-state.json
+[2026-07-20 13:15:27,573 script_utils.py:88 INFO] -     * mlcr get,python3
+[2026-07-20 13:15:27,574 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:27,586 script_utils.py:88 INFO] -     * mlcr get,compiler
+[2026-07-20 13:15:27,635 module.py:3831 INFO] -         * /usr/bin/clang
+[2026-07-20 13:15:27,665 customize.py:73 INFO] -             Detected version: 21.1.8
+[2026-07-20 13:15:27,666 module.py:4179 INFO] -         # Found artifact in /usr/bin/clang
+[2026-07-20 13:15:27,695 customize.py:73 INFO] -         Detected version: 21.1.8
+[2026-07-20 13:15:27,696 script_utils.py:88 INFO] -     * mlcr get,compiler-flags
+[2026-07-20 13:15:27,698 script_utils.py:88 INFO] -       * mlcr detect,cpu
+[2026-07-20 13:15:27,700 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/detect-cpu_7628a534/mlc-cached-state.json
+[2026-07-20 13:15:27,728 module.py:1879 INFO] -         - cache UID: cee037e08e5e42bc
+[2026-07-20 13:15:27,730 script_utils.py:88 INFO] -     * mlcr get,cuda-devices
+[2026-07-20 13:15:27,747 script_utils.py:88 INFO] -       * mlcr get,cuda,_toolkit
+[2026-07-20 13:15:27,762 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 13:15:27,763 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:27,773 module.py:4113 INFO] -             # Requested paths: /home/drew/mantis-venv/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/local/cuda/bin:/usr/cuda/bin:/usr/local/cuda-11/bin:/usr/cuda-11/bin:/usr/local/cuda-12/bin:/usr/cuda-12/bin:/usr/local/packages/cuda:/opt/mlc-installs/cuda/install/bin
+[2026-07-20 13:15:27,800 module.py:3831 INFO] -             * /usr/local/cuda/bin/nvcc
+[2026-07-20 13:15:27,818 customize.py:107 INFO] -                 Detected version: 13.3
+[2026-07-20 13:15:27,818 module.py:3831 INFO] -             * /usr/bin/nvcc
+[2026-07-20 13:15:27,834 customize.py:107 INFO] -                 Detected version: 12.4
+[2026-07-20 13:15:27,835 module.py:3903 INFO] -           Selected 0: /usr/local/cuda/bin/nvcc
+[2026-07-20 13:15:27,835 module.py:4179 INFO] -             # Found artifact in /usr/local/cuda/bin/nvcc
+[2026-07-20 13:15:27,852 customize.py:107 INFO] -             Detected version: 13.3
+[2026-07-20 13:15:27,864 module.py:1879 INFO] -           - cache UID: 1eb87c977f8f4617
+[2026-07-20 13:15:27,864 module.py:1933 INFO] -           * ENV[CUDA_HOME]: /usr/local/cuda
+[2026-07-20 13:15:27,864 module.py:1933 INFO] -           * ENV[MLC_CUDA_PATH_LIB_CUDNN_EXISTS]: no
+[2026-07-20 13:15:27,864 module.py:1933 INFO] -           * ENV[MLC_CUDA_VERSION]: 13.3
+[2026-07-20 13:15:27,864 module.py:1933 INFO] -           * ENV[MLC_CUDA_VERSION_STRING]: cu133
+[2026-07-20 13:15:27,864 module.py:1933 INFO] -           * ENV[MLC_NVCC_BIN_WITH_PATH]: /usr/local/cuda/bin/nvcc
+[2026-07-20 13:15:29,088 module.py:1879 INFO] -           - cache UID: 0ae1cecdebf3408f
+[2026-07-20 13:15:29,090 script_utils.py:88 INFO] -     * mlcr get,cache,dir,_name.mlperf-inference-sut-descriptions
+[2026-07-20 13:15:29,130 module.py:1879 INFO] -       - cache UID: 40dfc4457a5a4b6e
+[2026-07-20 13:15:29,140 customize.py:56 INFO] - Generating SUT description file for drew_home_pc-onnxruntime
+[2026-07-20 13:15:29,150 script_utils.py:88 INFO] -   * mlcr get,mlperf,inference,results,dir,_version.r6.1-dev
+[2026-07-20 13:15:29,190 module.py:1879 INFO] -     - cache UID: fe3a593d8b41448a
+[2026-07-20 13:15:29,191 script_utils.py:88 INFO] -   * mlcr install,pip-package,for-mlc-python,_package.tabulate
+[2026-07-20 13:15:29,770 module.py:1879 INFO] -     - cache UID: 68bbe8308cc04b7e
+[2026-07-20 13:15:29,771 script_utils.py:88 INFO] -   * mlcr get,mlperf,inference,utils
+[2026-07-20 13:15:29,778 script_utils.py:88 INFO] -     * mlcr get,mlperf,inference,src
+[2026-07-20 13:15:29,780 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-mlperf-inference-src_30d209bd/mlc-cached-state.json
+[2026-07-20 13:15:29,810 customize.py:273 INFO] - 
+Running loadgen scenario: Offline and mode: performance
+[2026-07-20 13:15:29,888 script_utils.py:88 INFO] - * mlcr app,mlperf,inference,generic,_reference,_resnet50,_onnxruntime,_cuda,_test,_r6.1-dev_default,_offline
+[2026-07-20 13:15:29,892 script_utils.py:88 INFO] -   * mlcr detect,os
+[2026-07-20 13:15:29,893 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:29,894 script_utils.py:88 INFO] -   * mlcr get,sys-utils-mlc
+[2026-07-20 13:15:29,909 script_utils.py:88 INFO] -     * mlcr detect,os
+[2026-07-20 13:15:29,910 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:29,917 script_utils.py:88 INFO] -   * mlcr get,python
+[2026-07-20 13:15:29,918 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:29,925 script_utils.py:88 INFO] -   * mlcr get,mlcommons,inference,src
+[2026-07-20 13:15:29,926 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/get-mlperf-inference-src_30d209bd/mlc-cached-state.json
+[2026-07-20 13:15:29,927 script_utils.py:88 INFO] -   * mlcr get,mlperf,inference,utils
+[2026-07-20 13:15:29,934 script_utils.py:88 INFO] -     * mlcr get,mlperf,inference,src
+[2026-07-20 13:15:29,936 module.py:1046 INFO] -          ! load /home/drew/MLC/repos/local/cache/get-mlperf-inference-src_30d209bd/mlc-cached-state.json
+[2026-07-20 13:15:29,947 script_utils.py:88 INFO] -   * mlcr get,dataset-aux,imagenet-aux
+[2026-07-20 13:15:29,965 script_utils.py:88 INFO] -     * mlcr download-and-extract,_extract,_wget,_url.https://armi.in/files/caffe_ilsvrc12.tar.gz
+[2026-07-20 13:15:29,986 script_utils.py:88 INFO] -       * mlcr download,file,_wget,_url.https://armi.in/files/caffe_ilsvrc12.tar.gz
+[2026-07-20 13:15:30,004 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 13:15:30,005 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:30,011 customize.py:139 INFO] - 
+[2026-07-20 13:15:30,011 customize.py:140 INFO] - Downloading from https://armi.in/files/caffe_ilsvrc12.tar.gz
+[2026-07-20 13:15:31,059 customize.py:307 INFO] - wget -nc  --tries=3 -O 'caffe_ilsvrc12.tar.gz'  https://armi.in/files/caffe_ilsvrc12.tar.gz || ((rm -f caffe_ilsvrc12.tar.gz || true) && wget -nc  --tries=3 -O 'caffe_ilsvrc12.tar.gz'  https://www.dropbox.com/s/92n2fyej3lzy3s3/caffe_ilsvrc12.tar.gz)
+[2026-07-20 13:15:31,551 module.py:1879 INFO] -           - cache UID: 0d1b3dda937d449a
+[2026-07-20 13:15:31,554 script_utils.py:88 INFO] -         * mlcr extract,file,_keep,_path./home/drew/MLC/repos/local/cache/download-file_imagenet-aux-da_0d1b3dda/caffe_ilsvrc12.tar.gz
+[2026-07-20 13:15:31,570 script_utils.py:88 INFO] -           * mlcr detect,os
+[2026-07-20 13:15:31,571 module.py:1046 INFO] -                ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:31,577 customize.py:190 INFO] - 
+[2026-07-20 13:15:31,577 customize.py:191 INFO] - Current directory: /home/drew/MLC/repos/local/cache/extract-file_imagenet-aux-da_1c626c79
+[2026-07-20 13:15:31,577 customize.py:192 INFO] - Command line: "tar    --skip-old-files -xvzf  /home/drew/MLC/repos/local/cache/download-file_imagenet-aux-da_0d1b3dda/caffe_ilsvrc12.tar.gz"
+[2026-07-20 13:15:31,577 customize.py:193 INFO] - 
+[2026-07-20 13:15:31,689 module.py:1879 INFO] -             - cache UID: 1c626c7934664ed1
+[2026-07-20 13:15:31,706 module.py:1879 INFO] -             - cache UID: 43bb40a462a24b67
+[2026-07-20 13:15:31,718 module.py:1879 INFO] -             - cache UID: a365a6d0159b4db9
+[2026-07-20 13:15:31,721 script_utils.py:88 INFO] -   * mlcr get,cuda-devices
+[2026-07-20 13:15:31,722 module.py:1046 INFO] -        ! load /home/drew/MLC/repos/local/cache/get-cuda-devices_0ae1cecd/mlc-cached-state.json
+[2026-07-20 13:15:31,788 script_utils.py:88 INFO] -     * mlcr app,mlperf,reference,inference,_resnet50,_offline,_cuda,_onnxruntime,_fp32
+[2026-07-20 13:15:31,796 script_utils.py:88 INFO] -       * mlcr detect,os
+[2026-07-20 13:15:31,797 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:31,798 script_utils.py:88 INFO] -       * mlcr detect,cpu
+[2026-07-20 13:15:31,800 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/detect-cpu_7628a534/mlc-cached-state.json
+[2026-07-20 13:15:31,801 script_utils.py:88 INFO] -       * mlcr get,sys-utils-mlc
+[2026-07-20 13:15:31,809 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 13:15:31,810 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:31,818 script_utils.py:88 INFO] -       * mlcr get,python
+[2026-07-20 13:15:31,819 module.py:1046 INFO] -            ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:31,822 script_utils.py:88 INFO] -       * mlcr get,cuda,_cudnn
+[2026-07-20 13:15:31,838 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 13:15:31,839 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:31,844 module.py:4113 INFO] -             # Requested paths: /home/drew/mantis-venv/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/local/cuda/bin:/usr/cuda/bin:/usr/local/cuda-11/bin:/usr/cuda-11/bin:/usr/local/cuda-12/bin:/usr/cuda-12/bin:/usr/local/packages/cuda:/opt/mlc-installs/cuda/install/bin
+[2026-07-20 13:15:31,870 module.py:3831 INFO] -             * /usr/local/cuda/bin/nvcc
+[2026-07-20 13:15:31,885 customize.py:107 INFO] -                 Detected version: 13.3
+[2026-07-20 13:15:31,885 module.py:3831 INFO] -             * /usr/bin/nvcc
+[2026-07-20 13:15:31,898 customize.py:107 INFO] -                 Detected version: 12.4
+[2026-07-20 13:15:31,898 module.py:3903 INFO] -           Selected 0: /usr/local/cuda/bin/nvcc
+[2026-07-20 13:15:31,898 module.py:4179 INFO] -             # Found artifact in /usr/local/cuda/bin/nvcc
+[2026-07-20 13:15:31,911 customize.py:107 INFO] -             Detected version: 13.3
+[2026-07-20 13:15:31,913 script_utils.py:88 INFO] -         * mlcr get,nvidia,cudnn
+[2026-07-20 13:15:31,929 script_utils.py:88 INFO] -           * mlcr detect,os
+[2026-07-20 13:15:31,930 module.py:1046 INFO] -                ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:31,931 script_utils.py:88 INFO] -           * mlcr detect,sudo
+[2026-07-20 13:15:31,962 module.py:4113 INFO] -               # Requested paths: /home/drew/mantis-venv/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/local/cuda/bin:/usr/cuda/bin:/usr/local/cuda-11/bin:/usr/cuda-11/bin:/usr/local/cuda-12/bin:/usr/cuda-12/bin:/usr/local/packages/cuda:/opt/mlc-installs/cuda/install/bin:/usr/local/cuda/lib64:/usr/cuda/lib64:/usr/local/cuda/lib:/usr/cuda/lib:/usr/local/cuda-11/lib64:/usr/cuda-11/lib:/usr/local/cuda-12/lib:/usr/cuda-12/lib:/usr/local/packages/cuda/lib:$CUDNN_ROOT/lib:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/lib64:/usr/lib64:/usr/local/lib:/lib:/usr/lib
+[2026-07-20 13:15:32,023 module.py:4179 INFO] -               # Found artifact in /lib/x86_64-linux-gnu/libcudnn.so
+[2026-07-20 13:15:32,046 module.py:1879 INFO] -             - cache UID: 6ca3f7ae3a32440b
+[2026-07-20 13:15:32,046 module.py:1933 INFO] -             * ENV[MLC_CUDA_PATH_INCLUDE_CUDNN]: None
+[2026-07-20 13:15:32,046 module.py:1933 INFO] -             * ENV[MLC_CUDA_PATH_LIB_CUDNN]: /lib/x86_64-linux-gnu
+[2026-07-20 13:15:32,046 module.py:1933 INFO] -             * ENV[MLC_CUDNN_VERSION]: vdetected
+[2026-07-20 13:15:32,059 module.py:1879 INFO] -             - cache UID: 049fcc5d16b44e14
+[2026-07-20 13:15:32,059 module.py:1933 INFO] -             * ENV[CUDA_HOME]: /usr/local/cuda
+[2026-07-20 13:15:32,059 module.py:1933 INFO] -             * ENV[MLC_CUDA_PATH_LIB_CUDNN_EXISTS]: yes
+[2026-07-20 13:15:32,059 module.py:1933 INFO] -             * ENV[MLC_CUDA_VERSION]: 13.3
+[2026-07-20 13:15:32,059 module.py:1933 INFO] -             * ENV[MLC_CUDA_VERSION_STRING]: cu133
+[2026-07-20 13:15:32,059 module.py:1933 INFO] -             * ENV[MLC_NVCC_BIN_WITH_PATH]: /usr/local/cuda/bin/nvcc
+[2026-07-20 13:15:32,084 script_utils.py:88 INFO] -       * mlcr get,generic-python-lib,_onnxruntime
+[2026-07-20 13:15:32,084 item.py:22 INFO] - No meta file found in /home/drew/MLC/repos/local/cache/get-generic-python-lib_1185429b for None
+[2026-07-20 13:15:32,084 action.py:192 WARNING] - Skipping cache item at /home/drew/MLC/repos/local/cache/get-generic-python-lib_1185429b: missing or invalid meta
+[2026-07-20 13:15:32,100 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 13:15:32,101 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:32,102 script_utils.py:88 INFO] -         * mlcr detect,cpu
+[2026-07-20 13:15:32,104 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-cpu_7628a534/mlc-cached-state.json
+[2026-07-20 13:15:32,106 script_utils.py:88 INFO] -         * mlcr get,python3
+[2026-07-20 13:15:32,107 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:32,131 script_utils.py:88 INFO] -         * mlcr get,generic-python-lib,_pip
+[2026-07-20 13:15:32,135 script_utils.py:88 INFO] -           * mlcr get,python3
+[2026-07-20 13:15:32,136 module.py:1046 INFO] -                ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:32,193 customize.py:152 INFO] -                   Detected version: 26.1.2
+[2026-07-20 13:15:32,195 script_utils.py:88 INFO] -             * mlcr get,python3
+[2026-07-20 13:15:32,196 module.py:1046 INFO] -                  ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:32,197 module.py:1046 INFO] -                  ! load /home/drew/MLC/repos/local/cache/get-generic-python-lib_bfd286b2/mlc-cached-state.json
+[2026-07-20 13:15:32,259 customize.py:152 INFO] -                       Detected version: 1.27.0
+[2026-07-20 13:15:32,329 module.py:1879 INFO] -               - cache UID: 18b735c61bd54242
+[2026-07-20 13:15:32,355 script_utils.py:88 INFO] -       * mlcr get,generic-python-lib,_onnxruntime_gpu
+[2026-07-20 13:15:32,355 item.py:22 INFO] - No meta file found in /home/drew/MLC/repos/local/cache/get-generic-python-lib_aa9195c8 for None
+[2026-07-20 13:15:32,355 action.py:192 WARNING] - Skipping cache item at /home/drew/MLC/repos/local/cache/get-generic-python-lib_aa9195c8: missing or invalid meta
+[2026-07-20 13:15:32,371 script_utils.py:88 INFO] -         * mlcr detect,os
+[2026-07-20 13:15:32,372 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:32,374 script_utils.py:88 INFO] -         * mlcr detect,cpu
+[2026-07-20 13:15:32,375 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/detect-cpu_7628a534/mlc-cached-state.json
+[2026-07-20 13:15:32,378 script_utils.py:88 INFO] -         * mlcr get,python3
+[2026-07-20 13:15:32,378 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:32,403 script_utils.py:88 INFO] -         * mlcr get,generic-python-lib,_pip
+[2026-07-20 13:15:32,407 script_utils.py:88 INFO] -           * mlcr get,python3
+[2026-07-20 13:15:32,408 module.py:1046 INFO] -                ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:32,466 customize.py:152 INFO] -                   Detected version: 26.1.2
+[2026-07-20 13:15:32,468 script_utils.py:88 INFO] -             * mlcr get,python3
+[2026-07-20 13:15:32,470 module.py:1046 INFO] -                  ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:32,470 module.py:1046 INFO] -                  ! load /home/drew/MLC/repos/local/cache/get-generic-python-lib_bfd286b2/mlc-cached-state.json
+[2026-07-20 13:15:32,474 script_utils.py:88 INFO] -         * mlcr get,cuda
+[2026-07-20 13:15:32,475 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-cuda_049fcc5d/mlc-cached-state.json
+[2026-07-20 13:15:32,475 module.py:1933 INFO] -           * ENV[CUDA_HOME]: /usr/local/cuda
+[2026-07-20 13:15:32,476 module.py:1933 INFO] -           * ENV[MLC_CUDA_PATH_LIB_CUDNN_EXISTS]: yes
+[2026-07-20 13:15:32,476 module.py:1933 INFO] -           * ENV[MLC_CUDA_VERSION]: 13.3
+[2026-07-20 13:15:32,476 module.py:1933 INFO] -           * ENV[MLC_CUDA_VERSION_STRING]: cu133
+[2026-07-20 13:15:32,476 module.py:1933 INFO] -           * ENV[MLC_NVCC_BIN_WITH_PATH]: /usr/local/cuda/bin/nvcc
+[2026-07-20 13:15:32,538 customize.py:152 INFO] -                   Detected version: 1.27.0
+[2026-07-20 13:15:32,608 module.py:1879 INFO] -           - cache UID: 5346c1865e554fd4
+[2026-07-20 13:15:32,618 script_utils.py:88 INFO] -       * mlcr get,ml-model,image-classification,resnet50,raw,_onnx,_fp32
+[2026-07-20 13:15:32,618 item.py:22 INFO] - No meta file found in /home/drew/MLC/repos/local/cache/get-ml-model-resnet50_3556b13f for None
+[2026-07-20 13:15:32,618 action.py:192 WARNING] - Skipping cache item at /home/drew/MLC/repos/local/cache/get-ml-model-resnet50_3556b13f: missing or invalid meta
+[2026-07-20 13:15:32,642 script_utils.py:88 INFO] -         * mlcr download-and-extract,_url.https://armi.in/files/resnet50_v1_op11/resnet50_v1.onnx
+[2026-07-20 13:15:32,642 item.py:22 INFO] - No meta file found in /home/drew/MLC/repos/local/cache/download-and-extract_ml-model-resnet_3531294d for None
+[2026-07-20 13:15:32,642 action.py:192 WARNING] - Skipping cache item at /home/drew/MLC/repos/local/cache/download-and-extract_ml-model-resnet_3531294d: missing or invalid meta
+[2026-07-20 13:15:32,664 script_utils.py:88 INFO] -           * mlcr download,file,_mlcutil,_url.https://armi.in/files/resnet50_v1_op11/resnet50_v1.onnx
+[2026-07-20 13:15:32,665 item.py:22 INFO] - No meta file found in /home/drew/MLC/repos/local/cache/download-file_ml-model-resnet_f365db71 for None
+[2026-07-20 13:15:32,665 action.py:192 WARNING] - Skipping cache item at /home/drew/MLC/repos/local/cache/download-file_ml-model-resnet_f365db71: missing or invalid meta
+[2026-07-20 13:15:32,685 script_utils.py:88 INFO] -             * mlcr detect,os
+[2026-07-20 13:15:32,686 module.py:1046 INFO] -                  ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:32,693 customize.py:139 INFO] - 
+[2026-07-20 13:15:32,694 customize.py:140 INFO] - Downloading from https://armi.in/files/resnet50_v1_op11/resnet50_v1.onnx
+[2026-07-20 13:15:45,244 module.py:1879 INFO] -               - cache UID: e119cb552b294ce1
+[2026-07-20 13:15:45,261 module.py:1879 INFO] -               - cache UID: 0ade2498ff134813
+[2026-07-20 13:15:45,279 module.py:1879 INFO] -               - cache UID: 92a404bfc0534214
+[2026-07-20 13:15:45,279 module.py:1933 INFO] -               * Path to the ML model: /home/drew/MLC/repos/local/cache/download-file_ml-model-resnet_e119cb55/resnet50_v1.onnx
+[2026-07-20 13:15:45,289 script_utils.py:88 INFO] -       * mlcr get,dataset,image-classification,imagenet,preprocessed,_-for.mobilenet,_NCHW,_full
+[2026-07-20 13:15:45,291 item.py:22 INFO] - No meta file found in /home/drew/MLC/repos/local/cache/get-preprocessed-dataset-imagenet_4e057f83 for None
+[2026-07-20 13:15:45,291 action.py:192 WARNING] - Skipping cache item at /home/drew/MLC/repos/local/cache/get-preprocessed-dataset-imagenet_4e057f83: missing or invalid meta
+[2026-07-20 13:15:45,306 script_utils.py:88 INFO] -         * mlcr get,python3
+[2026-07-20 13:15:45,307 module.py:1046 INFO] -              ! load /home/drew/MLC/repos/local/cache/get-python3_5634732c/mlc-cached-state.json
+[2026-07-20 13:15:45,310 script_utils.py:88 INFO] -         * mlcr get,dataset,image-classification,original,_full
+[2026-07-20 13:15:45,311 item.py:22 INFO] - No meta file found in /home/drew/MLC/repos/local/cache/get-dataset-imagenet-val_dc612d57 for None
+[2026-07-20 13:15:45,311 action.py:192 WARNING] - Skipping cache item at /home/drew/MLC/repos/local/cache/get-dataset-imagenet-val_dc612d57: missing or invalid meta
+[2026-07-20 13:15:45,326 script_utils.py:88 INFO] -           * mlcr detect,os
+[2026-07-20 13:15:45,327 module.py:1046 INFO] -                ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:45,337 script_utils.py:88 INFO] -             * mlcr download-and-extract,file,_extract,_url.https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_val.tar
+[2026-07-20 13:15:45,347 script_utils.py:88 INFO] -               * mlcr download,file,_mlcutil,_url.https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_val.tar
+[2026-07-20 13:15:45,352 script_utils.py:88 INFO] -                 * mlcr detect,os
+[2026-07-20 13:15:45,353 module.py:1046 INFO] -                      ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:15:45,360 customize.py:139 INFO] - 
+[2026-07-20 13:15:45,360 customize.py:140 INFO] - Downloading from https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_val.tar
+[2026-07-20 13:27:36,777 script_utils.py:88 INFO] -                 * mlcr extract,file,_keep,_path./home/drew/MLC/repos/local/cache/get-dataset-imagenet-val_2a549627/ILSVRC2012_img_val.tar
+[2026-07-20 13:27:36,781 script_utils.py:88 INFO] -                   * mlcr detect,os
+[2026-07-20 13:27:36,783 module.py:1046 INFO] -                        ! load /home/drew/MLC/repos/local/cache/detect-os_b9bf43d3/mlc-cached-state.json
+[2026-07-20 13:27:36,789 customize.py:190 INFO] - 
+[2026-07-20 13:27:36,789 customize.py:191 INFO] - Current directory: /home/drew/MLC/repos/local/cache/get-dataset-imagenet-val_2a549627
+[2026-07-20 13:27:36,790 customize.py:192 INFO] - Command line: "mkdir -p imagenet-2012-val && tar    -C imagenet-2012-val  -xvf /home/drew/MLC/repos/local/cache/get-dataset-imagenet-val_2a549627/ILSVRC2012_img_val.tar"
+[2026-07-20 13:27:36,790 customize.py:193 INFO] - 
+[2026-07-20 13:27:42,569 main.py:137 ERROR] - Error during 'script' action: Script run execution failed in /home/drew/MLC/repos/mlcommons@mlperf-automations/automation/script/module.py. 
+Error : Native run script failed inside MLC script (name = extract-file, return code = 256)
+
+
+[2026-07-20 13:27:42,571 main.py:151 ERROR] -   at /home/drew/MLC/repos/mlcommons@mlperf-automations/script/run-mlperf-inference-app/customize.py:285 in preprocess
+[2026-07-20 13:27:42,572 main.py:182 ERROR] - Failed script: extract-file
+[2026-07-20 13:27:42,572 main.py:183 ERROR] - To rerun just the failed part: mlcr extract-file --automation=script --print_env=False --print_deps=False --dump_version_info=True
+[2026-07-20 13:27:42,572 main.py:205 ERROR] - Please file an issue at https://github.com/mlcommons/mlperf-automations/issues with the full console log.
+[2026-07-20 13:27:42,572 main.py:209 ERROR] - mlcflow 1.2.7
+[2026-07-20 13:27:42,579 main.py:214 ERROR] -   mlcommons@mlperf-automations: dev e2f6a588a

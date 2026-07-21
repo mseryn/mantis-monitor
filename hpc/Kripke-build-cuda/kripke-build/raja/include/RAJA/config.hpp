@@ -1,0 +1,637 @@
+/*!
+ ******************************************************************************
+ *
+ * \file
+ *
+ * \brief   Header file for basic RAJA configuration options.
+ *
+ *          This file contains platform-specific parameters that control
+ *          aspects of compilation of application code using RAJA. These
+ *          parameters specify: SIMD unit width, data alignment information,
+ *          inline directives, etc.
+ *
+ *          IMPORTANT: These options are set by CMake and depend on the options
+ *          passed to it.
+ *
+ *          IMPORTANT: Exactly one e RAJA_COMPILER_* option must be defined to
+ *          ensure correct behavior.
+ *
+ *          Definitions in this file will propagate to all RAJA header files.
+ *
+ ******************************************************************************
+ */
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// Copyright (c) 2016-25, Lawrence Livermore National Security, LLC
+// and RAJA project contributors. See the RAJA/LICENSE file for details.
+//
+// SPDX-License-Identifier: (BSD-3-Clause)
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+#ifndef RAJA_config_HPP
+#define RAJA_config_HPP
+
+#include <utility>
+#include <cstddef>
+#include <type_traits>
+
+#if defined(_MSVC_LANG)
+#define RAJA_CXX_VER _MSVC_LANG
+#else
+#define RAJA_CXX_VER __cplusplus
+#endif
+
+#if RAJA_CXX_VER >= 201402L
+#define RAJA_HAS_SOME_CXX14 1
+#elif __cpp_generic_lambdas >= 201304 && \
+      __cpp_constexpr >=  201304 && \
+      __cpp_decltype_auto >= 201304 && \
+      __cpp_return_type_deduction >= 201304 && \
+      __cpp_aggregate_nsdmi >= 201304 && \
+      __cpp_variable_templates >= 201304
+#define RAJA_HAS_SOME_CXX14 1
+#else
+#define RAJA_HAS_SOME_CXX14 0
+
+static_assert(__cpp_generic_lambdas >= 201304,
+              "RAJA requires C++14 __cpp_generic_lambdas to operate.");
+
+static_assert(__cpp_constexpr >=  201304,
+              "RAJA requires C++14 __cpp_constexpr to operate.");
+
+static_assert(__cpp_decltype_auto >= 201304 ,
+              "RAJA requires C++14 __cpp_decltype_auto to operate");
+
+static_assert(__cpp_return_type_deduction >= 201304,
+              "RAJA requires C++14 __cpp_return_type_deduction to operate");
+
+static_assert(__cpp_aggregate_nsdmi >= 201304,
+              "RAJA requires C++14 __cpp_aggregate_nsdmi to operate");
+
+#endif
+/* NOTE: we want this one __cpp_init_captures >= 201304 */
+/* NOTE: we want this too __cpp_lib_transformation_trait_aliases >= 201304 */
+// __has_cpp_attribute(deprecated) >= 201309
+// __cpp_lib_exchange_function >= 201304
+// __cpp_lib_make_unique >= 201304
+// __cpp_lib_integer_sequence >= 201304
+// __cpp_lib_tuples_by_type >= 201304
+// __cpp_lib_tuple_element_t >= 201402
+// __cpp_lib_transparent_operators >= 201210
+// __cpp_lib_integral_constant_callable >= 201304
+// __cpp_lib_result_of_sfinae >= 201210
+// __cpp_binary_literals 201304
+// __cpp_sized_deallocation  201309
+// __cpp_lib_is_final  201402
+// __cpp_lib_is_null_pointer 201309
+// __cpp_lib_chrono_udls 201304
+// __cpp_lib_string_udls 201304
+// __cpp_lib_generic_associative_lookup  201304
+// __cpp_lib_null_iterators  201304
+// __cpp_lib_make_reverse_iterator 201402
+// __cpp_lib_robust_nonmodifying_seq_ops 201304
+// __cpp_lib_complex_udls  201309
+// __cpp_lib_quoted_string_io  201304
+// __has_include(<shared_mutex>) 1
+// __cpp_lib_shared_timed_mutex  201402
+
+
+static_assert(RAJA_HAS_SOME_CXX14,
+              "RAJA requires at least basic C++14 to operate correctly, your "
+              "compiler and/or standard library does not claim support for "
+              "C++14 features we need");
+
+#if defined(__cpp_lib_is_invocable) && (__cpp_lib_is_invocable >= 201703L)
+#define RAJA_HAS_CXX17_IS_INVOCABLE 1
+#else
+#define RAJA_HAS_CXX17_IS_INVOCABLE 0
+#endif
+
+/*!
+ ******************************************************************************
+ *
+ * \brief Enable/disable exploratory fault tolerance mechanism.
+ *
+ ******************************************************************************
+ */
+/* #undef RAJA_ENABLE_FT */
+/* #undef RAJA_ENABLE_ITERATOR_OVERFLOW_DEBUG */
+/*!
+ ******************************************************************************
+ *
+ * \brief Default RAJA floating point scalar and pointer options.
+ *
+ ******************************************************************************
+ */
+#define RAJA_USE_DOUBLE
+#define RAJA_USE_BARE_PTR
+
+/*!
+ ******************************************************************************
+ *
+ * \brief Deprecated tests
+ *
+ ******************************************************************************
+ */
+/* #undef RAJA_DEPRECATED_TESTS */
+
+/*!
+ ******************************************************************************
+ *
+ * \brief Add forceinline recursive directive to Kernel and Forall (Intel only)
+ *
+ ******************************************************************************
+ */
+#define RAJA_ENABLE_FORCEINLINE_RECURSIVE
+
+/*!
+ ******************************************************************************
+ *
+ * \brief Add bounds check to views and layouts
+ *
+ ******************************************************************************
+ */
+/* #undef RAJA_ENABLE_BOUNDS_CHECK */
+
+/*
+ ******************************************************************************
+ *
+ * \brief Exhaustive index types for tests
+ *
+ ******************************************************************************
+ */
+/* #undef RAJA_TEST_EXHAUSTIVE */
+
+/*!
+ ******************************************************************************
+ *
+ * \brief Programming model back-ends.
+ *
+ * \note The RAJA_ENABLE_<back-end> macros indicate if the back-end was
+ * enabled when RAJA was configured.   RAJA_<back-end>_ACTIVE macros
+ * indicate if the back-end is present when the application/library
+ * using RAJA is compiled.   An application/library can use a subset of
+ * back-ends that are present in a RAJA install.
+ * 
+ ******************************************************************************
+ */
+
+/* #undef RAJA_ENABLE_OPENMP */
+/* #undef RAJA_ENABLE_TARGET_OPENMP */
+#define RAJA_ENABLE_CUDA
+/* #undef RAJA_ENABLE_CLANG_CUDA */
+/* #undef RAJA_ENABLE_HIP */
+/* #undef RAJA_ENABLE_SYCL */
+
+/* #undef RAJA_ENABLE_OMP_TASK */
+/* #undef RAJA_ALLOW_OPENMP_5_1_ATOMICS */
+#define RAJA_ENABLE_VECTORIZATION
+
+/* #undef RAJA_ENABLE_CALIPER */
+/* #undef RAJA_ENABLE_NVTX */
+/* #undef RAJA_ENABLE_ROCTX */
+
+#define RAJA_CUDA_WARPSIZE 32
+/* #undef RAJA_HIP_WAVESIZE */
+
+/*!
+ ******************************************************************************
+ *
+ * \brief Timer options.
+ *
+ ******************************************************************************
+ */
+#define RAJA_USE_CHRONO
+/* #undef RAJA_USE_GETTIME */
+/* #undef RAJA_USE_CLOCK */
+/* #undef RAJA_USE_CYCLE */
+
+/*!
+ ******************************************************************************
+ *
+ * \brief Runtime plugins.
+ *
+ ******************************************************************************
+ */
+/* #undef RAJA_ENABLE_RUNTIME_PLUGINS */
+
+/*!
+ ******************************************************************************
+ *
+ * \brief Desul atomics.
+ *
+ ******************************************************************************
+ */
+/* #undef RAJA_ENABLE_DESUL_ATOMICS */
+
+/*!
+ ******************************************************************************
+ *
+ * \brief Detect the host C++ compiler we are using.
+ *
+ ******************************************************************************
+ */
+#if defined(_WIN32)
+#define RAJA_COMPILER_MSVC // This must be defined for all windows builds (even if using compilers other than MSVC)
+#elif defined(__INTEL_COMPILER)
+#define RAJA_COMPILER_INTEL
+#elif defined(__ibmxl__)
+#define RAJA_COMPILER_XLC
+#elif defined(__clang__)
+#define RAJA_COMPILER_CLANG
+#elif defined(__PGI)
+#define RAJA_COMPILER_PGI
+#elif defined(__GNUC__)
+#define RAJA_COMPILER_GNU
+#endif
+
+#define RAJA_STRINGIFY_HELPER(...) #__VA_ARGS__
+#define RAJA_STRINGIFY(...) RAJA_STRINGIFY_HELPER(__VA_ARGS__)
+#ifdef _WIN32
+#define RAJA_PRAGMA(x) __pragma(x)
+#else
+#define RAJA_PRAGMA(x) _Pragma(RAJA_STRINGIFY(x))
+#endif
+
+
+/* NOTE: Below we define RAJA_MAX_ALIGN for each compiler, currently it is set as 16 bytes
+for all cases, except MSVC. Previously this was set by alignof(std::max_align_t) which, in Clang,
+is based on the sizeof(long double). This causes an in inconsistency as CUDA/HIP long doubles
+are demoted to doubles causing alignof(std::max_align_t) to return 8 bytes on the device and
+16 bytes on the host. We therefore set a standard size and ensure validity through a
+static_assert.
+*/
+
+namespace RAJA {
+
+// Enables OpenMP 5.1 atomics for min/max operations
+#if defined(RAJA_ENABLE_OPENMP) && _OPENMP >= 202011 && defined(RAJA_ALLOW_OPENMP_5_1_ATOMICS)
+#define RAJA_USE_OPENMP_5_1_ATOMICS
+#endif
+
+#if defined(RAJA_ENABLE_OPENMP) && !defined(__HIP_DEVICE_COMPILE__)
+#if defined(_OPENMP)
+// RAJA build can be configured but downstream packages may not; guard OpenMP 
+#define RAJA_OPENMP_ACTIVE  
+#if (_OPENMP >= 200805)
+#if defined(RAJA_ENABLE_OPENMP_TASK)
+#define RAJA_ENABLE_OPENMP_TASK_INTERNAL
+#endif
+#endif // _OPENMP >= 200805
+#endif // OPENMP
+#endif // RAJA_ENABLE_OPENMP && !__HIP_DEVICE_COMPILE__
+
+#if defined(RAJA_ENABLE_CUDA) && defined(__CUDACC__)
+#define RAJA_CUDA_ACTIVE
+
+#if defined(RAJA_ENABLE_CLANG_CUDA)
+#define RAJA_CUDA_DIM_T uint3
+#else
+#define RAJA_CUDA_DIM_T dim3
+#endif
+
+#if ( (__CUDACC_VER_MAJOR__ > 11) || (__CUDACC_VER_MAJOR__ == 11 && __CUDACC_VER_MINOR__ >= 7) ) && !defined(RAJA_ENABLE_CLANG_CUDA)
+// only supported by nvcc on sm_70 and above
+#define RAJA_CUDA_GRID_CONSTANT __grid_constant__
+#else
+#define RAJA_CUDA_GRID_CONSTANT
+#endif
+#endif // RAJA_ENABLE_CUDA && __CUDACC__
+
+#if defined(RAJA_ENABLE_HIP) && defined(__HIPCC__)
+#define RAJA_HIP_ACTIVE
+
+#define RAJA_HIP_DIM_T dim3
+
+#include <hip/hip_version.h>
+#if (HIP_VERSION_MAJOR > 5) || \
+    (HIP_VERSION_MAJOR == 5 && HIP_VERSION_MINOR >= 1)
+// enable device function pointers with rocm version >= 5.1
+// this used to be set to 4.3, but tests start passing with 5.1
+#define RAJA_ENABLE_HIP_INDIRECT_FUNCTION_CALL
+#define RAJA_ENABLE_HIP_DOUBLE_ATOMICADD
+#endif
+#if (HIP_VERSION_MAJOR > 4) || \
+    (HIP_VERSION_MAJOR == 4 && HIP_VERSION_MINOR >= 2)
+// enable occupancy calculator with rocm version >= 4.2
+// can't test older versions thought they may work
+#define RAJA_ENABLE_HIP_OCCUPANCY_CALCULATOR
+#endif
+#endif // RAJA_ENABLE_HIP && __HIPCC__
+
+#if defined(RAJA_ENABLE_SYCL)
+#if defined(SYCL_LANGUAGE_VERSION)
+#define RAJA_SYCL_ACTIVE
+#endif
+#endif
+
+#if defined(RAJA_CUDA_ACTIVE) || \
+    defined(RAJA_HIP_ACTIVE) || \
+    defined(RAJA_SYCL_ACTIVE)
+#define RAJA_GPU_ACTIVE
+#endif
+
+/*!
+ ******************************************************************************
+ *
+ * \brief RAJA software version number.
+ *
+ ******************************************************************************
+ */
+#define RAJA_VERSION_MAJOR 2025
+#define RAJA_VERSION_MINOR 12
+#define RAJA_VERSION_PATCHLEVEL 0
+
+
+/*!
+ ******************************************************************************
+ *
+ * \brief Useful macros.
+ *
+ ******************************************************************************
+ */
+
+//
+//  Platform-specific constants for data alignment:
+//
+//     DATA_ALIGN - used in compiler-specific intrinsics and type aliases
+//                  to specify alignment of data, loop bounds, etc.;
+//                  units of "bytes"
+const int DATA_ALIGN = 64;
+
+#if defined (_WIN32)
+#define RAJA_RESTRICT __restrict
+#else
+#define RAJA_RESTRICT __restrict__
+#endif
+
+#if !defined(RAJA_COMPILER_MSVC)
+#define RAJA_COLLAPSE(X) collapse(X)
+#else
+#define RAJA_COLLAPSE(X)
+#endif
+
+//
+// Runtime bounds checking for Views
+//
+#if defined(RAJA_ENABLE_BOUNDS_CHECK)
+#define RAJA_BOUNDS_CHECK_INTERNAL
+#define RAJA_BOUNDS_CHECK_constexpr
+#else
+#define RAJA_BOUNDS_CHECK_constexpr constexpr
+#endif
+
+//
+//  Compiler-specific definitions for inline directives, data alignment
+//  intrinsics, and SIMD vector pragmas
+//
+//  Variables for compiler instrinsics, directives, type aliases
+//
+//     RAJA_INLINE - macro to enforce method inlining
+//
+//     RAJA_ALIGN_DATA(<variable>) - macro to express alignment of data,
+//                              loop bounds, etc.
+//
+//     RAJA_SIMD - macro to express SIMD vectorization pragma to force
+//                 loop vectorization
+//
+//     RAJA_ALIGNED_ATTR(<alignment>) - macro to express type or variable alignments
+//
+
+#if (defined(_WIN32) || defined(_WIN64)) && !defined(RAJA_WIN_STATIC_BUILD)
+#ifdef RAJA_EXPORTS
+#define RAJASHAREDDLL_API __declspec(dllexport)
+#else
+#define RAJASHAREDDLL_API __declspec(dllimport)
+#endif
+#else
+#define RAJASHAREDDLL_API
+#endif
+
+#if defined(RAJA_COMPILER_GNU)
+#define RAJA_ALIGNED_ATTR(N) __attribute__((aligned(N)))
+#else
+#define RAJA_ALIGNED_ATTR(N) alignas(N)
+#endif
+
+
+#if defined(RAJA_COMPILER_INTEL)
+//
+// Configuration options for Intel compilers
+//
+#define RAJA_MAX_ALIGN 16
+#if defined (RAJA_ENABLE_FORCEINLINE_RECURSIVE)
+#define RAJA_FORCEINLINE_RECURSIVE  RAJA_PRAGMA(forceinline recursive)
+#else
+#define RAJA_FORCEINLINE_RECURSIVE
+#endif
+
+#if defined (_WIN32)
+#define RAJA_INLINE inline
+#else
+#define RAJA_INLINE inline  __attribute__((always_inline))
+#endif
+
+
+#define RAJA_UNROLL RAJA_PRAGMA(unroll)
+#define RAJA_UNROLL_COUNT(N) RAJA_PRAGMA(unroll(N))
+
+#if defined(RAJA_ENABLE_CUDA) || defined(RAJA_ENABLE_HIP)
+#define RAJA_ALIGN_DATA(d) d
+#else
+#define RAJA_ALIGN_DATA(d) __assume_aligned(d, RAJA::DATA_ALIGN)
+#endif
+
+#if defined(_OPENMP) && (_OPENMP >= 201307) && (__INTEL_COMPILER >= 1700)
+#define RAJA_SIMD  RAJA_PRAGMA(omp simd)
+#elif defined(_OPENMP) && (_OPENMP >= 201307) && (__INTEL_COMPILER < 1700)
+#define RAJA_SIMD
+#else
+#define RAJA_SIMD RAJA_PRAGMA(simd)
+#endif
+
+
+#elif defined(RAJA_COMPILER_GNU)
+//
+// Configuration options for GNU compilers
+//
+#define RAJA_MAX_ALIGN 16
+#define RAJA_FORCEINLINE_RECURSIVE
+#define RAJA_INLINE inline  __attribute__((always_inline))
+
+#if !defined(__NVCC__) // purely GCC, CUDA compiler not active
+#define RAJA_UNROLL RAJA_PRAGMA(GCC unroll 10000)
+#define RAJA_UNROLL_COUNT(N) RAJA_PRAGMA(GCC unroll N)
+#else // CUDA compiler active, with GCC host compiler
+#if defined(__NVCC_DIAG_PRAGMA_SUPPORT__) // CUDA >= 11.5
+#define RAJA_UNROLL \
+        RAJA_PRAGMA (nv_diagnostic push) \
+        RAJA_PRAGMA (nv_diag_suppress 1675) \
+        RAJA_PRAGMA (GCC unroll 10000) \
+        RAJA_PRAGMA (nv_diagnostic pop)
+#define RAJA_UNROLL_COUNT(N) \
+        RAJA_PRAGMA (nv_diagnostic push) \
+        RAJA_PRAGMA (nv_diag_suppress 1675) \
+        RAJA_PRAGMA (GCC unroll N) \
+        RAJA_PRAGMA (nv_diagnostic pop)
+#else // CUDA < 11.5
+// Choosing not to unroll CPU code to avoid warnings of
+// unrecognized pragmas from NVCC.
+#define RAJA_UNROLL
+#define RAJA_UNROLL_COUNT(N)
+#endif // __NVCC_DIAG_PRAGMA_SUPPORT__
+#endif
+
+#if defined(RAJA_ENABLE_CUDA) || defined(RAJA_ENABLE_HIP)
+#define RAJA_ALIGN_DATA(d) d
+#else
+#define RAJA_ALIGN_DATA(d) __builtin_assume_aligned(d, RAJA::DATA_ALIGN)
+#endif
+
+#if defined(_OPENMP) && (_OPENMP >= 201307)
+#define RAJA_SIMD  RAJA_PRAGMA(omp simd)
+#elif defined(__GNUC__) && defined(__GNUC_MINOR__) && \
+      ( ( (__GNUC__ == 4) && (__GNUC_MINOR__ == 9) ) || (__GNUC__ >= 5) )
+#define RAJA_SIMD    RAJA_PRAGMA(GCC ivdep)
+#else
+#define RAJA_SIMD
+#endif
+
+
+#elif defined(RAJA_COMPILER_XLC)
+//
+// Configuration options for xlc compiler (i.e., bgq/sequoia).
+//
+#define RAJA_MAX_ALIGN 16
+#define RAJA_FORCEINLINE_RECURSIVE
+#define RAJA_INLINE inline  __attribute__((always_inline))
+#define RAJA_UNROLL
+#define RAJA_UNROLL_COUNT(N)
+// FIXME: alignx is breaking CUDA+xlc
+#if defined(RAJA_ENABLE_CUDA)
+#define RAJA_ALIGN_DATA(d) d
+#else
+#define RAJA_ALIGN_DATA(d) __alignx(RAJA::DATA_ALIGN, d)
+#endif
+
+#if defined(_OPENMP) && (_OPENMP >= 201307)
+#define RAJA_SIMD  RAJA_PRAGMA(omp simd)
+#else
+#define RAJA_SIMD  RAJA_PRAGMA(simd_level(10))
+#endif
+
+// Detect altivec, but disable if NVCC is being used due to some bad interactions
+#if defined(__ALTIVEC__) && (__ALTIVEC__ == 1) && !defined(__NVCC__)
+#define RAJA_ALTIVEC
+#endif
+
+
+#elif defined(RAJA_COMPILER_CLANG)
+//
+// Configuration options for clang compilers
+//
+#define RAJA_MAX_ALIGN 16
+#define RAJA_FORCEINLINE_RECURSIVE
+#define RAJA_INLINE inline  __attribute__((always_inline))
+#define RAJA_UNROLL RAJA_PRAGMA(clang loop unroll(enable))
+#define RAJA_UNROLL_COUNT(N) RAJA_PRAGMA(clang loop unroll_count(N))
+// note that neither nvcc nor Apple Clang compiler currently doesn't support
+// the __builtin_assume_aligned attribute
+#if defined(RAJA_ENABLE_CUDA) || defined(__APPLE__)
+#define RAJA_ALIGN_DATA(d) d
+#else
+#define RAJA_ALIGN_DATA(d) __builtin_assume_aligned(d, RAJA::DATA_ALIGN)
+#endif
+
+#if defined(_OPENMP) && (_OPENMP >= 201307) && (__clang_major__ >= 4 )
+#define RAJA_SIMD  RAJA_PRAGMA(omp simd)
+#else
+
+// Clang 3.7 and later changed the "pragma clang loop vectorize" options
+// Apple Clang compiler supports older options
+#if ( ( (__clang_major__ >= 4 ) ||  (__clang_major__ >= 3 && __clang_minor__ > 7) ) && !defined(__APPLE__) )
+#define RAJA_SIMD    RAJA_PRAGMA(clang loop vectorize(assume_safety))
+#else
+#define RAJA_SIMD    RAJA_PRAGMA(clang loop vectorize(enable))
+#endif
+
+#endif
+
+// Detect altivec, but only seems to work since Clang 9
+#if defined(__ALTIVEC__) && (__clang_major__ >= 9 ) && (__ALTIVEC__ == 1)
+#define RAJA_ALTIVEC
+#endif
+
+
+// This is the same as undefined compiler, but squelches the warning message
+#elif defined(RAJA_COMPILER_MSVC)
+#define RAJA_MAX_ALIGN alignof(std::max_align_t)
+#define RAJA_FORCEINLINE_RECURSIVE
+#define RAJA_INLINE inline
+#define RAJA_ALIGN_DATA(d) d
+#define RAJA_SIMD
+#define RAJA_UNROLL
+#define RAJA_UNROLL_COUNT(N)
+
+#else
+
+#pragma message("RAJA_COMPILER unknown, using default empty macros.")
+#define RAJA_MAX_ALIGN 16
+#define RAJA_FORCEINLINE_RECURSIVE
+#define RAJA_INLINE inline
+#define RAJA_ALIGN_DATA(d) d
+#define RAJA_SIMD
+#define RAJA_UNROLL
+#define RAJA_UNROLL_COUNT(N)
+
+#endif
+
+static_assert(RAJA_MAX_ALIGN >= alignof(std::max_align_t) && (RAJA_MAX_ALIGN/alignof(std::max_align_t))*alignof(std::max_align_t) == RAJA_MAX_ALIGN,
+        "Inconsistent RAJA_MAX_ALIGN size");
+
+#define RAJA_HAVE_POSIX_MEMALIGN
+/* #undef RAJA_HAVE_ALIGNED_ALLOC */
+/* #undef RAJA_HAVE_MM_MALLOC */
+
+//
+//Creates a general framework for compiler alignment hints
+//
+// Example usage:
+// double *a = RAJA::allocate_aligned_type<double>(RAJA::DATA_ALIGN,10*sizeof(double));
+// double *y = RAJA::align_hint
+
+template<typename T>
+RAJA_INLINE
+T * align_hint(T * x)
+{
+
+#if defined(RAJA_COMPILER_XLC) && defined(RAJA_ENABLE_CUDA)
+  return x;
+#elif defined(RAJA_COMPILER_INTEL) || defined(RAJA_COMPILER_XLC)
+  RAJA_ALIGN_DATA(x);
+  return x;
+#else
+  return static_cast<T *>(RAJA_ALIGN_DATA(x));
+#endif
+}
+
+}  // closing brace for RAJA namespace
+
+
+#ifndef RAJA_UNROLL
+#define RAJA_UNROLL
+#endif
+
+#ifndef RAJA_UNROLL_COUNT
+#define RAJA_UNROLL_COUNT(N)
+#endif
+
+// If we're in CUDA or HIP device code, we can use the unroll pragma
+#if (defined(__CUDA_ARCH__) || defined(__HIP_DEVICE_COMPILE__)) && defined(RAJA_GPU_ACTIVE)
+#undef RAJA_UNROLL
+#undef RAJA_UNROLL_COUNT
+#define RAJA_UNROLL RAJA_PRAGMA(unroll)
+#define RAJA_UNROLL_COUNT(N) RAJA_PRAGMA(unroll N)
+#endif
+
+#endif // closing endif for header file include guard

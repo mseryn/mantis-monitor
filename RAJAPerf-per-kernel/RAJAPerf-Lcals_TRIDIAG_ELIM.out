@@ -1,0 +1,46 @@
+Kernels run without MPI
+Kernel               ,    Problem size ,    Reps ,    Iterations/rep ,    Kernels/rep ,    BytesMoved/rep ,    FLOPS/rep ,    BytesTouched/rep ,    BytesRead/rep ,    BytesWritten/rep ,    BytesModifyWritten/rep ,    BytesAtomicModifyWritten/rep ,    BytesAllocated/rep , ChecksumConsistency          , OperationalComplexity   , MaxPerfectLoopDimensions    , ProblemDimensionality   
+Lcals_TRIDIAG_ELIM   ,         1000000 ,    1000 ,            999999 ,              1 ,          31999968 ,      1999998 ,            31999968 ,         23999976 ,             7999992 ,                         0 ,                               0 ,              32000000 , ConsistentPerVariantTuning   , O(N)                    ,                           1 ,                        1
+
+
+Kernels run without MPI
+Kernel               , Variant       , Tuning    ,    Problem size , Checksum   ,    Mean time per rep (sec.) ,    Mean Bandwidth (GiB per sec.) ,    Mean flops (gigaFLOP per sec.)
+Lcals_TRIDIAG_ELIM   , Base_OpenMP   , default   ,         1000000 , PASSED     ,                 0.000831715 ,                          35.8323 ,                           2.40467
+
+
+===================================================================================================
+Checksum Report 
+===================================================================================================
+Kernel              
+........................................................
+Variants            Result  Tolerance                   Checksum                    Checksum Rel Diff           
+                                                                                    (vs. first variant listed)  
+----------------------------------------------------------------------------------------
+Lcals_TRIDIAG_ELIM  
+........................................................
+Base_OpenMP-default PASSED  1.0000000000000000364e-10   9999.6241191619766031       0.0000000000000000000       
+
+-------------------------------------------------------
+
+
+Mean Runtime Report (sec.)  , 
+Variant             , Base_OpenMP
+Tuning              , default    
+Lcals_TRIDIAG_ELIM  ,    0.831715
+
+
+Mean Speedup Report (T_ref/T_var): ref var = Base_OpenMP  , 
+Variant             , Base_OpenMP
+Tuning              , default    
+Lcals_TRIDIAG_ELIM  ,       1.000
+
+
+FOM Report : signed speedup(-)/slowdown(+) for each PM (base vs. RAJA) -> (T_RAJA - T_base) / T_base ) ,  , 
+'OVER_TOL' in column to right if RAJA speedup is over tolerance ,  , 
+Kernel              , Base_OpenMP-default,        
+Lcals_TRIDIAG_ELIM  , 0.00               ,base_ref
+                    ,                    ,        
+Col Min             , 0.00               ,        
+Col Max             , 0.00               ,        
+Col Avg             , 0.00               ,        
+Col Std Dev         , 0.00               ,        

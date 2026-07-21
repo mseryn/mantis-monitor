@@ -13,7 +13,7 @@
 benchmarks:
   - type: generic_benchmark
     name: pennant_omp_cpu
-    cmd: "./hpc/PENNANT/build-omp/pennant ./hpc/PENNANT/test/leblanc/leblanc.pnt"
+    cmd: "./hpc/PENNANT/build-openmp/pennant ./hpc/PENNANT/test/leblanc/leblanc.pnt"
 
 collection_modes:
   perf:

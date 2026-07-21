@@ -1,0 +1,12 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/cmake_install.cmake",
+		"/home/drew/mantis-monitor/hpc/Kripke-build-cuda/blt/thirdparty_builtin/cmake_install.cmake",
+		"/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/cmake_install.cmake",
+		"/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/tpl/camp/cmake_install.cmake",
+		"/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises/cmake_install.cmake",
+		"/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises/tutorial_halfday/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -11,14 +11,14 @@
 benchmarks:
   - type: generic_benchmark
     name: minibude_cpu
-    cmd: "./hpc/miniBUDE/build-omp/bude --deck ./hpc/miniBUDE/data/bm1 -i 8"
+    cmd: "./hpc/miniBUDE/build-omp/omp-bude --deck ./hpc/miniBUDE/data/bm1 -i 8"
 
 collection_modes:
   perf:
     pmu_count: 4
-  bpf:
-    metrics:
-      - io_latency
+#  bpf:
+#    metrics:
+#      - io_latency
   utilization:
     - memory_info
 

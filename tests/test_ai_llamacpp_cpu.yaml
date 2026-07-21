@@ -19,7 +19,7 @@ benchmarks:
     name: llamacpp_qwen0_5b_cpu
     # -p = prompt tokens (prefill, compute-heavy), -n = generated tokens.
     # Build llama-bench per SETUP_AI.md; download a small GGUF model.
-    cmd: "./llama.cpp/build/bin/llama-bench -m models/qwen2.5-0.5b-instruct-q4_k_m.gguf -p 256 -n 128"
+    cmd: "./llama.cpp-cpu/build/bin/llama-bench -m models/qwen2.5-0.5b-instruct-q4_k_m.gguf -p 256 -n 128"
 
 collection_modes:
   perf:

@@ -11,14 +11,14 @@
 benchmarks:
   - type: generic_benchmark
     name: tealeaf_cpu
-    cmd: "./hpc/TeaLeaf/build-omp/tealeaf --file ./hpc/TeaLeaf/InputDecks/tea_bm_short.in"
+    cmd: "./hpc/TeaLeaf/build-omp/omp-tealeaf --file ./hpc/TeaLeaf/InputDecks/tea_bm_short.in"
 
 collection_modes:
   perf:
     pmu_count: 4
-  bpf:
-    metrics:
-      - io_latency
+#  bpf:
+#    metrics:
+#      - io_latency
   utilization:
     - memory_info
 

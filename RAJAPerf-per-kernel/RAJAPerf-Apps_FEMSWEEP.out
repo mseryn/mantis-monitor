@@ -1,0 +1,46 @@
+Kernels run without MPI
+Kernel          ,    Problem size ,    Reps ,    Iterations/rep ,    Kernels/rep ,    BytesMoved/rep ,    FLOPS/rep ,    BytesTouched/rep ,    BytesRead/rep ,    BytesWritten/rep ,    BytesModifyWritten/rep ,    BytesAtomicModifyWritten/rep ,    BytesAllocated/rep , ChecksumConsistency          , OperationalComplexity   , MaxPerfectLoopDimensions    , ProblemDimensionality   
+Apps_FEMSWEEP   ,          144000 ,       1 ,                 1 ,              1 ,          24836480 ,    123379200 ,            20551040 ,         15620480 ,             9216000 ,                   4285440 ,                               0 ,              20551040 , ConsistentPerVariantTuning   , O(N)                    ,                           1 ,                        3
+
+
+Kernels run without MPI
+Kernel          , Variant       , Tuning    ,    Problem size , Checksum   ,    Mean time per rep (sec.) ,    Mean Bandwidth (GiB per sec.) ,    Mean flops (gigaFLOP per sec.)
+Apps_FEMSWEEP   , Base_OpenMP   , default   ,          144000 , PASSED     ,                  0.00403425 ,                          5.73360 ,                           30.5829
+
+
+===================================================================================================
+Checksum Report 
+===================================================================================================
+Kernel              
+........................................................
+Variants            Result  Tolerance                   Checksum                    Checksum Rel Diff           
+                                                                                    (vs. first variant listed)  
+----------------------------------------------------------------------------------------
+Apps_FEMSWEEP       
+........................................................
+Base_OpenMP-default PASSED  5.0000000000000004090e-06   8445136.0457821078007       0.0000000000000000000       
+
+-------------------------------------------------------
+
+
+Mean Runtime Report (sec.)  , 
+Variant        , Base_OpenMP
+Tuning         , default    
+Apps_FEMSWEEP  ,    0.004034
+
+
+Mean Speedup Report (T_ref/T_var): ref var = Base_OpenMP  , 
+Variant        , Base_OpenMP
+Tuning         , default    
+Apps_FEMSWEEP  ,       1.000
+
+
+FOM Report : signed speedup(-)/slowdown(+) for each PM (base vs. RAJA) -> (T_RAJA - T_base) / T_base ) ,  , 
+'OVER_TOL' in column to right if RAJA speedup is over tolerance ,  , 
+Kernel         , Base_OpenMP-default,        
+Apps_FEMSWEEP  , 0.00               ,base_ref
+               ,                    ,        
+Col Min        , 0.00               ,        
+Col Max        , 0.00               ,        
+Col Avg        , 0.00               ,        
+Col Std Dev    , 0.00               ,        

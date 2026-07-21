@@ -1,0 +1,46 @@
+Kernels run without MPI
+Kernel           ,    Problem size ,    Reps ,    Iterations/rep ,    Kernels/rep ,    BytesMoved/rep ,    FLOPS/rep ,    BytesTouched/rep ,    BytesRead/rep ,    BytesWritten/rep ,    BytesModifyWritten/rep ,    BytesAtomicModifyWritten/rep ,    BytesAllocated/rep , ChecksumConsistency          , OperationalComplexity   , MaxPerfectLoopDimensions    , ProblemDimensionality   
+Lcals_HYDRO_1D   ,         1000000 ,    1000 ,           1000000 ,              1 ,          24000008 ,      5000000 ,            24000008 ,         16000008 ,             8000000 ,                         0 ,                               0 ,              24000008 , ConsistentPerVariantTuning   , O(N)                    ,                           1 ,                        1
+
+
+Kernels run without MPI
+Kernel           , Variant       , Tuning    ,    Problem size , Checksum   ,    Mean time per rep (sec.) ,    Mean Bandwidth (GiB per sec.) ,    Mean flops (gigaFLOP per sec.)
+Lcals_HYDRO_1D   , Base_OpenMP   , default   ,         1000000 , PASSED     ,                 0.000425370 ,                          52.5466 ,                           11.7545
+
+
+===================================================================================================
+Checksum Report 
+===================================================================================================
+Kernel              
+........................................................
+Variants            Result  Tolerance                   Checksum                    Checksum Rel Diff           
+                                                                                    (vs. first variant listed)  
+----------------------------------------------------------------------------------------
+Lcals_HYDRO_1D      
+........................................................
+Base_OpenMP-default PASSED  1.0000000000000000364e-10   103783.68348712601932       0.0000000000000000000       
+
+-------------------------------------------------------
+
+
+Mean Runtime Report (sec.)  , 
+Variant         , Base_OpenMP
+Tuning          , default    
+Lcals_HYDRO_1D  ,    0.425370
+
+
+Mean Speedup Report (T_ref/T_var): ref var = Base_OpenMP  , 
+Variant         , Base_OpenMP
+Tuning          , default    
+Lcals_HYDRO_1D  ,       1.000
+
+
+FOM Report : signed speedup(-)/slowdown(+) for each PM (base vs. RAJA) -> (T_RAJA - T_base) / T_base ) ,  , 
+'OVER_TOL' in column to right if RAJA speedup is over tolerance ,  , 
+Kernel          , Base_OpenMP-default,        
+Lcals_HYDRO_1D  , 0.00               ,base_ref
+                ,                    ,        
+Col Min         , 0.00               ,        
+Col Max         , 0.00               ,        
+Col Avg         , 0.00               ,        
+Col Std Dev     , 0.00               ,        

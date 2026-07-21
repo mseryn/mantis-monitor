@@ -1,0 +1,35 @@
+# Always stay enabled if any upstream has already turned you on.
+if(NOT BLT_ENABLE_CUDA)
+    set(BLT_ENABLE_CUDA           On)
+endif()
+if(NOT BLT_ENABLE_HIP)
+    set(BLT_ENABLE_HIP            OFF)
+endif()
+if(NOT BLT_ENABLE_MPI)
+    set(BLT_ENABLE_MPI            OFF)
+endif()
+if(NOT BLT_ENABLE_OPENMP)
+    set(BLT_ENABLE_OPENMP         OFF)
+endif()
+if(NOT BLT_ENABLE_FIND_MPI)
+    set(BLT_ENABLE_FIND_MPI       ON)
+endif()
+
+# Always prefer the current project if they turned it on
+if(ENABLE_CLANG_CUDA)
+    set(BLT_ENABLE_CLANG_CUDA     ${ENABLE_CLANG_CUDA})
+else()
+    set(BLT_ENABLE_CLANG_CUDA     OFF)
+endif()
+
+if (NOT DEFINED BLT_CLANG_CUDA_ARCH)
+    set(BLT_CLANG_CUDA_ARCH       "sm_30")
+endif()
+
+if (NOT DEFINED CUDA_TOOLKIT_ROOT_DIR)
+    set(CUDA_TOOLKIT_ROOT_DIR     "/usr/local/cuda")
+endif()
+
+if (NOT DEFINED ROCM_PATH)
+    set(ROCM_PATH                 "")
+endif()

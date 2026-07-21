@@ -1,0 +1,506 @@
+[
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/BaseVar.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/BaseVar.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/BaseVar.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/BaseVar.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/MemoryManager.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/MemoryManager.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/MemoryManager.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/MemoryManager.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DataStore.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DataStore.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DataStore.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DataStore.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DomainVar.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DomainVar.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DomainVar.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/DomainVar.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Data.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Data.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Data.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Data.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Decomp.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Decomp.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Decomp.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Decomp.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Energy.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Energy.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Energy.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Energy.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Quadrature.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Quadrature.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Quadrature.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Quadrature.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Space.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Space.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Space.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Generate/Space.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/InputVariables.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/InputVariables.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/InputVariables.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/InputVariables.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LPlusTimes.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LPlusTimes.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LPlusTimes.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LPlusTimes.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LTimes.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LTimes.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LTimes.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/LTimes.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Population.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Population.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Population.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Population.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Scattering.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Scattering.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Scattering.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Scattering.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Source.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Source.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Source.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/Source.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/SweepSubdomain.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/SweepSubdomain.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/SweepSubdomain.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Kernel/SweepSubdomain.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/BlockJacobiComm.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/BlockJacobiComm.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/BlockJacobiComm.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/BlockJacobiComm.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/SweepComm.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/SweepComm.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/SweepComm.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm/SweepComm.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/ParallelComm.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/PartitionSpace.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/PartitionSpace.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/PartitionSpace.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/PartitionSpace.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/Set.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/Set.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/Set.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Core/Set.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SteadyStateSolver.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SteadyStateSolver.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SteadyStateSolver.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SteadyStateSolver.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SweepSolver.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SweepSolver.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SweepSolver.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/SweepSolver.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Timing.cpp -o CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Timing.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Timing.cpp",
+  "output": "CMakeFiles/kripke.dir/home/drew/mantis-monitor/hpc/Kripke/src/Kripke/Timing.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kripke.exe.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -O3 -DNDEBUG -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/src/kripke.cpp -o CMakeFiles/kripke.exe.dir/home/drew/mantis-monitor/hpc/Kripke/src/kripke.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/src/kripke.cpp",
+  "output": "CMakeFiles/kripke.exe.dir/home/drew/mantis-monitor/hpc/Kripke/src/kripke.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/RAJA.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/AlignedRangeIndexSetBuilders.cpp -o CMakeFiles/RAJA.dir/src/AlignedRangeIndexSetBuilders.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/AlignedRangeIndexSetBuilders.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/AlignedRangeIndexSetBuilders.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/RAJA.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/DepGraphNode.cpp -o CMakeFiles/RAJA.dir/src/DepGraphNode.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/DepGraphNode.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/DepGraphNode.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/RAJA.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/LockFreeIndexSetBuilders.cpp -o CMakeFiles/RAJA.dir/src/LockFreeIndexSetBuilders.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/LockFreeIndexSetBuilders.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/LockFreeIndexSetBuilders.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/RAJA.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/MemUtils_CUDA.cpp -o CMakeFiles/RAJA.dir/src/MemUtils_CUDA.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/MemUtils_CUDA.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/MemUtils_CUDA.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/RAJA.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/MemUtils_HIP.cpp -o CMakeFiles/RAJA.dir/src/MemUtils_HIP.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/MemUtils_HIP.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/MemUtils_HIP.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/RAJA.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/MemUtils_SYCL.cpp -o CMakeFiles/RAJA.dir/src/MemUtils_SYCL.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/MemUtils_SYCL.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/MemUtils_SYCL.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/RAJA.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIC -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/PluginStrategy.cpp -o CMakeFiles/RAJA.dir/src/PluginStrategy.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/src/PluginStrategy.cpp",
+  "output": "raja/CMakeFiles/RAJA.dir/src/PluginStrategy.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/tpl/camp",
+  "command": "/usr/bin/g++-13  -I/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/include -I/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/tpl/camp/include -isystem /usr/local/cuda/include -O3 -DNDEBUG -std=c++17 -fPIC -o CMakeFiles/camp.dir/src/errors.cpp.o -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/src/errors.cpp",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/tpl/camp/src/errors.cpp",
+  "output": "raja/tpl/camp/CMakeFiles/camp.dir/src/errors.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/atomic-histogram.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/atomic-histogram.cpp -o CMakeFiles/atomic-histogram.dir/atomic-histogram.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/atomic-histogram.cpp",
+  "output": "raja/exercises/CMakeFiles/atomic-histogram.dir/atomic-histogram.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/atomic-histogram_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/atomic-histogram_solution.cpp -o CMakeFiles/atomic-histogram_solution.dir/atomic-histogram_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/atomic-histogram_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/atomic-histogram_solution.dir/atomic-histogram_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/dot-product.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/dot-product.cpp -o CMakeFiles/dot-product.dir/dot-product.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/dot-product.cpp",
+  "output": "raja/exercises/CMakeFiles/dot-product.dir/dot-product.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/dot-product_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/dot-product_solution.cpp -o CMakeFiles/dot-product_solution.dir/dot-product_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/dot-product_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/dot-product_solution.dir/dot-product_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kernelintro-execpols.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-execpols.cpp -o CMakeFiles/kernelintro-execpols.dir/kernelintro-execpols.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-execpols.cpp",
+  "output": "raja/exercises/CMakeFiles/kernelintro-execpols.dir/kernelintro-execpols.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kernelintro-execpols_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-execpols_solution.cpp -o CMakeFiles/kernelintro-execpols_solution.dir/kernelintro-execpols_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-execpols_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/kernelintro-execpols_solution.dir/kernelintro-execpols_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/launchintro-execpols.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launchintro-execpols.cpp -o CMakeFiles/launchintro-execpols.dir/launchintro-execpols.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launchintro-execpols.cpp",
+  "output": "raja/exercises/CMakeFiles/launchintro-execpols.dir/launchintro-execpols.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/launchintro-execpols_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launchintro-execpols_solution.cpp -o CMakeFiles/launchintro-execpols_solution.dir/launchintro-execpols_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launchintro-execpols_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/launchintro-execpols_solution.dir/launchintro-execpols_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kernelintro-nested-loop-reorder.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-nested-loop-reorder.cpp -o CMakeFiles/kernelintro-nested-loop-reorder.dir/kernelintro-nested-loop-reorder.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-nested-loop-reorder.cpp",
+  "output": "raja/exercises/CMakeFiles/kernelintro-nested-loop-reorder.dir/kernelintro-nested-loop-reorder.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kernelintro-nested-loop-reorder_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-nested-loop-reorder_solution.cpp -o CMakeFiles/kernelintro-nested-loop-reorder_solution.dir/kernelintro-nested-loop-reorder_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernelintro-nested-loop-reorder_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/kernelintro-nested-loop-reorder_solution.dir/kernelintro-nested-loop-reorder_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kernel-matrix-transpose.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose.cpp -o CMakeFiles/kernel-matrix-transpose.dir/kernel-matrix-transpose.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose.cpp",
+  "output": "raja/exercises/CMakeFiles/kernel-matrix-transpose.dir/kernel-matrix-transpose.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kernel-matrix-transpose_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose_solution.cpp -o CMakeFiles/kernel-matrix-transpose_solution.dir/kernel-matrix-transpose_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/kernel-matrix-transpose_solution.dir/kernel-matrix-transpose_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/launch-matrix-transpose.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose.cpp -o CMakeFiles/launch-matrix-transpose.dir/launch-matrix-transpose.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose.cpp",
+  "output": "raja/exercises/CMakeFiles/launch-matrix-transpose.dir/launch-matrix-transpose.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/launch-matrix-transpose_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose_solution.cpp -o CMakeFiles/launch-matrix-transpose_solution.dir/launch-matrix-transpose_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/launch-matrix-transpose_solution.dir/launch-matrix-transpose_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kernel-matrix-transpose-tiled.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-tiled.cpp -o CMakeFiles/kernel-matrix-transpose-tiled.dir/kernel-matrix-transpose-tiled.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-tiled.cpp",
+  "output": "raja/exercises/CMakeFiles/kernel-matrix-transpose-tiled.dir/kernel-matrix-transpose-tiled.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kernel-matrix-transpose-tiled_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-tiled_solution.cpp -o CMakeFiles/kernel-matrix-transpose-tiled_solution.dir/kernel-matrix-transpose-tiled_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-tiled_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/kernel-matrix-transpose-tiled_solution.dir/kernel-matrix-transpose-tiled_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/launch-matrix-transpose-tiled.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-tiled.cpp -o CMakeFiles/launch-matrix-transpose-tiled.dir/launch-matrix-transpose-tiled.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-tiled.cpp",
+  "output": "raja/exercises/CMakeFiles/launch-matrix-transpose-tiled.dir/launch-matrix-transpose-tiled.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/launch-matrix-transpose-tiled_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-tiled_solution.cpp -o CMakeFiles/launch-matrix-transpose-tiled_solution.dir/launch-matrix-transpose-tiled_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-tiled_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/launch-matrix-transpose-tiled_solution.dir/launch-matrix-transpose-tiled_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kernel-matrix-transpose-local-array.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-local-array.cpp -o CMakeFiles/kernel-matrix-transpose-local-array.dir/kernel-matrix-transpose-local-array.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-local-array.cpp",
+  "output": "raja/exercises/CMakeFiles/kernel-matrix-transpose-local-array.dir/kernel-matrix-transpose-local-array.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/kernel-matrix-transpose-local-array_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-local-array_solution.cpp -o CMakeFiles/kernel-matrix-transpose-local-array_solution.dir/kernel-matrix-transpose-local-array_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/kernel-matrix-transpose-local-array_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/kernel-matrix-transpose-local-array_solution.dir/kernel-matrix-transpose-local-array_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/launch-matrix-transpose-local-array.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-local-array.cpp -o CMakeFiles/launch-matrix-transpose-local-array.dir/launch-matrix-transpose-local-array.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-local-array.cpp",
+  "output": "raja/exercises/CMakeFiles/launch-matrix-transpose-local-array.dir/launch-matrix-transpose-local-array.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/launch-matrix-transpose-local-array_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-local-array_solution.cpp -o CMakeFiles/launch-matrix-transpose-local-array_solution.dir/launch-matrix-transpose-local-array_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/launch-matrix-transpose-local-array_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/launch-matrix-transpose-local-array_solution.dir/launch-matrix-transpose-local-array_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/offset-layout-stencil.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/offset-layout-stencil.cpp -o CMakeFiles/offset-layout-stencil.dir/offset-layout-stencil.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/offset-layout-stencil.cpp",
+  "output": "raja/exercises/CMakeFiles/offset-layout-stencil.dir/offset-layout-stencil.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/offset-layout-stencil_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/offset-layout-stencil_solution.cpp -o CMakeFiles/offset-layout-stencil_solution.dir/offset-layout-stencil_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/offset-layout-stencil_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/offset-layout-stencil_solution.dir/offset-layout-stencil_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/permuted-layout-batch-matrix-multiply.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/permuted-layout-batch-matrix-multiply.cpp -o CMakeFiles/permuted-layout-batch-matrix-multiply.dir/permuted-layout-batch-matrix-multiply.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/permuted-layout-batch-matrix-multiply.cpp",
+  "output": "raja/exercises/CMakeFiles/permuted-layout-batch-matrix-multiply.dir/permuted-layout-batch-matrix-multiply.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/permuted-layout-batch-matrix-multiply_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/permuted-layout-batch-matrix-multiply_solution.cpp -o CMakeFiles/permuted-layout-batch-matrix-multiply_solution.dir/permuted-layout-batch-matrix-multiply_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/permuted-layout-batch-matrix-multiply_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/permuted-layout-batch-matrix-multiply_solution.dir/permuted-layout-batch-matrix-multiply_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/reductions.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/reductions.cpp -o CMakeFiles/reductions.dir/reductions.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/reductions.cpp",
+  "output": "raja/exercises/CMakeFiles/reductions.dir/reductions.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/reductions_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/reductions_solution.cpp -o CMakeFiles/reductions_solution.dir/reductions_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/reductions_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/reductions_solution.dir/reductions_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/scan.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/scan.cpp -o CMakeFiles/scan.dir/scan.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/scan.cpp",
+  "output": "raja/exercises/CMakeFiles/scan.dir/scan.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/scan_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/scan_solution.cpp -o CMakeFiles/scan_solution.dir/scan_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/scan_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/scan_solution.dir/scan_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/segment-indexset-basics.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/segment-indexset-basics.cpp -o CMakeFiles/segment-indexset-basics.dir/segment-indexset-basics.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/segment-indexset-basics.cpp",
+  "output": "raja/exercises/CMakeFiles/segment-indexset-basics.dir/segment-indexset-basics.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/segment-indexset-basics_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/segment-indexset-basics_solution.cpp -o CMakeFiles/segment-indexset-basics_solution.dir/segment-indexset-basics_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/segment-indexset-basics_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/segment-indexset-basics_solution.dir/segment-indexset-basics_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/sort.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/sort.cpp -o CMakeFiles/sort.dir/sort.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/sort.cpp",
+  "output": "raja/exercises/CMakeFiles/sort.dir/sort.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/sort_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/sort_solution.cpp -o CMakeFiles/sort_solution.dir/sort_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/sort_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/sort_solution.dir/sort_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/vector-addition.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vector-addition.cpp -o CMakeFiles/vector-addition.dir/vector-addition.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vector-addition.cpp",
+  "output": "raja/exercises/CMakeFiles/vector-addition.dir/vector-addition.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/vector-addition_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vector-addition_solution.cpp -o CMakeFiles/vector-addition_solution.dir/vector-addition_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vector-addition_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/vector-addition_solution.dir/vector-addition_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/vertexsum-indexset.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vertexsum-indexset.cpp -o CMakeFiles/vertexsum-indexset.dir/vertexsum-indexset.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vertexsum-indexset.cpp",
+  "output": "raja/exercises/CMakeFiles/vertexsum-indexset.dir/vertexsum-indexset.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/vertexsum-indexset_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vertexsum-indexset_solution.cpp -o CMakeFiles/vertexsum-indexset_solution.dir/vertexsum-indexset_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/vertexsum-indexset_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/vertexsum-indexset_solution.dir/vertexsum-indexset_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/view-layout.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/view-layout.cpp -o CMakeFiles/view-layout.dir/view-layout.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/view-layout.cpp",
+  "output": "raja/exercises/CMakeFiles/view-layout.dir/view-layout.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/view-layout_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/view-layout_solution.cpp -o CMakeFiles/view-layout_solution.dir/view-layout_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/view-layout_solution.cpp",
+  "output": "raja/exercises/CMakeFiles/view-layout_solution.dir/view-layout_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/ex2_approx-pi.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex2_approx-pi.cpp -o CMakeFiles/ex2_approx-pi.dir/ex2_approx-pi.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex2_approx-pi.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex2_approx-pi.dir/ex2_approx-pi.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/ex2_approx-pi_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex2_approx-pi_solution.cpp -o CMakeFiles/ex2_approx-pi_solution.dir/ex2_approx-pi_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex2_approx-pi_solution.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex2_approx-pi_solution.dir/ex2_approx-pi_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/ex5_line-of-sight.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex5_line-of-sight.cpp -o CMakeFiles/ex5_line-of-sight.dir/ex5_line-of-sight.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex5_line-of-sight.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex5_line-of-sight.dir/ex5_line-of-sight.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/ex5_line-of-sight_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex5_line-of-sight_solution.cpp -o CMakeFiles/ex5_line-of-sight_solution.dir/ex5_line-of-sight_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex5_line-of-sight_solution.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex5_line-of-sight_solution.dir/ex5_line-of-sight_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/ex6_stencil-offset-layout.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex6_stencil-offset-layout.cpp -o CMakeFiles/ex6_stencil-offset-layout.dir/ex6_stencil-offset-layout.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex6_stencil-offset-layout.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex6_stencil-offset-layout.dir/ex6_stencil-offset-layout.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/ex6_stencil-offset-layout_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex6_stencil-offset-layout_solution.cpp -o CMakeFiles/ex6_stencil-offset-layout_solution.dir/ex6_stencil-offset-layout_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex6_stencil-offset-layout_solution.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex6_stencil-offset-layout_solution.dir/ex6_stencil-offset-layout_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/ex8_tiled-matrix-transpose.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex8_tiled-matrix-transpose.cpp -o CMakeFiles/ex8_tiled-matrix-transpose.dir/ex8_tiled-matrix-transpose.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex8_tiled-matrix-transpose.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex8_tiled-matrix-transpose.dir/ex8_tiled-matrix-transpose.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/ex8_tiled-matrix-transpose_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex8_tiled-matrix-transpose_solution.cpp -o CMakeFiles/ex8_tiled-matrix-transpose_solution.dir/ex8_tiled-matrix-transpose_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex8_tiled-matrix-transpose_solution.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex8_tiled-matrix-transpose_solution.dir/ex8_tiled-matrix-transpose_solution.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/ex9_matrix-transpose-local-array.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex9_matrix-transpose-local-array.cpp -o CMakeFiles/ex9_matrix-transpose-local-array.dir/ex9_matrix-transpose-local-array.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex9_matrix-transpose-local-array.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex9_matrix-transpose-local-array.dir/ex9_matrix-transpose-local-array.cpp.o"
+},
+{
+  "directory": "/home/drew/mantis-monitor/hpc/Kripke-build-cuda/kripke-build/raja/exercises/tutorial_halfday",
+  "command": "/usr/bin/nvcc -forward-unknown-to-host-compiler -ccbin=/usr/bin/g++-13  --options-file CMakeFiles/ex9_matrix-transpose-local-array_solution.dir/includes_CUDA.rsp -ccbin=/usr/bin/g++-13 --extended-lambda -arch=sm_75 -restrict --expt-extended-lambda --expt-relaxed-constexpr -Xcudafe \"--display_error_number\" -O2 -std=c++17 \"--generate-code=arch=compute_75,code=[compute_75,sm_75]\" -Xcompiler=-fPIE -x cu -c /home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex9_matrix-transpose-local-array_solution.cpp -o CMakeFiles/ex9_matrix-transpose-local-array_solution.dir/ex9_matrix-transpose-local-array_solution.cpp.o",
+  "file": "/home/drew/mantis-monitor/hpc/Kripke/tpl/raja/exercises/tutorial_halfday/ex9_matrix-transpose-local-array_solution.cpp",
+  "output": "raja/exercises/tutorial_halfday/CMakeFiles/ex9_matrix-transpose-local-array_solution.dir/ex9_matrix-transpose-local-array_solution.cpp.o"
+}
+]

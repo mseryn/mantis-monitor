@@ -1,0 +1,8 @@
+libdir=/usr/local/lib
+includedir=/usr/local/include
+
+Name: KRIPKE
+Description: RAJA Portability Layer
+Version: 2025.12.0
+Libs: -rdynamic ${libdir}/libRAJA.a   -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc -l/usr/local/cuda/lib64/libcudart_static.a -lThreads::Threads -ldl -l/usr/lib/x86_64-linux-gnu/librt.a
+Cflags:  -I/usr/local/cuda/include -I/usr/include -I${includedir}

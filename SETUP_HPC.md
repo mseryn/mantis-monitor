@@ -268,7 +268,14 @@ cd mfem
 
 Build MFEM for CPU
 mkdir build-cpu && cd build-cpu
-cmake .. -DMFEM_USE_MPI=YES -DMFEM_USE_METIS=YES -DMFEM_USE_HYPRE=YES
+cmake .. \
+  -DCMAKE_CXX_COMPILER=/usr/bin/g++-13 \
+  -DCMAKE_C_COMPILER=/usr/bin/gcc-13 \
+  -DMFEM_USE_MPI=YES \
+  -DMFEM_USE_METIS=YES \
+  -DMFEM_USE_HYPRE=YES \
+  -DMETIS_LIBRARIES=/mantis-monitor/hpc/Laghos/metis-4.0/libmetis.a \
+  -DMETIS_INCLUDE_DIRS=/mantis-monitor/hpc/Laghos/metis-4.0
 make -j
 cd ..
 
@@ -350,8 +357,7 @@ cmake --install hpc/hypre/build-cpu
 
 # AMG2023 Configure and Build (CPU)
 cmake -S hpc/AMG2023 -B hpc/AMG2023/build-cpu \
-      -DHYPRE_PREFIX=${PWD}/hpc/hypre/install-cpu
-cmake --build hpc/AMG2023/build-cpu -j
+      -DHYPRE_PREFIX=${PWD}/hpc/hypre/install-cpucmake --build hpc/AMG2023/build-cpu -j
 
 # HYPRE Configure and Build (CUDA)
 cmake -S hpc/hypre/src -B hpc/hypre/build-cuda \
